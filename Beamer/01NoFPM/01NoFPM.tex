@@ -1,0 +1,635 @@
+% override specific chktex warnings
+% chktex-file 46 - don't use $ instead of \(, etc)
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 9 - sometimes messes up with ( and {
+
+\documentclass[9pt,xcolor={svgnames, x11names},professionalfonts, mathserif]{beamer}
+
+% \usepackage{euler}
+% \usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}  % for top and bottom spacing in table cells
+\usepackage{mathpazo}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{cancel}
+\usepackage{array}
+%\usepackage{enumerate}
+% \usepackage{enumitem} %causes compile error, stack size exceeded?
+\usepackage{gensymb} % for \degree
+\usepackage{cleveref}
+\usepackage[many]{tcolorbox}
+
+\usepackage{verbatim}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tkz-linknodes}
+\usepackage[export]{adjustbox} % for tight borders around photos
+\usepackage{pgf} % for sait logo in beamer
+\usepackage{pgfmath}
+
+\usepgfmodule{oo}
+%\usetikzlibrary{shapes,decorations,shadows,calc}
+\usetikzlibrary{shadows,calc,arrows.meta}
+% \usetikzlibrary{decorations.shapes}
+%\usetikzlibrary{shapes.callouts}
+% bloody coils
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.multipart}
+
+\input{../../includes/macrosWater.tex}
+\input{../../Includes/definedColors}
+\input{../../Includes/tikzObjects.tex}
+
+% \usefonttheme[onlymath]{serif}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=structure}
+% \hypersetup{urlcolor=Blue4}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+\usetheme{Antibes}
+
+\usecolortheme[rgb={0, 0.6, 0.6}]{structure}
+% \definecolor{structurecolor}{rgb}{0.55,0.53,0.31}
+\setbeamertemplate{items}[triangle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+%\setbeamertemplate{background canvas}[vertical shading][bottom=Cyan1!50, middle=white, top=white, midpoint=0.05]
+\setbeamertemplate{headline}{\vspace{.05cm}}
+\setbeamertemplate{footline}{\textcolor{structure}{ \hfill\insertshorttitle\quad
+\insertshortsubtitle{}
+\quad \insertframenumber/\inserttotalframenumber\quad{ }\vspace{0.125cm}}}
+\addtobeamertemplate{footline}{\hypersetup{linkcolor=.}}{}
+\setbeamertemplate{navigation symbols}{} % empty braces suppresses all navigation symbols
+\setbeamercolor{frametitle}{fg=gray!5!white}
+% \setbeamercolor{footline}{fg=black}
+\setbeamercolor{block title}{fg=gray!15!white,bg=structure}
+\setbeamercolor{block body}{bg=white, fg=black}
+\setbeamercolor{background canvas}{bg=structure!5!white}
+\setbeamersize{text margin left = 1cm, text margin right=1cm}
+%\useinnertheme[shadow]{rounded}
+%\raggedright
+\setbeamerfont{block title}{family=mathserif}
+
+\everymath{\displaystyle}
+\newcounter{itemcount}
+
+\logo{\pgfputat{\pgfxy(-11.85,-0.5)}{\pgfbox[right,base]{\includegraphics[height=1cm]{../../figs/rb_logo}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%test
+\resetcounteronoverlays{tcb@cnt@myexam}
+\resetcounteronoverlays{tcb@cnt@myexer}
+
+
+% itemize indent
+\setlength{\leftmargini}{1.5em}
+\def\scale{1} % initialisation for pikz
+\raggedright{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[Nature Of Fluids/Pressure Measurement]{\Huge \textcolor{white}{01 --- The Nature Of Fluids \& Pressure Measurement}}
+\subtitle[CIVL318]{\Large\textcolor{white}{Water Resources, CIVL318}}
+\author{}
+\institute{}
+\date{Last revision on \today}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+ \titlepage
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Elementary Properties of Fluids}
+ \begin{itemize}
+  \item Fluids can be either liquid or gas \parm \pause
+  \item A gas: \parm
+        \begin{itemize}
+         \item  Tends to expand to fill the closed container it is in (or to disperse if not contained). \parm
+         \item Is readily compressible.\parm
+         \item We are not (much) concerned with gases in this course.\parm
+        \end{itemize}
+        \pause \parb
+  \item A liquid: \parm
+        \begin{itemize}
+         \item Tends to flow and conform to the shape of its container.\parm
+         \item For the purpose of this course we consider a liquid to be incompressible: \parm \pause
+               \begin{itemize}
+                \item We assume that the density of water at the bottom of the ocean is the same as the density near the surface (if at the same temperature)\parm
+                \item Density is different from pressure: the pressure at the bottom of the ocean is much more than at the surface
+               \end{itemize}
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Pressure}
+
+ % \textbf{Pressure} is given by:\[p=\frac{F}{A}\]
+ \begin{center}
+  \begin{mybox}[width=3cm]
+   \[p=\frac{F}{A}\]
+  \end{mybox}
+  Pressure is the force per unit area on a surface, where \parm
+  $1\; \text{N/m}^{2}=1\; \text{Pa}$ (pascal)
+ \end{center}
+
+ \pause
+ \textbf{Blaise Pascal} ($1623 - 1662$) determined the following principles:
+
+ \mini[0.3]{
+  \begin{center}
+   % http://commons.wikimedia.org/wiki/File:Blaise_pascal.jpg
+   % \imgboxbg[bg color=white]{scale}{path/to/img}{border, e.g. 2pt}{margin, e.g. 4pt}
+   \imgboxbg{0.45}{../../figs/01NoFPM/180px-Blaise_pascal}{1pt}{5pt}
+   {\scriptsize {\href{http://commons.wikimedia.org/wiki/File:Blaise_pascal.jpg}{\textcolor{black} {Wikimedia link}}}}
+  \end{center}
+ }
+ \hfill
+ \mini[0.6]{
+  \begin{enumerate}
+   \item Pressure acts uniformly in all directions on a ``small'' volume
+         of a fluid at rest \parm
+   \item In a fluid confined by solid boundaries, pressure acts perpendicularly
+         to the boundaries
+  \end{enumerate}
+ }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Pascal's Laws}
+
+ \smallskip
+ \begin{center}
+  \begin{mybox}[width=8cm]
+   \centering
+   \bfseries Pressure acts uniformly in all directions on a small volume of a fluid at rest.
+  \end{mybox}
+
+ \end{center}
+ \begin{flushleft}
+  The forces must balance out (i.e. $\Sigma\ F_{x}=\Sigma\ F_{y}=0$); otherwise
+  the volume of fluid will not be in equilibrium and cannot remain at rest.
+ \end{flushleft}
+ \mini[0.55]{
+  Also, the volume must be sufficiently ``small'' that we do not
+  have to consider the mass, and therefore the weight, $W$, of the volume
+  of fluid.
+ }
+ \hfill
+ \mini[0.4]{
+  \cfig{../../figs/01NoFpM/01pascal1}
+ }
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Pascal's Laws}
+ \mini[0.6]{
+  \smallskip
+  \begin{mybox}
+   \centering
+   {\bfseries In a fluid confined by solid boundaries, pressure acts perpendicularly to the boundaries.}
+  \end{mybox}
+ }
+ \hfill
+ \mini[0.35]{
+  \cfig[0.8]{../../figs/01NoFPM/01pascal2}
+ }
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+
+ \cmini[0.85]{
+  \myexample{
+      \raggedright
+      A piston confines oil in a closed circular cylinder. The maximum operating pressure for the
+      piston is $17.8\text{ MPa}$. The piston has a diameter of $62.5\text{ mm}$. \par\bigskip
+      What is the maximum load that the piston can support?
+  }
+ }
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \cmini[0.85]{
+  \begin{myexer}{}{}
+   \raggedright
+   A press used to produce coins requires a force of $8.20\text{ kN}$.\\
+   The hydraulic cylinder has a diameter of $63.5\text{ mm}$. \par\bigskip
+   What is the oil pressure needed to generate this force?
+  \end{myexer}
+ }
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Density}
+ \centering
+ \begin{mybox}[width=3cm]
+      \[\rho=\frac{M}{V}\]
+ \end{mybox}
+
+ {\bfseries Density} (denoted by $\bm\rho$, `rho') is mass per unit volume.
+ \parb
+
+ \cmini{
+  \begin{itemize}
+   \item The density of water between $0\,^{\circ}C$ and $15\,^{\circ}C$ is approximately $1000\; \text{kg/m}^{3}$. \parm
+   \item Water has a maximum density at $4\,^{\circ}C$. \parm
+   \item 	Above $15\,^{\circ}C$, the density drops steadily to a density of $958\; \text{kg/m}^{3}$ at $100\,^{\circ}C$.
+  \end{itemize}
+  \parb
+  \centering
+  There is a table of values for the properties of water attached to this module's handout.
+ }
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Specific Weight}
+ \centering
+ \begin{mybox}[width=3cm]
+  \[\gamma=\frac{W}{V}\]
+ \end{mybox}
+
+ {\bfseries Specific weight} is weight per unit volume.
+ \parb
+ Water has a specific weight of approximately $9.81\; \text{kN/m}^{3}$ \lb between $0\,^{\circ}C$ and  $15\,^{\circ}C$.
+ \parb
+
+ Since $w=mg$, it follows that:
+ \[\gamma=\frac{w}{V}=\frac{mg}{V}=\rho g\]
+
+ \begin{mybox}[width=3cm,top=-5pt]
+  \[\gamma=\frac{W}{V}=\rho{}g\]
+ \end{mybox}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+ \cmini[0.65]{
+  \begin{myexam}{}{}
+   An empty barrel with an inside diameter of~$900$~mm weighs $205$ N.\par\bigskip
+   What does the barrel weigh when it is filled to a depth of $750$ mm with water at $25$\textcelsius?
+  \end{myexam}
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Specific Gravity}
+ \cmini{
+  \textbf{Specific gravity}, {\bfseries sg}, is the ratio of the density (or specific weight) of a substance to the density
+  (or specific weight) of water at $4\,^{\circ}C$.
+  \parb
+  The specific gravity of a substance $s$ is given by:
+  \begin{center}
+   \begin{mybox}[width=5cm]
+    \[sg=\frac{\rho_{s}}{\rho_{w\,@\,4\,^{\circ}C}}=\frac{\gamma_{s}}{\gamma_{w\,@\,4\,^{\circ}C}}\]
+   \end{mybox}
+  \end{center}
+
+  \pause\parb
+  The density of gasoline at $25\,^{\circ}C$ is $680\; \text{kg/m}^{3}$ and the density of water at
+  $4\,^{\circ}C$ is $1000\; \text{kg/m}^{3}$. Therefore, the specific gravity of gasoline at $25\,^{\circ}C$
+  is $sg=680/1000=0.68$.
+  \parb
+  \pause
+  The specific weight of mercury at $25\,^{\circ}C$ is $132.8\; \text{kN/m}^{3}$ and the specific weight of
+  water at $4\,^{\circ}C$ is $9.81\; \text{kN/m}^{3}$ so the specific gravity of mercury at
+  $25\,^{\circ}C$ is $sg=13.54$.
+ }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+ \cmini{
+  \begin{myexam}{}{}
+   Calculate the density and the specific weight of benzene which has a specific gravity of 0.876.
+  \end{myexam}
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+ \cmini{
+  \begin{myexam}{}{}
+   An open cylindrical tank with diameter $5.75$ m and depth $3.30$~m is filled to the top with water at $10$\textcelsius.\parm
+   The water is then heated to $55$\textcelsius. Assume that the tank dimensions remain constant and there are no losses due to evaporation
+   \parm
+   Calculate the mass of water that overflows.
+  \end{myexam}
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pressure Measurement}
+ Absolute and Gauge Pressure:
+ \begin{itemize}
+  \item Pressure measurements are made relative to some reference pressure, usually atmospheric pressure \pause \parb
+  \item Pressure relative to a perfect vacuum is called \textbf{absolute pressure }
+        \parb
+  \item Pressure relative to the surrounding atmosphere is called \textbf{gauge pressure}
+        \parb \pause
+  \item Absolute, atmospheric and gauge pressures are related by the following expression:
+  \item[]
+        \begin{center}
+         \begin{mybox}[width=4cm, top=-10pt]
+          \[ p_{abs}=p_{atm}+p_{gauge} \]
+         \end{mybox}
+        \end{center}
+ \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Absolute and Gauge Pressure}
+ \cmini{
+  \begin{itemize}
+   \item When using a tire-gauge to check the pressure in a car or a bicycle tire,
+         the tire-gauge reports gauge pressure; this is the amount of pressure
+         in the tire in excess of the pressure of the surrounding atmosphere.\pause\parb
+   \item If a tire-gauge reports a pressure of 275 kPa and the atmospheric
+         pressure is $101.3\,\text{kPa (abs)}$, then the absolute pressure inside the
+         tire is 376.3 kPa\pause\parb
+   \item Normal pressure at sea-level is $101.3$ kPa (or $14.7$ psi) but changes with the weather. The highest
+         recorded pressure (adjusted to sea-level) of 110.0 kPa was measured in the middle of Siberia and the lowest of 89.1~kPa in a typhoon in the South Pacific.
+         \pause\parb
+   \item Atmospheric pressure also varies with altitude. The pressure at the top of Everest is approximately                one-third of that at sea-level (and contains one-third of the oxygen available at sea-level).
+  \end{itemize}
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Atmospheric Pressure}
+ In January, 2017, the atmospheric pressure at Calgary International Airport was reported by Environment Canada to be $101.9$ kPa:
+ \begin{center}
+  \begin{imgboxbg}[white]{0.45}{../../figs/01NoFPM/YYCairportPressureC.png}{1pt}{4pt}
+  \end{imgboxbg}
+ \end{center}
+ The US measures pressure in inches of mercury:
+ \begin{center}
+  \begin{imgboxbg}[white]{0.45}{../../figs/01NoFPM/YYCairportPressureF.png}{1pt}{4pt}
+  \end{imgboxbg}
+  \pars
+  \href{http://weather.gc.ca/city/pages/ab-52\_metric\_e.html}{http://weather.gc.ca/city/pages/ab-52\_metric\_e.html}
+ \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pressure and Elevation}
+ \begin{itemize}
+  \item Pressure decreases with increased elevation in the atmosphere; the
+        atmospheric pressure in Leh, India ($3500$ m above sea-level) should be around $65$ kPa. (Pressure usually decreases about $3.4$ kPa for every increase in elevation of $300\,\text{m}$.) \pause\parm
+  \item Weather stations do not normally display this difference due to elevation;
+        the stations adjust the pressure for elevation.
+        Thus, $103.1$ kPa was the reported pressure in Leh on Monday 9th January, 2017, at 12.05pm. This adjustment enables us to know something about the weather conditions in a particular location without knowing the elevation and making calculations.\parm
+        {\small \href{http://www.worldweatheronline.com/Leh-weather/Jammu-and-Kashmir/IN.aspx}{http://www.worldweatheronline.com/Leh-weather/Jammu-and-Kashmir/IN.aspx} }
+ \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pressure and Elevation}
+ \begin{itemize}
+  \item Pressure increases with increased depth in a fluid. The pressure at
+        the bottom of the deep end in a swimming pool is noticeably greater
+        than just below the surface. \pause\parb
+  \item In fluid mechanics, \emph{elevation} refers to the vertical distance
+        from some reference point to a point of interest (Death Valley is
+        86 m \textbf{below sea-level}). \pause\parb
+  \item Elevation relative to some reference level is usually denoted by $\bm z$. \lb A difference in elevation between two points is usually denoted by $\bm h$.
+ \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pressure and Elevation}
+
+
+ The change in pressure in a homogeneous liquid at rest due to change
+ in elevation is given by:
+ \begin{center}
+  \begin{mybox}[width=4cm]
+   \[\Delta p=\gamma h\]
+  \end{mybox}
+ \end{center}
+
+ where
+ \vspace{-0.5cm}
+ \begin{eqnarray*}
+  \Delta p & = & \text{change  in  pressure}\\
+  \gamma & = & \text{specific weight of  liquid}\\
+  h & = & \text{change in elevation}
+ \end{eqnarray*} \pause
+ Note:
+ \begin{enumerate}
+  \item This equation does not apply to gases
+  \item Points at the same elevation (same horizontal level) have the same
+        pressure (see Pascal's Paradox)
+  \item This equation is stated for absolute values of change in pressure. \lb Pressure increases with increased depth.
+ \end{enumerate}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Derivation of $\Delta p = \gamma h$}
+ \mini[0.35]{
+  \only<1>{
+   \cfig[0.25]{../../figs/01NoFPM/02deltaPderiv_a.pdf}
+   }\only<2>{
+   \cfig[0.25]{../../figs/01NoFPM/02deltaPderiv_b.pdf}
+   }\only<3>{
+   \cfig[0.25]{../../figs/01NoFPM/02deltaPderiv_c.pdf}
+   }\only<4>{
+   \cfig[0.25]{../../figs/01NoFPM/02deltaPderiv_d.pdf}
+   }\only<5>{
+   \cfig[0.25]{../../figs/01NoFPM/02deltaPderiv_e.pdf}
+  }
+ }
+ \hfill
+ \mini[0.6]{
+  \begin{mybox}[]
+   \begin{itemize}
+    \item Consider a cylindrical volume of liquid within a body of liquid. Let the cylinder have height $h$ and cross-sectional area $A$. \pause
+    \item The pressure, $p_1$, on the top surface of the
+          cylinder is uniform since the surface is horizontal (all points are at the same depth). \pause
+    \item	The force exerted on the top surface is $F_{down}=p_1 A$. \pause
+    \item Similarly the pressure, $p_2$, on the bottom surface of the cylinder is uniform \ldots \pause
+    \item \ldots and $F_{up}=p_2 A$.
+   \end{itemize}
+  \end{mybox}
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Derivation of $\Delta p = \gamma h$}
+ \mini[0.35]{
+  \only<1>{
+   \cfig[0.25]{../../figs/01NoFPM/02deltaPderiv_f.pdf}
+   }\only<2->{
+   \cfig[0.25]{../../figs/01NoFPM/02deltaPderiv_g.pdf}
+  }
+ }
+ \hfill
+ \mini[0.6]{
+  \begin{mybox}[]
+   \begin{itemize}
+    \item 	The other force to be considered is the weight, $W$, of the cylindrical volume \pause
+    \item 	$W=\gamma\cdot V$\pause
+    \item	The cylinder is in equilibrium so \vspace{-0.25cm}
+          \[\Sigma F_{y}=p_{2}A-\gamma V-p_{1}A=0\]\pause\vspace{-0.75cm}
+    \item 	$V=Ah$ so \vspace{-0.25cm}
+          \begin{eqnarray*}
+           p_2A-\gamma\cdot Ah-p_1A & = & 0\\
+           p_2-\gamma h-p_1 & = & 0\\
+           p_2-p_1 & = & \gamma h\\
+           \Delta p & = & \gamma h
+          \end{eqnarray*}
+   \end{itemize}
+  \end{mybox}
+ }
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Pascal's Paradox}
+ \begin{center}
+  \cfig[0.3]{../../figs/01NofPM/pascalsParadox}
+
+  \begin{mybox}[width=8cm, title=Pascal's Paradox]
+
+   All three vessels contain the same liquid. The pressure at the bottom
+   of each vessel is the same because pressure is due only to the depth
+   of liquid.
+
+  \end{mybox}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Water Tower}
+ \begin{center}
+  \cfig[0.24]{../../figs/01NoFPM/waterTower1.png}
+ \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Water Tower}
+ \begin{center}
+  \cfig[0.3]{../../figs/01NoFPM/waterTower2.png}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}%{Pressure Measurement}
+  \definecolor{example}{RGB}{228,164,5}
+ \begin{myexam}[colframe=example, colbacktitle=example]{}{}
+  A tank, open to the atmosphere in the centre, contains medium fuel
+  oil. Atmospheric pressure is 102.1 kPa. Calculate the gauge pressure
+  and the absolute pressure for locations \emph{A, B} and \emph{D}.
+ \end{myexam}
+
+ % \vspace{-0.5cm}
+ \begin{center}
+  \cfig[0.5]{../../figs/01NoFPM/02tank1}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}%{Pressure Measurement}
+  \definecolor{example}{RGB}{228,164,5}
+ \begin{myexer}[colframe=example, colbacktitle=example]{}{}
+  A tank, open to the atmosphere in the centre, contains medium fuel
+  oil. Atmospheric pressure is 102.1 kPa. Calculate the gauge pressure
+  and the absolute pressure for locations \emph{C} and \emph{E}.
+ \end{myexer}
+
+ % \vspace{-0.5cm}
+ \begin{center}
+  \cfig[0.5]{../../figs/01NoFPM/02tank1}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Manometers}
+ \mini[0.4]{
+  \begin{imgboxbg}[white]{0.4}{../../figs/01NoFPM/imgCIVL250M02QBblank.pdf}{1pt}{10pt}\end{imgboxbg}
+ }
+ \hfill
+ \mini[0.55]{
+  \begin{itemize}
+   \item A manometer is a pressure-measuring instrument.
+   \item It uses the height of a liquid column, $h$, to measure the pressure
+         difference between two locations.
+   \item This manometer is open to the atmosphere at one end; it is used to
+         measure the difference in pressure between $A$ and the atmosphere
+         (that is, it measures gauge pressure at $A$).
+  \end{itemize}
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \cmini{
+  \begin{myexam}{}{}
+   Determine the pressure at $A$ given that the temperature of the
+   water is $25$\textcelsius.
+   \cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QB}
+  \end{myexam}
+ }
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Differential Manometers}
+ \centering
+ \begin{imgboxbg}[white]{0.45}{../../figs/01NoFPM/imgCIVL250M02QAblank.pdf}{1pt}{10pt}\end{imgboxbg}
+ \begin{itemize}
+  \item The \textbf{ differential manometer} illustrated is used to
+        measure the difference in pressure between $A$ and $B$.
+ \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+ \cmini{
+  \begin{myexam}{}{}
+   Determine the pressure difference between $A$ and $B$.
+   \cfig[0.45]{../../figs/01NoFPM/imgCIVL250M02QFsolved.pdf}
+  \end{myexam}
+ }
+
+
+
+
+\end{frame}
+
+
+\end{document}
