@@ -6,7 +6,7 @@
 \documentclass[9pt,xcolor={svgnames, x11names},professionalfonts, mathserif]{beamer}
 
 % \usepackage{euler}
-% \usepackage{lmodern}
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -16,8 +16,6 @@
 \usepackage{multirow}
 \usepackage{cancel}
 \usepackage{array}
-%\usepackage{enumerate}
-% \usepackage{enumitem} %causes compile error, stack size exceeded?
 \usepackage{gensymb} % for \degree
 \usepackage{cleveref}
 \usepackage[many]{tcolorbox}
@@ -141,7 +139,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Pressure}
-
+ 
  % \textbf{Pressure} is given by:\[p=\frac{F}{A}\]
  \begin{center}
   \begin{mybox}[width=3cm]
@@ -150,10 +148,10 @@
   Pressure is the force per unit area on a surface, where \parm
   $1\; \text{N/m}^{2}=1\; \text{Pa}$ (pascal)
  \end{center}
-
+ 
  \pause
  \textbf{Blaise Pascal} ($1623 - 1662$) determined the following principles:
-
+ 
  \mini[0.3]{
   \begin{center}
    % http://commons.wikimedia.org/wiki/File:Blaise_pascal.jpg
@@ -175,14 +173,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Pascal's Laws}
-
+ 
  \smallskip
  \begin{center}
   \begin{mybox}[width=8cm]
    \centering
    \bfseries Pressure acts uniformly in all directions on a small volume of a fluid at rest.
   \end{mybox}
-
+  
  \end{center}
  \begin{flushleft}
   The forces must balance out (i.e. $\Sigma\ F_{x}=\Sigma\ F_{y}=0$); otherwise
@@ -197,9 +195,9 @@
  \mini[0.4]{
   \cfig{../../figs/01NoFpM/01pascal1}
  }
-
-
-
+ 
+ 
+ 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -221,41 +219,43 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-
+ 
  \cmini[0.85]{
   \myexample{
-      \raggedright
-      A piston confines oil in a closed circular cylinder. The maximum operating pressure for the
-      piston is $17.8\text{ MPa}$. The piston has a diameter of $62.5\text{ mm}$. \par\bigskip
-      What is the maximum load that the piston can support?
+  
+  \raggedright
+  A piston confines oil in a closed circular cylinder. The maximum operating pressure for the
+  piston is $17.8\text{ MPa}$. The piston has a diameter of $62.5\text{ mm}$. \par\bigskip
+  What is the maximum load that the piston can support?
   }
  }
-
+ 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
  \cmini[0.85]{
-  \begin{myexer}{}{}
+  \myexercise{
    \raggedright
    A press used to produce coins requires a force of $8.20\text{ kN}$.\\
    The hydraulic cylinder has a diameter of $63.5\text{ mm}$. \par\bigskip
    What is the oil pressure needed to generate this force?
-  \end{myexer}
+   
+  }
  }
-
+ 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Density}
  \centering
  \begin{mybox}[width=3cm]
-      \[\rho=\frac{M}{V}\]
+  \[\rho=\frac{M}{V}\]
  \end{mybox}
-
+ 
  {\bfseries Density} (denoted by $\bm\rho$, `rho') is mass per unit volume.
  \parb
-
+ 
  \cmini{
   \begin{itemize}
    \item The density of water between $0\,^{\circ}C$ and $15\,^{\circ}C$ is approximately $1000\; \text{kg/m}^{3}$. \parm
@@ -266,7 +266,7 @@
   \centering
   There is a table of values for the properties of water attached to this module's handout.
  }
-
+ 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Specific Weight}
@@ -274,15 +274,15 @@
  \begin{mybox}[width=3cm]
   \[\gamma=\frac{W}{V}\]
  \end{mybox}
-
- {\bfseries Specific weight} is weight per unit volume.
+ 
+ {\bfseries Specific weight}  (denoted by $\bm\gamma$, `gamma') is weight per unit volume.
  \parb
  Water has a specific weight of approximately $9.81\; \text{kN/m}^{3}$ \lb between $0\,^{\circ}C$ and  $15\,^{\circ}C$.
  \parb
-
+ 
  Since $w=mg$, it follows that:
  \[\gamma=\frac{w}{V}=\frac{mg}{V}=\rho g\]
-
+ 
  \begin{mybox}[width=3cm,top=-5pt]
   \[\gamma=\frac{W}{V}=\rho{}g\]
  \end{mybox}
@@ -292,6 +292,7 @@
 \begin{frame}{}
  \cmini[0.65]{
   \begin{myexam}{}{}
+   \raggedright
    An empty barrel with an inside diameter of~$900$~mm weighs $205$ N.\par\bigskip
    What does the barrel weigh when it is filled to a depth of $750$ mm with water at $25$\textcelsius?
   \end{myexam}
@@ -310,7 +311,7 @@
     \[sg=\frac{\rho_{s}}{\rho_{w\,@\,4\,^{\circ}C}}=\frac{\gamma_{s}}{\gamma_{w\,@\,4\,^{\circ}C}}\]
    \end{mybox}
   \end{center}
-
+  
   \pause\parb
   The density of gasoline at $25\,^{\circ}C$ is $680\; \text{kg/m}^{3}$ and the density of water at
   $4\,^{\circ}C$ is $1000\; \text{kg/m}^{3}$. Therefore, the specific gravity of gasoline at $25\,^{\circ}C$
@@ -422,8 +423,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Pressure and Elevation}
-
-
+ 
+ 
  The change in pressure in a homogeneous liquid at rest due to change
  in elevation is given by:
  \begin{center}
@@ -431,7 +432,7 @@
    \[\Delta p=\gamma h\]
   \end{mybox}
  \end{center}
-
+ 
  where
  \vspace{-0.5cm}
  \begin{eqnarray*}
@@ -446,7 +447,7 @@
         pressure (see Pascal's Paradox)
   \item This equation is stated for absolute values of change in pressure. \lb Pressure increases with increased depth.
  \end{enumerate}
-
+ 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -515,13 +516,13 @@
 \begin{frame}{Pascal's Paradox}
  \begin{center}
   \cfig[0.3]{../../figs/01NofPM/pascalsParadox}
-
+  
   \begin{mybox}[width=8cm, title=Pascal's Paradox]
-
+   
    All three vessels contain the same liquid. The pressure at the bottom
    of each vessel is the same because pressure is due only to the depth
    of liquid.
-
+   
   \end{mybox}
  \end{center}
 \end{frame}
@@ -542,13 +543,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}%{Pressure Measurement}
-  \definecolor{example}{RGB}{228,164,5}
+ \definecolor{example}{RGB}{228,164,5}
  \begin{myexam}[colframe=example, colbacktitle=example]{}{}
   A tank, open to the atmosphere in the centre, contains medium fuel
   oil. Atmospheric pressure is 102.1 kPa. Calculate the gauge pressure
   and the absolute pressure for locations \emph{A, B} and \emph{D}.
  \end{myexam}
-
+ 
  % \vspace{-0.5cm}
  \begin{center}
   \cfig[0.5]{../../figs/01NoFPM/02tank1}
@@ -557,13 +558,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}%{Pressure Measurement}
-  \definecolor{example}{RGB}{228,164,5}
+ \definecolor{example}{RGB}{228,164,5}
  \begin{myexer}[colframe=example, colbacktitle=example]{}{}
   A tank, open to the atmosphere in the centre, contains medium fuel
   oil. Atmospheric pressure is 102.1 kPa. Calculate the gauge pressure
   and the absolute pressure for locations \emph{C} and \emph{E}.
  \end{myexer}
-
+ 
  % \vspace{-0.5cm}
  \begin{center}
   \cfig[0.5]{../../figs/01NoFPM/02tank1}
@@ -598,9 +599,9 @@
    \cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QB}
   \end{myexam}
  }
-
-
-
+ 
+ 
+ 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -625,10 +626,10 @@
    \cfig[0.45]{../../figs/01NoFPM/imgCIVL250M02QFsolved.pdf}
   \end{myexam}
  }
-
-
-
-
+ 
+ 
+ 
+ 
 \end{frame}
 
 

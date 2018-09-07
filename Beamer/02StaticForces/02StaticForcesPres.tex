@@ -30,7 +30,7 @@
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{shapes.multipart}
 
-\input{../../Includes/macros.tex}
+\input{../../Includes/macrosWater.tex}
 \input{../../Includes/definedColors}
 \input{../../Includes/tikzObjects.tex}
 
@@ -171,20 +171,20 @@
 
 \begin{frame}
  \cmini[0.9]{
- \definecolor{example}{RGB}{168,19,168}
+  \definecolor{example}{RGB}{168,19,168}
   \begin{mybox}[colframe=example]
    \begin{cfig}[0.45]{../../figs/02StaticForces/03staticforces02}\end{cfig}
   \end{mybox}
   \parb
-
+  
   \begin{myexam}[colframe=example, colbacktitle=example]{}{}
    A pressurized tank contains liquid with a specific gravity of $1.59$.
    \\The inspection hatch at \emph{A} has dimensions $400\, \text{mm}\times 250\, \text{mm}$.
    \\The access hatch at \emph{B} has dimensions $500\, \text{mm}\times 750\, \text{mm}$.\par\medskip
-
+   
    Determine the force exerted by the fluid on the hatch at \emph{A} \\
    and on the hatch at \emph{B}
-
+   
    \smallskip
   \end{myexam}
  }
@@ -216,7 +216,7 @@
    }
   \end{column}
   \begin{column}[c]{0.58\textwidth}
-
+   
    \begin{itemize}
     \item<1-5> Consider a static volume of water retained by a vertical wall or dam.
     \item<2-5> Water pressure on the wall is 0 at the surface.
@@ -227,10 +227,10 @@
     \item<5> The average pressure is at half-depth (that is, at the depth, $h_C$, of the horizontal centroidal axis of
     the rectangular area).
     \vspace{-0.25cm}
-
+    
     \[	P_{avg}  =  \gamma\cdot h_C   \]
-
-
+    
+    
    \end{itemize}
    \vspace{-6.5cm}
    \begin{itemize}
@@ -255,7 +255,7 @@
  \begin{cfig}[0.3]{../../figs/02StaticForces/flume_3trim}\end{cfig}
  \begin{center}
   A \textbf{flume} is a man-made channel used to transport a liquid.
-
+  
   It is often an elevated wooden box-like structure.
  \end{center}
 \end{frame}
@@ -266,10 +266,10 @@
  \begin{cfig}[0.2]{../../figs/02StaticForces/flume_9}\end{cfig}
  \begin{center}
   This flume was built in the $1800$s.\pars
-
+  
   {\tiny (It is north of Reno, Nevada, on Highway 395)}
  \end{center}
-
+ 
 \end{frame}
 
 
@@ -329,7 +329,7 @@
  \[ p_{avg}=\gamma\cdot h_C,\quad F_{R}=\gamma\cdot	h_C\cdot A \]
  \vspace{-0.25cm}
  The direction of the pressure remains \textbf{perpendicular} to the plane area
-
+ 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -387,16 +387,16 @@
 \begin{frame}%{Forces on Submerged Rectangle (Exercise)}
  \cmini{
   \begin{myexam}{}{}
-
+   
    A vertical retaining wall supports water to a depth of 4.75 m. There
    are two rectangular hatches in the wall.
-
+   
    \bigskip
-
+   
    The top of one hatch is at a depth of 1.25~m; the hatch is 2.25~m wide
    $\times$ 1.5~m high. What is the magnitude of the force exerted
    upon the hatch by the water?
-
+   
    \smallskip
   \end{myexam}
  }
@@ -407,17 +407,17 @@
 \begin{frame}%{Forces on Submerged Rectangle (Exercise)}
  \cmini{
   \begin{myexer}{}{}
-
+   
    A vertical retaining wall supports water to a depth of 4.75 m. There
    are two rectangular hatches in the wall.
-
+   
    \bigskip
-
-
+   
+   
    The second hatch has dimensions 3.75~m wide $\times$ 1.6~m high. At
    what depth can the top of this hatch be placed below the surface if
    the maximum allowable force for the hatch is 128 kN?
-
+   
    \smallskip
   \end{myexer}
  }
@@ -446,56 +446,56 @@
     \item For all plane areas, $p_{avg}$ is the pressure at the   centroidal $x$-axis of the area. \end{itemize}
     \end{column}
     \end{columns}
-
+    
     \end{frame}
-
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}{Average Pressure a Submerged Plane Area}
      \centering
      \begin{cfig}[0.55]{../../figs/02StaticForces/03staticforces08c2}\end{cfig}
      \begin{mybox}[width=10cm, title=Average Pressure on a Submerged Plane Area]
-
+      
       $$\bm{ p_{avg} = \gamma h_c }$$
       \centering
       where $h_c$ is the depth of the centroidal $x$-axis of the shape
-
+      
      \end{mybox}
     \end{frame}
-
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+    
+    
     \begin{frame}
      \centering
-		 \definecolor{example}{RGB}{168,145,82}
+     \definecolor{example}{RGB}{168,145,82}
      \begin{mybox}[width=9cm,colframe=example]
       \begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx06a}\end{cfig}
      \end{mybox}
-
+     
      \begin{myexam}[width=10.875cm,colframe=example,colbacktitle=example]{}{}
-			 \raggedright
+      \raggedright
       A tank containing kerosene (sg=$0.823$) has a triangular inspection hatch in a vertical sidewall. The hatch has
       a base of $400\,\text{mm}$ and a height of $600\,\text{mm}$. The top of the hatch is located at a depth of $700\,\text{mm}$.
       \par\smallskip
       Determine the force exerted on the hatch by the kerosene.
      \end{myexam}
-
+     
     \end{frame}
-
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+    
     %\begin{frame}
     %\begin{cfig}[0.95]{../../figs/02StaticForces/03staticforcesEx06a}\end{cfig}
     %\end{frame}
-
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+    
     \begin{frame}
      \centering
-
+     
      \begin{cfig}[0.3]{../../figs/02StaticForces/03staticforcesEx07a}\end{cfig}
      \vspace{-0.5cm}
-
+     
      \begin{myexam}{}{}
       A water tank has a semi-circular inspection hatch, as illustrated.
       \par\smallskip
@@ -504,18 +504,18 @@
        (For a semi-circle, $\bar{y}=\frac{4r}{3\pi}$.)
       \end{center}
      \end{myexam}
-
+     
     \end{frame}
-
-
+    
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+    
     %\begin{frame}
     %\begin{cfig}[0.45]{../../figs/02StaticForces/03staticforcesEx07a}\end{cfig}
     %\end{frame}
-
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+    
     \begin{frame}{Centre of Pressure}
      \begin{columns}
       \begin{column}{0.45\textwidth}
@@ -541,11 +541,11 @@
         \item This is complicated - and only works for rectangular areas! \end{itemize}
         \end{column}
         \end{columns}
-
+        
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}{Centre of Pressure}
          \begin{columns}
           \begin{column}{0.45\textwidth}
@@ -560,28 +560,28 @@
             \item $A$ is the area of the plane
             \item $I_c$ is the moment of inertia of the plane about its horizontal centroidal axis
             \item Then,\pars
-						\cmini{
-                \begin{mybox}
-                  \[\bm{ L_p - L_c =\frac{I_c}{L_c\cdot A} }\]
-								\end{mybox}
-								}
+                  \cmini{
+                   \begin{mybox}
+                    \[\bm{ L_p - L_c =\frac{I_c}{L_c\cdot A} }\]
+                   \end{mybox}
+                  }
            \end{itemize}
           \end{column}
          \end{columns}
-
+         
         \end{frame}
-
-
-
+        
+        
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+        
+        
         \begin{frame}
          % 	\setbeamercolor{block title}{bg=GreenYellow}
-				 \definecolor{example}{RGB}{149,149,47}
+         \definecolor{example}{RGB}{149,149,47}
          \begin{columns}
           \begin{column}{0.45\textwidth}
-
+           
            \begin{mybox}[colframe=example]
             \begin{cfig}[0.55]{../../figs/02StaticForces/03staticforcesEx09a}\end{cfig}
            \end{mybox}
@@ -598,24 +598,24 @@
            \end{myexam}
           \end{column}
          \end{columns}
-
+         
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          \begin{cfig}[0.8]{../../figs/02StaticForces/03staticforcesEx09a}\end{cfig}
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          \begin{columns}
           \begin{column}{0.6\textwidth}
            \begin{mybox}
             \begin{cfig}[0.65]{../../figs/02StaticForces/03staticforcesEx08a}\end{cfig}
            \end{mybox}
-
+           
           \end{column}
           \begin{column}{0.4\textwidth}
            \begin{myexam}{}{}
@@ -627,17 +627,17 @@
            \end{myexam}
           \end{column}
          \end{columns}
-
+         
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          \begin{cfig}[0.8]{../../figs/02StaticForces/03staticforcesEx08a}\end{cfig}
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}{Centre of Pressure}
          \begin{columns}
           \begin{column}{0.45\textwidth}
@@ -655,12 +655,12 @@
           \item $L_p$ is the distance \textbf{along the slope of the plane surface} from the centre of pressure to the surface of the liquid
          \end{itemize}
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          % 	\setbeamercolor{block title}{bg=RawSienna}
-				 \definecolor{example}{RGB}{125,103,68}
+         \definecolor{example}{RGB}{125,103,68}
          \begin{textblock*}{5cm}(4cm,-0.5cm)
           \begin{cfig}[0.75]{../../figs/02StaticForces/03staticforcesEx10}\end{cfig}
          \end{textblock*}
@@ -670,18 +670,18 @@
           \end{myexam}
          \end{textblock*}
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          \begin{cfig}[0.85]{../../figs/02StaticForces/03staticforcesEx10}\end{cfig}
         \end{frame}
-
-
+        
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
-
+         
          \begin{columns}
           \begin{column}{0.525\textwidth}
            \begin{mybox}
@@ -697,19 +697,19 @@
            \end{myexam}
           \end{column}
          \end{columns}
-
+         
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          \begin{mybox}
           \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx11}\end{cfig}
          \end{mybox}
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          % 	\setbeamercolor{block title}{bg=yellowgreen}
          \begin{columns}
@@ -729,21 +729,21 @@
            \end{myexam}
           \end{column}
          \end{columns}
-
+         
         \end{frame}
-
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         \begin{frame}
          \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx12}\end{cfig}
         \end{frame}
-
-
-
+        
+        
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+        
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+        
+        
 \end{document}
