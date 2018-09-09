@@ -93,7 +93,7 @@
 % itemize indent
 \setlength{\leftmargini}{1.5em}
 \def\scale{1} % initialisation for pikz
-\raggedright{}
+\raggedright
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[Nature Of Fluids/Pressure Measurement]{\Huge \textcolor{white}{01 --- The Nature Of Fluids \& Pressure Measurement}}
@@ -116,6 +116,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Elementary Properties of Fluids}
+ \raggedright
  \begin{itemize}
   \item Fluids can be either liquid or gas \parm \pause
   \item A gas: \parm
@@ -142,7 +143,7 @@
  
  % \textbf{Pressure} is given by:\[p=\frac{F}{A}\]
  \begin{center}
-  \begin{mybox}[width=3cm]
+  \begin{mybox}[width=3cm,top=-0.05cm]
    \[p=\frac{F}{A}\]
   \end{mybox}
   Pressure is the force per unit area on a surface, where \parm
@@ -188,7 +189,7 @@
  \end{flushleft}
  \mini[0.55]{
   Also, the volume must be sufficiently ``small'' that we do not
-  have to consider the mass, and therefore the weight, $W$, of the volume
+  have to consider the mass, and therefore the weight, $w$, of the volume
   of fluid.
  }
  \hfill
@@ -249,8 +250,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Density}
  \centering
- \begin{mybox}[width=3cm]
-  \[\rho=\frac{M}{V}\]
+ \begin{mybox}[width=3cm,top=-0.05cm]
+  \[\rho=\frac{w}{V}\]
  \end{mybox}
  
  {\bfseries Density} (denoted by $\bm\rho$, `rho') is mass per unit volume.
@@ -259,20 +260,20 @@
  \cmini{
   \begin{itemize}
    \item The density of water between $0\,^{\circ}C$ and $15\,^{\circ}C$ is approximately $1000\; \text{kg/m}^{3}$. \parm
-   \item Water has a maximum density at $4\,^{\circ}C$. \parm
-   \item 	Above $15\,^{\circ}C$, the density drops steadily to a density of $958\; \text{kg/m}^{3}$ at $100\,^{\circ}C$.
+   \item Water has a maximum density close to $4\,^{\circ}C$. \parm
+   \item Above $15\,^{\circ}C$, the density drops steadily to a density of $958\; \text{kg/m}^{3}$ at $100\,^{\circ}C$.
   \end{itemize}
   \parb
   \centering
-  There is a table of values for the properties of water attached to this module's handout.
+  (There is a table of values for the properties of water attached to this module's handout.)
  }
  
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Specific Weight}
  \centering
- \begin{mybox}[width=3cm]
-  \[\gamma=\frac{W}{V}\]
+ \begin{mybox}[width=3cm,top=-0.05cm]
+  \[\gamma=\frac{w}{V}\]
  \end{mybox}
  
  {\bfseries Specific weight}  (denoted by $\bm\gamma$, `gamma') is weight per unit volume.
@@ -283,64 +284,59 @@
  Since $w=mg$, it follows that:
  \[\gamma=\frac{w}{V}=\frac{mg}{V}=\rho g\]
  
- \begin{mybox}[width=3cm,top=-5pt]
-  \[\gamma=\frac{W}{V}=\rho{}g\]
+ \begin{mybox}[width=3cm,top=-0.05cm]
+  \[\gamma=\frac{w}{V}=\rho{}g\]
  \end{mybox}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
  \cmini[0.65]{
-  \begin{myexam}{}{}
-   \raggedright
-   An empty barrel with an inside diameter of~$900$~mm weighs $205$ N.\par\bigskip
-   What does the barrel weigh when it is filled to a depth of $750$ mm with water at $25$\textcelsius?
-  \end{myexam}
+  \myexample{
+  \raggedright
+  An  empty barrel with an inside diameter of~$900$~mm weighs $205$ N.\par\bigskip
+  What does the barrel weigh when it is filled to a depth of $750$ mm with water at $25$\textcelsius?
+  }
  }
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Specific Gravity}
  \cmini{
-  \textbf{Specific gravity}, {\bfseries sg}, is the ratio of the density (or specific weight) of a substance to the density
-  (or specific weight) of water at $4\,^{\circ}C$.
+  \textbf{Specific gravity}, {\bfseries sg}, is the ratio of the density (or specific weight) of a substance to the density (or specific weight) of water at $4\,^{\circ}C$.
   \parb
   The specific gravity of a substance $s$ is given by:
   \begin{center}
-   \begin{mybox}[width=5cm]
+   \begin{mybox}[width=5cm,top=-0.05cm]
     \[sg=\frac{\rho_{s}}{\rho_{w\,@\,4\,^{\circ}C}}=\frac{\gamma_{s}}{\gamma_{w\,@\,4\,^{\circ}C}}\]
    \end{mybox}
   \end{center}
   
   \pause\parb
-  The density of gasoline at $25\,^{\circ}C$ is $680\; \text{kg/m}^{3}$ and the density of water at
-  $4\,^{\circ}C$ is $1000\; \text{kg/m}^{3}$. Therefore, the specific gravity of gasoline at $25\,^{\circ}C$
-  is $sg=680/1000=0.68$.
+  The density of gasoline at $25\,^{\circ}C$ is $680\; \text{kg/m}^{3}$ and the density of water at $4\,^{\circ}C$ is $1000\; \text{kg/m}^{3}$. Therefore, the specific gravity of gasoline at $25\,^{\circ}C$   is $sg=680/1000=0.68$.
   \parb
   \pause
-  The specific weight of mercury at $25\,^{\circ}C$ is $132.8\; \text{kN/m}^{3}$ and the specific weight of
-  water at $4\,^{\circ}C$ is $9.81\; \text{kN/m}^{3}$ so the specific gravity of mercury at
-  $25\,^{\circ}C$ is $sg=13.54$.
+  The specific weight of mercury at $25\,^{\circ}C$ is $132.8\; \text{kN/m}^{3}$ and the specific weight of water at $4\,^{\circ}C$ is $9.81\; \text{kN/m}^{3}$ so the specific gravity of mercury at $25\,^{\circ}C$ is $sg=13.54$.
  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
  \cmini{
-  \begin{myexam}{}{}
-   Calculate the density and the specific weight of benzene which has a specific gravity of 0.876.
-  \end{myexam}
+  \myexample{
+  Calculate the density and the specific weight of benzene which has a specific gravity of 0.876.
+  }
  }
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
  \cmini{
-  \begin{myexam}{}{}
-   An open cylindrical tank with diameter $5.75$ m and depth $3.30$~m is filled to the top with water at $10$\textcelsius.\parm
-   The water is then heated to $55$\textcelsius. Assume that the tank dimensions remain constant and there are no losses due to evaporation
-   \parm
-   Calculate the mass of water that overflows.
-  \end{myexam}
+  \myexample{
+  An open cylindrical tank with diameter $5.75$ m and depth $3.30$~m is filled to the top with water at $10$\textcelsius.\parm
+  The water is then heated to $55$\textcelsius. Assume that the tank dimensions remain constant and there are no losses due to evaporation.
+  \parm
+  Calculate the mass of water that overflows.
+  }
  }
 \end{frame}
 

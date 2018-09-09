@@ -144,10 +144,10 @@
 \newtcolorbox{mybox}[1][]
 {
  colback=white,
- top=0.125cm,
- bottom=0.125cm,
- left=0.125cm,
- right=0.125cm,
+ top=0.25cm,
+ bottom=0.25cm,
+ left=0.25cm,
+ right=0.25cm,
  colframe=structure,
  fonttitle=\bfseries,
  enhanced, drop fuzzy shadow,
@@ -160,6 +160,10 @@
 {
  enhanced,
  colback=white,
+ top=0.375cm,
+ bottom=0.25cm,
+ left=0.375cm,
+ right=0.375cm,
  colframe=structure,
  fonttitle=\bfseries,
  drop fuzzy shadow,
@@ -171,6 +175,7 @@
 \newcommand{\myexample}[2][red]{
  % \tcb\tcbset{theostyle/.style={colframe=red,colbacktitle=yellow}}
  \begin{myexam}{}{}
+  \raggedright
   #2
  \end{myexam}
  % \tcbset{colframe=structure,colbacktitle=structure}
@@ -191,6 +196,7 @@
 \newcommand{\myexercise}[2][red]{
  % \tcb\tcbset{theostyle/.style={colframe=red,colbacktitle=yellow}}
  \begin{myexer}{}{}
+  \raggedright
   #2
  \end{myexer}
  % \tcbset{colframe=structure,colbacktitle=structure}
