@@ -1,6 +1,7 @@
 % override specific chktex warnings
 % chktex-file 46 - don't use $ instead of \(, etc)
 % chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+
 % chktex-file 9 - sometimes messes up with ( and {
 
 \documentclass[10pt]{amsart}
@@ -40,531 +41,334 @@
 \textbf{\Large Module 1: The Nature of Fluids/Pressure Measurement (CIVL 318)}
 \pars
 \rule{\textwidth}{0.02in}
-\parb
 \raggedright
-
-%\textbf{\Large Required Reading:}
-%
-%\large
-%Sections: 1.3, 1.4, 1.8, 1.9, 1.11 and
-%Worked Examples: 1.2, 1.5, 1.6, 1.7
-%\parb
-
 \parb
 \textbf{\Large Some useful results:}
 \parb
 \begin{center}
- 
- \begin{tabular}{rrclll}
-  \toprule
-  \addlinespace
-  \textbf{Pressure}:                   & $P$              & = & $\frac{F}{A}$                                &   & $\left(\mathsf{\frac{Force}{Area}}\right)$       \\
-  \addlinespace
-  \midrule
-  \addlinespace
-  \textbf{Pascal's Laws:}& \multicolumn{5}{l}{ Pressure acts uniformly in all directions}\\
-  & \multicolumn{5}{l}{ on a small volume of liquid.}\\
-  \addlinespace
-  & \multicolumn{5}{l}{ Pressure acts perpendicularly }\\
-  &\multicolumn{5}{l}{to the solid boundaries of a fluid.}\\
-  \addlinespace
-  \midrule
-  \addlinespace
-  \textbf{Density}:                    & $\rho$ (rho)     & = & $\frac{m}{V}$                                &   & $\left(\mathsf{\frac{Mass}{Volume}}\right)$      \\
-  \addlinespace
-  \midrule
-  \addlinespace
-  \textbf{Specific Weight}:            & $\gamma$ (gamma) & = & $\frac{w}{V}$                                &   & $\left(\mathsf{\frac{Weight}{Volume}}\right)$    \\
-  \addlinespace
-  \midrule
-  \addlinespace
-  \textbf{Specific Gravity}:           & sg               & = & $\frac{\rho_s}{\rho_w@4\mbox{\textcelsius}}$ & = & $\frac{\gamma_s}{\gamma_w@4\mbox{\textcelsius}}$ \\
-  \addlinespace
-  \midrule
-  \addlinespace
-  \textbf{Density \& Specific Weight}: & $\gamma$         & = & $\rho$g                                      &   &                                                  \\
-  \addlinespace
-  \midrule
-  \addlinespace
-  \textbf{Pressure Relationship:}	& $p_{abs}$ &=& $p_{atm}+p_{gauge}$ \\
-  \addlinespace
-  \addlinespace
-  \midrule
-  \addlinespace
-  \textbf{Pressure-Elevation Relationship:}	& $\Delta p$ &=& $\gamma h$ \\
-  \addlinespace
-  \bottomrule
- \end{tabular}
+	
+	\begin{tabular}{rrclll}
+		\toprule
+		\addlinespace
+		\textbf{Pressure}:                   & $P$              & = & $\frac{F}{A}$                                &   & $\left(\mathsf{\frac{Force}{Area}}\right)$       \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Pascal's Laws:}& \multicolumn{5}{l}{ Pressure acts uniformly in all directions}\\
+		& \multicolumn{5}{l}{ on a small volume of liquid.}\\
+		\addlinespace
+		& \multicolumn{5}{l}{ Pressure acts perpendicularly }\\
+		& \multicolumn{5}{l}{to the solid boundaries of a fluid.}\\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Density}:                    & $\rho$ (rho)     & = & $\frac{m}{V}$                                &   & $\left(\mathsf{\frac{Mass}{Volume}}\right)$      \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Specific Weight}:            & $\gamma$ (gamma) & = & $\frac{w}{V}$                                &   & $\left(\mathsf{\frac{Weight}{Volume}}\right)$    \\
+		
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Specific Gravity}:           & sg               & = & $\frac{\rho_s}{\rho_w@4\mbox{\textcelsius}}$ & = & $\frac{\gamma_s}{\gamma_w@4\mbox{\textcelsius}}$ \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Density \& Specific Weight}: & $\gamma$         & = & $\rho$g                                      &   &                                                  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Pressure Relationship:}	& $p_{abs}$ &=& $p_{atm}+p_{gauge}$ \\
+		\addlinespace
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Pressure-Elevation Relationship:}	& $\Delta p$ &=& $\gamma h$ \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
 \end{center}
 
 \vfill
 \newpage
 
 \begin{minipage}[t]{0.44\textwidth}
- %	\small
- \begin{center}
-  \textbf{\Large Table A: Properties of Water}\parb
-  \begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}}
-   \toprule
-   \addlinespace
-                         & \text{Specific} &                 & \text{Dynamic }          \\
-   \text{Temperature}    & \text{Weight}   & \text{Density}  & \text{Viscosity}         \\
-   \addlinespace
-                         & \gamma          & \rho            & \eta                     \\
-   \addlinespace
-   (\text{\textcelsius}) & \text{(kN/m}^3) & \text{(kg/m}^3) & \text{(Pa}\cdot\text{s)} \\
-   \addlinespace
-   \midrule
-   
-   
-   \addlinespace
-   0                     & 9.81            & 1000            & 1.75 \times 10^{-3}      \\ \addlinespace
-   5                     & 9.81            & 1000            & 1.52 \times 10^{-3}      \\ \addlinespace
-   10                    & 9.81            & 1000            & 1.30 \times 10^{-3}      \\ \addlinespace
-   15                    & 9.81            & 1000            & 1.15 \times 10^{-3}      \\ \addlinespace
-   20                    & 9.79            & 998             & 1.02 \times 10^{-3}      \\ \addlinespace
-   25                    & 9.78            & 997             & 8.91 \times 10^{-4}      \\ \addlinespace
-   30                    & 9.77            & 996             & 9.00 \times 10^{-4}      \\ \addlinespace
-   35                    & 9.75            & 994             & 7.18 \times 10^{-4}      \\ \addlinespace
-   40                    & 9.73            & 992             & 6.51 \times 10^{-4}      \\ \addlinespace
-   45                    & 9.71            & 990             & 5.94 \times 10^{-4}      \\ \addlinespace
-   50                    & 9.69            & 988             & 5.41 \times 10^{-4}      \\ \addlinespace
-   55                    & 9.67            & 986             & 4.98 \times 10^{-4}      \\ \addlinespace
-   60                    & 9.65            & 984             & 4.60 \times 10^{-4}      \\ \addlinespace
-   65                    & 9.62            & 981             & 4.31 \times 10^{-4}      \\ \addlinespace
-   70                    & 9.59            & 978             & 4.02 \times 10^{-4}      \\ \addlinespace
-   75                    & 9.56            & 975             & 3.73 \times 10^{-4}      \\ \addlinespace
-   80                    & 9.53            & 971             & 3.50 \times 10^{-4}      \\ \addlinespace
-   85                    & 9.50            & 968             & 3.30 \times 10^{-4}      \\ \addlinespace
-   90                    & 9.47            & 965             & 3.11 \times 10^{-4}      \\ \addlinespace
-   95                    & 9.44            & 962             & 2.92 \times 10^{-4}      \\ \addlinespace
-   100                   & 9.40            & 958             & 2.82 \times 10^{-4}      \\ \addlinespace
-   \midrule
-   \bottomrule
-  \end{tabular}
- \end{center}
+	%	\small
+	\begin{center}
+		\textbf{\Large Table A: Properties of Water}\parb
+		\begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}}
+			\toprule
+			\addlinespace
+			                      & \text{Specific} &                 & \text{Dynamic }          \\
+			\text{Temperature}    & \text{Weight}   & \text{Density}  & \text{Viscosity}         \\
+			\addlinespace
+			                      & \gamma          & \rho            & \eta                     \\
+			\addlinespace
+			(\text{\textcelsius}) & \text{(kN/m}^3) & \text{(kg/m}^3) & \text{(Pa}\cdot\text{s)} \\
+			\addlinespace
+			\midrule
+			\addlinespace
+			0                     & 9.81            & 1000            & 1.75 \times 10^{-3}      \\ \addlinespace
+			5                     & 9.81            & 1000            & 1.52 \times 10^{-3}      \\ \addlinespace
+			10                    & 9.81            & 1000            & 1.30 \times 10^{-3}      \\ \addlinespace
+			15                    & 9.81            & 1000            & 1.15 \times 10^{-3}      \\ \addlinespace
+			20                    & 9.79            & 998             & 1.02 \times 10^{-3}      \\ \addlinespace
+			25                    & 9.78            & 997             & 8.91 \times 10^{-4}      \\ \addlinespace
+			30                    & 9.77            & 996             & 9.00 \times 10^{-4}      \\ \addlinespace
+			35                    & 9.75            & 994             & 7.18 \times 10^{-4}      \\ \addlinespace
+			40                    & 9.73            & 992             & 6.51 \times 10^{-4}      \\ \addlinespace
+			45                    & 9.71            & 990             & 5.94 \times 10^{-4}      \\ \addlinespace
+			50                    & 9.69            & 988             & 5.41 \times 10^{-4}      \\ \addlinespace
+			55                    & 9.67            & 986             & 4.98 \times 10^{-4}      \\ \addlinespace
+			60                    & 9.65            & 984             & 4.60 \times 10^{-4}      \\ \addlinespace
+			65                    & 9.62            & 981             & 4.31 \times 10^{-4}      \\ \addlinespace
+			70                    & 9.59            & 978             & 4.02 \times 10^{-4}      \\ \addlinespace
+			75                    & 9.56            & 975             & 3.73 \times 10^{-4}      \\ \addlinespace
+			80                    & 9.53            & 971             & 3.50 \times 10^{-4}      \\ \addlinespace
+			85                    & 9.50            & 968             & 3.30 \times 10^{-4}      \\ \addlinespace
+			90                    & 9.47            & 965             & 3.11 \times 10^{-4}      \\ \addlinespace
+			95                    & 9.44            & 962             & 2.92 \times 10^{-4}      \\ \addlinespace
+			100                   & 9.40            & 958             & 2.82 \times 10^{-4}      \\ \addlinespace
+			
+			\midrule
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.54\textwidth}
- \small
- \begin{center}
-  \textbf{\Large Table B: Properties of Common Liquids}\par
-  (at $101$ kPa and $25$\textcelsius)\parb
-  \begin{tabular}{r >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}}
-   
-   \toprule
-   \addlinespace
-                        & \text{Specific} & \text{Specific} &                 & \text{Dynamic }          \\
-   \text{Liquid}        & \text{Gravity}  & \text{Weight}   & \text{Density}  & \text{Viscosity}         \\
-   \addlinespace
-                        &                 & \gamma          & \rho            & \eta                     \\
-   \addlinespace
-                        &                 & \text{(kN/m}^3) & \text{(kg/m}^3) & \text{(Pa}\cdot\text{s)} \\
-   \addlinespace
-   \midrule
-   \addlinespace
-   Acetone              & 0.787           & 7.72            & 787             & 3.16 \times 10^{-4}      \\ \addlinespace
-   Alcohol, Ethyl       & 0.787           & 7.72            & 787             & 1.00 \times 10^{-3}      \\ \addlinespace
-   Alcohol, Methyl      & 0.789           & 7.74            & 789             & 5.60 \times 10^{-4}      \\ \addlinespace
-   Alcohol, Propyl      & 0.802           & 7.87            & 802             & 1.92 \times 10^{-3}      \\ \addlinespace
-   %Aqua Ammonia	 		& 0.910 	& 8.93 		& 910		&  \\ \addlinespace
-   Benzene              & 0.876           & 8.59            & 876             & 6.03 \times 10^{-4}      \\ \addlinespace
-   Carbon Tetrachloride & 1.590           & 15.60           & 1590            & 9.10 \times 10^{-4}      \\ \addlinespace
-   Castor Oil           & 0.960           & 9.42            & 960             & 6.51 \times 10^{-1}      \\ \addlinespace
-   Ethylene Glycol      & 1.100           & 10.79           & 1100            & 1.62 \times 10^{-2}      \\ \addlinespace
-   Gasoline             & 0.68            & 6.67            & 680             & 2.87 \times 10^{-4}      \\ \addlinespace
-   Glycerine            & 1.258           & 12.34           & 1258            & 9.60 \times 10^{-1}      \\ \addlinespace
-   Kerosene             & 0.823           & 8.07            & 823             & 1.64 \times 10^{-3}      \\ \addlinespace
-   Linseed Oil          & 0.930           & 9.12            & 930             & 3.31 \times 10^{-2}      \\ \addlinespace
-   Mercury              & 13.54           & 132.8           & 13540           & 1.53 \times 10^{-3}      \\ \addlinespace
-   Propane              & 0.495           & 4.86            & 495             & 1.10 \times 10^{-4}      \\ \addlinespace
-   Seawater             & 1.030           & 10.10           & 1030            & 1.03 \times 10^{-3}      \\ \addlinespace
-   Turpentine           & 0.870           & 8.53            & 870             & 1.37 \times 10^{-3}      \\ \addlinespace
-   Fuel Oil, medium     & 0.852           & 8.36            & 852             & 2.99 \times 10^{-3}      \\ \addlinespace
-   Fuel Oil, heavy      & 0.906           & 8.89            & 906             & 1.07 \times 10^{-1}      \\ \addlinespace
-   \midrule
-   \bottomrule
-  \end{tabular}
- \end{center}
+	\small
+	\begin{center}
+		\textbf{\Large Table B: Properties of Common Liquids}\par
+		(at $101$ kPa and $25$\textcelsius)\parb
+		\begin{tabular}{r >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}}
+			
+			\toprule
+			\addlinespace
+			                     & \text{Specific} & \text{Specific} &                 & \text{Dynamic }          \\
+			\text{Liquid}        & \text{Gravity}  & \text{Weight}   & \text{Density}  & \text{Viscosity}         \\
+			\addlinespace
+			                     &                 & \gamma          & \rho            & \eta                     \\
+			\addlinespace
+			                     &                 & \text{(kN/m}^3) & \text{(kg/m}^3) & \text{(Pa}\cdot\text{s)} \\
+			\addlinespace
+			\midrule
+			\addlinespace
+			Acetone              & 0.787           & 7.72            & 787             & 3.16 \times 10^{-4}      \\ \addlinespace
+			Alcohol, Ethyl       & 0.787           & 7.72            & 787             & 1.00 \times 10^{-3}      \\ \addlinespace
+			Alcohol, Methyl      & 0.789           & 7.74            & 789             & 5.60 \times 10^{-4}      \\ \addlinespace
+			Alcohol, Propyl      & 0.802           & 7.87            & 802             & 1.92 \times 10^{-3}      \\ \addlinespace
+			%Aqua Ammonia	 		& 0.910 	& 8.93 		& 910		&  \\ \addlinespace
+			Benzene              & 0.876           & 8.59            & 876             & 6.03 \times 10^{-4}      \\ \addlinespace
+			Carbon Tetrachloride & 1.590           & 15.60           & 1590            & 9.10 \times 10^{-4}      \\ \addlinespace
+			Castor Oil           & 0.960           & 9.42            & 960             & 6.51 \times 10^{-1}      \\ \addlinespace
+			Ethylene Glycol      & 1.100           & 10.79           & 1100            & 1.62 \times 10^{-2}      \\ \addlinespace
+			Gasoline             & 0.68            & 6.67            & 680             & 2.87 \times 10^{-4}      \\ \addlinespace
+			Glycerine            & 1.258           & 12.34           & 1258            & 9.60 \times 10^{-1}      \\ \addlinespace
+			Kerosene             & 0.823           & 8.07            & 823             & 1.64 \times 10^{-3}      \\ \addlinespace
+			Linseed Oil          & 0.930           & 9.12            & 930             & 3.31 \times 10^{-2}      \\ \addlinespace
+			Mercury              & 13.54           & 132.8           & 13540           & 1.53 \times 10^{-3}      \\ \addlinespace
+			Propane              & 0.495           & 4.86            & 495             & 1.10 \times 10^{-4}      \\ \addlinespace
+			Seawater             & 1.030           & 10.10           & 1030            & 1.03 \times 10^{-3}      \\ \addlinespace
+			Turpentine           & 0.870           & 8.53            & 870             & 1.37 \times 10^{-3}      \\ \addlinespace
+			Fuel Oil, medium     & 0.852           & 8.36            & 852             & 2.99 \times 10^{-3}      \\ \addlinespace
+			Fuel Oil, heavy      & 0.906           & 8.89            & 906             & 1.07 \times 10^{-1}      \\ \addlinespace
+			\midrule
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{minipage}
 
 \newpage
 
-%\par\vspace{1cm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\rule{\textwidth}{0.02in}
-%\parb
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{minipage}[t]{0.45\textwidth}
- \raggedright
- \textbf{Example 1}:
- \begin{cfig}[0.5]{../../figs/01NoFPM/WR1M01ex2}\end{cfig}
- A piston confines oil in a closed circular cylinder. The maximum operating pressure for the
- piston is $17.8\text{ MPa}$. The piston has a diameter of $62.5\text{ mm}$. What is the maximum
- load that the piston can support?
+	\raggedright
+	\textbf{Example 1}:
+	\begin{cfig}[0.5]{../../figs/01NoFPM/WR1M01ex2}\end{cfig}
+	A piston confines oil in a closed circular cylinder. The maximum operating pressure for the
+	piston is $17.8\text{ MPa}$. The piston has a diameter of $62.5\text{ mm}$. What is the maximum
+	load that the piston can support?
 \end{minipage}
-\hfill
-\begin{minipage}[t]{0.5\textwidth}
- \textbf{Solution}:
- %	\parb
- %	\cbox[0.9]{
- %		\begin{align*}
- %			F &= P\times A\\
- %			&= 17.8\times 10^6\text{ N/m}^2\times \frac{\pi(0.0625\text{ m})^2}{4}\\
- %			&= 54610\text{ N}\\
- %			&\approx 54.6\text{ kN}
- %		\end{align*}
- %	}
-\end{minipage}
-\par
-\vspace{6cm}
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\begin{align*}
+% 			F & = P\times A                                                           \\
+% 			  & = 17.8\times 10^6\text{ N/m}^2\times \frac{\pi(0.0625\text{ m})^2}{4} \\
+% 			  & = 54610\text{ N}                                                      \\
+% 			  & \approx 54.6\text{ kN}\qquad\qquad\text{($3$ sig digs)}
+% 		\end{align*}
+% 	}
+% 	\parb
+% 	\textbf{Alternative units}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\begin{align*}
+% 			F & = P\times A                                                \\
+% 			  & = 17.8\text{ N/mm}^2\times \frac{\pi(6.25\text{ mm})^2}{4} \\
+% 			  & = 54610\text{ N}                                           \\
+% 			  & \approx 54.6\text{ kN}
+% 		\end{align*}
+% 	}
+% \end{minipage}
+\par\vspace{6cm}
 \rule{\textwidth}{0.02in}
 \parb
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{minipage}[t]{0.45\textwidth}
- \raggedright
- \textbf{Exercise 1}:\\
- A press used to produce coins requires a force of $8.20\text{ kN}$.\\
- The hydraulic cylinder has
- a diameter of $63.5\text{ mm}$. \parb
- What is the oil pressure needed to generate this force?
- \par\vspace{3.25cm}
+	\raggedright
+	\textbf{Exercise 1}:\\
+	A press used to produce coins requires a force of $8.20\text{ kN}$.\\
+	The hydraulic cylinder has
+	a diameter of $63.5\text{ mm}$. \parb
+	What is the oil pressure needed to generate this force?
+	\par\vspace{6cm}
 \end{minipage}
-\hfill
-\begin{minipage}[t]{0.5\textwidth}
- \textbf{Solution}:
- %	\parb
- %	\cbox[0.9]{
- %		\begin{align*}
- %			P &= \frac{F}{A}\\
- %			&= \frac{8.03\text{ kN}}{\pi(0.0635\text{ m})^2/4}\\
- %			&= 2\,589.3\text{ kN/m}^2\\
- %			&\approx 2.59\text{ MPa}
- %		\end{align*}
- %	}
-\end{minipage}
-\vfill
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+% 	\textbf{Solution}:
+% 	\parm
+% 	\cbox[0.9]{
+% 		\begin{align*}
+% 			P & = \frac{F}{A}                                     \\
+% 			  & = \frac{8.20\text{ kN}}{\pi(0.0635\text{ m})^2/4} \\
+% 			  & = 2\,589.3\text{ kN/m}^2                          \\
+% 			  & \approx 2.59\text{ MPa}
+% 		\end{align*}
+% 	}
+% 	\parb
+% 	\textbf{Alternative units}:
+% 	\parm
+% 	\cbox[0.9]{
+% 		\begin{align*}
+% 			P & = \frac{F}{A}                                    \\
+% 			  & = \frac{8200\text{ N}}{\pi(6.35\text{ mm}) ^2/4} \\
+% 			  & = 2.5893\text{ N/mm}^2                           \\
+% 			  & \approx 2.59\text{ MPa}
+% 		\end{align*}
+% 	}
+% \end{minipage}
+% \vfill
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\rule{\textwidth}{0.02in}
-%\par
-\begin{minipage}[t]{0.4\textwidth}
- \raggedright
- \textbf{Example 2}:\parb
- An empty barrel with an inside diameter of $900$~mm weighs $205$ N. \parb
- What does the barrel weigh when it is filled to a depth of $750$ mm
- with water at $25$\textcelsius{}?
- \par\vspace{9cm}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.55\textwidth}
- 
- \textbf{Solution}:
- \parb
- %\cbox[0.9]{
- %	\Large
- %	The volume of water is the volume of a cylinder with diameter $900$~mm and height $750$ mm:
- %	\begin{align*}
- %		v &= \frac{\pi{}d^2}{4}\cdot h \\
- %		&= \frac{\pi(0.900\text{ m})^2}{4}\cdot (0.75\text{ m})\\
- %		&= 0.47713\text{ m}^3
- %	\end{align*}
- %	(Use $5$ significant digits for interim calculations and $3$ significant
- %	digits for solutions.)
- %	\par\medskip
- %	The specific weight of water at $25$\textcelsius{} is $9.78\text{ kN/m}^3$ (Table A.1) so
- %	\begin{align*}
- %	w &= \gamma{}v \\
- %	&= 9.78\text{ kN/m}^3\times 0.47713\text{ m}^3 \\
- %	&=4.6663\text{ kN}
- %	\end{align*}
- %	The combined weight of the barrel and the water is given by:
- %	\[0.205\text{ kN}+4.6663\text{ kN}\approx 4.87\text{ kN}\]
- %}
-\end{minipage}
 
-\par\vspace{2cm}
+\begin{minipage}[t]{0.4\textwidth}
+	\raggedright
+	\textbf{Example 2}:\parb
+	An empty barrel with an inside diameter of $900$~mm weighs $205$ N. \parb
+	What does the barrel weigh when it is filled to a depth of $750$ mm
+	with water at $25$\textcelsius{}?
+	\par\vspace{9cm}
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.55\textwidth}
+%
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\Large
+% 		The volume of water is the volume of a cylinder with diameter $900$~mm and height $750$ mm:
+% 		\begin{align*}
+% 			v & = \frac{\pi{}d^2}{4}\cdot h                            \\
+% 			  & = \frac{\pi(0.900\text{ m})^2}{4}\cdot (0.75\text{ m}) \\
+% 			  & = 0.47713\text{ m}^3
+% 		\end{align*}
+% 		(Use $5$ significant digits for interim calculations and $3$ significant
+% 		digits for solutions.)
+% 		\parm
+% 		The specific weight of water at $25$\textcelsius{} is $9.78\text{ kN/m}^3$ (Table A.1) so
+% 		\begin{align*}
+% 			w & = \gamma{}V                                   \\
+% 			  & = 9.78\text{ kN/m}^3\times 0.47713\text{ m}^3 \\
+% 			  & =4.6663\text{ kN}
+% 		\end{align*}
+% 		The combined weight of the barrel and the water is given by:
+% 		\[0.205\text{ kN}+4.6663\text{ kN}\approx 4.87\text{ kN}\]
+% 	}
+% \end{minipage}
+
 
 \rule{\textwidth}{0.02in}
 \par
 \begin{minipage}[t]{0.45\textwidth}
- \raggedright
- \textbf{Example 3}:\parb
- Calculate the density and the specific weight of benzene if it has a specific gravity of 0.876.
- \par\vspace{6cm}
+	\raggedright
+	\textbf{Example 3}:\parb
+	Calculate the density and the specific weight of benzene if it has a specific gravity of 0.876.
+	\par\vspace{6cm}
 \end{minipage}
-\hfill
-\begin{minipage}[t]{0.5\textwidth}
- \textbf{Solution}:
- \parb
- %\cbox[0.9]{
- %	\Large
- %	\begin{align*}
- %		0.876  &=  \frac{\rho_{b}}{\rho_{water@4^{\circ}C}}\\
- %		\rho_{b} &= 0.876\times1000\; \text{kg/m}^3\\
- %		& = 876\; \text{kg/m}^3\\
- %		0.876 &= \frac{\gamma_{b}}{\gamma_{water@4^{\circ}C}}\\
- %		\gamma_{b} &= 0.876\times9.81\; \text{kN/m}^3\\
- %		& =8.59\; \text{kN/m}^3
- %	\end{align*}
- %}
-\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\Large
+% 		\begin{align*}
+% 			0.876      & =  \frac{\rho_{b}}{\rho_{water@4^{\circ}C}}    \\
+% 			\rho_{b}   & = 0.876\times1000\; \text{kg/m}^3              \\
+% 			           & = 876\; \text{kg/m}^3                          \\
+% 			0.876      & = \frac{\gamma_{b}}{\gamma_{water@4^{\circ}C}} \\
+% 			\gamma_{b} & = 0.876\times9.81\; \text{kN/m}^3              \\
+% 			           & =8.59\; \text{kN/m}^3
+% 		\end{align*}
+% 	}
+% \end{minipage}
 
 \newpage
 
-\begin{minipage}[c]{0.45\textwidth}
- \raggedright
- \textbf{Example 5}:\\
- An open cylindrical tank with diameter $5.75$ m and depth $3.30$ m is filled to the top with water at $10$\textcelsius.
- The water is heated to $55$\textcelsius. Assuming that the tank dimensions remain constant and there are no losses due to evaporation, calculate the mass of water that overflows.
- \parb
- \textbf{Solution}:
- %\parb
- %\cbox[0.9]{
- %	Volume of tank:
- %	\begin{align*}
- %		v_{tank} &= \frac{\pi(5.75 \text{ m})^2}{4}\times 3.30\text{ m} \\
- %		&= 85.692\text{ m}^3
- %	\end{align*}
- %	}
- %\par\vspace{2cm}
- %\end{minipage}
- %\hfill
- %\begin{minipage}[c]{0.5\textwidth}
- %\cbox[0.9]{
- %Mass of the water in the tank at $10$\textcelsius:
- %\begin{align*}
- %	m &= \rho_{\large{10\text{\textcelsius}}} \times v_{\large{10\text{\textcelsius}}} \\
- %	&= 1000\text{ kg/m}^3 \times 85.692\text{ m}^3 \\
- %	&= 85\,692\text{ kg}
- %\end{align*}
- %Mass of the water in the tank at $70$\textcelsius:
- %\begin{align*}
- %	m &= \rho_{\large{55\text{\textcelsius}}} \times v_{\large{55\text{\textcelsius}}} \\
- %	&= 986\text{ kg/m}^3 \times 85.692\text{ m}^3 \\
- %	&= 84\,492\text{ kg}
- %\end{align*}
- %Mass of water that overflows:
- %\begin{align*}
- %	m_{overflow} &=85\,692\text{ kg}-84\,492\text{ kg} \\
- %	&= 1\,200\text{ kg}\\
- %\end{align*}
- %
- %}
+\begin{minipage}{0.45\textwidth}
+	\raggedright
+	\textbf{Example 4}:\parb
+	An open cylindrical tank with diameter $5.75$ m and depth $3.30$ m is filled to the top with water at $10$\textcelsius.
+	The water is heated to $55$\textcelsius. Assuming that the tank dimensions remain constant and there are no losses due to evaporation, calculate the mass of water that overflows.
 \end{minipage}
 \newpage
 
-%\parb
-%\rule{\textwidth}{0.02in}
-%\par \bigskip
-
-%\begin{minipage}[c]{0.45\textwidth}
-%\raggedright
-%\textbf{Example 6}:\\
-%A vertical glass cylinder contains $2.30$ litres of water at $10$\textcelsius. The height of the water in the
-%cylinder is $1.05$ m. The water and the cylinder are heated. Assuming that there are no losses due
-%to evaporation, find the change in water height when the temperature reaches $75$\textcelsius. \\(The coefficient of
-%thermal expansion, $\alpha$, for the glass is given by $\alpha = 3.6 \times 10^{-6}$ m/m/\textcelsius.)
-%\parb
-%\textbf{Solution}:
-%\parb
-%\cbox[0.9]{
-%	Find the cylinder inside diameter at $10$\textcelsius:
-%	\begin{align*}
-%		d_{10} &= \sqrt{\frac{4v}{\pi h}}\\
-%		&= \sqrt{\frac{4\times 0.0023}{1.05\pi}}\\
-%		&=0.052811\text{ m}
-%	\end{align*}
-%}
-%\par\vspace{4cm}
-%\end{minipage}
-%\hfill
-%\begin{minipage}[c]{0.5\textwidth}
-%\cbox[0.9]{white}{
-%The diameter increases linearly with temperature change:
-%\begin{align*}
-%\Delta d &= \alpha\times d_{10}\times\Delta T\\
-%&= 3.6\times 10^{-6}\times 0.052811\times 65\\
-%&= 0.000012358\text{ m}\\\\
-%d_{75} &= 0.052811 + 0.000012358\\
-%&= 0.052823\text{ m}
-%\end{align*}
-%Since there is no evaporation, mass remains constant:
-%\begin{align*}
-%m=\rho_{10}v_{10} &= \rho_{75}v_{75}\\
-%v_{75} &= \rho_{10}v_{10}/\rho_{75}\\
-%&= 1000\times 0.0023/975\\
-%&= 0.002359\text{ m}^3
-%\end{align*}
-%The height of the water at $75$\textcelsius:
-%\begin{align*}
-%h_{75} &= \frac{4v}{\pi d^2_{75}}\\
-%&= \frac{4\times 0.002359}{\pi(0.052823)^2}\\
-%&= 1.0764\text{ m}
-%\end{align*}
-%The change in height due to the temperature change is:
-%\[ \Delta_h = h_{75}-h_{10}=1.0764-1.05=0.026445\text{ m}\]
-%Change in height is $26.4$ mm.
-%
-%}
-%\end{minipage}
-
+\begin{minipage}{0.45\textwidth}
+	\raggedright
+	\textbf{Example 5}:
+	\cfig[0.55]{../../figs/01NoFPM/02tank1}
+	A tank, open to the atmosphere in the centre, contains medium fuel
+	oil. Atmospheric pressure is 102.1 kPa. Calculate the gauge pressure
+	and the absolute pressure for locations \emph{A, B,} and \emph{D}.
+	
+\end{minipage}
+\pars\vspace{7cm}
+\rule{\textwidth}{0.02in}
+\pars
 \begin{minipage}[t]{0.45\textwidth}
- \raggedright
- \textbf{Example 6}:
- \cfig[0.55]{../../figs/01NofPM/02tank1}
- A tank, open to the atmosphere in the centre, contains medium fuel
- oil. Atmospheric pressure is 102.1 kPa. Calculate the gauge pressure
- and the absolute pressure for locations \emph{A, B, C, D} and \emph{E}.
- \parb
- \textbf{Solution}:
- \parb
- 
- %	\cbox[0.9]{
- %		\Large
- %		\textbf{Pressure at }$\bm B$:
- %		$B$ is open to the atmosphere so
- %		\[P_B=0 \text{ and } P_{B(abs)}=P_{(atm)}=102.1\text{ kPa}\]
- %	}
- %	\parb
- %	Note that pressure is assumed to be gauge pressure unless otherwise specified.\parb
- %	Also, atmospheric pressure is generally specified to four significant digits; there is a distinct
- %	difference in pressure between 100.5 kPa and 101.4 kPa.
- %
- %
- %
- %	\parb
- %	\cbox[0.9]{
- %		\Large
- %		\textbf{Pressure at }$\bm A$:\par
- %		\begin{eqnarray*}
- %			P_A & = & P_B-\Delta p\\
- %			& = & 0-\gamma h\\
- %			& = & -(8.89\text{ kN/m}^3)(0.30\text{ m})\\
- %			& = & -2.667\text{ kPa}\\
- %			\\
- %			P_{A(abs)} & = & P_{atm}+P_{A(gauge)}\\
- %			& = & 102.1\text{ kPa}-2.667\text{ kPa}\\
- %			& = & 99.43\text{ kPa}
- %		\end{eqnarray*}
- %	}
- %
- %\end{minipage}
- %\hfill
- %\begin{minipage}[t]{0.5\textwidth}
- %
- %	\parb
- %	\cbox[0.9]{
- %		\Large
- %		\textbf{Pressure at }$\bm C$:\par
- %		\begin{eqnarray*}
- %			P_C & = & P_C-\Delta p\\
- %			& = & 0-\gamma h\\
- %			& = & -(8.89\text{ kN/m}^3)(0.950\text{ m})\\
- %			& = & -8.4455\text{ kN/m}^2\\
- %			& \approx & -8.45\text{ kPa}\\
- %			\\
- %			P_{C(abs)} & = & P_{atm}+P_{C(gauge)}\\
- %			& = & 102.1\text{ kPa}-8.4455\text{ kPa}\\
- %			& = & 93.65\text{ kPa}
- %		\end{eqnarray*}
- %	}
- %	\parb
- %	\cbox[0.9]{
- %		\Large
- %		\textbf{Pressure at }$\bm D$:\par
- %		\begin{eqnarray*}
- %			P_D & = & P_B+\Delta p\\
- %			& = & 0+\gamma h\\
- %			& = & (8.89\text{ kN/m}^3)(1.375\text{ m})\\
- %			& = & 12.224\text{ kPa}\\
- %			\\
- %			P_{D(abs)} & = & P_{atm}+P_{D(gauge)}\\
- %			& = & 102.1\text{ kPa}+12.224\text{ kPa}\\
- %			& = & 114.3\text{ kPa}
- %		\end{eqnarray*}
- %		}
- %		\parb
- %		\cbox[0.9]{
- %			\Large
- %			\textbf{Pressure at }$\bm E$:\par
- %			\begin{eqnarray*}
- %				P_E & = & P_B+\Delta p\\
- %				& = & 0+\gamma h\\
- %				& = & (8.89\text{ kN/m}^3)(2.0\text{ m})\\
- %				& = & 17.78\text{ kPa}\\
- %				\\
- %				P_{E(abs)} & = & P_{atm}+P_{D(gauge)}\\
- %				& = & 102.1\text{ kPa}+17.78\text{ kPa}\\
- %				& = & 119.9\text{ kPa}
- %			\end{eqnarray*}
- %		}
+	\textbf{Exercise 2}:
+	\parb
+	Calculate the gauge pressure and the absolute pressure for locations \emph{C} and \emph{E} for the previous example.
+	
 \end{minipage}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{minipage}[t]{0.45\textwidth}
- \raggedright
- \textbf{Example 7}:\\
- Determine the pressure at $A$ given that the temperature of the
- water is $25$\textcelsius.
- \cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QB}
- \par\vspace{5cm}
+	\raggedright
+	\textbf{Example 6}:\parb
+	Determine the pressure at $A$ given that the temperature of the
+	water is $25$\textcelsius.
+	\cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QB}
+	\par\vspace{5cm}
 \end{minipage}
-\hfill
-\begin{minipage}[t]{0.5\textwidth}
- \textbf{Solution}:
- %	\parb
- %	\cbox[0.9]{
- %		\Large
- %		\begin{eqnarray*}
- %			P_3 & = & 0\\
- %			P_2 & = & P_3+\gamma h\\
- %			& = & 0+(1.258)(9.81\text{ kN/m}^3)(0.105\text{ m})\\
- %			& = & 1.2958\text{ kPa}\\
- %			P_1 & = & 1.2958\text{ kPa}\\
- %			P_A & = & P_1-\gamma h\\
- %			& = & 1.2958\text{ kPa}-(9.78)(0.152)\text{ kPa}\\
- %			& = & -0.1907\text{ kPa}\\
- %		\end{eqnarray*}
- %	}
- %	\parb
- %	\textbf{Note}:
- %	\raggedright
- %	There is not much difference in pressure for a difference in levels
- %	of 0.105 m. For this reason, a gauge fluid with a higher specific
- %	gravity, such as mercury, is usually used to measure larger pressure
- %	differences.
-\end{minipage}
-\vspace{3cm}
+
+\par\vspace{-1cm}
+\rule{\textwidth}{0.02in}
+\parb
 \begin{minipage}[t]{0.45\textwidth}
- \raggedright
- \textbf{Example 8}:\\
- Find the pressure difference between $A$ and $B$
- \cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QFsolved.pdf}
- \par\vspace{6cm}
+	\raggedright
+	\textbf{Example 7}:\parb
+	Find the pressure difference between $A$ and $B$
+	\cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QFsolved.pdf}
+	\par\vspace{6cm}
 \end{minipage}
-\hfill
-\begin{minipage}[t]{0.5\textwidth}
- \textbf{Solution}:
- \parb
- %	\begin{fcbox}[0.9]{
- %			\begin{eqnarray*}
- %				P_1 & = & P_A+\gamma h\\
- %				& = & P_A+(9.81\text{ kN/m}^3)(0.195\text{ m})\\
- %				& = & P_A+1.913\text{ kPa}\\
- %				P_2 & = & P_1+(13.54)(9.81\text{ kN/m}^3)(0.15\text{ m})\\
- %				& = & P_A+(1.913+19.924)\text{ kPa}\\
- %				& = & P_A+21.837\text{ kPa}\\
- %				P_3 & = & P_A+21.837\text{ kPa}\\
- %				P_B & = & P_3-(0.90)(9.81\text{ kN/m}^3)(0.240\text{ m})\\
- %				& = & P_A+21.837\text{ kPa}-2.119\text{ kPa}\\
- %				\Delta p & = & 19.72\text{ kPa}
- %			\end{eqnarray*}
- %		}\end{fcbox}
-\end{minipage}
+
 
 
 \end{document}

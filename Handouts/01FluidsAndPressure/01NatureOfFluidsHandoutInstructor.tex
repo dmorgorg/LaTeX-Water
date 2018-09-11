@@ -253,10 +253,10 @@
 	\parm
 	\cbox[0.9]{
 		\begin{align*}
-			P & = \frac{F}{A}                                   \\
-			  & = \frac{8200\text{ N}}{\pi(6.35\text{ mm})^2/4} \\
-			  & = 2.5893\text{ N/mm}^2                          \\
-			  & \approx 2.59\text{ MPa}                         
+			P & = \frac{F}{A}                                    \\
+			  & = \frac{8200\text{ N}}{\pi(6.35\text{ mm}) ^2/4} \\
+			  & = 2.5893\text{ N/mm}^2                           \\
+			  & \approx 2.59\text{ MPa}                          
 		\end{align*}
 	}
 \end{minipage}
@@ -339,7 +339,7 @@
 	\cbox[0.9]{
 		Volume of tank:
 		\begin{align*}
-			v_{tank} & = \frac{\pi(5.75 \text{ m})^2}{4}\times 3.30\text{ m} \\
+			V_{tank} & = \frac{\pi(5.75 \text{ m})^2}{4}\times 3.30\text{ m} \\
 			         & = 85.692\text{ m}^3                                   
 		\end{align*}
 	}
@@ -350,13 +350,13 @@
 	\cbox[0.9]{
 		Mass of the water in the tank at $10$\textcelsius:
 		\begin{align*}
-			m & = \rho_{\large{10\text{\textcelsius}}} \times v_{\large{10\text{\textcelsius}}} \\
+			m & = \rho_{\large{10\text{\textcelsius}}} \times V_{\large{10\text{\textcelsius}}} \\
 			  & = 1000\text{ kg/m}^3 \times 85.692\text{ m}^3                                   \\
 			  & = 85\,692\text{ kg}                                                             
 		\end{align*}
 		Mass of the water in the tank at $70$\textcelsius:
 		\begin{align*}
-			m & = \rho_{\large{55\text{\textcelsius}}} \times v_{\large{55\text{\textcelsius}}} \\
+			m & = \rho_{\large{55\text{\textcelsius}}} \times V_{\large{55\text{\textcelsius}}} \\
 			  & = 986\text{ kg/m}^3 \times 85.692\text{ m}^3                                    \\
 			  & = 84\,492\text{ kg}                                                             
 		\end{align*}
@@ -371,151 +371,105 @@
 
 \newpage
 
-%\begin{minipage}[c]{0.45\textwidth}
-%\raggedright
-%\textbf{Example 6}:\\
-%A vertical glass cylinder contains $2.30$ litres of water at $10$\textcelsius. The height of the water in the
-%cylinder is $1.05$ m. The water and the cylinder are heated. Assuming that there are no losses due
-%to evaporation, find the change in water height when the temperature reaches $75$\textcelsius. \\(The coefficient of
-%thermal expansion, $\alpha$, for the glass is given by $\alpha = 3.6 \times 10^{-6}$ m/m/\textcelsius.)
-%\parb
-%\textbf{Solution}:
-%\parb
-%\cbox[0.9]{
-%	Find the cylinder inside diameter at $10$\textcelsius:
-%	\begin{align*}
-%		d_{10} &= \sqrt{\frac{4v}{\pi h}}\\
-%		&= \sqrt{\frac{4\times 0.0023}{1.05\pi}}\\
-%		&=0.052811\text{ m}
-%	\end{align*}
-%}
-%\par\vspace{4cm}
-%\end{minipage}
-%\hfill
-%\begin{minipage}[c]{0.5\textwidth}
-%\cbox[0.9]{white}{
-%The diameter increases linearly with temperature change:
-%\begin{align*}
-%\Delta d &= \alpha\times d_{10}\times\Delta T\\
-%&= 3.6\times 10^{-6}\times 0.052811\times 65\\
-%&= 0.000012358\text{ m}\\\\
-%d_{75} &= 0.052811 + 0.000012358\\
-%&= 0.052823\text{ m}
-%\end{align*}
-%Since there is no evaporation, mass remains constant:
-%\begin{align*}
-%m=\rho_{10}v_{10} &= \rho_{75}v_{75}\\
-%v_{75} &= \rho_{10}v_{10}/\rho_{75}\\
-%&= 1000\times 0.0023/975\\
-%&= 0.002359\text{ m}^3
-%\end{align*}
-%The height of the water at $75$\textcelsius:
-%\begin{align*}
-%h_{75} &= \frac{4v}{\pi d^2_{75}}\\
-%&= \frac{4\times 0.002359}{\pi(0.052823)^2}\\
-%&= 1.0764\text{ m}
-%\end{align*}
-%The change in height due to the temperature change is:
-%\[ \Delta_h = h_{75}-h_{10}=1.0764-1.05=0.026445\text{ m}\]
-%Change in height is $26.4$ mm.
-%
-%}
-%\end{minipage}
-
 \begin{minipage}[t]{0.45\textwidth}
 	\raggedright
-	\textbf{Example 6}:
+	\textbf{Example 5}:
 	\cfig[0.55]{../../figs/01NoFPM/02tank1}
 	A tank, open to the atmosphere in the centre, contains medium fuel
 	oil. Atmospheric pressure is 102.1 kPa. Calculate the gauge pressure
-	and the absolute pressure for locations \emph{A, B, C, D} and \emph{E}.
+	and the absolute pressure for locations \emph{A, B,} and \emph{D}.
 	\parb
 	\textbf{Solution}:
-	\parb
+	\pars
 	
 	\cbox[0.9]{
 		\Large
 		\textbf{Pressure at }$\bm B$:
 		$B$ is open to the atmosphere so
-		\[P_B=0 \text{ and } P_{B(abs)}=P_{(atm)}=102.1\text{ kPa}\]
+		\[P_B=0 \text{ and } P_{B(abs)}=P_{(atm)}=102.1\,\text{kPa}\]
 	}
 	\parb
 	Note that pressure is assumed to be gauge pressure unless otherwise specified.\parb
-	Also, atmospheric pressure is generally specified to four significant digits; there is a distinct
-	difference in pressure between 100.5 kPa and 101.4 kPa.
-	
-	
-	
-	\parb
-	\cbox[0.9]{
-		\Large
-		\textbf{Pressure at }$\bm A$:\par
-		\begin{eqnarray*}
-			P_A & = & P_B-\Delta p\\
-			& = & 0-\gamma h\\
-			& = & -(8.36\text{ kN/m}^3)(0.30\text{ m})\\
-			& = & -2.5080\text{ kPa}\\
-			& \approx & -2.51\text{ kPa}\\
-			\\
-			P_{A(abs)} & = & P_{atm}+P_{A(gauge)}\\
-			& = & 102.1\text{ kPa}-2.5080\text{ kPa}\\
-			& = & 99.592\text{ kPa} \\
-			& \approx & 99.6\text{ kPa}
-		\end{eqnarray*}
-	}
+	Also, atmospheric pressure is generally specified to four significant digits if over $100$; there is a distinct
+	difference in pressure between $100.5\,$kPa and $101.4\,$kPa (which are the same to $3$ sig digs).
 	
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.5\textwidth}
+\begin{minipage}[t]{0.45\textwidth}
 	
-	\parb
 	\cbox[0.9]{
 		\Large
-		\textbf{Pressure at }$\bm C$:\par
+		\textbf{Pressure at }$\bm A$:
 		\begin{eqnarray*}
-			P_C & = & P_C-\Delta p\\
+			P_A & = & P_B-\Delta p\\
 			& = & 0-\gamma h\\
-			& = & -(8.36\text{ kN/m}^3)(0.950\text{ m})\\
-			& = & -7.9420\text{ kN/m}^2\\
-			& \approx & -7.94\text{ kPa}\\
-			\\
-			P_{C(abs)} & = & P_{atm}+P_{C(gauge)}\\
-			& = & 102.1\text{ kPa}-7.9420\text{ kPa}\\
-			& = & 94.158\text{ kPa}\\
-			& \approx & 94.2\text{ kPa}
+			& = & -(8.36\,\text{kN/m}^3)(0.30\,\text{m})\\
+			& = & -2.5080\,\text{kPa}\\
+			& \approx & -2.51\,\text{kPa}\\
+			P_{A(abs)} & = & P_{atm}+P_{A(gauge)}\\
+			& = & 102.1\,\text{kPa}-2.5080\,\text{kPa}\\
+			& = & 99.592\,\text{kPa} \\
+			& \approx & 99.6\,\text{kPa}
 		\end{eqnarray*}
 	}
-	\parb
+	\parm
 	\cbox[0.9]{
 		\Large
-		\textbf{Pressure at }$\bm D$:\par
+		\textbf{Pressure at }$\bm D$:
 		\begin{eqnarray*}
 			P_D & = & P_B+\Delta p\\
 			& = & 0+\gamma h\\
 			& = & (8.36\text{ kN/m}^3)(1.375\text{ m})\\
 			& = & 11.495\text{ kPa}\\
-			& \approx & 11.50\text{ kPa}
-			\\
+			& \approx & 11.50\text{ kPa}			\\
 			P_{D(abs)} & = & P_{atm}+P_{D(gauge)}\\
 			& = & 102.1\text{ kPa}+11.495\text{ kPa}\\
 			& = & 113.60\text{ kPa}\\
 			& = & 113.6\text{ kPa}
 		\end{eqnarray*}
 	}
+	
+\end{minipage}
+\pars
+\rule{\textwidth}{0.02in}
+\pars
+\begin{minipage}[t]{0.45\textwidth}
+	\textbf{Exercise 2}:
+	\parb
+	Calculate the gauge pressure and the absolute pressure for locations \emph{C} and \emph{E} for the previous example.
+	\pars
+	\cbox[0.9]{
+		\Large
+		\textbf{Pressure at }$\bm C$:
+		\begin{eqnarray*}
+			P_C & = & P_C-\Delta p\\
+			& = & 0-\gamma h\\
+			& = & -(8.36\,\text{kN/m}^3)(0.950\,\text{m})\\
+			& = & -7.9420\,\text{kN/m}^2\\
+			& \approx & -7.94\,\text{kPa}\\
+			P_{C(abs)} & = & P_{atm}+P_{C(gauge)}\\
+			& = & 102.1\,\text{kPa}-7.9420\,\text{kPa}\\
+			& = & 94.158\,\text{kPa}\\
+			& \approx & 94.2\,\text{kPa}
+		\end{eqnarray*}
+	}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	
 	\parb
 	\cbox[0.9]{
 		\Large
-		\textbf{Pressure at }$\bm E$:\par
+		\textbf{Pressure at }$\bm E$:
 		\begin{eqnarray*}
 			P_E & = & P_B+\Delta p\\
 			& = & 0+\gamma h\\
-			& = & (8.36\text{ kN/m}^3)(2.0\text{ m})\\
-			& = & 16.720\text{ kPa}\\
-			\\
+			& = & (8.36\,\text{kN/m}^3)(2.0\,\text{m})\\
+			& = & 16.720\,\text{kPa}\\
 			P_{E(abs)} & = & P_{atm}+P_{D(gauge)}\\
-			& = & 102.1\text{ kPa}+16.72\text{ kPa}\\
-			& = & 118.82\text{ kPa}\\
-			& \approx & 118.8\text{ kPa}
+			& = & 102.1\,\text{kPa}+16.72\,\text{kPa}\\
+			& = & 118.82\,\text{kPa}\\
+			& \approx & 118.8\,\text{kPa}
 		\end{eqnarray*}
 	}
 \end{minipage}
@@ -523,14 +477,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{minipage}[t]{0.45\textwidth}
 	\raggedright
-	\textbf{Example 7}:\\
+	\textbf{Example 6}:\parb
 	Determine the pressure at $A$ given that the temperature of the
 	water is $25$\textcelsius.
 	\cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QB}
 	\par\vspace{5cm}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.5\textwidth}
+\begin{minipage}[t]{0.45\textwidth}
 	\textbf{Solution}:
 	\parb
 	\cbox[0.9]{
@@ -553,12 +507,14 @@
 	of 0.105 m. For this reason, a gauge fluid with a higher specific
 	gravity, such as mercury, is usually used to measure larger pressure
 	differences.
+	
 \end{minipage}
-
-%\vspace{1cm}
+\par\vspace{-1cm}
+\rule{\textwidth}{0.02in}
+\parb
 \begin{minipage}[t]{0.45\textwidth}
 	\raggedright
-	\textbf{Example 8}:\\
+	\textbf{Example 7}:\parb
 	Find the pressure difference between $A$ and $B$
 	\cfig[0.55]{../../figs/01NoFPM/imgCIVL250M02QFsolved.pdf}
 	\par\vspace{6cm}
