@@ -1,3 +1,8 @@
+% override specific chktex warnings
+% chktex-file 46 - don't use $ instead of \(, etc)
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 9 - sometimes messes up with ( and {
+
 \documentclass[9pt,xcolor={svgnames, x11names},professionalfonts, mathserif]{beamer}
 
 \usepackage{amsmath}
@@ -64,7 +69,7 @@
 % \setbeamercolor{footline}{fg=black}
 \setbeamercolor{block title}{fg=gray!15!white,bg=structure}
 \setbeamercolor{block body}{bg=white, fg=black}
-\setbeamercolor{background canvas}{bg=structure!5!white}
+\setbeamercolor{background canvas}{bg=gray!20!white}
 \setbeamersize{text margin left = 1cm, text margin right=1cm}
 %\useinnertheme[shadow]{rounded}
 %\raggedright
@@ -128,37 +133,38 @@
 \begin{document}
 
 \begin{frame}[plain]    %don't need footer on titlepage
- \titlepage
+	\titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Forces on Horizontal Plane Areas}
- \begin{itemize}
-  \item Pressure on a horizontal flat plane area due to a static fluid is
-        uniform over the plane area since the whole plane area is at the same depth\par\bigskip
-        \pause
-  \item The force on the horizontal flat plane area is given by $F=pA$, where $p$ is the
-        uniform pressure and $A$ is the area of the plane area (this follows from $p=F/A$,
-        the definition for pressure).
- \end{itemize}
+	\begin{itemize}
+		\item Pressure on a horizontal flat plane area due to a static fluid is
+		      uniform over the plane area since the whole plane area is at the same depth\par\bigskip
+		      \pause
+		\item The force on the horizontal flat plane area is given by $F=pA$, where $p$ is the
+		      uniform pressure and $A$ is the area of the plane area (this follows from $p=F/A$,
+		      the definition for pressure).
+	\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{frame}
- \cmini[0.6]{
-  \begin{mybox}
-   \begin{cfig}[0.4]{../../figs/02StaticForces/03staticforces01}\end{cfig}
-  \end{mybox}
- }
- \cmini{
-  \begin{myexam}{}{}
-   Determine the force exerted by the oil and water upon the bottom plane
-   surface of the barrel.
-  \end{myexam}
- }
+	\definecolor{example}{RGB}{133,205,235}
+	\cmini[0.6]{
+		\begin{mybox}[colframe=example!85!black]
+			\begin{cfig}[0.4]{../../figs/02StaticForces/03staticforces01}\end{cfig}
+		\end{mybox}
+	}
+	\cmini{
+		\begin{myexam}[colframe=example!85!black, colbacktitle=example!85!black]{}{}
+			Determine the force exerted by the oil and water upon the bottom plane
+			surface of the barrel.
+		\end{myexam}
+	}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,24 +176,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \cmini[0.9]{
-  \definecolor{example}{RGB}{168,19,168}
-  \begin{mybox}[colframe=example]
-   \begin{cfig}[0.45]{../../figs/02StaticForces/03staticforces02}\end{cfig}
-  \end{mybox}
-  \parb
-  
-  \begin{myexam}[colframe=example, colbacktitle=example]{}{}
-   A pressurized tank contains liquid with a specific gravity of $1.59$.
-   \\The inspection hatch at \emph{A} has dimensions $400\, \text{mm}\times 250\, \text{mm}$.
-   \\The access hatch at \emph{B} has dimensions $500\, \text{mm}\times 750\, \text{mm}$.\par\medskip
-   
-   Determine the force exerted by the fluid on the hatch at \emph{A} \\
-   and on the hatch at \emph{B}
-   
-   \smallskip
-  \end{myexam}
- }
+	\cmini[0.9]{
+		\definecolor{example}{RGB}{168,19,168}
+		\begin{mybox}[colframe=example]
+			\begin{cfig}[0.45]{../../figs/02StaticForces/03staticforces02}\end{cfig}
+		\end{mybox}
+		\parb
+		
+		\begin{myexam}[colframe=example, colbacktitle=example]{}{}
+			A pressurized tank contains liquid with a specific gravity of $1.59$.
+			\\The inspection hatch at \emph{A} has dimensions $400\, \text{mm}\times 250\, \text{mm}$.
+			\\The access hatch at \emph{B} has dimensions $500\, \text{mm}\times 750\, \text{mm}$.\par\medskip
+			
+			Determine the force exerted by the fluid on the hatch at \emph{A} \\
+			and on the hatch at \emph{B}
+			
+			\smallskip
+		\end{myexam}
+	}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -199,77 +205,77 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Forces on Vertical Rectangular Plane Areas}
- \begin{columns}
-  \begin{column}[c]{0.38\textwidth}
-   \only<1>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03a}\end{cfig}
-    }\only<2>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03b}\end{cfig}
-    }\only<3>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03c}\end{cfig}
-    }\only<4>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03d}\end{cfig}
-    }\only<5-6>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03e}\end{cfig}
-    }\only<7>{
-    \begin{cfig}[0.5]{../../Figs/02StaticForces/03staticforces03f}\end{cfig}
-   }
-  \end{column}
-  \begin{column}[c]{0.58\textwidth}
-   
-   \begin{itemize}
-    \item<1-5> Consider a static volume of water retained by a vertical wall or dam.
-    \item<2-5> Water pressure on the wall is 0 at the surface.
-    \item<3-5> Water pressure is at a maximum at the bottom of the volume of water
-    and can be calculated from $\Delta p=\gamma h$.
-    \item<4-5> Water pressure is proportional to the depth (since $\Delta p=\gamma h$,
-    it follows that $\Delta p\propto h$).
-    \item<5> The average pressure is at half-depth (that is, at the depth, $h_C$, of the horizontal centroidal axis of
-    the rectangular area).
-    \vspace{-0.25cm}
-    
-    \[	P_{avg}  =  \gamma\cdot h_C   \]
-    
-    
-   \end{itemize}
-   \vspace{-6.5cm}
-   \begin{itemize}
-    \item<6-> The magnitude of the resultant force exerted on the wall by the water is
-    \begin{eqnarray*}
-     F_R & = & P_{avg}A\\
-     & = & \gamma h_C A
-    \end{eqnarray*}
-    where $A$ is the area of the rectangular plane area.
-    \item<7> The resultant of the force, $F_R$, acts through the centroid of the pressure triangle,
-    which is at a depth of $2h/3$ in this case. \pars
-    (This is true because the plane area is a rectangle and the area reaches the surface; it is not
-    true in general.)
-   \end{itemize}
-  \end{column}
- \end{columns}
+	\begin{columns}
+		\begin{column}[c]{0.38\textwidth}
+			\only<1>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03a}\end{cfig}
+				}\only<2>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03b}\end{cfig}
+				}\only<3>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03c}\end{cfig}
+				}\only<4>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03d}\end{cfig}
+				}\only<5-6>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces03e}\end{cfig}
+				}\only<7>{
+				\begin{cfig}[0.5]{../../Figs/02StaticForces/03staticforces03f}\end{cfig}
+			}
+		\end{column}
+		\begin{column}[c]{0.58\textwidth}
+			
+			\begin{itemize}
+				\item<1-5> Consider a static volume of water retained by a vertical wall or dam.
+				\item<2-5> Water pressure on the wall is 0 at the surface.
+				\item<3-5> Water pressure is at a maximum at the bottom of the volume of water
+				and can be calculated from $\Delta p=\gamma h$.
+				\item<4-5> Water pressure is proportional to the depth (since $\Delta p=\gamma h$,
+				it follows that $\Delta p\propto h$).
+				\item<5> The average pressure is at half-depth (that is, at the depth, $h_C$, of the horizontal centroidal axis of
+				the rectangular area).
+				\vspace{-0.25cm}
+				
+				\[	P_{avg}  =  \gamma\cdot h_C   \]
+				
+				
+			\end{itemize}
+			\vspace{-6.5cm}
+			\begin{itemize}
+				\item<6-> The magnitude of the resultant force exerted on the wall by the water is
+				\begin{eqnarray*}
+					F_R & = & P_{avg}A\\
+					& = & \gamma h_C A
+				\end{eqnarray*}
+				where $A$ is the area of the rectangular plane area.
+				\item<7> The resultant of the force, $F_R$, acts through the centroid of the pressure triangle,
+				which is at a depth of $2h/3$ in this case. \pars
+				(This is true because the plane area is a rectangle and the area reaches the surface; it is not
+				true in general.)
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Flumes}
- \begin{cfig}[0.3]{../../figs/02StaticForces/flume_3trim}\end{cfig}
- \begin{center}
-  A \textbf{flume} is a man-made channel used to transport a liquid.
-  
-  It is often an elevated wooden box-like structure.
- \end{center}
+	\begin{cfig}[0.3]{../../figs/02StaticForces/flume_3trim}\end{cfig}
+	\begin{center}
+		A \textbf{flume} is a man-made channel used to transport a liquid.
+		
+		It is often an elevated wooden box-like structure.
+	\end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Flumes}
- \begin{cfig}[0.2]{../../figs/02StaticForces/flume_9}\end{cfig}
- \begin{center}
-  This flume was built in the $1800$s.\pars
-  
-  {\tiny (It is north of Reno, Nevada, on Highway 395)}
- \end{center}
- 
+	\begin{cfig}[0.2]{../../figs/02StaticForces/flume_9}\end{cfig}
+	\begin{center}
+		This flume was built in the $1800$s.\pars
+		
+		{\tiny (It is north of Reno, Nevada, on Highway 395)}
+	\end{center}
+	
 \end{frame}
 
 
@@ -277,38 +283,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Flumes}
- \begin{cfig}[0.2]{../../figs/02StaticForces/flume_1}\end{cfig}
- \begin{center}
-  It transports $55$ million gallons per day, or mgd,  $\left(\approx 200,000 \text{ m}^3/\text{day}\right)$ of water,
-  providing hydro-electricity and water to the residents of Reno, Nevada.
- \end{center}
+	\begin{cfig}[0.2]{../../figs/02StaticForces/flume_1}\end{cfig}
+	\begin{center}
+		It transports $55$ million gallons per day, or mgd,  $\left(\approx 200,000 \text{ m}^3/\text{day}\right)$ of water,
+		providing hydro-electricity and water to the residents of Reno, Nevada.
+	\end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Flumes}
- \begin{cfig}[0.18]{../../figs/02StaticForces/flume_2}\end{cfig}
- \begin{center}
-  A $60$ m section the flume was damaged by a 4.7 magnitude earthquake on \lb April 25th, 2008; part of the repaired section is
-  visible on the left.
- \end{center}
+	\begin{cfig}[0.18]{../../figs/02StaticForces/flume_2}\end{cfig}
+	\begin{center}
+		A $60$ m section the flume was damaged by a 4.7 magnitude earthquake on \lb April 25th, 2008; part of the repaired section is
+		visible on the left.
+	\end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \centering
- \begin{mybox}[width=8cm]
-  \begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx3}\end{cfig}
- \end{mybox}
- \begin{myexam}{}{}
-  \raggedright
-  The tie-bars have cross-sectional dimension of $90\text{mm}\times 90\text{mm}$.
-  Determine the maximum normal stress in the tie-bars, and the bearing stress
-  if the vertical posts are cut halfway into each tie-bar.		\par
-  (Assume a pinned connection at the bottom of the sidewalls and treat pressure as though the fluid is static.)
-  \par\smallskip
- \end{myexam}
+	\centering
+	\begin{mybox}[width=8cm]
+		\begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx3}\end{cfig}
+	\end{mybox}
+	\begin{myexam}{}{}
+		\raggedright
+		The tie-bars have cross-sectional dimension of $90\text{mm}\times 90\text{mm}$.
+		Determine the maximum normal stress in the tie-bars, and the bearing stress
+		if the vertical posts are cut halfway into each tie-bar.		\par
+		(Assume a pinned connection at the bottom of the sidewalls and treat pressure as though the fluid is static.)
+		\par\smallskip
+	\end{myexam}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -320,32 +326,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Forces on Inclined Rectangular Plane Areas}
- \vspace{-0.75cm}
- \begin{cfig}[0.55]{../../figs/02StaticForces/03staticforces04}\end{cfig}
- \vspace{-0.45cm}
- The same argument used for vertical rectangular plane areas applies
- to inclined regular plane areas and, again,
- \vspace{-0.25cm}
- \[ p_{avg}=\gamma\cdot h_C,\quad F_{R}=\gamma\cdot	h_C\cdot A \]
- \vspace{-0.25cm}
- The direction of the pressure remains \textbf{perpendicular} to the plane area
- 
+	\vspace{-0.75cm}
+	\begin{cfig}[0.55]{../../figs/02StaticForces/03staticforces04}\end{cfig}
+	\vspace{-0.45cm}
+	The same argument used for vertical rectangular plane areas applies
+	to inclined regular plane areas and, again,
+	\vspace{-0.25cm}
+	\[ p_{avg}=\gamma\cdot h_C,\quad F_{R}=\gamma\cdot	h_C\cdot A \]
+	\vspace{-0.25cm}
+	The direction of the pressure remains \textbf{perpendicular} to the plane area
+	
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}%{Forces on Inclined Rectangular Plane Areas}
- \cmini{
-  \begin{mybox}
-   \begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx04}\end{cfig}
-  \end{mybox}
- }
- \begin{myexam}{}{}
-  The wall has a rectangular plane area in contact with the water, is
-  inclined at $60^\circ$ to the horizontal and is $17$ m long.
-  \par\smallskip
-  Determine the force exerted on the dam plane area by the water.
- \end{myexam}
+	\cmini{
+		\begin{mybox}
+			\begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx04}\end{cfig}
+		\end{mybox}
+	}
+	\begin{myexam}{}{}
+		The wall has a rectangular plane area in contact with the water, is
+		inclined at $60^\circ$ to the horizontal and is $17$ m long.
+		\par\smallskip
+		Determine the force exerted on the dam plane area by the water.
+	\end{myexam}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -357,393 +363,393 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Forces on Submerged Rectangles}
- \begin{columns}
-  \begin{column}{0.45\textwidth}
-   \only<1>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06a}\end{cfig}
-    }\only<2>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06b}\end{cfig}
-    }\only<3>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06c}\end{cfig}
-    }\only<4>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06d}\end{cfig}
-   }
-  \end{column}
-  \begin{column}{0.55\textwidth}
-   \begin{itemize}
-    \item Find the force on a submerged rectangular plane area \pause
-    \item The pressure triangle is as before, except the pressure isn't 0 at
-          the top of the rectangle so our previous reasoning no longer holds \pause
-    \item We are only interested in the pressure that the fluid exerts on the plane surface \pause
-    \item The average pressure on the plane is at its mid-height (the horizontal centroidal axis of the rectangular
-          plane area, $h_C$), which can be easily calculated if the dimensions and location are known
-   \end{itemize}
-  \end{column}
- \end{columns}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\only<1>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06a}\end{cfig}
+				}\only<2>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06b}\end{cfig}
+				}\only<3>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06c}\end{cfig}
+				}\only<4>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces06d}\end{cfig}
+			}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{itemize}
+				\item Find the force on a submerged rectangular plane area \pause
+				\item The pressure triangle is as before, except the pressure isn't 0 at
+				      the top of the rectangle so our previous reasoning no longer holds \pause
+				\item We are only interested in the pressure that the fluid exerts on the plane surface \pause
+				\item The average pressure on the plane is at its mid-height (the horizontal centroidal axis of the rectangular
+				      plane area, $h_C$), which can be easily calculated if the dimensions and location are known
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}%{Forces on Submerged Rectangle (Exercise)}
- \cmini{
-  \begin{myexam}{}{}
-   
-   A vertical retaining wall supports water to a depth of 4.75 m. There
-   are two rectangular hatches in the wall.
-   
-   \bigskip
-   
-   The top of one hatch is at a depth of 1.25~m; the hatch is 2.25~m wide
-   $\times$ 1.5~m high. What is the magnitude of the force exerted
-   upon the hatch by the water?
-   
-   \smallskip
-  \end{myexam}
- }
+	\cmini{
+		\begin{myexam}{}{}
+			
+			A vertical retaining wall supports water to a depth of 4.75 m. There
+			are two rectangular hatches in the wall.
+			
+			\bigskip
+			
+			The top of one hatch is at a depth of 1.25~m; the hatch is 2.25~m wide
+			$\times$ 1.5~m high. What is the magnitude of the force exerted
+			upon the hatch by the water?
+			
+			\smallskip
+		\end{myexam}
+	}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}%{Forces on Submerged Rectangle (Exercise)}
- \cmini{
-  \begin{myexer}{}{}
-   
-   A vertical retaining wall supports water to a depth of 4.75 m. There
-   are two rectangular hatches in the wall.
-   
-   \bigskip
-   
-   
-   The second hatch has dimensions 3.75~m wide $\times$ 1.6~m high. At
-   what depth can the top of this hatch be placed below the surface if
-   the maximum allowable force for the hatch is 128 kN?
-   
-   \smallskip
-  \end{myexer}
- }
+	\cmini{
+		\begin{myexer}{}{}
+			
+			A vertical retaining wall supports water to a depth of 4.75 m. There
+			are two rectangular hatches in the wall.
+			
+			\bigskip
+			
+			
+			The second hatch has dimensions 3.75~m wide $\times$ 1.6~m high. At
+			what depth can the top of this hatch be placed below the surface if
+			the maximum allowable force for the hatch is 128 kN?
+			
+			\smallskip
+		\end{myexer}
+	}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Average Pressure on a Submerged Plane Area}
- \begin{columns}
-  \begin{column}{0.45\textwidth}
-   \only<1>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08a}\end{cfig}
-    }\only<2>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08a2}\end{cfig}
-    }\only<3>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08b}\end{cfig}
-    }\only<4>{
-    \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08c}\end{cfig}
-   }
-  \end{column}
-  \begin{column}{0.5\textwidth}
-   \begin{itemize}
-    \item The average pressure acting on a submerged rectangular plane area is the pressure that acts at its mid-height. \pause
-    \item This is not true for all shapes; it is true for a rectangle because that is where the centroidal $x$-axis is located.  \pause
-    \item For a triangular plane area, $p_{avg}$ is the pressure at the   centroidal $x$-axis of the triangle.  \pause
-    \item For all plane areas, $p_{avg}$ is the pressure at the   centroidal $x$-axis of the area. \end{itemize}
-    \end{column}
-    \end{columns}
-    
-    \end{frame}
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{frame}{Average Pressure a Submerged Plane Area}
-     \centering
-     \begin{cfig}[0.55]{../../figs/02StaticForces/03staticforces08c2}\end{cfig}
-     \begin{mybox}[width=10cm, title=Average Pressure on a Submerged Plane Area]
-      
-      $$\bm{ p_{avg} = \gamma h_c }$$
-      \centering
-      where $h_c$ is the depth of the centroidal $x$-axis of the shape
-      
-     \end{mybox}
-    \end{frame}
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    
-    \begin{frame}
-     \centering
-     \definecolor{example}{RGB}{168,145,82}
-     \begin{mybox}[width=9cm,colframe=example]
-      \begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx06a}\end{cfig}
-     \end{mybox}
-     
-     \begin{myexam}[width=10.875cm,colframe=example,colbacktitle=example]{}{}
-      \raggedright
-      A tank containing kerosene (sg=$0.823$) has a triangular inspection hatch in a vertical sidewall. The hatch has
-      a base of $400\,\text{mm}$ and a height of $600\,\text{mm}$. The top of the hatch is located at a depth of $700\,\text{mm}$.
-      \par\smallskip
-      Determine the force exerted on the hatch by the kerosene.
-     \end{myexam}
-     
-    \end{frame}
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    %\begin{frame}
-    %\begin{cfig}[0.95]{../../figs/02StaticForces/03staticforcesEx06a}\end{cfig}
-    %\end{frame}
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    \begin{frame}
-     \centering
-     
-     \begin{cfig}[0.3]{../../figs/02StaticForces/03staticforcesEx07a}\end{cfig}
-     \vspace{-0.5cm}
-     
-     \begin{myexam}{}{}
-      A water tank has a semi-circular inspection hatch, as illustrated.
-      \par\smallskip
-      Determine the force exerted on the hatch by the water. \par
-      \begin{center}
-       (For a semi-circle, $\bar{y}=\frac{4r}{3\pi}$.)
-      \end{center}
-     \end{myexam}
-     
-    \end{frame}
-    
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    %\begin{frame}
-    %\begin{cfig}[0.45]{../../figs/02StaticForces/03staticforcesEx07a}\end{cfig}
-    %\end{frame}
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    \begin{frame}{Centre of Pressure}
-     \begin{columns}
-      \begin{column}{0.45\textwidth}
-       \only<1>{
-        \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces09a}\end{cfig}
-        }\only<2>{
-        \begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09b}\end{cfig}
-        }\only<3>{
-        \begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09c}\end{cfig}
-        }\only<4>{
-        \begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09d}\end{cfig}
-        }\only<5>{
-        \begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09e}\end{cfig}
-       }
-      \end{column}
-      \begin{column}{0.5\textwidth}
-       \begin{itemize}
-        \item The centre of pressure for a rectangular plane area reaching the surface is at two-thirds depth \pause
-        \item But where is the centre of pressure for a submerged rectangular plane area?  \pause
-        \item Using techniques learned in statics, we can break to pressure down into a uniformly
-              distributed force and a uniformly varying force...  \pause
-        \item ... and then calculate two forces \pause
-        \item This is complicated - and only works for rectangular areas! \end{itemize}
-        \end{column}
-        \end{columns}
-        
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}{Centre of Pressure}
-         \begin{columns}
-          \begin{column}{0.45\textwidth}
-           \begin{cfig}[0.7]{../../figs/02StaticForces/03staticforces12}\end{cfig}
-          \end{column}
-          \begin{column}{0.5\textwidth}
-           \smallskip
-           \begin{itemize}
-            \item There is a formula that locates the centre of pressure more readily.
-            \item Its use is not restricted to rectangles.
-            \item $L_c$ is the length, {\bfseries parallel} to the plane surface, from the centroid of the plane  to the surface of the liquid
-            \item $A$ is the area of the plane
-            \item $I_c$ is the moment of inertia of the plane about its horizontal centroidal axis
-            \item Then,\pars
-                  \cmini{
-                   \begin{mybox}
-                    \[\bm{ L_p - L_c =\frac{I_c}{L_c\cdot A} }\]
-                   \end{mybox}
-                  }
-           \end{itemize}
-          \end{column}
-         \end{columns}
-         
-        \end{frame}
-        
-        
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        
-        \begin{frame}
-         % 	\setbeamercolor{block title}{bg=GreenYellow}
-         \definecolor{example}{RGB}{149,149,47}
-         \begin{columns}
-          \begin{column}{0.45\textwidth}
-           
-           \begin{mybox}[colframe=example]
-            \begin{cfig}[0.55]{../../figs/02StaticForces/03staticforcesEx09a}\end{cfig}
-           \end{mybox}
-          \end{column}
-          \begin{column}{0.575\textwidth}
-           \begin{myexam}[colbacktitle=example, colframe=example]{}{}
-            \raggedright
-            A tank containing castor oil has a $1.0\,\text{m wide}\times 600 \,\text{mm}$ high rectangular inspection hatch.\par\bigskip
-            The top of the hatch is $2.5\,\text{m}$ below the surface of the castor oil. The hatch cover is attached to
-            the tank by $8$ bolts, four at the top of the hatch and four at the bottom.\parm
-            The bolts are offset the from the hatch opening by 	$100\,\text{mm}$, as shown.\parm
-            Calculate the tension in each of the top and in each of the bottom bolts.\parm
-            (Assume that all the top bolts have the same tension and that all the bottom bolts have the same tension.)
-           \end{myexam}
-          \end{column}
-         \end{columns}
-         
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         \begin{cfig}[0.8]{../../figs/02StaticForces/03staticforcesEx09a}\end{cfig}
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         \begin{columns}
-          \begin{column}{0.6\textwidth}
-           \begin{mybox}
-            \begin{cfig}[0.65]{../../figs/02StaticForces/03staticforcesEx08a}\end{cfig}
-           \end{mybox}
-           
-          \end{column}
-          \begin{column}{0.4\textwidth}
-           \begin{myexam}{}{}
-            \raggedright
-            This is an example of a ``self-levelling'' gate. It is hinged along its top edge \par\bigskip
-            When the water exceeds a certain height, the hydrostatic force on the gate is sufficient to
-            open it. Water drains until the level allows the gate to close again. \par\bigskip
-            Find the value $d$ for which the gate opens.
-           \end{myexam}
-          \end{column}
-         \end{columns}
-         
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         \begin{cfig}[0.8]{../../figs/02StaticForces/03staticforcesEx08a}\end{cfig}
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}{Centre of Pressure}
-         \begin{columns}
-          \begin{column}{0.45\textwidth}
-           \par\vspace{-1cm}
-           \begin{cfig}[0.6]{../../figs/02StaticForces/03staticforces12b}\end{cfig}
-          \end{column}
-          \begin{column}{0.4\textwidth}
-           \par\vspace{3cm}
-           The formula works for inclined planes also:
-           \[ L_p -L_c=\frac{I_c}{L_c\cdot A} \]
-          \end{column}
-         \end{columns}
-         \begin{itemize}
-          \item $L_c$ is the distance \textbf{along the slope of the plane surface} from the centroid of the plane to the surface of the liquid
-          \item $L_p$ is the distance \textbf{along the slope of the plane surface} from the centre of pressure to the surface of the liquid
-         \end{itemize}
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         % 	\setbeamercolor{block title}{bg=RawSienna}
-         \definecolor{example}{RGB}{125,103,68}
-         \begin{textblock*}{5cm}(4cm,-0.5cm)
-          \begin{cfig}[0.75]{../../figs/02StaticForces/03staticforcesEx10}\end{cfig}
-         \end{textblock*}
-         \begin{textblock*}{5.5cm}(1cm,5.5cm)
-          \begin{myexam}[colframe=example, colbacktitle=example]{}{}
-           Determine the tension $T$ in the upper bolt and tension $S$ in each of the lower bolts.
-          \end{myexam}
-         \end{textblock*}
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         \begin{cfig}[0.85]{../../figs/02StaticForces/03staticforcesEx10}\end{cfig}
-        \end{frame}
-        
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         
-         \begin{columns}
-          \begin{column}{0.525\textwidth}
-           \begin{mybox}
-            \begin{cfig}[0.4]{../../figs/02StaticForces/03staticforcesEx11}\end{cfig}
-           \end{mybox}
-          \end{column}
-          \begin{column}{0.475\textwidth}
-           \begin{myexam}{}{}
-            \raggedright
-            A rectangular steel gate ($1.5\,\text{m}\times2.15\,\text{m}$) is used to regulate the level of a water storage pond.
-            The gate has a weight of $1.9\,\text{kN}$ which can be thought of as acting through the centre of the gate.\par \bigskip
-            Determine the force $T$ required to open the gate when the pond has a depth of $3.1\,\text{m}$.
-           \end{myexam}
-          \end{column}
-         \end{columns}
-         
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         \begin{mybox}
-          \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx11}\end{cfig}
-         \end{mybox}
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         % 	\setbeamercolor{block title}{bg=yellowgreen}
-         \begin{columns}
-          \begin{column}{0.55\textwidth}
-           \begin{mybox}
-            \begin{cfig}[0.35]{../../figs/02StaticForces/03staticforcesEx12}\end{cfig}
-           \end{mybox}
-          \end{column}
-          \begin{column}{0.45\textwidth}
-           \begin{myexam}{}{}
-            \raggedright
-            A $L$-shaped steel gate $ABC$ is used to regulate the level of a water storage pond.
-            Both the vertical and the horizontal parts of the gate are rectangular with a width of $1.75\,\text{m}$.
-            When the water level exceeds a certain level, the whole gate $ABC$ rotates clockwise about the frictionless hinge at $B$.
-            \par \bigskip
-            Determine the value of $h$ at which the gate begins to open.
-           \end{myexam}
-          \end{column}
-         \end{columns}
-         
-        \end{frame}
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        \begin{frame}
-         \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx12}\end{cfig}
-        \end{frame}
-        
-        
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			\only<1>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08a}\end{cfig}
+				}\only<2>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08a2}\end{cfig}
+				}\only<3>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08b}\end{cfig}
+				}\only<4>{
+				\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces08c}\end{cfig}
+			}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item The average pressure acting on a submerged rectangular plane area is the pressure that acts at its mid-height. \pause
+				\item This is not true for all shapes; it is true for a rectangle because that is where the centroidal $x$-axis is located.  \pause
+				\item For a triangular plane area, $p_{avg}$ is the pressure at the   centroidal $x$-axis of the triangle.  \pause
+				\item For all plane areas, $p_{avg}$ is the pressure at the   centroidal $x$-axis of the area. \end{itemize}
+				\end{column}
+				\end{columns}
+				
+				\end{frame}
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				\begin{frame}{Average Pressure a Submerged Plane Area}
+					\centering
+					\begin{cfig}[0.55]{../../figs/02StaticForces/03staticforces08c2}\end{cfig}
+					\begin{mybox}[width=10cm, title=Average Pressure on a Submerged Plane Area]
+						
+						$$\bm{ p_{avg} = \gamma h_c }$$
+						\centering
+						where $h_c$ is the depth of the centroidal $x$-axis of the shape
+						
+					\end{mybox}
+				\end{frame}
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				
+				\begin{frame}
+					\centering
+					\definecolor{example}{RGB}{168,145,82}
+					\begin{mybox}[width=9cm,colframe=example]
+						\begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx06a}\end{cfig}
+					\end{mybox}
+					
+					\begin{myexam}[width=10.875cm,colframe=example,colbacktitle=example]{}{}
+						\raggedright
+						A tank containing kerosene (sg=$0.823$) has a triangular inspection hatch in a vertical sidewall. The hatch has
+						a base of $400\,\text{mm}$ and a height of $600\,\text{mm}$. The top of the hatch is located at a depth of $700\,\text{mm}$.
+						\par\smallskip
+						Determine the force exerted on the hatch by the kerosene.
+					\end{myexam}
+					
+				\end{frame}
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%\begin{frame}
+				%\begin{cfig}[0.95]{../../figs/02StaticForces/03staticforcesEx06a}\end{cfig}
+				%\end{frame}
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				\begin{frame}
+					\centering
+					
+					\begin{cfig}[0.3]{../../figs/02StaticForces/03staticforcesEx07a}\end{cfig}
+					\vspace{-0.5cm}
+					
+					\begin{myexam}{}{}
+						A water tank has a semi-circular inspection hatch, as illustrated.
+						\par\smallskip
+						Determine the force exerted on the hatch by the water. \par
+						\begin{center}
+							(For a semi-circle, $\bar{y}=\frac{4r}{3\pi}$.)
+						\end{center}
+					\end{myexam}
+					
+				\end{frame}
+				
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%\begin{frame}
+				%\begin{cfig}[0.45]{../../figs/02StaticForces/03staticforcesEx07a}\end{cfig}
+				%\end{frame}
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				\begin{frame}{Centre of Pressure}
+					\begin{columns}
+						\begin{column}{0.45\textwidth}
+							\only<1>{
+								\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforces09a}\end{cfig}
+								}\only<2>{
+								\begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09b}\end{cfig}
+								}\only<3>{
+								\begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09c}\end{cfig}
+								}\only<4>{
+								\begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09d}\end{cfig}
+								}\only<5>{
+								\begin{cfig}[0.9]{../../figs/02StaticForces/03staticforces09e}\end{cfig}
+							}
+						\end{column}
+						\begin{column}{0.5\textwidth}
+							\begin{itemize}
+								\item The centre of pressure for a rectangular plane area reaching the surface is at two-thirds depth \pause
+								\item But where is the centre of pressure for a submerged rectangular plane area?  \pause
+								\item Using techniques learned in statics, we can break to pressure down into a uniformly
+								      distributed force and a uniformly varying force...  \pause
+								\item ... and then calculate two forces \pause
+								\item This is complicated - and only works for rectangular areas! \end{itemize}
+								\end{column}
+								\end{columns}
+								
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}{Centre of Pressure}
+									\begin{columns}
+										\begin{column}{0.45\textwidth}
+											\begin{cfig}[0.7]{../../figs/02StaticForces/03staticforces12}\end{cfig}
+										\end{column}
+										\begin{column}{0.5\textwidth}
+											\smallskip
+											\begin{itemize}
+												\item There is a formula that locates the centre of pressure more readily.
+												\item Its use is not restricted to rectangles.
+												\item $L_c$ is the length, {\bfseries parallel} to the plane surface, from the centroid of the plane  to the surface of the liquid
+												\item $A$ is the area of the plane
+												\item $I_c$ is the moment of inertia of the plane about its horizontal centroidal axis
+												\item Then,\pars
+												      \cmini{
+												      	\begin{mybox}
+												      		\[\bm{ L_p - L_c =\frac{I_c}{L_c\cdot A} }\]
+												      	\end{mybox}
+												      }
+											\end{itemize}
+										\end{column}
+									\end{columns}
+									
+								\end{frame}
+								
+								
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								
+								\begin{frame}
+									% 	\setbeamercolor{block title}{bg=GreenYellow}
+									\definecolor{example}{RGB}{149,149,47}
+									\begin{columns}
+										\begin{column}{0.45\textwidth}
+											
+											\begin{mybox}[colframe=example]
+												\begin{cfig}[0.55]{../../figs/02StaticForces/03staticforcesEx09a}\end{cfig}
+											\end{mybox}
+										\end{column}
+										\begin{column}{0.575\textwidth}
+											\begin{myexam}[colbacktitle=example, colframe=example]{}{}
+												\raggedright
+												A tank containing castor oil has a $1.0\,\text{m wide}\times 600 \,\text{mm}$ high rectangular inspection hatch.\par\bigskip
+												The top of the hatch is $2.5\,\text{m}$ below the surface of the castor oil. The hatch cover is attached to
+												the tank by $8$ bolts, four at the top of the hatch and four at the bottom.\parm
+												The bolts are offset the from the hatch opening by 	$100\,\text{mm}$, as shown.\parm
+												Calculate the tension in each of the top and in each of the bottom bolts.\parm
+												(Assume that all the top bolts have the same tension and that all the bottom bolts have the same tension.)
+											\end{myexam}
+										\end{column}
+									\end{columns}
+									
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									\begin{cfig}[0.8]{../../figs/02StaticForces/03staticforcesEx09a}\end{cfig}
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									\begin{columns}
+										\begin{column}{0.6\textwidth}
+											\begin{mybox}
+												\begin{cfig}[0.65]{../../figs/02StaticForces/03staticforcesEx08a}\end{cfig}
+											\end{mybox}
+											
+										\end{column}
+										\begin{column}{0.4\textwidth}
+											\begin{myexam}{}{}
+												\raggedright
+												This is an example of a ``self-levelling'' gate. It is hinged along its top edge \par\bigskip
+												When the water exceeds a certain height, the hydrostatic force on the gate is sufficient to
+												open it. Water drains until the level allows the gate to close again. \par\bigskip
+												Find the value $d$ for which the gate opens.
+											\end{myexam}
+										\end{column}
+									\end{columns}
+									
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									\begin{cfig}[0.8]{../../figs/02StaticForces/03staticforcesEx08a}\end{cfig}
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}{Centre of Pressure}
+									\begin{columns}
+										\begin{column}{0.45\textwidth}
+											\par\vspace{-1cm}
+											\begin{cfig}[0.6]{../../figs/02StaticForces/03staticforces12b}\end{cfig}
+										\end{column}
+										\begin{column}{0.4\textwidth}
+											\par\vspace{3cm}
+											The formula works for inclined planes also:
+											\[ L_p -L_c=\frac{I_c}{L_c\cdot A} \]
+										\end{column}
+									\end{columns}
+									\begin{itemize}
+										\item $L_c$ is the distance \textbf{along the slope of the plane surface} from the centroid of the plane to the surface of the liquid
+										\item $L_p$ is the distance \textbf{along the slope of the plane surface} from the centre of pressure to the surface of the liquid
+									\end{itemize}
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									% 	\setbeamercolor{block title}{bg=RawSienna}
+									\definecolor{example}{RGB}{125,103,68}
+									\begin{textblock*}{5cm}(4cm,-0.5cm)
+										\begin{cfig}[0.75]{../../figs/02StaticForces/03staticforcesEx10}\end{cfig}
+									\end{textblock*}
+									\begin{textblock*}{5.5cm}(1cm,5.5cm)
+										\begin{myexam}[colframe=example, colbacktitle=example]{}{}
+											Determine the tension $T$ in the upper bolt and tension $S$ in each of the lower bolts.
+										\end{myexam}
+									\end{textblock*}
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									\begin{cfig}[0.85]{../../figs/02StaticForces/03staticforcesEx10}\end{cfig}
+								\end{frame}
+								
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									
+									\begin{columns}
+										\begin{column}{0.525\textwidth}
+											\begin{mybox}
+												\begin{cfig}[0.4]{../../figs/02StaticForces/03staticforcesEx11}\end{cfig}
+											\end{mybox}
+										\end{column}
+										\begin{column}{0.475\textwidth}
+											\begin{myexam}{}{}
+												\raggedright
+												A rectangular steel gate ($1.5\,\text{m}\times2.15\,\text{m}$) is used to regulate the level of a water storage pond.
+												The gate has a weight of $1.9\,\text{kN}$ which can be thought of as acting through the centre of the gate.\par \bigskip
+												Determine the force $T$ required to open the gate when the pond has a depth of $3.1\,\text{m}$.
+											\end{myexam}
+										\end{column}
+									\end{columns}
+									
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									\begin{mybox}
+										\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx11}\end{cfig}
+									\end{mybox}
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									% 	\setbeamercolor{block title}{bg=yellowgreen}
+									\begin{columns}
+										\begin{column}{0.55\textwidth}
+											\begin{mybox}
+												\begin{cfig}[0.35]{../../figs/02StaticForces/03staticforcesEx12}\end{cfig}
+											\end{mybox}
+										\end{column}
+										\begin{column}{0.45\textwidth}
+											\begin{myexam}{}{}
+												\raggedright
+												A $L$-shaped steel gate $ABC$ is used to regulate the level of a water storage pond.
+												Both the vertical and the horizontal parts of the gate are rectangular with a width of $1.75\,\text{m}$.
+												When the water level exceeds a certain level, the whole gate $ABC$ rotates clockwise about the frictionless hinge at $B$.
+												\par \bigskip
+												Determine the value of $h$ at which the gate begins to open.
+											\end{myexam}
+										\end{column}
+									\end{columns}
+									
+								\end{frame}
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								\begin{frame}
+									\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx12}\end{cfig}
+								\end{frame}
+								
+								
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								
+								%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+								
+								
 \end{document}
