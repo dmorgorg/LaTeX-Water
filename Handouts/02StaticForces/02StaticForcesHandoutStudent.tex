@@ -1,0 +1,694 @@
+% override specific chktex warnings
+% chktex-file 46 - don't use $ instead of \(, etc)
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 9 - sometimes messes up with ( and {
+
+\documentclass[10pt,onesided]{amsart}
+\usepackage[showboxes]{textpos}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[many]{tcolorbox}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.75in,rmargin=0.75in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\pagestyle{empty}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{2cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-7cm}
+\centering
+
+\textbf{\Large Module 2: Forces Due To Static Fluids (CIVL 318)}
+\parb
+\begin{center}
+	\begin{tabular}{rrcl}
+		\toprule
+		\addlinespace
+		\textbf{Pressure and forces on plane areas}: & $P_{avg}$ & = & $\gamma{h_C}$      \\
+		\addlinespace
+		                                             & $F_R$     & = & $\gamma{h_C}A$     \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Centre of pressure for plane areas}: & $L_p-L_c$ & = & $\frac{I_c}{L_cA}$ \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\rule{\columnwidth}{0.02in}
+\parb
+\raggedright
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}{0.35\columnwidth}
+	\raggedright
+	\textbf{Example 1}:
+	\begin{cfig}[0.4]{../../figs/02StaticForces/03staticforces01}\end{cfig}
+	Determine the force exerted by the oil and water upon the bottom plane surface of the barrel
+\end{minipage}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.5\textwidth}
+	\raggedright
+	\textbf{Example 2}:\parb
+	\parb
+	\begin{cfig}[0.45]{../../figs/02StaticForces/03staticforces02}\end{cfig}
+	A pressurized tank contains liquid with sg= $1.59$. \\
+	There are rectangular inspection hatches at $A$ ($400\text{ mm}\times 250\text{ mm}$) and at $B$ ($500\text{ mm}\times 750\text{ mm}$).
+	\parb
+	Determine the force exerted by the fluid on the hatch at $A$.
+	\vspace{4cm}
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.45\textwidth}
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\Large
+% 		\begin{eqnarray*}
+% 			p_A & = & 133\text{ kPa}\\
+% 			&  & \quad+\;(1.59)(9.81\text{ kN/m}^3)(3.0\text{ m})\\
+% 			& = & 133\text{ kPa}+46.794\text{ kPa}\\
+% 			& = & 179.79\text{ kPa}\\\\
+% 			F_A & = & p_A\cdot A_A\\
+% 			& = & (179.79\text{ kN/m}^2)(0.4\text{ m}\times0.25\text{ m})\\
+% 			& = & 17.979\text{ kN}\\\\
+% 			F_A & \approx & 17.98\text{ kN}
+% 		\end{eqnarray*}
+% 	}
+% \end{minipage}
+\parb
+\rule{\textwidth}{0.02in}
+\parb
+
+\begin{minipage}[t]{0.5\textwidth}
+	\raggedright
+	\textbf{Exercise 1}:\parb
+	
+	Determine the force exerted by the fluid on the hatch at $B$ for the pressurized tank in the previous example.
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.45\textwidth}
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\Large
+% 		\begin{eqnarray*}
+% 			p_B & = & 133\text{ kPa}\\
+% 			&  & \quad+\;(1.59)(9.81\text{ kN/m}^3)(6.37\text{ m})\\
+% 			& = & 133\text{ kPa}+99.358\text{ kPa}\\
+% 			& = & 232.36\text{ kPa}\\\\
+% 			F_B & = & p_B\cdot A_B\\
+% 			& = & (232.36\text{ kN/m}^2)(0.5\text{ m}\times0.75\text{ m})\\
+% 			& = & 87.134\text{ kN}\\\\
+% 			F_B & \approx & 87.1\text{ kN}
+% 		\end{eqnarray*}
+% 	}
+% \end{minipage}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}{0.4\textwidth}
+	\raggedright
+	\textbf{Example 3}:\\
+	\vspace*{-1cm}
+	\begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx3}\end{cfig}
+	The tie-bars have cross-sectional dimension of $90\text{mm}\times 90\text{mm}$.
+	Determine the normal stress in the tie-bars, and the bearing stress
+	if the vertical posts are cut halfway into each tie-bar.		\par
+	(Assume a pinned connection at the bottom of the sidewalls and treat pressure as though the fluid is static.)
+	\parb
+	% \textbf{Solution}:
+	% \parb
+	% \begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx3b}\end{cfig}
+	% \cbox[0.9]{
+	% 	\Large
+	% 	\begin{align*}
+	% 		p_{avg} & = \gamma\frac{h}{2}                                                              \\
+	% 		        & = \left(9.81\,\text{kN/m}^3\right)\left(\frac{1.65}{2}\,\text{m}\right)          \\
+	% 		        & = 	8.0933\,\text{kPa}                                                            \\\\
+	% 		F_R     & = p_{avg}A                                                                       \\
+	% 		        & = \left(8.0933\,\text{kPa}\right)\left(0.6\,\text{m}\times 1.65\,\text{m}\right) \\
+	% 		        & = 8.0123\thinspace\text{kN}
+	% 	\end{align*}
+	% }
+\end{minipage}
+% \hfill
+% \begin{minipage}{0.5\textwidth}
+% 	\vspace{-5cm}
+% 	\begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx3c}\end{cfig}
+% 	\cbox[0.9]{
+% 		\Large
+% 		Draw a free body diagram of the forces acting on one wall and take moments about the pinned
+% 		connection at the bottom of the wall
+% 		\begin{align*}
+% 			\Sigma M_A & = (1.95\,\text{m})T-(8.0123\,\text{kN})(0.55\,\text{m})=0 \\
+% 			T          & = \frac{8.0123\times 0.55}{1.95}\,\text{kN}               \\
+% 			           & = 2.2599\,\text{kN}
+% 		\end{align*}
+% 		The normal stress is given by $\sigma=F/A$:
+% 		\begin{align*}
+% 			\sigma & = \frac{2.2599\,\text{kN}}{(0.09\,\text{m}\times 0.09\,\text{m})} \\
+% 			       & = 279.0\,\text{kPa}
+% 		\end{align*}
+% 		The bearing stress is given by $\sigma_b=F/A_b$. Here, the bearing area is half the cross-section of the tie-bar:
+% 		\begin{align*}
+% 			\sigma_b & = \frac{2.2599\,\text{kN}}{(0.09\,\text{m}\times 0.045\,\text{m})} \\
+% 			         & = 558.0\,\text{kPa}
+% 		\end{align*}
+% 	}
+%
+% \end{minipage}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.45\textwidth}
+	\raggedright
+	\textbf{Example 4}:\\
+	\begin{cfig}[0.6]{../../figs/02StaticForces/03staticforcesEx04}\end{cfig}
+	The wall has a rectangular plane area in contact with the water, is
+	inclined at $60^\circ$ to the horizontal and is $17$ m long.
+	\par\smallskip
+	Determine the force exerted on the dam plane area by the water.
+	\vspace{2cm}
+\end{minipage}
+\hfill
+% \begin{minipage}[t]{0.5\textwidth}
+% 	\textbf{Solution}:
+% 	\parm
+% 	\cbox[0.9]{
+% 		\Large
+% 		The average pressure for the area in contact with the water is at $h_C$, i.e. at half-depth:
+% 		\begin{align*}
+% 			p_{avg} & =\gamma h_C                                                             \\
+% 			        & = \left(9.81\,\text{kN/m}^3\right)\left(\frac{5.25\,\text{m}}{2}\right)
+% 			        & = 25.751\,\text{kN/m}^2
+% 		\end{align*}
+% 		The area $A$ of the dam wall is:
+% 		\begin{align*}
+% 			A & =\left(\frac{5.25}{\sin 60^\circ}\,\text{m}\right)(17\,\text{m}) \\
+% 			  & = 103.06\,\text{m}^2
+% 		\end{align*}
+% 		The resultant force, $F_R$, is:
+% 		\begin{align*}
+% 			F_R & = 25.751\,\text{kN/m}^2 \times 103.06\,\text{m}^2 \\
+% 			    & = 2653.9\,\text{kN}                               \\
+% 			    & \approx 2650\,\text{kN}
+% 		\end{align*}
+% 	}
+% \end{minipage}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{minipage}[t]{0.45\textwidth}
+	\raggedright
+	\textbf{Example 5}:
+	\parb
+	A vertical retaining wall supports water to a depth of 4.75 m. There
+	is a rectangular hatch in the wall. The top of the hatch is at a depth of 1.25~m; the hatch is 2.25~m wide
+	$\times$ 1.5~m high.
+	\parb
+	What is the magnitude of the force exerted upon the hatch by the water?
+	% 			\item A second hatch has dimensions $3.75$ m wide$\times 1.6$ m high. At
+	% 			what depth can the top of this hatch be placed below the surface if
+	% 			the maximum allowable force for the hatch is $128$ kN?
+	% 			\end{enumerate}
+	% 			\parb
+	%
+	%
+	% 			%\begin{cfig}[0.55]{../../figs/02StaticForces/03staticforcesEx05}\end{cfig}
+	%
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+% 	\textbf{Solution }
+% 	\cbox[0.9]{
+% 		\Large
+% 		The average pressure on the hatch is at centre-height of the hatch which is at:
+% 		$$ h=1.25\,\text{m}+\frac{1.5\,\text{m}}{2}=2.0\,\text{m} $$
+%
+% 		\begin{align*}
+% 			p_{avg} & = \gamma h                                                                          \\
+% 			        & = \left(9.81\,\text{kN/m}^3\right)(2.0\,\text{m})                                   \\
+% 			        & = 19.62\,\text{kN/m}^2                                                              \\\\
+% 			F_R     & =p_{avg}A                                                                           \\
+% 			        & = \left(19.62\,\text{kN/m}^2\right)\left(2.25\,\text{m}\times 1.50\,\text{m}\right) \\
+% 			        & = 66.218\,\text{kN}                                                                 \\
+% 			        & \approx 66.2\,\text{kN}                                                             \\
+% 		\end{align*}
+% 	}
+% \end{minipage}
+\parb\vspace{6cm}
+\rule{\textwidth}{0.02in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.35\textwidth}
+	\raggedright
+	\textbf{Exercise 2}:
+	\parb
+	A vertical retaining wall supports water to a depth of 6.25 m. There
+	is a rectangular hatch in the wall. The hatch has dimensions $3.75\,\text{m wide}\times 1.6\,\text{m height}$.
+	\parb
+	At what depth below the surface can the top of this hatch be placed if the maximum allowable force on the hatch is $128\,$kN?
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.6\textwidth}
+% 	\textbf{Solution }
+% 	\cbox[0.9]{
+% 		\Large
+% 		The average pressure on the hatch is at $h=d+0.8\,$m, where $d$ is the depth of the top of the hatch.
+% 		The force on the hatch is:
+% 		\begin{align*}
+% 			F               & =p_{avg}A                                                                                                     \\
+% 			128\,\text{kN}  & = \left(9.81\,\text{kN/m}^3\right)\left(d+0.8\,\text{m}\right)\left(1.6\,\text{m}\times 3.75\,\text{m}\right) \\
+% 			d+0.8\,\text{m} & = \frac{128\,\text{kN}}{\left(9.81\,\text{kN/m}^3\right)\left(3.75\,\text{m}\times 1.6\,\text{m}\right)}      \\
+% 			                & = 2.1724\,\text{m}                                                                                            \\\\
+% 			d               & \approx 1.372\,\text{m}
+% 		\end{align*}
+% 	}
+% \end{minipage}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.45\textwidth}
+	\textbf{Example 6}:\\
+	\begin{cfig}[0.65]{../../figs/02StaticForces/03staticforcesEx06a}\end{cfig}
+	\raggedright
+	A tank containing kerosene (sg=$0.823$) has a triangular inspection hatch in a vertical sidewall. The hatch has
+	a base of $400\,\text{mm}$ and a height of $600\,\text{mm}$. The top of the hatch is located at a depth of $700\,\text{mm}$.
+	\par\smallskip
+	Determine the force exerted on the hatch by the kerosene.
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		The height of the triangular hatch is $600$ mm so the location of the centroidal $x$-axis is $200$ mm above the base\par
+% 		Thus the average pressure on the hatch is the pressure at a depth of $700 + (600-200)=1100$ mm below the surface.\par
+% 		Then
+% 		\begin{align*}
+% 			p_{avg} & = \gamma h_C                                                                                 \\
+% 			        & = (0.823)\left(9.81\,\text{kN/m}^3\right)(1.10\,\text{m})                                    \\
+% 			        & = 8.8810\,\text{kPa}                                                                         \\\\
+% 			F_R     & = p_{avg}A                                                                                   \\
+% 			        & = \left(8.8810\,\text{kN/m}^2\right)\left(0.5\times 0.4\,\text{m}\times 0.6\,\text{m}\right) \\
+% 			        & \approx 1.066\,\text{kN}
+% 		\end{align*}
+% 	}
+% \end{minipage}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{minipage}[t]{0.45\textwidth}
+	\textbf{Example 7}:\\
+	\begin{cfig}[0.35]{../../figs/02StaticForces/03staticforcesEx07a}\end{cfig}
+	\raggedright
+	A water tank has a semi-circular inspection hatch, as illustrated.
+	\par\smallskip
+	Determine the force exerted on the hatch by the water. \par
+	\begin{center}
+		(For a semi-circle, $\bar{y}=\frac{4r}{3\pi}$.)
+	\end{center}
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\Large
+% 		\[\bar{y} = \frac{4(600\,\text{mm})}{3\pi} = 254.65\,\text{mm}\]
+% 	}
+% 	\parb
+% 	\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx07b}\end{cfig}
+% 	\parb
+% 	\cbox[0.9]{
+% 		\Large
+% 		\begin{align*}
+% 			h_c     & = (345.35\,\text{mm}+250\,\text{mm})\cos 40^\circ + 750\,\text{mm}     \\
+% 			        & = 1206.1\,\text{mm}                                                    \\\\
+% 			p_{avg} & = \gamma h_c = \left(9.81\,\text{kN/m}^3\right)\times 1.2061\,\text{m} \\
+% 			        & = 11.832\,\text{kPa}                                                   \\\\
+% 			A       & = \pi(0.6\,\text{m})^2/2 = 0.56549\,\text{m}^2                         \\\\
+% 			F_R     & = p_{avg}A                                                             \\
+% 			        & = \left(11.832\,\text{kN/m}^2\right)\times(0.56549\,\text{m}^2)        \\
+% 			        & = 6.6908\,\text{kN}                                                    \\
+% 			        & = 6.69\,\text{kN}                                                      \\
+% 		\end{align*}
+% 	}
+% \end{minipage}
+
+\newpage
+\begin{minipage}[t]{0.45\textwidth}
+	\textbf{Example 8:}
+	\parb
+	\raggedright
+	
+	\begin{cfig}[0.65]{../../figs/02StaticForces/03staticforcesEx09a}\end{cfig}
+	A tank containing castor oil has a $1.0\,\text{m wide}\times 600 \,\text{mm}$ high rectangular inspection hatch.\parb
+	The top of the hatch is $2.5\,\text{m}$ below the surface of the castor oil. The hatch cover is attached to
+	the tank by $8$ bolts, four at the top of the hatch and four at the bottom.\parb
+	The bolts are offset the from the hatch opening by 	$100\,\text{mm}$, as shown.\parb
+	Calculate the tension in each of the top and in each of the bottom bolts.\parb
+	(Assume that all the top bolts have the same tension and that all the bottom bolts have the same tension.)
+	% \parb
+	% \textbf{Solution}:
+	% \cbox[0.9]{
+	% 	\Large
+	% 	From the hatch calculations:
+	% 	\begin{align*}
+	% 		A   & = 1.0\,\text{m}\times 0.6\,\text{m} = 0.6\,\text{m}^2                                  \\
+	% 		I_c & = \frac{bh^3}{12}=\frac{(1.0\,\text{m})\times (0.6\,\text{m})^3}{12}=0.018\,\text{m}^4 \\
+	% 		L_c & = 2.5\,\text{m}+\frac{0.6\,\text{m}}{2}=2.8\,\text{m}
+	% 	\end{align*}
+	% 	Then
+	% 	\begin{align*}
+	% 		L_p -L_c & = \frac{I_c}{L_c\cdot A}                                            \\
+	% 		         & = \frac{0.018\,\text{m}^4}{(2.8\,\text{m})\times (0.6\,\text{m}^2)} \\
+	% 		         & = 0.010714\,\text{m}
+	% 	\end{align*}
+	% 	The centre of pressure is $10.714\,\text{mm}$ below the centroid of the hatch.
+	% }
+\end{minipage}
+% \hfill
+% \begin{minipage}[c]{0.5\textwidth}
+% 	\raggedright
+% 	\cbox[0.9]{
+% 		\Large
+% 		The average pressure on the hatch:
+% 		\begin{align*}
+% 			p_{avg} & = \gamma L_c                                            \\
+% 			        & = (0.96)\left(9.81\,\text{kN/m}^3\right)(2.8\,\text{m}) \\
+% 			        & = 26.369\,\text{kN/m}^2
+% 		\end{align*}
+% 		Then the magnitude of the resultant force on the hatch is:
+% 		\begin{align*}
+% 			F_R & = p_{avg}A                                                              \\
+% 			    & = \left(26.369\,\text{kN/m}^2\right)(1.0\,\text{m}\times 0.6\,\text{m}) \\
+% 			    & = 15.822\,\text{kN}
+% 		\end{align*}
+% 	}
+% 	\par\vspace{0.5cm}
+% 	\cbox[0.9]{
+% 		\Large
+% 		The upper row of bolts is at a depth of $2.4\,\text{m}$ and the lower row is at $3.2\,\text{m}$.\parb
+% 		The upper row of bolts is $0.41071\,\text{m}$ above the centre of pressure\parb
+% 		The lower row of bolts is $0.38929\,\text{m}$ below the centre of pressure\parb
+% 	}
+% 	\par\vspace{0.5cm}
+% 	\begin{cfig}[0.75]{../../figs/02StaticForces/03staticforcesEx09b}\end{cfig}
+% 	\par\vspace{0.5cm}
+% 	\cbox[0.9]{
+% 		\large
+% 		Let $S$ and $T$ be the tensions in each upper and each lower bolt respectively. Then
+% 		\begin{align*}
+% 			\Sigma M_B & = 4S\times(0.8\,\text{m})-(0.38929\,\text{m})\times(15.822\,\text{kN})=0 \\
+% 			S          & = 1.925\,\text{kN}                                                       \\\\
+% 			\Sigma M_A & = -4T\times(0.8\,\text{m})-(0.4107\,\text{m})\times(15.822\,\text{kN})=0 \\
+% 			S          & = 2.03\,\text{kN}                                                        \\\\
+% 		\end{align*}
+% 	}
+% \end{minipage}
+
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{minipage}[t]{0.4\textwidth}
+	\textbf{Example 9}:\\
+	\begin{cfig}[0.75]{../../figs/02StaticForces/03staticforcesEx08a}\end{cfig}
+	\raggedright
+	This is an example of a ``self-levelling'' gate. It is hinged along its top edge \parb
+	When the water exceeds a certain height, the hydrostatic force on the gate is sufficient to
+	open the gate. Water drains until the level allows the gate to close again. \parb
+	Find the value $d$ for which the gate opens.
+	% \parb
+	% \begin{cfig}[0.9]{../../figs/02StaticForces/03staticforcesEx08c}\end{cfig}
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.55\textwidth}
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		\Large
+% 		We don't know $L_c$ but we can calculate a few results in terms of $L_c$
+% 		\begin{align*}
+% 			%L_c &= (d+0.5)\,\text{m}\\\\
+% 			A       & = (0.9\,\text{m})\times (1.0\,\text{m})=0.9\,\text{m}^2                                          \\\\
+% 			I_c     & = \frac{bh^3}{12}=\frac{(0.9\,\text{m})\left( 1.0\,\text{m}\right)^3}{12}=0.075\,\text{m}^4      \\\\
+% 			L_p-L_c & = \frac{I_c}{L_cA}=\frac{0.075\,\text{m}^4}{L_c(0.9\,\text{m})^2}=\frac{0.083333}{L_c}\,\text{m} \\
+% 			p_{avg} & = \gamma h = \left(9.81\,\text{kN/m}^3\right)(L_c\,\text{m})=9.81L_c\,\text{kN/m}^2              \\
+% 			F_R     & = \left(9.81L_c\,\text{kN/m}^2\right)(0.9\,\text{m})=8.8290 L_c\,\text{kN}
+% 		\end{align*}
+% 		When the gate just begins to open, the reaction at $B$ is $0$. Then, if we take moments about $A$, there are only
+% 		two moments to consider:
+% 		the moment due to the resultant force, $F_R$, of the water pressure and the moment due to the $10\,\text{kN}$ weight:
+% 		\begin{align*}
+% 			\Sigma M_A & = F_R\left(0.5+\left(L_p-L_c\right)\right)-10(0.75)  \\
+% 			           & = 8.8290L_c\left(0.5+\frac{0.083333}{L_c}\right)-7.5 \\
+% 			           & = 4.4145L_c+0.73572-7.5                              \\
+% 			           & =0                                                   \\\\
+% 			L_c        & = 1.5322\,\text{m}                                   \\
+% 		\end{align*}
+% 		The centroid of the gate is $1.5322L_c\,\text{m}$ from the surface when the gate opens.\par
+% 		Therefore,
+% 		$$ d \approx 1.032\,\text{m} $$
+% 	}
+% \end{minipage}
+
+\newpage
+
+
+
+\begin{minipage}[t]{0.45\textwidth}
+	\textbf{Example 10}:\\
+	\begin{cfig}[0.7]{../../figs/02StaticForces/03staticforcesEx10}\end{cfig}
+	\raggedright
+	Determine the tension $T$ in the upper bolt and tension $S$ in each of the lower bolts.
+	% \parb
+	% \textbf{Solution}:
+	% \parb
+	% \cbox[0.9]{
+	% 	\begin{align*}
+	% 		L_c     & = \frac{3.05\,\text{m}}{\sin54^\circ}+0.6\,\text{m}       \\
+	% 		        & = 4.3700\,\text{m}                                        \\\\
+	% 		h_c     & = L_c\sin54^\circ                                         \\
+	% 		        & =3.5354\,\text{m}                                         \\\\
+	% 		p_{avg} & = \gamma h_c                                              \\
+	% 		        & = 0.823\left(9.81\,\text{kN/m}^3\right)(3.5354\,\text{m}) \\
+	% 		        & = 28.544\,\text{kPa}                                      \\\\
+	% 		A       & = \frac{(0.9\,\text{m})\times (1.0\,\text{m})}{2}         \\
+	% 		        & =0.45\,\text{m}^2                                         \\\\
+	% 		F_R     & = \left(28.544\,\text{kN/m}^2\right)(0.45\,\text{m}^2)    \\
+	% 		        & = 12.845\,\text{kN}
+	% 	\end{align*}
+	% }
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.5\textwidth}
+%
+% 	\parb
+% 	\cbox[0.9]{
+% 		\begin{align*}
+% 			I_c     & = \frac{bh^3}{36}                                                             \\
+% 			        & =\frac{(1.0\,\text{m})\left( 0.9\,\text{m}\right)^3}{36}                      \\
+% 			        & =0.020250\,\text{m}^4                                                         \\\\
+% 			L_p-L_c & = \frac{I_c}{L_cA}                                                            \\
+% 			        & =\frac{0.020250\,\text{m}^4}{(4.3700\,\text{m})\left(0.45\,\text{m}^2\right)} \\
+% 			        & =0.010297\,\text{m}
+% 		\end{align*}
+% 	}
+% 	\begin{cfig}{../../figs/02StaticForces/03staticforcesEx10b}\end{cfig}
+% 	\cbox[0.9]{
+% 		\parb
+% 		Sum the moments about the lower bolts at $A$:
+% 		\begin{align*}
+% 			\Sigma M_A    & = (T\,\text{kN})(1.2\,\text{m})-(12.845\,\text{kN})(0.43970\,\text{m}) \\
+% 			              & = 0                                                                    \\
+% 			\Rightarrow	T & = \frac{(12.845\,\text{kN})(0.43970\,\text{m})}{(1.2\,\text{m})}       \\
+% 			              & = 4.7066\,\text{kN}                                                    \\
+% 			              & \approx 4.71\,\text{kN}                                                \\
+% 		\end{align*}
+% 		\parb
+% 		Sum the moments about the upper bolt at $B$:
+% 		\begin{align*}
+% 			\Sigma M_B    & = (12.845\,\text{kN})(0.76030\,\text{m})-(2S\,\text{kN})(1.2\,\text{m}) \\
+% 			              & = 0                                                                     \\
+% 			\Rightarrow	S & = \frac{(12.845\,\text{kN})(0.76030\,\text{m})}{2(1.2\,\text{m})}       \\
+% 			              & = 4.0692\,\text{kN}                                                     \\
+% 			              & \approx 4.07\,\text{kN}                                                 \\
+% 		\end{align*}
+% 	}
+% \end{minipage}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{minipage}[t]{0.4\textwidth}
+	\textbf{Example 11}:\\
+	\begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx11}\end{cfig}
+	\raggedright
+	A rectangular steel gate ($1.5\,\text{m}\times2.15\,\text{m}$) is used to regulate the level of a water storage pond.
+	The gate has a weight of $1.9\,\text{kN}$ which can be thought of as acting through the centre of the gate.\par \bigskip
+	Determine the force $T$ required to begin to open the gate when the pond has a depth of $3.1\,\text{m}$.
+	% \parb
+	% \textbf{Solution}:
+	% \parb
+	% \begin{cfig}[0.5]{../../figs/02StaticForces/03staticforcesEx11b}\end{cfig}
+	% \cbox[0.9]{
+	% 	\Large
+	% 	\begin{align*}
+	% 		\frac{3.1}{AB} & =\frac{\text{opp}}{\text{hyp}}=\sin52^\circ   \\
+	% 		\Rightarrow AB & = \frac{3.1}{\sin52^\circ} = 3.9340\,\text{m} \\\\
+	% 		\Rightarrow BH & = 3.9340-2.15=1.7840\,\text{m}                \\\\
+	% 		\Rightarrow BC & = 3.9340-1.075=2.8590\,\text{m}               \\\\
+	% 		\Rightarrow DC & = 2.8590\sin52^\circ= 2.2529\,\text{m}
+	% 	\end{align*}
+	% }
+\end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.55\textwidth}
+%
+% 	\cbox[0.9]{
+% 		\Large
+% 		\begin{align*}
+% 			h_c          & = DC = 2.2529\,\text{m}                                                                         \\
+% 			L_c          & = BC =2.859\,\text{m}                                                                           \\\\
+% 			p_{avg}      & = \gamma h_c                                                                                    \\
+% 			             & = \left(9.81\,\text{kN/m}^3\right)(2.2529\,\text{m})                                            \\
+% 			             & = 22.101\,\text{kPa}                                                                            \\\\
+% 			A            & = (1.5\,\text{m}\times2.15\,\text{m}) =3.225\,\text{m}^2                                        \\\\
+% 			F_R          & = p_{avg}A                                                                                      \\
+% 			             & = \left(22.101\,\text{kN/m}^2\right)\left(3.225\,\text{m}^2\right)                              \\
+% 			             & = 71.275\,\text{kN}                                                                             \\\\
+% 			I_c          & = \frac{bh^3}{12}=\frac{(1.5\,\text{m})(2.15\,\text{m})^2}{12}=1.2423\,\text{m}^2               \\
+% 			\implies L_p & = L_c+\frac{I_c}{L_cA}                                                                          \\
+% 			             & = 2.8590\,\text{m} +\frac{1.2423\,\text{m}^4}{(2.8590\,\text{m})\left(3.225\,\text{m}^2\right)} \\
+% 			             & = 2.9937\,\text{m}
+% 		\end{align*}
+%
+% 		Sum moments about the hinge, noting that the reaction at $A$ is $0$ when the gate begins to open:
+% 		\begin{align*}
+% 			\Sigma M_H & =(71.275\,\text{kN})(2.9937\,\text{m}-1.7840\,\text{m})                                             \\
+% 			           & \qquad +(1.9\,\text{kN})(1.075\cos52^\circ\,\text{m})                                               \\
+% 			           & \qquad -(T\,\text{kN})(2.15\cos52^\circ\,\text{m})                                                  \\
+% 			           & = 0                                                                                                 \\
+% 			T          & = \frac{(71.275\,\text{kN})(1.2097\,\text{m}+(1.9\,\text{kN})(0.66184\,\text{m})}{1.3237\,\text{m}} \\
+% 			           & = 66.087\,\text{kN}                                                                                 \\
+% 			           & \approx 66.1\,\text{kN}
+% 		\end{align*}
+% 	}
+% \end{minipage}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \begin{minipage}[c]{0.4\textwidth}
+% 	\textbf{Example 12}:\\
+% 	\begin{cfig}[0.45]{../../figs/02StaticForces/03staticforcesEx12}\end{cfig}
+% 	\raggedright
+% 	A $L$-shaped steel gate $ABC$ is used to regulate the level of a water storage pond.
+% 	Both the vertical and the horizontal parts of the gate are rectangular with a width of $1.75\,\text{m}$.
+% 	When the water level exceeds a certain level, the whole gate $ABC$ rotates clockwise about the frictionless hinge at $B$.
+% 	\par \bigskip
+% 	Determine the value of $h$ at which the gate begins to open.
+% 	\parb
+% 	\textbf{Solution}:
+% 	\parb
+% 	\cbox[0.9]{
+% 		The gate opens when the clockwise moment of the hydrostatic force on the vertical section of the gate exceeds
+% 		the counterclockwise moment of the hydrostatic force on the horizontal section of the gate.\parb
+% 		The dimensions of the vertical rectangle are $1.75\,\text{m}\times1.5\,\text{m}$ and the dimensions of the
+% 		horizontal rectangle are  $1.75\,\text{m}\times1.2\,\text{m}$\parb
+% 		\underline{For the vertical section}:
+% 		\begin{align*}
+% 			h_c     & = d+0.75\,\text{m}                                   \\\\
+% 			p_{avg} & = \gamma h_c                                         \\
+% 			        & = \left(9.81\,\text{kN/m}^3\right)(d+0.75\,\text{m}) \\\\
+% 			A       & = (1.75\,\text{m}\times 1.5\,\text{m})               \\
+% 			        & = 2.625\,\text{m}^2
+% 		\end{align*}
+% 	}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[c]{0.58\textwidth}
+%
+% 	\cbox[0.9]{
+% 		\begin{align*}
+% 			F_{R1}  & = p_{avg}A                                                                                       \\
+% 			        & = \left(9.81\,\text{kN/m}^3\right)(d+0.75\,\text{m})(2.625\,\text{m}^2)                          \\
+% 			        & = 25.751(h+0.75)\,\text{kN}                                                                      \\\\
+% 			L_p-L_c & = \frac{I_c}{L_cA}                                                                               \\
+% 			        & = \frac{(1.75\,\text{m})(1.5\,\text{m})^3/12}{(h+0.75\,\text{m})(1.75\,\text{m})(1.5\,\text{m})} \\
+% 			        & = \frac{0.1875}{h+0.75}\,\text{m}                                                                \\\\
+% 			M_{cw}  & = 25.751(h+0.75)\left(0.75-\frac{0.1875}{h+0.75}\right)\,\text{kN}\cdot\text{m}
+% 		\end{align*}
+% 		\parb
+% 		\underline{For the horizontal section}:
+%
+% 		\begin{align*}
+% 			p_{avg} & = \gamma h_c                                                         \\
+% 			        & = \left(9.81\,\text{kN/m}^3\right)(h+1.5\,\text{m})                  \\\\
+% 			A       & = (1.75\,\text{m}\times 1.2\,\text{m})                               \\
+% 			        & = 2.1\,\text{m}^2                                                    \\\\
+% 			F_{R2}  & = p_{avg}A                                                           \\
+% 			        & = \left(9.81\,\text{kN/m}^3\right)(h+1.5\,\text{m})(2.1\,\text{m}^2) \\
+% 			        & = 20.601(h+1.5)\,\text{kN}                                           \\\\
+% 			M_{ccw} & = 20.601(h+1.5)(0.6)\,\text{kN}\cdot\text{m}                         \\
+% 			        & = 12.361(h+1.5)\,\text{kN}\cdot\text{m}
+% 		\end{align*}
+% 		\parb
+% 		\underline{Equating the moments}
+% 		\parb
+% 		When the gate begins to open, the moments are equal:
+% 		\begin{align*}
+% 			25.751(h+0.75)\left(0.75-\frac{0.1875}{h+0.75}\right) & = 12.361(h+1.5)    \\
+% 			25.751(h+0.75)(0.75)-25.751(0.1875)                   & = 12.361(h+1.5)    \\
+% 			19.313(h+0.75)-25.751(0.1875)                         & = 12.361(h+1.5)    \\
+% 			19.313h+14.485-4.8283                                 & = 12.361h+18.542   \\
+% 			6.952h                                                & = 8.8851           \\
+% 			h                                                     & = 1.2781\,\text{m}
+% 		\end{align*}
+% 	}
+%
+% \end{minipage}
+
+
+
+\end{document}
