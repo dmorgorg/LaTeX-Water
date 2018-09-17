@@ -1,0 +1,710 @@
+% override specific chktex warnings
+% chktex-file 46 - don't use $ instead of \(, etc)
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 9 - sometimes messes up with ( and {
+
+\documentclass[10pt]{amsart}
+\usepackage[showboxes]{textpos}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.75in,rmargin=0.75in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{2cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-6cm}
+\centering
+
+\textbf{\Large Module 3: Flow of Fluids and Bernoulli's Equation (CIVL 318)}
+\parb
+\begin{center}
+	\begin{tabular}{r >{$}r<{$} >{$}c<{$} >{$}l<{$}}
+		\toprule
+		\addlinespace
+		\textbf{ Volume Flow Rate}:     & Q                                       & = & Av                                      \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Mass Flow Rate}:       & M                                       & = & \rho Q                                  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Weight Flow Rate}:     & W                                       & = & \gamma Q                                \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Continuity Equation}:  & A_1v_1                                  & = & A_2v_2                                  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Bernoulli's Equation}: & \frac{p_A}{\gamma}+z_A+\frac{v_A^2}{2g} & = & \frac{p_B}{\gamma}+z_B+\frac{v_B^2}{2g} \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{2cm}
+
+\mini[0.5]
+{
+	
+	\textbf{\normalsize Table F: Schedule 40 Steel Pipe}\parb
+	\begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}  >{$}c<{$}}
+		
+		\toprule
+		\addlinespace
+		\text{Nominal} & \text{Inside}   & \qquad\qquad & \text{Nominal} & \text{Inside}   \\
+		\text{Size}    & \text{Diameter} &              & \text{Size}    & \text{Diameter} \\
+		
+		\addlinespace
+		\text{(in)}    & \text{(mm)}     &              & \text{(in)}    & \text{(mm)}     \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\tfrac18       & 6.8             &              & 4              & 102.3           \\ \addlinespace
+		\tfrac14       & 9.2             &              & 5              & 128.2           \\ \addlinespace
+		\tfrac38       & 12.5            &              & 6              & 154.1           \\ \addlinespace
+		\tfrac12       & 15.8            &              & 8              & 202.7           \\ \addlinespace
+		\tfrac34       & 20.9            &              & 10             & 254.5           \\ \addlinespace
+		1              & 26.6            &              & 12             & 303.2           \\ \addlinespace
+		1\tfrac14      & 35.1            &              & 14             & 333.4           \\	\addlinespace
+		1\tfrac12      & 40.9            &              & 16             & 381.0           \\ \addlinespace
+		2              & 52.5            &              & 18             & 428.7           \\ \addlinespace
+		2\tfrac12      & 62.7            &              & 20             & 477.9           \\ \addlinespace
+		3              & 77.9            &              & 24             & 574.7           \\ \addlinespace
+		3\tfrac12 	& 90.1 \\
+		
+		\midrule
+		\bottomrule
+	\end{tabular}
+}
+\hfill
+\mini[.4]
+{
+	
+	\textbf{\Large Table G: Dimensions of Steel Tubing}\parb
+	
+	\begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}}
+		
+		\toprule
+		\addlinespace
+		\text{Outside}  & \text{Outside}  & \text{Wall}      & \text{Inside}   \\
+		\text{Diameter} & \text{Diameter} & \text{Thickness} & \text{Diameter} \\ \addlinespace
+		\text{(in)}     & \text{(mm)}     & \text{(mm)}      & \text{(mm)}     \\ \addlinespace
+		\midrule
+		\addlinespace
+		\tfrac{1}{8}    & 3.18            & 0.813            & 1.549           \\
+		                &                 & 0.889            & 1.397           \\ \addlinespace
+		\tfrac{3}{16}   & 4.76            & 0.813            & 3.137           \\
+		                &                 & 0.889            & 2.985           \\ \addlinespace
+		\tfrac{1}{4}    & 6.35            & 0.889            & 4.572           \\
+		                &                 & 1.24             & 3.861           \\ \addlinespace
+		\tfrac{5}{16}   & 7.94            & 0.889            & 6.160           \\
+		                &                 & 1.24             & 5.448           \\ \addlinespace
+		\tfrac{3}{8}    & 9.53            & 0.889            & 7.747           \\
+		                &                 & 1.24             & 7.036           \\ \addlinespace
+		\tfrac{1}{2}    & 12.70           & 1.24             & 10.21           \\
+		                &                 & 1.65             & 9.46            \\ \addlinespace
+		\tfrac{5}{8}    & 15.88           & 1.24             & 13.39           \\
+		                &                 & 1.65             & 12.57           \\ \addlinespace
+		\tfrac{3}{4}    & 19.05           & 1.24             & 16.56           \\
+		                &                 & 1.65             & 15.75           \\ \addlinespace
+		\tfrac{7}{8}    & 22.23           & 1.24             & 19.74           \\
+		                &                 & 1.65             & 18.92           \\ \addlinespace
+		1               & 25.40           & 1.65             & 22.10           \\
+		                &                 & 2.11             & 21.18           \\ \addlinespace
+		1\tfrac{1}{4}   & 31.75           & 1.65             & 28.45           \\
+		                &                 & 2.11             & 27.53           \\ \addlinespace
+		1\tfrac{1}{2}   & 38.10           & 1.65             & 34.80           \\
+		                &                 & 2.11             & 33.88           \\ \addlinespace
+		1\tfrac{3}{4}   & 44.45           & 1.65             & 41.15           \\
+		                &                 & 2.11             & 40.23           \\ \addlinespace
+		2               & 50.80           & 1.65             & 47.50           \\
+		                &                 & 2.11             & 46.587          \\ \addlinespace
+		\midrule
+		\bottomrule
+	\end{tabular}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vfill
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.5\textwidth}
+	\raggedright
+	\textbf{Example 1}:
+	\begin{cfig}[0.5]{../../figs/03FlowOfFluids/04BernoulliEx01}\end{cfig}
+	The average velocity of the flow at the nozzle $C$ is $4.7\,\text{m/s}$.\par
+	
+	Determine:
+	\begin{itemize}
+		\item the average flow velocity at $A$
+		\item the average flow velocity at $B$
+		\item the volume flow rate, $Q$, through the system in L/s.
+	\end{itemize}
+	\textbf{Solution}:
+	\cbox{
+		\Large
+		\begin{align*}
+			A_Av_A & = A_Cv_C \Rightarrow v_A=\frac{A_C}{A_A}v_C                                  \\
+			v_A    & = \frac{\pi(0.035\,\text{m})^2/4}{\pi(0.115\,\text{m})^2/4}(4.7\,\text{m/s}) \\
+			       & = \frac{(0.035\,\text{m})^2}{(0.115\,\text{m})^2}(4.7\,\text{m/s})           \\
+			       & = 0.43535\,\text{m/s}                                                        \\
+			       & = 0.435\,\text{m/s}                                                          
+		\end{align*}
+	}
+	\parm
+	\cbox{
+		\Large
+		\begin{align*}
+			A_B v_B & = A_C v_C \Rightarrow v_A=\frac{A_B}{A_A}v_B                                 \\
+			v_B     & = \frac{\pi(0.035\,\text{m})^2/4}{\pi(0.080\,\text{m})^2/4}(4.7\,\text{m/s}) \\
+			        & = \left(\frac{0.035\,\text{m}}{0.080\,\text{m}}\right)^2(4.7\,\text{m/s})    \\
+			        & = 0.89961\,\text{m/s}                                                        \\
+			        & = 0.900\,\text{m/s}                                                          
+		\end{align*}
+	}
+	\parm
+	\cbox{
+		\Large
+		\begin{align*}
+			Q & = A_Cv_C = \pi(0.035\,\text{m})^2/4\times(4.7\,\text{m/s}) \\
+			  & = 0.0045219\,\text{m}^3/\text{s}                           \\
+			  & = 4.52\,\text{L/s}                                         
+		\end{align*}
+	}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\raggedright
+	\textbf{Example 2}:\parb
+	Water, at $70\text{\textcelsius}$ flows through $\tfrac78\text{-in.}$ steel tubing, with $1.65\,\text{mm}$
+	wall thickness, at an average velocity of $5.7\,\text{m/s}$. Determine:
+	\begin{itemize}
+		\item the volume flow rate, $Q$
+		\item the mass flow rate, $M$
+		\item the weight flow rate, $W$
+	\end{itemize}
+	\parb
+	\textbf{Solution}:\parb
+	\cbox{
+		\Large
+		\begin{align*}
+			Q & = Av                                        \\
+			  & = \frac{\pi(0.01892)^2}{4}(5.7\,\text{m/s}) \\
+			  & = 0.0016025\,\text{m}^3/\text{s}            \\
+			  & = 1.603\,\text{L/s}                         
+		\end{align*}
+	}
+	\parb
+	\cbox{
+		\Large
+		\begin{align*}
+			M & = \rho_{70\text{\textcelsius}}(0.0016025\,\text{m}^3/\text{s}               \\
+			  & =\left(978\,\text{kg/m}^3\right)\left(0.0016025\,\text{m}^3/\text{s}\right) \\
+			  & =1.5673 \,\text{kg/s}                                                       \\
+			  & = 1.567\,\text{kg/s}                                                        
+		\end{align*}
+	}
+	\parb
+	\cbox{
+		\Large
+		\begin{align*}
+			W & = \gamma_{70\text{\textcelsius}}(0.0016025\,\text{m}^3/\text{s}             \\
+			  & =\left(9.59\,\text{kN/m}^3\right)\left(0.016025\,\text{m}^3/\text{s}\right) \\
+			  & =0.015368 \,\text{kN/s}                                                     \\
+			  & = 15.37\,\text{N/s}                                                         
+		\end{align*}
+	}
+	
+\end{minipage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.45\textwidth}
+	\raggedright
+	\textbf{Example 3}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.5]{../../figs/03FlowOfFluids/04BernoulliEx03}\end{cfig}
+	Oil, with a specific gravity of $0.83$, flows under gravity from a tank, through a pipe system as shown, before
+	entering the atmosphere through a nozzle at $D$. \par
+	Determine:
+	\begin{itemize}
+		\item the pressure at $A$
+		\item the pressure at $B$
+		\item the pressure at $C$
+		\item the volume flow rate through the system
+	\end{itemize}
+	\parb
+	\textbf{Solution}:
+	\parb
+	\raggedright
+	We begin by applying Bernoulli's Equation between a point $S$ on the surface of the tank and the nozzle $D$.
+	(These two points are chosen since the pressure and elevations at each are known. We also know the velocity head at $S$ so the only unknown is the velocity at $D$.)
+	\cbox{
+		\Large
+		\begin{align*}
+			\frac{p_S}{\gamma} + z_S + \frac{v_S^2}{2g} & = \frac{p_D}{\gamma} + z_D + \frac{v_D^2}{2g} \\
+			0 + 4.3 + 0                                 & = 0 + 0 + \frac{v_D^2}{2g}                    \\
+			v_D^2                                       & = 4.3(2\times9.81)                            \\
+			v_D                                         & = \sqrt{84.366}=9.1851\,\text{m/s}            
+		\end{align*}
+	}
+	\parm
+	
+	Then, using the continuity equation, we can find the velocities at $A$ and $B$, and at $C$. \\(Velocities at $A$ and $B$ are the same since the diameter of the tubing is the same.)
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\cbox{
+		\Large
+		\begin{align*}
+			A_Dv_D          & = A_Av_A                                                                                 \\
+			\Rightarrow v_A & = \frac{A_Dv_D}{A_A}                                                                     \\
+			                & = \frac{\pi(0.0125\,\text{mm})^2/4}{\pi(0.0273\,\text{mm})^2/4}\cdot(9.1851\,\text{m/s}) \\
+			                & = 1.8936\,\text{m/s}                                                                     \\
+			\Rightarrow v_B & =1.8936\,\text{m/s}                                                                      \\\\
+			v_C             & = \frac{A_Dv_D}{A_C}                                                                     \\
+			                & =                                                                                        
+			\frac{\pi(0.0125\,\text{mm})^2/4}{\pi(0.04658\,\text{mm})^2/4}\cdot(9.1851\,\text{m/s})\\
+			                & = 0.66146\,\text{m/s}                                                                    
+		\end{align*}
+	}
+	\parb
+	\raggedright
+	Now, we can use Bernoulli's Equation between the surface and $A$ or between $A$ and the nozzle $D$ to find $p_A$. I use the surface simply because it has no velocity head:
+	\cbox{
+		\begin{align*}
+			\frac{p_S}{\gamma} + z_S + \frac{v_S^2}{2g} & = \frac{p_A}{\gamma} + z_A + \frac{v_A^2}{2g}                      \\
+			0 + 3.7 + 0                                 & = \frac{p_A}{0.83\times9.81} + 0 + \frac{(1.8936)^2}{2\times 9.81} \\
+			p_A                                         & = 0.83\times 9.81\left(3.7-\frac{(1.8936)^2}{2\times	9.81}\right)  \\
+			p_A                                         & = 28.638\,\text{kPa}                                               \\
+			\bm{p_A}                                    & \bm{= 28.6\,\textbf{kPa}}                                          
+		\end{align*}
+	}
+	\parb
+	This procedure, using the surface and $B$, can be repeated to find $p_B$. Alternatively, using $A$ and $B$ is a good
+	choice since they have the same velocity and the velocity head terms cancel out of Bernoulli's Equation:
+	\cbox{
+		\begin{align*}
+			\frac{p_B}{\gamma} + z_B +\cancel{\frac{v_B^2}{2g}} & = \frac{p_A}{\gamma} + z_A + \cancel{\frac{v_A^2}{2g}} \\
+			\frac{p_B}{0.83\times 9.81} + 0.5                   & = \frac{p_A}{0.83\times 9.81} + 0                      \\
+			p_B                                                 & = p_A - 0.5\gamma                                      \\
+			                                                    & = 28.638 - 0.5(0.83\times 9.81)                        \\
+			p_B                                                 & = 24.567\,\text{kPa}                                   \\
+			\bm{p_B}                                            & \bm{= 24.6\,\textbf{kPa}}                              
+		\end{align*}
+	}
+\end{minipage}
+\newpage
+\flushleft
+\begin{minipage}{0.45\textwidth}
+	Using the surface and $C$, we get:
+	\cbox{
+		\begin{align*}
+			\frac{p_S}{\gamma} + z_S + \frac{v_S^2}{2g} & = \frac{p_C}{\gamma} + z_C + \frac{v_C^2}{2g}                       \\
+			0 + 3.2 + 0                                 & = \frac{p_C}{0.83\times9.81} + 0 + \frac{(0.66146)^2}{2\times 9.81} \\
+			p_C                                         & = 0.83\times 9.81\left(3.2-\frac{(0.66146)^2}{2\times 9.81}\right)  \\
+			p_C                                         & = 25.874\,\text{kPa}                                                \\
+			\bm{p_C}                                    & \bm{= 25.9\,\textbf{kPa}}                                           
+		\end{align*}
+	}
+	\parb
+	To find the volume flow rate, use $Q=Av$ at any of the points where $A$ and $v$ are known:
+	\cbox{
+		\begin{align*}
+			Q      & = A_Dv_D                                                     \\
+			       & = \frac{\pi(0.0125\,\text{m})^2}{4}\cdot(9.1851\,\text{m/s}) \\
+			       & = 0.0011272\,\text{m}^3/\text{s}                             \\
+			\bm{Q} & \bm{= 1.127\,\textbf{L/s}}                                   
+		\end{align*}
+	}
+\end{minipage}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.4\textwidth}
+	\raggedright
+	\textbf{Example 4}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.42]{../../figs/03FlowOfFluids/04BernoulliEx04a}\end{cfig}
+	Determine the pressure reading  $p_2$ if $Q=25\,\text{L/s}$
+	
+	\parb
+	\textbf{Solution}:
+	\parb
+	
+	Find the cross-sectional areas at $1$ and $2$:
+	\cbox{
+		\Large
+		\begin{align*}
+			A_1 & = \frac{\pi(0.0737\,\text{m})^2}{4} \\
+			    & = 0.0042660\,\text{m}^2             \\\\
+			A_2 & = \frac{\pi(0.1223\,\text{m})^2}{4} \\
+			    & = 0.011747\,\text{m}^2              
+		\end{align*}
+	}
+	\parb
+	Find the velocities at $1$ and $2$ for $Q=25\,\text{L/s}$:
+	\cbox{
+		\Large
+		\begin{align*}
+			v_1 & = \frac{Q}{A_1}                                            \\
+			    & = \frac{0.025\,\text{m}^3/\text{s}}{0.0042660\,\text{m}^2} \\
+			    & = 5.8603\,\text{m/s}                                       \\\\
+			v_2 & = \frac{Q}{A_2}                                            \\
+			    & = \frac{0.025\,\text{m}^3/\text{s}}{0.011747\,\text{m}^2}  \\
+			    & = 2.1282\,\text{m/s}                                       
+		\end{align*}
+	}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.52\textwidth}
+	\parb
+	Calculate the velocity heads at $1$ and $2$ for $Q=25\,\text{L/s}$:
+	\cbox{
+		\Large
+		\begin{align*}
+			\frac{v_1^2}{2g} & = \frac{(5.8603)^2}{2\times 9.81}  \\
+			                 & = 1.7504\,\text{m}                 \\\\
+			\frac{v_2^2}{2g} & = \frac{(2.1282)^2}{2 \times 9.81} \\
+			                 & = 0.23085\,\text{m}                
+		\end{align*}
+	}
+	\parb
+	Applying Bernoulli's Equation between $1$ and $2$:
+	\begin{align*}
+		\frac{p_1}{\gamma} + z_1 + \frac{v_1^2}{2g} & = \frac{p_2}{\gamma} + z_2 + \frac{v_2^2}{2g} \\
+		\frac{72}{1.26\times9.81} + 0 + 1.7504      & = \frac{p_2}{1.26\times9.81} + 1.4 + 0.23085  \\
+		7.5754                                      & = \frac{p_2}{12.361} + 1.6309                 \\
+		p_2                                         & = 73.480\,\text{kPa}                          \\
+		\bm{p_2}                                    & \bm{= 73.5\,\textbf{kPa}}                     
+	\end{align*}
+	\parb
+	\centering
+	(So, in this case, $\bm{p_2>p_1}$.)
+	
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.4\textwidth}
+	\raggedright
+	\textbf{Exercise 1}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.42]{../../figs/03FlowOfFluids/04BernoulliEx04a}\end{cfig}
+	Determine the pressure reading  $p_2$ if $Q=20\,\text{L/s}$
+	
+	\parb
+	\textbf{Solution}:
+	\parb
+	
+	Find the cross-sectional areas at $1$ and $2$:
+	\cbox{
+		\Large
+		\begin{align*}
+			A_1 & = \frac{\pi(0.0737\,\text{m})^2}{4} \\
+			    & = 0.0042660\,\text{m}^2             \\\\
+			A_2 & = \frac{\pi(0.1223\,\text{m})^2}{4} \\
+			    & = 0.011747\,\text{m}^2              
+		\end{align*}
+	}
+	\parb
+	Find the velocities at $1$ and $2$ for $Q=20\,\text{L/s}$:
+	\cbox{
+		\Large
+		\begin{align*}
+			v_1 & = \frac{Q}{A_1}                                            \\
+			    & = \frac{0.020\,\text{m}^3/\text{s}}{0.0042660\,\text{m}^2} \\
+			    & = 4.6882\,\text{m/s}                                       \\\\
+			v_2 & = \frac{Q}{A_2}                                            \\
+			    & = \frac{0.020\,\text{m}^3/\text{s}}{0.011747\,\text{m}^2}  \\
+			    & = 1.7026\,\text{m/s}                                       
+		\end{align*}
+	}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.52\textwidth}
+	\parb
+	Calculate the velocity heads at $1$ and $2$ for $Q=25\,\text{L/s}$:
+	\cbox{
+		\Large
+		\begin{align*}
+			\frac{v_1^2}{2g} & = \frac{(4.6882)^2}{2\times 9.81}  \\
+			                 & = 1.1203\,\text{m}                 \\\\
+			\frac{v_2^2}{2g} & = \frac{(1.7026)^2}{2 \times 9.81} \\
+			                 & = 0.14774\,\text{m}                
+		\end{align*}
+	}
+	\parb
+	Applying Bernoulli's Equation between $1$ and $2$:
+	\begin{align*}
+		\frac{p_1}{\gamma} + z_1 + \frac{v_1^2}{2g} & = \frac{p_2}{\gamma} + z_2 + \frac{v_2^2}{2g} \\
+		\frac{72}{1.26\times9.81} + 0 + 1.1203      & = \frac{p_2}{1.26\times9.81} + 1.4 + 0.14774  \\
+		6.9453                                      & = \frac{p_2}{12.361} + 1.5477                 \\
+		p_2                                         & = 66.719\,\text{kPa}                          \\
+		\bm{p_2}                                    & \bm{= 66.7\,\textbf{kPa}}                     
+	\end{align*}
+	\parb
+	\centering
+	(So, in this case, $\bm{p_2<p_1}$.)
+	
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.42\textwidth}
+	\raggedright
+	\textbf{Example 5}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.4]{../../figs/03FlowOfFluids/04BernoulliEx04b}\end{cfig}
+	Determine $Q$, the volume flow rate.
+	
+	\parb
+	\textbf{Solution}:
+	\parb
+	
+	This question is subtly different from the previous one. We can solve directly
+	for $Q$ or solve for one of either $v_1$ or $v_2$. Let us solve for $Q$ directly here.\parb
+	First, find the velocity head values at $1$ and at $2$ in terms of $Q$:
+	\cbox{
+		\Large
+		\begin{align*}			A_1              & = \frac{\pi(0.1023\,\text{m})^2}{4}                       \\
+			                 & = 0.0082194\,\text{m}^2                                   \\
+			v_1              & = \frac{Q}{A_1}                                           \\
+			                 & = \frac{Q}{0.0082194}\,\text{m/s}                         \\
+			                 & = 121.66Q                                                 \\
+			\frac{v_1^2}{2g} & = \frac{\left(\frac{Q}{0.0082194}\right)^2}{2\times 9.81} \\
+			                 & = 754.43Q^2\,\text{m}                                     \\
+			\\
+			A_2              & = \frac{\pi(0.1541\,\text{m})^2}{4}                       \\
+			                 & = 0.018651\,\text{m}^2                                    \\
+			                 & = 53.617Q                                                 \\
+			v_2              & = \frac{Q}{0.018651}\,\text{m/s}                          \\
+			\frac{v_2^2}{2g} & = \frac{\left(\frac{Q}{0.018651}\right)^2}{2\times 9.81}  \\
+			                 & = 146.52Q^2\,\text{m}                                     
+		\end{align*}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.53\textwidth}
+	\raggedright
+	Applying Bernoulli's Equation between $1$ and $2$:
+	\cbox{
+		\large
+		\begin{align*}
+			\frac{p_1}{\gamma} + z_1 + \frac{v_1^2}{2g} & = \frac{p_2}{\gamma} + z_2 + \frac{v_2^2}{2g}     \\
+			\frac{87.2}{0.87\times9.81} + 0 + 754.43Q^2 & = \frac{103.8}{0.87\times9.81} + 1.65 + 146.52Q^2 \\
+			10.217 + 754.43Q^2                          & = 13.812 + 146.52Q^2                              \\
+			Q^2                                         & = \frac{13.812-10.217}{754.43-146.52}             \\
+			\bm{Q}                                      & \bm{\approx 76.9\,\text{L/s}}                     
+		\end{align*}
+	}
+	\parb
+	\vspace{\stretch{1}}
+\end{minipage}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cmini[0.76]{
+	\textbf{Example 6}:\\
+	\centering
+	\cfig[0.27]{../../figs/03FlowOfFluids/04BernoulliEx06a}
+	Determine $Q$, the volume flow rate.
+	
+	\parb\flushleft
+	\textbf{Solution}:
+	
+	\cbox{
+		\large
+		\vspace{-0.5cm}
+		\begin{align*}
+			\frac{p_A}{\gamma} + z_A + \frac{v_A^2}{2g}                   & = \frac{p_S}{\gamma} + z_S + \frac{v_S^2}{2g}                                 \\
+			\frac{p_A}{0.68\times 9.81} + \cancel{z_A} + \frac{v_A^2}{2g} & = \frac{p_S}{0.68\times 9.81} + \cancel{z_S} + \cancelto{0}{\frac{v_S^2}{2g}} \\
+			p_S-p_A                                                       & = (0.68\times 9.81) \frac{v_A^2}{2g}                                          
+		\end{align*}
+	}
+	\parb
+	Now look at the manometer:
+	\cbox{
+		\large
+		\vspace{-0.5cm}
+		\begin{align*}
+			p_A+\cancel{(0.68\times 9.81)d}+(1.88\times 9.81)(0.371) & = p_S+(0.68\times 9.81)(\cancel{d}+0.371)                   \\
+			\Rightarrow p_S-p_A                                      & = 1.88\times 9.81\times 0.371 - 0.68\times 9.81\times 0.371 \\
+			                                                         & = 4.3674                                                    
+		\end{align*}
+	}
+	\parb
+	Substituting in the result above:
+	\cbox{
+		\large
+		\vspace{-0.5cm}
+		\begin{align*}
+			4.3674 & = (0.68\times 9.81) \frac{v_A^2}{2g}                  \\
+			v_A^2  & = 12.845                                              \\
+			v_A    & = 3.584 \,\text{m/s}                                  \\\\
+			Q      & = \frac{\pi d^2}{4}\cdot  3.584 \,\text{m}^3\text{/s} \\
+			       & = 0.11566\,\text{m}^3\text{/s}                        \\
+			\bm{Q} & \bm{\approx 116\,\text{L/s}}                          
+		\end{align*}
+	}
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cmini[0.75]{
+	\raggedright
+	\textbf{Example 7}:\\
+	\begin{cfig}[0.3]{../../figs/03FlowOfFluids/04BernoulliEx08}\end{cfig}
+	Determine $Q$, the volume flow rate, if $h=210$ mm.
+	
+	\parb
+	\textbf{Solution}:
+	\parb
+	Use the manometer to find the difference in pressure between the flow through the pipe and through the constriction:
+	\par
+	(Calculate the pressure at the join of the pipe fluid and the manometer gauge
+	fluid on the right hand side in the diagram, and let $t$ be the vertical
+	distance between the centre of the pipe and the pipe-fluid to gauge-fluid on
+	the left hand side of the diagram.)
+	\cbox{
+		\vspace{-0.5cm}
+		\large
+		\begin{align*}
+			p_{1}+\gamma_\text{pipe}\cdot t + \gamma_\text{gauge}\cdot h & =  p_{2}+\gamma_\text{pipe}\cdot t + \gamma_\text{pipe}\cdot h \\
+			p_{1}+\gamma_\text{gauge}\cdot h                             & =  p_{2}+ \gamma_\text{pipe}\cdot h                            \\
+			p_{1}+13.54\times9.81\times0.210                             & =  p_{2}+ 0.82\times9.81\times0.210                            \\
+			p_{2}-p_{1}                                                  & = (13.54-0.82)\times9.81\times0.210                            \\
+			                                                             & = 26.204\text{ kPa}                                            
+		\end{align*}
+		\vspace{-0.875cm}
+	}
+	\parm
+	Find the velocity heads at $p_1$ and $p_2$ in terms of $Q$:
+	\parm
+	\mini[0.45]{
+		\large
+		\cbox{
+			\begin{align*}
+				v_1              & = \frac{Q_1}{\pi(0.058)^2/4}\,\text{m/s} \\
+				                 & = 378.49Q   \,\text{m/s}                 \\
+				\frac{v_1^2}{2g} & = 7301.5Q^2 \,\text{m}                   
+			\end{align*}
+		}
+	}
+	\hfill
+	\mini[0.45]{
+		\cbox{
+			\large
+			\begin{align*}
+				v_2              & = \frac{Q_2}{\pi(0.100)^2/4} \,\text{m/s} \\
+				                 & = 127.32Q  \,\text{m/s}                   \\
+				\frac{v_2^2}{2g} & = 826.22Q^2     \,\text{m}                
+			\end{align*}
+		}
+	}
+	\parb
+	Apply Bernoulli's Equation:
+	\cbox{
+		\large
+		\begin{align*}
+			\frac{p_1}{\gamma} + \cancel{z_1} + \frac{v_1^2}{2g} & = \frac{p_2}{\gamma} + \cancel{z_2} + \frac{v_2^2}{2g} \\
+			\frac{p_2-p_1}{\gamma}                               & = \frac{v_1^2}{2g}-\frac{v_2^2}{2g}                    \\
+			p_2-p_1                                              & = \gamma\left[7301.5Q^2-826.22Q^2\right]               \\
+			26.204                                               & = 0.82\times 9.81\times 6475.3Q^2                      \\
+			Q^2                                                  & = 0.00050307                                           \\
+			Q                                                    & = 0.022429\,\mathsf{m^3/s}                             \\
+			                                                     & = 22.4\text{ L/s}                                      
+		\end{align*}
+	}
+}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.48\textwidth}
+	\raggedright
+	\textbf{Exercise 2}:\\
+	\begin{cfig}[0.2]{../../figs/03FlowOfFluids/04BernoulliEx09}\end{cfig}
+	Determine $Q$, the volume flow rate, if $h=125$ mm.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+	\parb
+	\vspace{-0.75cm}
+	\textbf{Solution}:
+	\begin{cfig}[0.225]{../../figs/03FlowOfFluids/04BernoulliEx09b}\end{cfig}
+\end{minipage}\parb
+\begin{minipage}[t]{0.85\textwidth}
+	\parb
+	Since $P_A=P_B$,
+	\begin{align*}
+		p_{1}+\gamma_\text{pipe}(a+\cancel{b}) + \gamma_\text{gauge}\cdot h & =  p_{2}+\gamma_\text{pipe}(\cancel{b} + h)         \\
+		p_{1}+(0.88\times9.81)(a) + (1.26\times9.81)(0.125)                 & =  p_{2}+(0.88\times9.81)(0.125)                    \\
+		p_{2}-p_{1}                                                         & = (0.88\times9.81)(a-0.125)+(1.26\times9.81)(0.125) \\
+		                                                                    & = 8.6328a+0.46598\text{ kPa}                        
+	\end{align*}
+	Find the velocities at $1$ and $2$ relative to the flow $Q$:
+	\begin{align*}
+		v_1 & = \frac{Q}{A_1} = \frac{Q}{\pi(0.0627)^2/4}=\frac{Q}{0.0030876}=323.87Q \\
+		v_2 & = \frac{Q}{A_2} = \frac{Q}{\pi(0.1023)^2/4}=\frac{Q}{0.0082194}=121.66Q 
+	\end{align*}
+	The associated velocity heads are:
+	\begin{align*}
+		\frac{v_1^2}{2g} & = \frac{(328.87Q)^2}{2g} = 5346.3Q^2 \\
+		\frac{v_2^2}{2g} & = \frac{(121.66Q)^2}{2g} =754.43Q^2  
+	\end{align*}
+	Apply Bernoulli's Equation:
+	\begin{align*}
+		\frac{p_1}{\gamma} + z_1 + \frac{v_1^2}{2g} & = \frac{p_2}{\gamma} + z_2 + \frac{v_2^2}{2g} \\
+		\frac{p_1}{\gamma} + a + 5346.3Q^2          & = \frac{p_2}{\gamma} + 0 + 754.43Q^2          \\
+		\frac{p_2-p_1}{\gamma}                      & = 5346.3Q^2-754.43Q^2+a                       \\
+		p_2-p_1                                     & = 0.88\times9.81\left(4591.9Q^2+a\right)      
+	\end{align*}
+	Incorporating our previous manometer result,
+	\begin{align*}
+		8.6328a+0.46598          & = 0.88\times9.81\left(4591.9Q^2+a\right) \\
+		\cancel{8.6328a}+0.46598 & = 39641Q^2+ \cancel{8.6328a}             \\\\
+		Q                        & = 0.0034286\;\mathrm{m^3/s}              \\
+		                         & \approx 3.43\text{ L/s}                  
+	\end{align*}
+	Note that the answer is independent of $a$: it does not matter what angle the venturi meter
+	is inclined at, the answer will be the same (including vertical or horizontal). This was not the
+	case in the previous examples where the pressure was measured directly in the pipe with pressure meters.
+\end{minipage}
+
+
+\end{document}

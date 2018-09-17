@@ -1,0 +1,290 @@
+% override specific chktex warnings
+% chktex-file 46 - don't use $ instead of \(, etc)
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 9 - sometimes messes up with ( and {
+
+\documentclass[10pt]{amsart}
+\usepackage[showboxes]{textpos}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.75in,rmargin=0.75in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{2cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-6cm}
+\centering
+
+\textbf{\Large Module 3: Flow of Fluids and Bernoulli's Equation (CIVL 318)}
+\parb
+\begin{center}
+	\begin{tabular}{r >{$}r<{$} >{$}c<{$} >{$}l<{$}}
+		\toprule
+		\addlinespace
+		\textbf{ Volume Flow Rate}:     & Q                                       & = & Av                                      \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Mass Flow Rate}:       & M                                       & = & \rho Q                                  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Weight Flow Rate}:     & W                                       & = & \gamma Q                                \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Continuity Equation}:  & A_1v_1                                  & = & A_2v_2                                  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Bernoulli's Equation}: & \frac{p_A}{\gamma}+z_A+\frac{v_A^2}{2g} & = & \frac{p_B}{\gamma}+z_B+\frac{v_B^2}{2g} \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{2cm}
+
+\mini[0.5]
+{
+	
+	\textbf{\normalsize Table F: Schedule 40 Steel Pipe}\parb
+	\begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}  >{$}c<{$}}
+		
+		\toprule
+		\addlinespace
+		\text{Nominal} & \text{Inside}   & \qquad\qquad & \text{Nominal} & \text{Inside}   \\
+		\text{Size}    & \text{Diameter} &              & \text{Size}    & \text{Diameter} \\
+		
+		\addlinespace
+		\text{(in)}    & \text{(mm)}     &              & \text{(in)}    & \text{(mm)}     \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\tfrac18       & 6.8             &              & 4              & 102.3           \\ \addlinespace
+		\tfrac14       & 9.2             &              & 5              & 128.2           \\ \addlinespace
+		\tfrac38       & 12.5            &              & 6              & 154.1           \\ \addlinespace
+		\tfrac12       & 15.8            &              & 8              & 202.7           \\ \addlinespace
+		\tfrac34       & 20.9            &              & 10             & 254.5           \\ \addlinespace
+		1              & 26.6            &              & 12             & 303.2           \\ \addlinespace
+		1\tfrac14      & 35.1            &              & 14             & 333.4           \\	\addlinespace
+		1\tfrac12      & 40.9            &              & 16             & 381.0           \\ \addlinespace
+		2              & 52.5            &              & 18             & 428.7           \\ \addlinespace
+		2\tfrac12      & 62.7            &              & 20             & 477.9           \\ \addlinespace
+		3              & 77.9            &              & 24             & 574.7           \\ \addlinespace
+		3\tfrac12 	& 90.1 \\
+		
+		\midrule
+		\bottomrule
+	\end{tabular}
+}
+\hfill
+\mini[.4]
+{
+	
+	\textbf{\Large Table G: Dimensions of Steel Tubing}\parb
+	
+	\begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}}
+		
+		\toprule
+		\addlinespace
+		\text{Outside}  & \text{Outside}  & \text{Wall}      & \text{Inside}   \\
+		\text{Diameter} & \text{Diameter} & \text{Thickness} & \text{Diameter} \\ \addlinespace
+		\text{(in)}     & \text{(mm)}     & \text{(mm)}      & \text{(mm)}     \\ \addlinespace
+		\midrule
+		\addlinespace
+		\tfrac{1}{8}    & 3.18            & 0.813            & 1.549           \\
+		                &                 & 0.889            & 1.397           \\ \addlinespace
+		\tfrac{3}{16}   & 4.76            & 0.813            & 3.137           \\
+		                &                 & 0.889            & 2.985           \\ \addlinespace
+		\tfrac{1}{4}    & 6.35            & 0.889            & 4.572           \\
+		                &                 & 1.24             & 3.861           \\ \addlinespace
+		\tfrac{5}{16}   & 7.94            & 0.889            & 6.160           \\
+		                &                 & 1.24             & 5.448           \\ \addlinespace
+		\tfrac{3}{8}    & 9.53            & 0.889            & 7.747           \\
+		                &                 & 1.24             & 7.036           \\ \addlinespace
+		\tfrac{1}{2}    & 12.70           & 1.24             & 10.21           \\
+		                &                 & 1.65             & 9.46            \\ \addlinespace
+		\tfrac{5}{8}    & 15.88           & 1.24             & 13.39           \\
+		                &                 & 1.65             & 12.57           \\ \addlinespace
+		\tfrac{3}{4}    & 19.05           & 1.24             & 16.56           \\
+		                &                 & 1.65             & 15.75           \\ \addlinespace
+		\tfrac{7}{8}    & 22.23           & 1.24             & 19.74           \\
+		                &                 & 1.65             & 18.92           \\ \addlinespace
+		1               & 25.40           & 1.65             & 22.10           \\
+		                &                 & 2.11             & 21.18           \\ \addlinespace
+		1\tfrac{1}{4}   & 31.75           & 1.65             & 28.45           \\
+		                &                 & 2.11             & 27.53           \\ \addlinespace
+		1\tfrac{1}{2}   & 38.10           & 1.65             & 34.80           \\
+		                &                 & 2.11             & 33.88           \\ \addlinespace
+		1\tfrac{3}{4}   & 44.45           & 1.65             & 41.15           \\
+		                &                 & 2.11             & 40.23           \\ \addlinespace
+		2               & 50.80           & 1.65             & 47.50           \\
+		                &                 & 2.11             & 46.587          \\ \addlinespace
+		\midrule
+		\bottomrule
+	\end{tabular}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vfill
+\newpage
+\flushleft
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}{0.5\textwidth}
+	\raggedright
+	\textbf{Example 1}:
+	\begin{cfig}[0.5]{../../figs/03FlowOfFluids/04BernoulliEx01}\end{cfig}
+	The average velocity of the flow at the nozzle $C$ is $4.7\,\text{m/s}$.\par
+	
+	Determine:
+	\begin{itemize}
+		\item the average flow velocity at $A$
+		\item the average flow velocity at $B$
+		\item the volume flow rate, $Q$, through the system in L/s.
+	\end{itemize}
+	
+\end{minipage}
+\newpage
+\begin{minipage}[t]{0.45\textwidth}
+	\raggedright
+	\textbf{Example 2}:\parb
+	Water, at $70\text{\textcelsius}$ flows through $\tfrac78\text{-in.}$ steel tubing, with $1.65\,\text{mm}$
+	wall thickness, at an average velocity of $5.7\,\text{m/s}$. Determine:
+	\begin{itemize}
+		\item the volume flow rate, $Q$
+		\item the mass flow rate, $M$
+		\item the weight flow rate, $W$
+	\end{itemize}
+	
+	
+\end{minipage}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.45\textwidth}
+	\raggedright
+	\textbf{Example 3}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.5]{../../figs/03FlowOfFluids/04BernoulliEx03}\end{cfig}
+	Oil, with a specific gravity of $0.83$, flows under gravity from a tank, through a pipe system as shown, before
+	entering the atmosphere through a nozzle at $D$. \par
+	Determine:
+	\begin{itemize}
+		\item the pressure at $A$
+		\item the pressure at $B$
+		\item the pressure at $C$
+		\item the volume flow rate through the system
+	\end{itemize}
+	
+\end{minipage}
+
+
+\newpage~
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.4\textwidth}
+	\raggedright
+	\textbf{Example 4}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.42]{../../figs/03FlowOfFluids/04BernoulliEx04a}\end{cfig}
+	Determine the pressure reading  $p_2$ if $Q=25\,\text{L/s}$
+	
+	
+\end{minipage}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.4\textwidth}
+	\raggedright
+	\textbf{Exercise 1}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.42]{../../figs/03FlowOfFluids/04BernoulliEx04a}\end{cfig}
+	Determine the pressure reading  $p_2$ if $Q=20\,\text{L/s}$
+	
+	
+	
+\end{minipage}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.42\textwidth}
+	\raggedright
+	\textbf{Example 5}:\\
+	\vspace*{-0.5cm}
+	\begin{cfig}[0.4]{../../figs/03FlowOfFluids/04BernoulliEx04b}\end{cfig}
+	Determine $Q$, the volume flow rate.
+	
+	
+\end{minipage}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mini[0.5]{
+	\textbf{Example 6}:\\
+	
+	\cfig[0.27]{../../figs/03FlowOfFluids/04BernoulliEx06a}
+	Determine $Q$, the volume flow rate.
+	
+	
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mini[0.5]{
+	\raggedright
+	\textbf{Example 7}:\\
+	\begin{cfig}[0.3]{../../figs/03FlowOfFluids/04BernoulliEx08}\end{cfig}
+	Determine $Q$, the volume flow rate, if $h=210$ mm.
+	
+	
+}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.48\textwidth}
+	\raggedright
+	\textbf{Exercise 2}:\\
+	\begin{cfig}[0.2]{../../figs/03FlowOfFluids/04BernoulliEx09}\end{cfig}
+	Determine $Q$, the volume flow rate, if $h=125$ mm.
+\end{minipage}
+\newpage
+~\newpage
+
+\end{document}

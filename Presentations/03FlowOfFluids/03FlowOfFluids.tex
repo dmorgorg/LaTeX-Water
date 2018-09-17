@@ -1,0 +1,846 @@
+% override specific chktex warnings
+% chktex-file 46 - don't use $ instead of \(, etc)
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 9 - sometimes messes up with ( and {
+
+\documentclass[9pt,xcolor={svgnames, x11names},professionalfonts, mathserif]{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}  % for top and bottom spacing in table cells
+\usepackage{mathpazo}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{cancel}
+\usepackage{array}
+%\usepackage{enumerate}
+% \usepackage{enumitem} %causes compile error, stack size exceeded?
+\usepackage{gensymb} % for \degree
+\usepackage[many]{tcolorbox}
+\usepackage{verbatim}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tkz-linknodes}
+\usepackage[export]{adjustbox} % for tight borders around photos
+\usepackage{pgf} % for sait logo in beamer
+\usepackage{pgfmath}
+\usepgfmodule{oo}
+%\usetikzlibrary{shapes,decorations,shadows,calc}
+\usetikzlibrary{shadows,calc,arrows.meta}
+% \usetikzlibrary{decorations.shapes}
+%\usetikzlibrary{shapes.callouts}
+% bloody coils
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.multipart}
+
+\input{../../Includes/macrosWater.tex}
+\input{../../Includes/definedColors}
+\input{../../Includes/tikzObjects.tex}
+
+\usefonttheme[onlymath]{serif}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=structure}
+% \hypersetup{urlcolor=Blue4}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+\usetheme{Antibes}
+
+\usecolortheme[rgb={0, 0.6,0.6}]{structure}
+% \definecolor{structurecolor}{rgb}{0.55,0.53,0.31}
+\setbeamertemplate{items}[triangle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+%\setbeamertemplate{background canvas}[vertical shading][bottom=Cyan1!50, middle=white, top=white, midpoint=0.05]
+\setbeamertemplate{headline}{\vspace{.05cm}}
+\setbeamertemplate{footline}{\textcolor{black}{ \hfill \insertshorttitle \quad
+	\insertshortsubtitle
+	\quad \insertframenumber/\inserttotalframenumber \quad{ }\vspace{0.125cm}}}
+\addtobeamertemplate{footline}{\hypersetup{linkcolor=.}}{}
+\setbeamertemplate{navigation symbols}{} % empty braces suppresses all navigation symbols
+\setbeamercolor{frametitle}{fg=gray!10!white}
+% \setbeamercolor{footline}{fg=black}
+\setbeamercolor{block title}{fg=gray!15!white,bg=structure}
+\setbeamercolor{block body}{bg=white, fg=black}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamersize{text margin left = 1cm, text margin right=1cm}
+%\useinnertheme[shadow]{rounded}
+%\raggedright
+\setbeamerfont{block title}{family=mathserif}
+
+\everymath{\displaystyle}
+\newcounter{itemcount}
+
+\logo{\pgfputat{\pgfxy(-11.85,-0.5)}{\pgfbox[right,base]{\includegraphics[height=1cm]{../../figs/rb_logo}}}}
+
+
+\resetcounteronoverlays{tcb@cnt@myexam}
+\resetcounteronoverlays{tcb@cnt@myexer}
+
+
+% itemize indent
+\setlength{\leftmargini}{1.5em}
+\def\scale{1} % initialisation for pikz
+\raggedright
+
+
+
+%define title content
+\title[Flow of Fluids]{\Huge 03 --- Flow of Fluids in Closed Pipes}
+% \title[Static Fluids]{\Huge \textcolor{white}{02 --- Forces Due to Static Fluids}}
+\subtitle[CIVL318]{\Large\textcolor{white}{Water Resources, CIVL318}}
+\author{}
+\institute{}
+\date{Last revision on \today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}[plain]    %don't need footer on titlepage
+	\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Fluid Dynamics}
+	\begin{itemize}
+		\item In this module, and for the rest of this course, we shall be concerned with \textbf{fluid dynamics} \pause
+		\item This is the study of the \text{flow} of fluids through full pressurised pipes
+		      \cfig[0.4]{../../figs/03FlowOfFluids/04FullPipe-1}
+	\end{itemize}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Flow Rates}
+	
+	\begin{mybox}[title=Mass Flow Rate]
+		The mass $M$ of fluid flowing past a section in unit time (kg/s)
+	\end{mybox}
+	\parb
+	\visible<2->{
+		\begin{mybox}[title=Weight Flow Rate]
+			The weight $W$ of fluid flowing past a section in unit time (N/s)
+		\end{mybox}
+	}
+	\parb
+	\visible<3->{
+		\begin{mybox}[title=Volume Flow Rate]
+			The volume $Q$ of fluid flowing past a section in unit time ($\text{m}^3/\text{s}$)
+		\end{mybox}
+	}
+	\centering
+	\visible<4>{We shall be primarily interested in the volume flow rate.}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Volume Flow Rate, $Q$}
+	\begin{center}
+		\begin{minipage}{0.65\textwidth}
+			\raggedright
+			The volume flow rate, $Q$, is calculated from
+			\begin{center}
+				\begin{mybox}	[width=3cm]
+					\vspace{-0.5cm}
+					\[\bm{ Q=Av }\]
+				\end{mybox}
+			\end{center}
+			where $A$ is the cross-sectional area of the section and $v$ is the average velocity of the flow.
+			\[ \left(\text{m}^3/\text{s} = \text{m}^2\times\text{m/s}\right) \]
+			
+		\end{minipage}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Weight Flow Rate, W}
+	\begin{center}
+		\begin{minipage}{0.65\textwidth}
+			The weight flow rate, $W$, is related to the volume flow rate by
+			\begin{center}
+				\begin{mybox}[width=3cm]
+					\vspace{-0.5cm}
+					\[\bm{ W=\gamma Q } \]
+				\end{mybox}
+			\end{center}
+			where $\gamma$ is the specific weight of the fluid  and $Q$ is the volume flow rate.
+			
+			\[ \left(\text{kN/s} = \mathsf{kN/m^3}\times\mathsf{m^3/s}\right) \]
+			
+		\end{minipage}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Mass Flow Rate}
+	\begin{center}
+		\begin{minipage}{0.65\textwidth}
+			\raggedright
+			The mass flow rate, $M$, is related to the volume flow rate by
+			\begin{center}
+				\begin{mybox}[width=3cm]
+					\vspace{-0.5cm}
+					\[\bm{ M=\rho Q } \]
+				\end{mybox}
+			\end{center}
+			where $\rho$ is the density of the fluid and $Q$ is the volume flow rate.
+			\[ \left(\text{kg/s} = \mathsf{kg/m^3}\times\mathsf{m^3/s}\right) \]
+		\end{minipage}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Continuity Equation}
+	\begin{textblock*}{5cm}(1cm,0.5cm)
+		\cfig[0.45]{../../figs/03FlowOfFluids/04Bernoulli01}
+	\end{textblock*}
+	\only<1->{\begin{textblock*}{3.5cm}(1cm,1.5cm)
+		Fluid is flowing from section $1$ to section $2$ at a constant rate;\\this is called\\\textbf{steady flow}.
+		\end{textblock*}
+		}\only<2->{
+		\begin{textblock*}{4cm}(8cm,1cm)
+			\begin{flushright}
+				No fluid is added, stored or removed between $1$ and $2$. The mass flow rate
+				at $2$ is the same as that at $1$.
+			\end{flushright}
+		\end{textblock*}
+		\begin{textblock*}{6cm}(6cm,2.5cm)
+			\begin{flushright}
+				$A_1$ and $A_2$ are the cross-\\sectional areas at $1$ and $2$.
+			\end{flushright}
+		\end{textblock*}
+		}\only<3->{
+		\begin{textblock*}{4cm}(7.75cm,3.35cm)
+			\begin{flushright}
+				\begin{align*}
+					M_1            & = M_2            \\
+					\rho_1 Q_1     & = \rho_2 Q_2     \\
+					\rho_1 A_1 v_1 & = \rho_2 A_2 v_2 
+				\end{align*}
+			\end{flushright}
+		\end{textblock*}
+		}\only<4->{
+		\begin{textblock*}{6cm}(5.85cm,5.75cm)
+			\begin{flushright}
+				This is true for all fluids; this equation is known as the \textbf{continuity equation}.
+			\end{flushright}
+		\end{textblock*}
+		}\only<5->{
+		\begin{textblock*}{10cm}(1.85cm,7.0cm)
+			\begin{flushright}
+				Liquids are incompressible, the density does not change and $\rho_1=\rho_2$. \par
+			\end{flushright}
+		\end{textblock*}
+		}\only<6>{
+		\begin{textblock*}{10cm}(1.8cm,7.9cm)
+			\begin{flushright}
+				The continuity equation for liquids is $\bm{ A_1v_1 = A_2v_2} $
+			\end{flushright}
+		\end{textblock*}
+	}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{4cm} (0.25cm,2.15cm)
+		\cfig[0.5]{../../figs/03FlowOfFluids/04BernoulliEx01}
+	\end{textblock*}
+	\definecolor{example}{RGB}{189,189,115}
+	\setbeamertemplate{itemize item}{\color{example}$\blacktriangleright$}
+	\begin{textblock*}{5.75cm} (6.5cm,0.75cm)
+		\begin{myexam}[colframe=example!80!black, colbacktitle=example]{}{}
+			\raggedright
+			The average velocity of the flow at the nozzle $C$ is $4.7\,\text{m/s}$.\parb
+			Determine:
+			\begin{itemize}
+				\item the average flow velocity at $A$
+				\item the average flow velocity at $B$
+				\item the volume flow rate, $Q$, through the system in L/s.
+			\end{itemize}
+		\end{myexam}
+		
+	\end{textblock*}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Steel Pipe}
+	\begin{itemize}
+		\item Used for general purpose pipelines
+		\item Has standard pipe sizes
+		\item Size specified by \textbf{nominal size} and \textbf{schedule number}:
+		      \begin{itemize}
+		      	\item[]\item[] $4$-inch Schedule 40 steel pipe has a nominal size of $4$ inches but has an actual inside
+		      	      diameter of $4.026''$ or, for our purposes, $102.3\,\text{mm}$.
+		      	\item[]\item[] $12$-inch Schedule 80 steel pipe has a nominal size of $12$ inches but has an actual inside
+		      	      diameter of $11.376''$ or $289.0\,\text{mm}$.
+		      	\item[]
+		      \end{itemize}
+		\item Nominal sizes range from $\tfrac{1}{8}\,\text{in.}$ to $24\,\text{in.}$
+		\item Higher schedules have a greater thickness. Schedules range from $10$ to $160$
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{}
+	\begin{center}
+		\footnotesize
+		\textbf{\normalsize Table F: Schedule 40 Steel Pipe}\parb
+		\begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}  >{$}c<{$}}
+			
+			\toprule
+			\addlinespace
+			\text{Nominal} & \text{Inside}   & \qquad\qquad & \text{Nominal} & \text{Inside}   \\
+			\text{Size}    & \text{Diameter} &              & \text{Size}    & \text{Diameter} \\
+			
+			\addlinespace
+			\text{(in)}    & \text{(mm)}     &              & \text{(in)}    & \text{(mm)}     \\
+			\addlinespace
+			\midrule
+			\addlinespace
+			\tfrac18       & 6.8             &              & 4              & 102.3           \\ \addlinespace
+			\tfrac14       & 9.2             &              & 5              & 128.2           \\ \addlinespace
+			\tfrac38       & 12.5            &              & 6              & 154.1           \\ \addlinespace
+			\tfrac12       & 15.8            &              & 8              & 202.7           \\ \addlinespace
+			\tfrac34       & 20.9            &              & 10             & 254.5           \\ \addlinespace
+			1              & 26.6            &              & 12             & 303.2           \\ \addlinespace
+			1\tfrac14      & 35.1            &              & 14             & 333.4           \\	\addlinespace
+			1\tfrac12      & 40.9            &              & 16             & 381.0           \\ \addlinespace
+			2              & 52.5            &              & 18             & 428.7           \\ \addlinespace
+			2\tfrac12      & 62.7            &              & 20             & 477.9           \\ \addlinespace
+			3              & 77.9            &              & 24             & 574.7           \\ \addlinespace
+			3\tfrac12 	& 90.1 \\\\
+			
+			\midrule
+			\bottomrule
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Steel Tubing}
+	\begin{itemize}
+		\item Used in fluid power systems, condensers, heat exchangers, engine fuel systems and
+		      industrial fluid processing systems.
+		\item[]
+		\item Size specified by \textbf{outside diameter} and \text{wall thickness}:
+		      \begin{itemize}
+		      	\item[]\item[] $\tfrac{3}{4}\text{-in.}$ steel tubing with wall thickness $1.65\,\text{mm}$ has \\an
+		      	      outside diameter $\tfrac{3}{4}\text{-in.}$ ($19.05\,\text{mm}$) and an inside diameter of $15.75\,\text{mm}$
+		      	\item[]
+		      \end{itemize}
+		\item[]
+		\item Available in sizes from $\tfrac{1}{8}\text{-in.}$ to $2\text{-in.}$
+		\item[]
+		\item Smoother, and less resistant to flow, than steel pipe
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Copper Tubing}
+	\begin{itemize}
+		\item The choice of which type of copper tubing depends upon use: \item[]
+		      \begin{itemize}
+		      	\item \textbf{Type K}: Water service, fuel oil, natural gas, compressed air \item[]
+		      	\item \textbf{Type L}: Same uses as Type K but with smaller wall thickness \item[]
+		      	\item \textbf{Type M}: Same uses as Type K and Type L but with yet smaller wall thickness; useful for water
+		      	      services or heating applications at moderate pressures \item[]
+		      	\item \textbf{Type DWV}: Drain, waste and venting uses in plumbing \item[]
+		      	\item \textbf{Type ACR}: Air conditioning, refrigeration, natural gas, liquefied petroleum gas (LPG)
+		      	      and compressed air \item[]
+		      	\item \textbf{Type OXY/MED}: Oxygen or medical gases. Special processing for increased cleanliness.
+		      \end{itemize}
+		\item Available in annealed (soft) form or drawn (hard) tempers \item[]
+		\item Tube supplied to the American Society for Testing and Materials (ASTM) is $99.9\%$ pure copper
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ductile Iron Pipe}
+	\begin{itemize}
+		\item Used in water, gas and sewage lines as a replacement for cast iron.
+		\item[]
+		\item Strong, ductile and easy to work with.
+		\item[]
+		\item Less common nowadays.
+		      
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Plastic Pipe and Tubing}
+	\begin{itemize}
+		\item Used in water and gas distribution, sewer and wastewater, oil and gas production, irrigation,  mining and
+		      many other industrial applications.
+		\item[]
+		\item Light, easy to work with, corrosion resistant, smooth and with good flow characteristics.
+		\item[]
+		\item High density polyethylene (HDPE) pipe is quickly becoming the pipe of choice, replacing ductile iron pipe in
+		      many situations.
+		      
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{center}
+		\begin{minipage}{0.6\textwidth}
+			
+			\begin{myexam}{}{}
+				Water, at $70\text{\textcelsius}$ flows through $\tfrac78\text{-in.}$ steel tubing, with $1.65\,\text{mm}$ wall thickness,
+				at an average velocity of $5.7\,\text{m/s}$.
+				
+				Determine:
+				\begin{itemize}
+					\item the volume flow rate, $Q$
+					\item the mass flow rate, $M$
+					\item the weight flow rate, $W$
+				\end{itemize}
+			\end{myexam}
+		\end{minipage}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Energy Considerations}
+	\begin{textblock*}{.95\textwidth}(.75cm,1cm)
+		\begin{itemize}
+			\item<1-> Consider an element of fluid flowing under pressure in a pipe.\\
+			Three types of energy are considered when analysing this element: \parb
+			\begin{itemize}
+				\item<2->\textbf{Potential energy}, due to the elevation $z$ of an element with mass $m$ of the fluid.  Then
+				$\textbf{PE} \bm{=mgz}$	\parb
+				\item<3-> \textbf{Kinetic energy}, due to the velocity $v$ of the element of fluid. \lb Then
+				$\textbf{KE} \bm{=mv^2/2}$	\parb
+				\item<4-> \textbf{Flow (or pressure) energy} which is a measure of the work done moving an element of the fluid
+				against the pressure $p$ in the fluid. \lb Then $\textbf{FE} \bm{=pmg/\gamma}$
+			\end{itemize}
+		\end{itemize}
+	\end{textblock*}
+	\begin{textblock*}{4cm}(2cm,5cm)
+		\only<1>{
+			\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli03a}
+			}\only<2>{
+			\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli03b}
+			}\only<3>{
+			\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli03c}
+			}\only<4>{
+			\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli03d}
+		}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Calculation of Pressure Energy}
+	This calculation is a little more complicated than the calculation for potential or kinetic energy:
+	\par\vspace{-0.5cm}
+	\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli04}
+	\par\vspace{-0.75cm}
+	\begin{itemize}
+		\item The element we consider is of length $L$
+		\item To move the element completely across some section in the pipe, the element has to move a distance of $L$.
+		      
+		\item The work done moving the element against the pressure $p$ in the pipe is:
+		      \begin{align*}
+		      	\text{Work} & = \text{force}\times\text{distance}                                              \\
+		      	            & = pAL                                                                            \\
+		      	            & = pV \text{\footnotesize{ (where $V$ is the volume of element)}}                 \\
+		      	            & = pmg/\gamma\quad \text{\footnotesize{ ($\gamma =w/V=mg/V$  so $ V=mg/\gamma)$}} \\
+		      \end{align*}
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Conservation of Energy}
+	\begin{textblock*}{1\textwidth} (3.5cm, 0.5cm)
+		\cfig[0.45]{../../figs/03FlowOfFluids/04Bernoulli05}
+	\end{textblock*}
+	
+	\begin{textblock*}{12cm} (0.5cm, 4.25cm)
+		
+		\begin{itemize}
+			\only<1->{
+				\item The total energy of the element of fluid at $1$ is:
+				\par\vspace{-0.25cm}
+				\[E_1=\frac{p_1mg}{\gamma}+mgz_1+\frac{mv_1^2}{2}\qquad\qquad \qquad\qquad\qquad\qquad\]\pars
+				}\only<2->{
+				\item The total energy of the same element of fluid when it reaches $2$ is:
+				\par\vspace{-0.25cm}
+				\[E_2=\frac{p_2mg}{\gamma}+mgz_2+\frac{mv_2^2}{2}\qquad\qquad \qquad\qquad\qquad\qquad\]\pars
+				}\only<3->{
+				\item But energy cannot be created or destroyed \\(although it may be converted from one form to another)
+			}
+		\end{itemize}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Bernoulli's Equation}
+	\begin{textblock*}{1\textwidth} (3.5cm, 0.5cm)
+		\cfig[0.45]{../../figs/03FlowOfFluids/04Bernoulli05}
+	\end{textblock*}
+	
+	\begin{textblock*}{9cm} (0.5cm, 4cm)
+		\begin{itemize}
+			\only<1->{
+				\item Then $E_1=E_2$ so
+				\[ \frac{p_1mg}{\gamma}+mgz_1+\frac{mv_1^2}{2}=\frac{p_2mg}{\gamma}+mgz_2+\frac{mv_2^2}{2}\qquad\qquad\qquad\qquad \]
+				}\only<2->{
+				\item Dividing throughout by the weight of the element ($mg$), we get:
+			}
+		\end{itemize}
+	\end{textblock*}
+	\only<2->{
+		\begin{textblock*}{7cm} (2cm, 6.75cm)
+			\begin{mybox}[title=Bernoulli's Equation]
+				\centering\Large
+				$\bm{ \frac{p_1}{\gamma}+z_1+\frac{v_1^2}{2g}=\frac{p_2}{\gamma}+z_2+\frac{v_2^2}{2g}} $
+			\end{mybox}
+		\end{textblock*}
+	}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Bernoulli's Equation}
+	\begin{center}
+		\begin{minipage}{0.7\textwidth}
+			\begin{mybox}[title=Bernoulli's Equation]
+				\centering\Large
+				$\bm{ \frac{p_1}{\gamma}+z_1+\frac{v_1^2}{2g}=\frac{p_2}{\gamma}+z_2+\frac{v_2^2}{2g}} $
+			\end{mybox}
+		\end{minipage}
+		\begin{itemize}
+			\item Bernoulli's Equation applies only to fluids that are incompressible.\pause
+			\item It is assumed that no fluid is added or removed between the points $1$ and $2$ under consideration\pause
+			\item It is assumed that there are no energy``losses'' between $1$ and $2$; that is, no energy is lost to friction
+			      and no heat is added to or removed from the fluid\pause
+			\item No energy is added to the system (by a pump, for example) or removed from the system (by a turbine, for example).\pause
+			\item In theory, there is alway some energy loss due to friction but, for a large class of situations,
+			      Bernoulli's Equation yields accurate results.
+		\end{itemize}
+	\end{center}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Energy Head}
+	\begin{center}
+		\begin{minipage}{0.7\textwidth}
+			\begin{mybox}[title=Bernoulli's Equation]
+				\centering
+				$\bm{ \frac{p_1}{\gamma}+z_1+\frac{v_1^2}{2g}=\frac{p_2}{\gamma}+z_2+\frac{v_2^2}{2g}} $
+			\end{mybox}
+		\end{minipage}
+		\begin{itemize}
+			\item The $\bm{\frac{ p}{\gamma}}$ term is known as the \textbf{pressure head}.
+			      Units are $\frac{\text{kN/m}^2}{\text{kN/m}^3}=\text{m}$. \pause
+			\item The $\bm{z}$ term is known as the \textbf{elevation head}.
+			      Units are $\text{m}$. \pause
+			\item The $\bm{\frac{v^2}{2g}}$ term is known as the \textbf{velocity head}.
+			      Units are $\frac{\text{(m/s)}^2}{\text{m/s}^2}=\text{m}$. \pause
+			\item Thus, \textbf{total head} is measured in metres.
+		\end{itemize}
+	\end{center}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Applying Bernoulli's Equation}
+	
+	\begin{enumerate}
+		\item Determine what is already known or given
+		\item Determine what is to be calculated
+		\item Choose two appropriate or convenient sections at which to apply Bernoulli's Equation
+		\item Use the equation \textbf{in the direction of the flow}. That is, section $1$ should be upstream
+		      of section $2$ (or, equivalently, fluid flow should go from the left hand side of the equation to the right
+		      hand side of the equation).
+		\item Cancel terms that are $0$ or that are the same on both sides of the equation
+		      \begin{itemize}
+		      	\item Tanks, reservoirs or nozzles exposed to the atmosphere have zero pressure so the pressure head term can be removed
+		      	      from the calculation
+		      	\item The velocity head at the surface of a tank or reservoir is assumed to be zero
+		      \end{itemize}
+	\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+	\begin{textblock*}{4.75cm} (0.75cm,0.25cm)
+		\definecolor{example}{RGB}{229,194,155}
+		\setbeamertemplate{itemize item}{\color{example}$\blacktriangleright$}
+		\begin{myexam}[colframe=example, colbacktitle=example!80!white]{}{}
+			\raggedright
+			Oil, with a specific gravity of $0.83$, flows under gravity from a tank, through a pipe system as shown, before
+			entering the atmosphere through a nozzle at $D$. \par
+			Determine:
+			\begin{itemize}
+				\item the pressure at $A$
+				\item the pressure at $B$
+				\item the pressure at $C$
+				\item the volume flow rate through the system
+			\end{itemize}
+		\end{myexam}
+	\end{textblock*}
+	
+	\begin{textblock*}{6cm}(4.75cm,1.75cm)
+		\cfig[0.5]{../../figs/03FlowOfFluids/04BernoulliEx03}
+	\end{textblock*}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}
+% 	\cfig[0.65]{../../figs/03FlowOfFluids/04BernoulliEx03}
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{6cm} (.5cm,-0.5cm)
+		\cfig[0.4]{../../figs/03FlowOfFluids/04BernoulliEx04}
+	\end{textblock*}
+	\begin{textblock*}{6cm }(5.5cm,5cm)
+		
+		\only<1->{
+			Which is the higher reading? $p_1$ or $p_2$?
+		}
+		
+		\only<2>{\par
+			We can't tell without more information.
+		}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{6cm} (.5cm,-0.5cm)
+		\cfig[0.4]{../../figs/03FlowOfFluids/04BernoulliEx04a}
+	\end{textblock*}
+	\begin{textblock*}{6cm} (5.5cm,6cm)
+		\definecolor{example}{RGB}{0, 138, 0}
+		\begin{myexam}[colframe=example, colbacktitle=example!80!white]{}{}
+			
+			Determine the pressure reading  $p_2$ if $Q=25\,\text{L/s}$.
+			
+		\end{myexam}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{6cm} (.5cm,-0.5cm)
+		\cfig[0.4]{../../figs/03FlowOfFluids/04BernoulliEx04a}
+	\end{textblock*}
+	\begin{textblock*}{6cm} (5.5cm,6cm)
+		\definecolor{example}{RGB}{0, 138, 0}
+		\begin{myexer}[colframe=example, colbacktitle=example!80!white]{}{}
+			
+			Determine the pressure reading  $p_2$ if $Q=20\,\text{L/s}$.
+			
+		\end{myexer}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}
+% 	\cfig[0.5]{../../figs/03FlowOfFluids/04BernoulliEx04a}
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{6cm}(.5cm,-0.5cm)
+		\cfig[0.5]{../../figs/03FlowOfFluids/04BernoulliEx04b}
+	\end{textblock*}
+	\begin{textblock*}{5cm}(6.5cm,6.5cm)
+		\definecolor{example}{RGB}{170, 89, 84}
+		\begin{myexam}[colframe=example, colbacktitle=example!80!white]{}{}
+			\raggedright
+			Determine $Q$, the volume flow rate.
+		\end{myexam}
+		
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}
+% 	\cfig[0.5]{../../figs/03FlowOfFluids/04BernoulliEx04b}
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pitot Tube Meter}
+	\cfig[0.4]{../../figs/03FlowOfFluids/pitot-tube.jpg}
+	\vspace*{-0.25cm}
+	\begin{center}
+		\begin{minipage}{0.9\textwidth}
+			\raggedright
+			A pitot-tube, on an aircraft nose or wing, is used to measure the pressure of the stationary air immediately
+			at the front of the pitot tube. \par \medskip
+			This can then be compared to atmospheric pressure to measure the air-speed of the aircraft.
+		\end{minipage}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{6cm}(5.25cm,-1cm)
+		\cfig[0.3]{../../figs/03FlowOfFluids/pitot-cockpit}
+	\end{textblock*}
+	\begin{textblock*}{6cm}(-0.35cm,2cm)
+		\cfig[0.35]{../../figs/03FlowOfFluids/a330}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Pitot Tube Meter}
+	\cfig[0.7]{../../figs/03FlowOfFluids/tail}
+	\vspace*{-0.25cm}
+	\begin{center}
+		\begin{minipage}{0.6\textwidth}
+			\raggedright
+			Iced-up pitot-tube meters are thought to be one of the reasons for the crash of an Air France Airbus A330-200
+			into the Atlantic, on June 1st, 2009, with the death of all 228 aboard.
+		\end{minipage}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Pitot Tube Meter}
+	\begin{textblock*}{1\textwidth}(1.25cm, 0.35cm)
+		\only<1>{\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli06a}
+			}\only<2-3>{\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli06b}
+			}\only<4>{\cfig[0.27]{../../figs/03FlowOfFluids/04Bernoulli06c}
+		}
+	\end{textblock*}
+	\begin{textblock*}{1\textwidth}(1.25cm, 5cm)
+		\begin{center}
+			\begin{itemize}
+				\item  Flow  is steady  except at $S$, where it comes to a halt at a hollow tube
+				      pointed directly into the flow: $S$ is called the \textbf{stationary point}.
+				      \uncover<2->{\item All the velocity head at $A$ is converted to extra pressure head at $S$,
+				      as is shown by the different levels at.}
+				      \uncover<3->{\par Since $\Delta p = \gamma h$, we have $h_A=\frac{p_A}{\gamma}$
+				      	and $h_S=\frac{p_S}{\gamma}$.}
+				      \uncover<4->{\item The difference in levels, $h$, together with the specific gravity of the
+				      liquid and the diameter of the pipe can be used to determine the flow rate through the pipe.}
+			\end{itemize}
+		\end{center}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{6cm} (.5cm,-0.5cm)
+		\cfig[0.3]{../../figs/03FlowOfFluids/04BernoulliEx06a}
+	\end{textblock*}
+	\begin{textblock*}{4.5cm} (7cm,6cm)
+		\begin{myexam}[colframe=Azure4, colbacktitle=Azure4!80!white]{}{}
+			\raggedright
+			Determine $Q$, the volume flow rate.
+		\end{myexam}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \begin{frame}
+% 	\cfig[0.3]{../../figs/03FlowOfFluids/04BernoulliEx06a}
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Venturi Meter}
+	\begin{textblock*}{1\textwidth} (1.25cm, 1.5cm)
+		\only<1>{\cfig[0.35]{../../figs/03FlowOfFluids/04BernoulliVenturi01}
+			}\only<2->{\cfig[0.35]{../../figs/03FlowOfFluids/04BernoulliVenturi01a}
+			
+		}
+	\end{textblock*}
+	\begin{textblock*}{1\textwidth} (1.25cm, 5.5cm)
+		\begin{center}
+			\begin{itemize}
+				\item  A \textbf{venturi meter} is a common way of measuring flow in pipes.
+				      \uncover<2->{\item A constriction in the pipe causes an increase in velocity and, as a result, a decrease in pressure.}
+				      \uncover<3>{\item The difference in pressure can be used to determine the average flow velocity, and thereby the volume flow rate,
+				      through the system.}
+			\end{itemize}
+		\end{center}
+		
+	\end{textblock*}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	
+	\cfig[0.35]{../../figs/03FlowOfFluids/04BernoulliEx08}
+	\cmini[0.75]{
+		\begin{myexam}{}{}
+			Determine $Q$, the volume flow rate, if $h=210$ mm.
+		\end{myexam}
+	}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\cfig[0.28]{../../figs/03FlowOfFluids/04BernoulliEx09}
+	\centering
+	\begin{myexer}[width=6.5cm, colframe=Bisque3, colbacktitle=Bisque3!80!white]{}{}
+		\raggedright
+		Determine $Q$, the volume flow rate, if $h=125\,\text{mm}$.
+	\end{myexer}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}
+% 	\cfig[0.28]{../../figs/03FlowOfFluids/04BernoulliEx09b}
+%
+% \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
