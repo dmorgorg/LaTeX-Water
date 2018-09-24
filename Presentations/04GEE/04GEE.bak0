@@ -1,0 +1,442 @@
+% override specific chktex warnings
+% chktex-file 46 - don't use $ instead of \(, etc)
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 9 - sometimes messes up with ( and {
+
+\documentclass[9pt,xcolor={svgnames, x11names},professionalfonts, mathserif]{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}  % for top and bottom spacing in table cells
+\usepackage{mathpazo}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{cancel}
+\usepackage{array}
+%\usepackage{enumerate}
+% \usepackage{enumitem} %causes compile error, stack size exceeded?
+\usepackage{gensymb} % for \degree
+\usepackage[many]{tcolorbox}
+\usepackage{verbatim}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tkz-linknodes}
+\usepackage[export]{adjustbox} % for tight borders around photos
+\usepackage{pgf} % for sait logo in beamer
+\usepackage{pgfmath}
+\usepgfmodule{oo}
+%\usetikzlibrary{shapes,decorations,shadows,calc}
+\usetikzlibrary{shadows,calc,arrows.meta}
+% \usetikzlibrary{decorations.shapes}
+%\usetikzlibrary{shapes.callouts}
+% bloody coils
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.multipart}
+
+\input{../../Includes/macrosWater.tex}
+\input{../../Includes/definedColors}
+\input{../../Includes/tikzObjects.tex}
+
+\usefonttheme[onlymath]{serif}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=structure}
+% \hypersetup{urlcolor=Blue4}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+\usetheme{Antibes}
+
+\usecolortheme[rgb={0, 0.65,0.65}]{structure}
+% \definecolor{structurecolor}{rgb}{0.55,0.53,0.31}
+\setbeamertemplate{items}[triangle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+%\setbeamertemplate{background canvas}[vertical shading][bottom=Cyan1!50, middle=white, top=white, midpoint=0.05]
+\setbeamertemplate{headline}{\vspace{.05cm}}
+\setbeamertemplate{footline}{ \hfill \insertshorttitle \quad
+	\insertshortsubtitle
+	\quad \insertframenumber/\inserttotalframenumber \quad{ }\vspace{0.125cm}}
+\addtobeamertemplate{footline}{\hypersetup{linkcolor=.}}{}
+\setbeamertemplate{navigation symbols}{} % empty braces suppresses all navigation symbols
+\setbeamercolor{frametitle}{fg=gray!5!white}
+% \setbeamercolor{footline}{fg=black}
+\setbeamercolor{block title}{fg=gray!15!white,bg=structure}
+\setbeamercolor{block body}{bg=white, fg=black}
+\setbeamercolor{background canvas}{bg=structure!2!white}
+
+\setbeamersize{text margin left = 1cm, text margin right=1cm}
+%\useinnertheme[shadow]{rounded}
+%\raggedright
+\setbeamerfont{block title}{family=mathserif}
+
+\everymath{\displaystyle}
+\newcounter{itemcount}
+
+\logo{\pgfputat{\pgfxy(-11.85,-0.5)}{\pgfbox[right,base]{\includegraphics[height=1cm]{../../figs/rb_logo}}}}
+
+
+
+\resetcounteronoverlays{tcb@cnt@myexam}
+\resetcounteronoverlays{tcb@cnt@myexer}
+
+
+% itemize indent
+\setlength{\leftmargini}{1.5em}
+\def\scale{1} % initialisation for pikz
+\raggedright
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[GEE]{\Huge \textcolor{white}{04 --- The General Energy Equation}}
+\subtitle[CIVL318]{\Large\textcolor{white}{Water Resources, CIVL318}}
+\author{}
+\institute{}
+\date{Last revision on \today}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]    %don't need footer on titlepage
+	\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item In the module on Bernoulli's Equation, we assumed that energy remained constant throughout the system:
+		      no energy was added to or removed from the system, and any losses due to friction were insignificant and could be ignored. \pause
+		\item[]
+		\item In this section, Bernoulli's Equation is modified to include terms for:
+		      \begin{itemize}
+		      	\item Head added, $\bm{h_A}$, the energy added to a system by a device such as a pump
+		      	\item Head removed, $\bm{h_R}$, the energy removed from a system by a turbine or fluid motor
+		      	\item Head lost, $\bm{h_L}$, due to friction in pipes and flow through valves and fittings
+		      \end{itemize}	\pause
+		\item[]
+		\item The modified Bernoulli's Equation is called the \text{General Energy Equation}
+	\end{itemize}
+	
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{General Energy Equation}
+	\begin{center}
+		\begin{minipage}{0.75\textwidth}
+			\raggedright
+			\begin{mybox}[width=8cm, title=General Energy Equation (GEE)]
+				\[\bm{  \frac{p_1}{\gamma}+z_1+\frac{v_1^2}{2g}+h_A-h_R-h_L=\frac{p_2}{\gamma}+z_2+\frac{v_2^2}{2g}} \]
+			\end{mybox}
+			\vspace{1cm}\pause
+			\textbf{Note}: It is now \textbf{critically} important that the equation be applied in the direction of the flow:
+			section $1$ must be ``upstream'' of section $2$.\parb
+			``Upstream'' means earlier in the flow, not necessarily at a higher elevation!
+			
+		\end{minipage}
+	\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\begin{textblock*}{6.55cm}(1cm,4.25cm)
+		\definecolor{example}{RGB}{160, 160, 151}
+		\begin{myexam}[colframe=example, colbacktitle=example!80!white]{}{}
+			\raggedright
+			Liquid with a specific gravity of $0.9$ flows from a tank, pressurized to $57\text{ kPa}$, through the pipe system shown, before entering the atmosphere through a nozzle with diameter $125\,\text{mm}$. \parm
+			If the volume flow rate is $Q=89\text{ L/s}$, determine $h_L$, the head loss due to friction and fittings.
+		\end{myexam}
+	\end{textblock*}
+	\begin{textblock*}{5cm}(3cm,-.5cm)
+		\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex01}\end{cfig}
+	\end{textblock*}
+	
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Pumps}
+	\begin{minipage}{0.45\textwidth}
+		\raggedright
+		\begin{itemize}
+			\item A pump is a mechanical device, normally powered by electricity, that drives a rotating shaft in the pump.
+			\item A pump adds energy to a flowing liquid.
+			\item Note that a pump increases flow through the whole system: the volume flow rate at the pump outlet is the same as at the pump inlet.
+			\item This is a centrifugal pump.
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.5\textwidth}
+		\begin{cfig}[0.26]{../../figs/04GEE/cp.jpg}\end{cfig}
+		\vspace{-1.0em}
+		\centering
+		{\tiny  Water distribution, Banff}
+	\end{minipage}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Centrifugal Pumps}
+	
+	\begin{minipage}[c]{0.4\columnwidth}%
+		% 		\begin{cfig}[0.28]{../figs/05GEE/MACHINERY11}\end{cfig}
+		\raggedright
+		The centrifugal pump is the most common type of dynamic pump used
+		in industry; a centrifugal pump contains a rotating part (axle and
+		impeller) and a stationary part (casing, bearings, etc.).
+		\parm
+		We shall look at centrifugal pumps in more detail later in this course.
+		
+	\end{minipage}
+	\hfill{}%
+	\begin{minipage}[c]{0.55\columnwidth}%
+		
+		\begin{cfig}[0.15]{../../figs/04GEE/Warman_centrifugal_pump}\end{cfig}
+		\centering
+		\vspace{-0.9em}
+		\tiny \url{http://commons.wikimedia.org/wiki/File:Warman\_centrifugal\_pump.jpg}
+	\end{minipage}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\begin{textblock*}{1\textwidth}(1.25cm,-0.5cm)
+		\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex02}\end{cfig}
+	\end{textblock*}
+	\begin{textblock*}{1.05\textwidth}(0.75cm,5.75cm)
+		\centering
+		\definecolor{example}{RGB}{160, 160, 151}
+		\begin{myexam}[colframe=example, colbacktitle=example!80!white, width=0.85\textwidth]{}{}
+			\raggedright
+			Liquid with a specific gravity of 0.87 is pumped from Tank $1$; the liquid exits the pipe into the atmospher, at C, before dropping into Tank~$2$ at
+			$180\;\text{L/s}$.\par\medskip Determine the head added by the pump and the
+			pressure at $A$.\lb (You may neglect any head losses due to friction and valves.)
+		\end{myexam}
+		
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}
+% 	\begin{cfig}[0.5]{../../figs/04GEE/05GEE-Ex02}\end{cfig}
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\begin{textblock*}{1\textwidth}(1.25cm,-0.5cm)
+		\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex02}\end{cfig}
+	\end{textblock*}
+	\begin{textblock*}{1.05\textwidth}(0.75cm,6cm)
+		\centering
+		
+		\definecolor{example}{RGB}{160, 160, 151}
+		\begin{myexer}[colframe=example, colbacktitle=example, width=0.92\textwidth]{}{}
+			\setbeamercolor{item projected}{bg=example}
+			Determine the pressure at $B$:
+			\begin{enumerate}
+				\item First, by applying the GEE between the surface of Tank 1 and $B$;
+				\item Second, by applying the GEE between $A$ and $B$;
+				\item Finally, by applying the GEE between $B$ and $C$.
+			\end{enumerate}
+		\end{myexer}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\begin{textblock*}{1\textwidth}(0.25cm,0cm)
+		\begin{cfig}[0.5]{../../figs/04GEE/05GEE-Ex03}\end{cfig}
+	\end{textblock*}
+	\begin{textblock*}{0.8\textwidth}(3cm,6.5cm)
+		\definecolor{example}{RGB}{139, 139, 130}
+		\begin{myexam}[colframe=example, colbacktitle=example, width=0.85\textwidth]{}{}
+			Water flows from $A$ to $B$ at the rate of $120\text{ L/s}$.\parm
+			Determine the head removed by the turbine.
+		\end{myexam}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Power Added by a Pump}
+	
+	\begin{itemize}
+		\item \textbf{Power} is the rate of doing work
+		\item In fluid mechanics, power is considered the rate at which energy is transferred to the system
+		\item The unit for power is the watt (W) which is $1.0\; \mathsf{N\cdot m/s}$ or, equivalently, $1.0\;
+		      \mathsf{joule\;(J) /s}$)
+		\item[]\pause
+		      
+		      \begin{align*}
+		      	P_A & = \mathsf{\frac{N\cdot m}{s}}          \\
+		      	    & =  \mathsf{m\times \frac{N}{s}}        \\
+		      	    & = h_A\times W\text{(weight flow rate)} \\
+		      	    & = h_A\gamma Q                          
+		      \end{align*}
+	\end{itemize}
+	Note: $h_A$ is the energy added $\mathsf{N\cdot m}$ per $\mathsf{N}$ of fluid flowing through the pump and
+	$W$, the weight flow rate, is $\text{N/s}$.
+	
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Mechanical Efficiency of a Pump}
+	
+	\begin{itemize}
+		\item \textbf{Efficiency} is the ratio of power added by the pump to the power supplied to the pump:
+		      
+		      \begin{align*}
+		      	e_M & = \frac{\text{Power added to the fluid}}{\text{Power input to the pump}}=\frac{P_A}{P_I} \\
+		      \end{align*}
+		      
+		\item Efficiency is always less than $1$
+		\item Efficiency is expressed as a number or as a percentage
+	\end{itemize}
+	
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Turbines}
+	\begin{cmini}{
+			Similarly, the power removed by a turbine/fluid motor is given by:
+			
+			\[ P_R = h_R \gamma Q \]
+			\par\bigskip
+			and the efficiency of a turbine/fluid motor is given by:
+			
+			\[ e_M =  \frac{\text{Power output from turbine}}{\text{Power removed from the fluid}}=\frac{P_O}{P_R} \]
+			}\end{cmini}
+		\end{frame}
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{frame}
+			\begin{textblock*}{0.5\textwidth}(.25cm,1cm)
+				\begin{cfig}[0.25]{../../figs/04GEE/05GEE-Ex04a}\end{cfig}
+			\end{textblock*}
+			\begin{textblock*}{0.55\textwidth}(6.5cm,0.375cm)
+				\definecolor{example}{RGB}{205, 101, 28}
+				\begin{myexam}[colframe=example, colbacktitle=example]{}{}
+					\setbeamercolor{item projected}{bg=example}
+					\raggedright
+					A pump produces a flow of $1024\text{ L/min}$ of kerosene with a specific gravity of $0.823$ from vented underground
+					storage to an elevated tank pressurized to $512\text{ kPa}$. Energy loss between the underground storage and
+					the pump is $0.95\text{ m}$ and energy loss between the pump and the elevated tank is $4.9\text{ m}$.
+					\begin{enumerate}
+						\item Determine the power added to the fluid by the pump.
+						\item If the pump has an efficiency of $73\%$, determine the (electrical) power drawn by the pump.
+						\item Determine the gauge and the absolute pressure at the pump inlet.
+					\end{enumerate}
+				\end{myexam}
+			\end{textblock*}
+		\end{frame}
+		
+		\begin{frame}
+			\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex04a}\end{cfig}
+		\end{frame}
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{frame}
+			\begin{textblock*}{0.5\textwidth}(.25cm,0cm)
+				\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex05}\end{cfig}
+			\end{textblock*}
+			\begin{textblock*}{0.55\textwidth}(6.25cm,3cm)
+				\definecolor{example}{RGB}{196, 168, 136}
+				\begin{myexer}[colframe=example, colbacktitle=example]{}{}
+					% \setbeamercolor{item projected}{bg=example}
+					\raggedright
+					Oil, with $\text{sg}=0.87$, flows from a tank pressurized at $130\text{ kPa}$ at a rate of $72\text{ L/s}$ and
+					powers a fluid motor as shown. Energy losses due to friction and fittings between the tank and $B$ are estimated to
+					be $1.81\text{ m}$.
+					\par\medskip
+					If the pressure at $B$ is found to be~$-56\text{ kPa}$ and the motor has an efficiency of $78\%$,
+					determine the power output from the motor.
+				\end{myexer}
+			\end{textblock*}
+		\end{frame}
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{frame}
+			\begin{textblock*}{0.5\textwidth}(1.25cm,0cm)
+				\begin{cfig}[0.45]{../../figs/04GEE/05GEE-Ex06}\end{cfig}
+			\end{textblock*}
+			\begin{textblock*}{0.6\textwidth}(1.5cm,3.75cm)
+				\definecolor{example}{RGB}{175, 175, 175}
+				\begin{myexam}[colframe=example, colbacktitle=example]{}{}
+					\raggedright
+					
+					A car fuel pump pumps $1\text{ L}$ of gasoline every $45\text{s}$ when is has a suction pressure of
+					$155\text{ mm}$ of mercury vacuum and a discharge pressure of $32\text{ kPa}$. Both the suction and the discharge
+					lines have the same diameter.
+					\parb
+					If the pump efficiency is $68\%$, determine the power drawn from the engine.
+				\end{myexam}
+			\end{textblock*}
+		\end{frame}
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{frame}
+			\begin{textblock*}{3cm}(0.75cm,-0.5cm)
+				\begin{cfig}[0.45]{../../figs/04GEE/05GEE-Ex07}\end{cfig}
+			\end{textblock*}
+			\begin{textblock*}{7cm}(5cm,2.5cm)
+				\definecolor{example}{RGB}{175, 175, 175}
+				\begin{myexam}[colframe=example, colbacktitle=example]{}{}
+					\setbeamercolor{item projected}{bg=example}
+					There are no pumps or turbines and the pipe is of constant diameter. Determine which of the following is true:
+					\begin{enumerate}
+						\item flow is upward
+						\item there is no flow
+						\item flow is downward
+					\end{enumerate}
+				\end{myexam}
+			\end{textblock*}
+		\end{frame}
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{frame}
+			\begin{textblock*}{1\columnwidth}(1.125cm,-0.5cm)
+				\begin{cfig}[0.4]{../../figs/04GEE/05GEE-Ex08}\end{cfig}
+			\end{textblock*}
+			\begin{textblock*}{1\columnwidth}(1cm,5.75cm)
+				\definecolor{example}{RGB}{125, 125, 125}
+				\begin{myexer}[colframe=example, colbacktitle=example]{}{}
+					\setbeamercolor{item projected}{bg=example}
+					\small
+					A rural house relies upon a shallow well for its water supply. The pump at the well is required to supply
+					$210 \text{ L/min}$ of water. The water tank at the house maintains a pressure of $280 \text{ kPa}$. Friction losses in the
+					pipe amount to $4.35$ m.
+					\par\medskip
+					If the pump is $72\%$ efficient, determine the power delivered to the pump by the electrical supply and the
+					power added to the water by the pump.
+				\end{myexer}
+			\end{textblock*}
+		\end{frame}
+		
+		
+		
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		
+\end{document}

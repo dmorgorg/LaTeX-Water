@@ -1,0 +1,1029 @@
+\documentclass[9pt,xcolor={svgnames, x11names},professionalfonts, mathserif]{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}  % for top and bottom spacing in table cells
+\usepackage{mathpazo}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{cancel}
+\usepackage{array}
+%\usepackage{enumerate}
+% \usepackage{enumitem} %causes compile error, stack size exceeded?
+\usepackage{gensymb} % for \degree
+\usepackage[many]{tcolorbox}
+\usepackage{verbatim}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tkz-linknodes}
+\usepackage[export]{adjustbox} % for tight borders around photos
+\usepackage{pgf} % for sait logo in beamer
+\usepackage{pgfmath}
+\usepgfmodule{oo}
+%\usetikzlibrary{shapes,decorations,shadows,calc}
+\usetikzlibrary{shadows,calc,arrows.meta}
+% \usetikzlibrary{decorations.shapes}
+%\usetikzlibrary{shapes.callouts}
+% bloody coils
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.multipart}
+
+\input{../../Includes/macros.tex}
+\input{../../Includes/definedColors}
+\input{../../Includes/tikzObjects.tex}
+
+\usefonttheme[onlymath]{serif}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=structure}
+% \hypersetup{urlcolor=Blue4}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+
+\usetheme{Antibes}
+
+\usecolortheme[rgb={0, 0.65,0.65}]{structure}
+% \definecolor{structurecolor}{rgb}{0.55,0.53,0.31}
+\setbeamertemplate{items}[triangle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+%\setbeamertemplate{background canvas}[vertical shading][bottom=Cyan1!50, middle=white, top=white, midpoint=0.05]
+\setbeamertemplate{headline}{\vspace{.05cm}}
+\setbeamertemplate{footline}{ \hfill \insertshorttitle \quad
+	\insertshortsubtitle
+	\quad \insertframenumber/\inserttotalframenumber \quad{ }\vspace{0.125cm}}
+\addtobeamertemplate{footline}{\hypersetup{linkcolor=.}}{}
+\setbeamertemplate{navigation symbols}{} % empty braces suppresses all navigation symbols
+\setbeamercolor{frametitle}{fg=white}
+% \setbeamercolor{footline}{fg=black}
+\setbeamercolor{block title}{fg=white,bg=structure}
+\setbeamercolor{block body}{bg=white, fg=black}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamersize{text margin left = 1cm, text margin right=1cm}
+%\useinnertheme[shadow]{rounded}
+%\raggedright
+\setbeamerfont{block title}{family=mathserif}
+
+\everymath{\displaystyle}
+\newcounter{itemcount}
+
+\logo{\pgfputat{\pgfxy(-11.85,-0.5)}{\pgfbox[right,base]{\includegraphics[height=1cm]{../../figs/rb_logo}}}}
+
+\begin{document}
+
+%define title content
+\title[Minor Losses]{\Huge \textcolor{white}{06 --- Minor Losses}}
+\subtitle[CIVL318]{\Large\textcolor{white}{Water Resources, CIVL318}}
+\author{}
+\institute{}
+\date{Last revision on \today}
+
+% \institute{Southern Alberta Institute of Technology}
+% \date{\tiny \textcolor{blueGrey}{Last revised on \today}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]    %don't need footer on titlepage
+ \titlepage
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Minor Losses}
+
+ \begin{itemize}
+  \item Fluid flowing in a long straight pipe with uniform diameter assumes a characteristic velocity distribution.
+  \item []
+  \item A change in direction in some, or all, of the flow will create some turbulence, causing energy loss in
+        addition to the normal loss that is due to fluid friction:
+ \end{itemize}
+ \par\vspace{-0.5cm}
+ \begin{cfig}[0.35]{../../figs/06MinorLosses/06Minor01}\end{cfig}
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Minor Losses}
+
+ \begin{textblock*}{0.5\columnwidth}(0.5cm, 1.75cm)
+
+  \begin{itemize}
+
+   \item Losses due to local flow disturbances due to entering or exiting a pipe, changes in pipe cross-section,
+         elbows, valves, etc., are known as \textbf{minor losses}.
+   \item[]
+   \item In the case of a long pipe, these losses are usually small in comparison to the frictional losses in the
+         length of pipe.
+   \item[]
+   \item In a short pipe, such as the suction pipe for a pump with a footvalve and strainer, these losses can be
+         considerable and exceed the losses due to friction
+
+  \end{itemize}
+
+ \end{textblock*}
+
+ \begin{textblock*}{0.5\columnwidth}(0.55\columnwidth, 1.5cm)
+  \begin{cfig}[0.25]{../../figs/06MinorLosses/06Minor02}\end{cfig}
+ \end{textblock*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Resistance Coefficient}
+
+ \begin{itemize}
+
+  \item It has been verified experimentally that the head loss due to valves and fittings is
+        proportional to the velocity head of the flow.
+        \begin{itemize}
+         \item For check valves, this relationship is only true for flows that are sufficient to hold the valve disc in a
+               fully open position; we shall assume that this is the case in the situations we investigate
+        \end{itemize}
+  \item[]
+  \item For $h_L\propto\tfrac{v^2}{2g}$, there exists a \textbf{resistance coefficient, $\bm K$}, such that:
+        \[ h_L = K\frac{v^2}{2g} \]
+  \item $\bm K$-values have been calculated for a variety of situations; they depend upon the geometry of the
+        fitting. In some cases, $K$ may also depend upon the velocity of the flow.
+
+ \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Sudden Contraction}
+
+ \begin{itemize}
+
+  \item With a sudden contraction in pipe diameter, there is a marked decrease in pressure due to the increase in
+        velocity and due to loss of energy caused by turbulence at the contraction.
+  \item []
+  \item The resistance to flow due to a sudden contraction depends upon the ratio of the diameters of the pipes
+        before and after the contraction. Also, this is a case where the value of $K$ depends upon the flow. Values for $K$
+        can be found in tables.
+  \item []
+  \item The velocity related to the head loss is in the smaller, downstream pipe.
+
+ \end{itemize}
+ \begin{cfig}[0.35]{../../figs/06MinorLosses/06Minor03}\end{cfig}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Sudden Contraction }
+
+ \begin{textblock*}{1\textwidth}(0cm, 2cm)
+  \small
+  \hspace{-0.5cm}
+  \begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}>{$}c<{$}>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}
+   >{$}c<{$} }
+   \toprule
+   \addlinespace
+   && \multicolumn{9}{c}{Velocity, $v$} \\
+   D_1/D_2 &\qquad& 0.6\,\text{m/s} & 1.2\,\text{m/s} & 1.8\,\text{m/s} & 2.4\,\text{m/s}& 3\,\text{m/s} &
+   4.5\,\text{m/s} & 6\,\text{m/s} & 9\,\text{m/s} & 12\,\text{m/s} \\
+   \midrule 1 && 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0
+   & 0.0  & 0.0 & 0.0\\
+   1.1    &   & 0.03 & 0.04 & 0.04 & 0.04 & 0.04 & 0.04 & 0.05 & 0.05 & 0.06 \\
+   1.2    &   & 0.07 & 0.07 & 0.07 & 0.07 & 0.08 & 0.08 & 0.09 & 0.10 & 0.11 \\
+   1.4    &   & 0.17 & 0.17 & 0.17 & 0.17 & 0.18 & 0.18 & 0.18 & 0.19 & 0.20 \\
+   1.6    &   & 0.26 & 0.26 & 0.26 & 0.26 & 0.26 & 0.25 & 0.25 & 0.25 & 0.24 \\
+   1.8    &   & 0.34 & 0.34 & 0.34 & 0.33 & 0.33 & 0.32 & 0.31 & 0.29 & 0.27 \\
+   2.0    &   & 0.38 & 0.37 & 0.37 & 0.36 & 0.36 & 0.34 & 0.33 & 0.31 & 0.29 \\
+   2.2    &   & 0.40 & 0.40 & 0.39 & 0.39 & 0.38 & 0.37 & 0.35 & 0.33 & 0.30 \\
+   2.5    &   & 0.42 & 0.42 & 0.41 & 0.40 & 0.40 & 0.38 & 0.38 & 0.34 & 0.31 \\
+   3.0    &   & 0.44 & 0.44 & 0.43 & 0.42 & 0.42 & 0.40 & 0.39 & 0.36 & 0.33 \\
+   4.0    &   & 0.47 & 0.46 & 0.45 & 0.45 & 0.44 & 0.42 & 0.41 & 0.37 & 0.34 \\
+   5.0    &   & 0.48 & 0.47 & 0.47 & 0.46 & 0.45 & 0.44 & 0.42 & 0.38 & 0.35 \\
+   10.0   &   & 0.49 & 0.48 & 0.48 & 0.47 & 0.46 & 0.45 & 0.43 & 0.40 & 0.36 \\
+   \infty &   & 0.49 & 0.48 & 0.48 & 0.47 & 0.47 & 0.45 & 0.44 & 0.41 & 0.38 \\
+   \bottomrule
+
+  \end{tabular}
+ \end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \centering
+ \begin{myexam}[width=0.7\textwidth]{}{}
+  \raggedright
+  Determine the head loss that occurs when $100\text{ L/min}$ of fluid flows from $3\text{-in}$ Type K copper tube $(D=73.84\,\text{mm})$ into
+  $1\text{-in}$ Type K copper tube $(D=25.27\,\text{mm})$ through a sudden contraction.
+ \end{myexam}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gradual Contraction}
+
+ \begin{itemize}
+
+  \item To reduce losses, sudden changes of cross-section should be avoided where possible.
+  \item The resistance to flow due to a gradual contraction is given by:
+        \begin{equation*}
+         K=
+         \begin{cases}
+          0.5\sqrt{\sin\frac{\theta}{2}}\left(1-\left(\frac{D_2}{D_1}\right)^2\right), & 45\degree < \theta \le 180\degree
+          \\
+          0.8\sin\frac{\theta}{2}\left(1-\left(\frac{D_2}{D_1}\right)^2\right),        & 15\degree < \theta \le 45\degree
+         \end{cases}
+        \end{equation*}
+        where $D_2$ is the smaller (downstream) diameter of the pipe after the contraction and $D_1$ is the diameter of the
+        larger (upstream) pipe and \textbf{the head loss is based on the velocity of the smaller pipe}.
+  \item Below a cone angle of $15\degree$, the value of $K$ starts to increase again as friction losses due to the
+        length of the contraction become significant.	Tables should be consulted to determine the resistance coefficient for
+        these contractions.
+  \item Rounded ends of the conical transition can reduce the resistance coefficient further still.
+
+ \end{itemize}
+ \par\vspace{-0.5cm}
+ \begin{cfig}[0.25]{../../figs/06MinorLosses/06Minor04}\end{cfig}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \centering
+ \begin{myexam}[width=0.95\textwidth]{}{}
+  \raggedright
+  Determine the head loss for a gradual contraction from $4\text{-in}$~Schedule~$80$~pipe $(D=97.2\,\text{mm})$ to a
+  $1\tfrac{1}{2}\text{-in}$ Schedule $80$ pipe $(D=38.1\,\text{mm})$ with a cone angle of $76\degree$. The flow is $450\text{ L/min}$.
+ \end{myexam}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Sudden Enlargement}
+
+ \begin{itemize}
+  \item Velocity abruptly decreases, causing turbulence.
+ \end{itemize}
+ \begin{cfig}[0.35]{../../figs/06MinorLosses/06Minor05}\end{cfig}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Sudden Enlargement}
+
+ \begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} }
+  \toprule
+  \addlinespace
+  && \multicolumn{7}{c}{Velocity, $v$} \\
+  D_2/D_1 &\qquad& 0.6\,\text{m/s} & 1.2\,\text{m/s} & 3\,\text{m/s} & 4.5\,\text{m/s}  & 6\,\text{m/s}  &
+  9\,\text{m/s} & 12\,\text{m/s} \\ \midrule
+  1      &   & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\
+  1.2    &   & 0.11 & 0.10 & 0.09 & 0.09 & 0.09 & 0.09 & 0.08 \\
+  1.4    &   & 0.26 & 0.25 & 0.23 & 0.22 & 0.22 & 0.21 & 0.20 \\
+  1.6    &   & 0.40 & 0.38 & 0.35 & 0.34 & 0.33 & 0.32 & 0.32 \\
+  1.8    &   & 0.51 & 0.48 & 0.45 & 0.43 & 0.42 & 0.41 & 0.40 \\
+  2.0    &   & 0.60 & 0.56 & 0.52 & 0.51 & 0.50 & 0.48 & 0.47 \\
+  2.5    &   & 0.74 & 0.70 & 0.65 & 0.63 & 0.62 & 0.60 & 0.58 \\
+  3.0    &   & 0.83 & 0.78 & 0.73 & 0.70 & 0.69 & 0.67 & 0.65 \\
+  4.0    &   & 0.92 & 0.87 & 0.80 & 0.78 & 0.76 & 0.74 & 0.72 \\
+  5.0    &   & 0.96 & 0.91 & 0.84 & 0.82 & 0.80 & 0.77 & 0.75 \\
+  10.0   &   & 1.00 & 0.96 & 0.89 & 0.86 & 0.84 & 0.82 & 0.80 \\
+  \infty &   & 1.00 & 0.98 & 0.91 & 0.88 & 0.86 & 0.83 & 0.81 \\
+  \bottomrule
+ \end{tabular}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+ \begin{myexam}{}{}
+  \raggedright
+  Determine the head loss that occurs when $100\text{ L/min}$ flows from $1\text{-in}$ Type K copper tube $(D=25.27\,\text{mm})$ into
+  $3\text{-in}$ Type K copper tube $(D=73.48\,\text{mm})$ through a sudden enlargement.
+ \end{myexam}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gradual Enlargement}
+
+ \begin{itemize}
+
+  \item When the enlargement is less abrupt, energy losses are reduced.
+  \item []
+  \item The enlargement is made with a conical section; the sloping walls of the cone reduce the amount of separation
+        of flow from the pipe wall.
+  \item []
+  \item $K$ is dependent upon upon the ratio of the diameters and the cone angle.
+  \item []
+  \item Enlargements are used for pressure recovery; they are also known as \textbf{diffusers}
+ \end{itemize}
+ \begin{cfig}[0.35]{../../figs/06MinorLosses/06Minor06}\end{cfig}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Gradual Enlargement }
+ \small
+ \begin{textblock*}{1\textwidth}(0.25cm, 2cm)
+
+  \begin{tabular}{>{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} }
+   \toprule
+   D_2/D_1 & 2^\circ & 6^\circ & 10^\circ & 15^\circ & 20^\circ & 25^\circ & 30^\circ & 35^\circ & 40^\circ & 45^\circ & 50^\circ & 60^\circ \\
+   \midrule
+   1.1     & 0.01    & 0.01    & 0.03     & 0.05     & 0.10     & 0.13     & 0.16     & 0.81     & 0.19     & 0.20 & 0.21 & 0.23 \\
+
+   1.2     & 0.02    & 0.02    & 0.04     & 0.09     & 0.16     & 0.21     & 0.25     & 0.29     & 0.31     & 0.33 & 0.35 & 0.37 \\
+
+   1.4     & 0.02    & 0.03    & 0.06     & 0.12     & 0.23     & 0.30     & 0.36     & 0.41     & 0.44     & 0.47 & 0.50 & 0.53 \\
+
+   1.6     & 0.03    & 0.04    & 0.07     & 0.14     & 0.26     & 0.35     & 0.42     & 0.47     & 0.51     & 0.54 & 0.57 & 0.61 \\
+
+   1.8     & 0.03    & 0.04    & 0.07     & 0.15     & 0.28     & 0.37     & 0.44     & 0.50     & 0.54     & 0.58 & 0.61 & 0.65 \\
+
+   2.0     & 0.03    & 0.04    & 0.07     & 0.16     & 0.29     & 0.38     & 0.46     & 0.52     & 0.56     & 0.60 & 0.63 & 0.68 \\
+
+   2.5     & 0.03    & 0.04    & 0.08     & 0.16     & 0.30     & 0.39     & 0.48     & 0.54     & 0.58     & 0.62 & 0.65 & 0.70 \\
+
+   3       & 0.03    & 0.04    & 0.08     & 0.16     & 0.31     & 0.40     & 0.48     & 0.55     & 0.59     & 0.63 & 0.66 & 0.71 \\
+
+   \infty  & 0.03    & 0.05    & 0.08     & 0.16     & 0.31     & 0.40     & 0.49     & 0.56     & 0.60     & 0.64 & 0.67 & 0.72 \\
+   \bottomrule
+  \end{tabular}
+ \end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Entrance Loss}
+ \begin{minipage}{0.45\columnwidth}
+  \begin{itemize}
+   \item When fluid flows from a tank into a pipe, a form of contraction occurs. The fluid accelerates from zero
+         velocity to the average flow velocity in the pipe.\parm
+   \item The values for $K$ depend upon the geometry of the entrance. \\Each geometry has an associated resistance
+         coefficient, $K$. \par
+   \item Then, $$h_L=K\frac{v^2}{2g}$$ where $v$ is based on the velocity {\bfseries in the pipe}.
+  \end{itemize}
+ \end{minipage}
+ \hfill
+ \begin{minipage}{0.5\columnwidth}
+  \begin{cfig}[0.35]{../../figs/06MinorLosses/06Minor07}\end{cfig}
+ \end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Entrance Loss --- Inward-Projecting}
+
+ \begin{itemize}
+  \item An inward-projecting entrance is the most severe in terms of turbulence and resultant energy loss.
+  \item []
+  \item Mott (the course text) recommends a value of $K=1.0$ to be conservative. Crane Co.'s Technical Paper
+        uses $K=0.78$. \\(Use the value provided in the question.)
+ \end{itemize}
+ \par\vspace{-0.5cm}
+ \begin{cfig}[0.6]{../../figs/06MinorLosses/06Minor07inwardProjecting}\end{cfig}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Entrance Loss --- Square-Edged and Chamfered}
+ \begin{textblock*}{1\columnwidth}(1cm, 1cm)
+  \begin{itemize}
+   \item Square-edged and chamfered entrances (inlets) have $K$ values of $0.5$ and $0.25$ respectively
+
+   \item These entrances reduce the flow separation that occurs at the sharp corner of an inward-projecting entrance and
+         the vena contracta effect is reduced
+  \end{itemize}
+ \end{textblock*}
+
+ \begin{textblock*}{0.55\columnwidth}(1cm, 2.75cm)
+  \begin{cfig}[0.5]{../../figs/06MinorLosses/06Minor07square}\end{cfig}
+
+  \centering
+  \par\vspace{-0.75cm}
+  Square-edged
+ \end{textblock*}
+
+ \begin{textblock*}{0.55\columnwidth}(0.5\columnwidth, 5.5cm)
+  \begin{cfig}[0.5]{../../figs/06MinorLosses/06Minor07chamfer}\end{cfig}
+  \centering
+  \par\vspace{-0.75cm}
+  Chamfered
+ \end{textblock*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Entrance Loss --- Rounded Entrance}
+
+ \begin{itemize}
+  \item Resistance coefficients for rounded entrances are calculated using a ratio of radius $r$ of the rounded
+        entrance to the diameter of the pipe, $D$
+  \item []
+  \item A well-rounded entrance has a very small resistance coefficient, and a fairly insignificant energy loss
+ \end{itemize}
+ \par\vspace{-0.5cm}
+ \begin{cfig}[0.6]{../../figs/06MinorLosses/06Minor07rounded}\end{cfig}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Entrance Losses Summary}
+ \small
+ \begin{textblock*}{0.65\columnwidth}(1cm, 0.5cm)
+  \begin{cfig}[0.4]{../../figs/06MinorLosses/06Minor07}\end{cfig}
+ \end{textblock*}
+ \begin{textblock*}{5cm}(0.7\columnwidth, 1.8cm)
+  Inward-projecting:
+  $K=0.78\text{ --- }1.0$
+ \end{textblock*}
+
+ \begin{textblock*}{5cm}(0.7\columnwidth, 3.8cm)
+  Square-edged inlet:
+  $K=0.5$
+ \end{textblock*}
+
+ \begin{textblock*}{5cm}(0.7\columnwidth, 5.8cm)
+  Chamfered Inlet:
+  $K=0.25$
+ \end{textblock*}
+ \footnotesize
+ \begin{textblock*}{5cm}(0.7\columnwidth, 6.75cm)
+  Rounded inlet:
+  \begin{tabular}{>{$}r<{$}|>{$}l<{$}}
+   r/D     & K    \\
+   \midrule
+   0       & 0.5  \\
+   0.02    & 0.28 \\
+   0.04    & 0.24 \\
+   0.06    & 0.15 \\
+   0.10    & 0.09 \\
+   \ge0.15 & 0.04
+  \end{tabular}
+ \end{textblock*}
+ \normalsize{}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+ \begin{myexam}{}{}
+  \raggedright
+  Compare the headlosses between an inward-projecting entrance and rounded entrance with a radius of $25\text{ mm}$
+  for water entering $6\text{-in}$ Schedule 40 steel pipe $(D=154.1\,\text{mm})$ with a flow of $75\text{L/s}$. \lb(Use $K=0.78$.)
+ \end{myexam}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Exit Loss}
+
+ \begin{itemize}
+
+  \item As liquid flows from a pipe into a large reservoir or tank, the velocity decreases to almost zero and {\bfseries all} the velocity head is lost. \parm
+
+        Then $K=1$ and
+        \[ h_L = \frac{v^2}{2g} \]
+        \parm
+  \item  It is important to remember this loss since, typically, no formula is provided for this in an exam
+        formula sheet!
+
+ \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Valves and Fittings}
+
+ \begin{itemize}
+
+  \item Valves are used to control the amount of flow:
+  \item [] e.g. globe valves, angle valves, gate valves, butterfly valves, check (non-return) valves, etc.
+  \item []
+  \item Fittings are used to change the direction of the flow:
+  \item [] e.g. elbows, tees, reducers, nozzles, etc.
+
+ \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Globe Valve}
+
+ \mini[.5]{
+
+  \cfig[0.4]{../../figs/06MinorLosses/valves/globe2}
+
+  \tiny http://en.wikipedia.org/wiki/File:Carbon\_steel\_globe\_valve.jpg
+
+ }
+ \hfill
+ \mini[.45]{
+  Used for regulating flow.
+
+  \parm
+  It has a moveable disc (or plug) and stationary disc seat in a spherical chamber that gives the valve its name.
+
+  \parm
+  The disc is screwed into the seat to close the valve
+
+  \cfig[0.3]{../../figs/06MinorLosses/valves/globe}
+  \vspace{-0.5cm}
+  \tiny http://en.wikipedia.org/wiki/File:Globe\_valve\_diagram-en.svg
+  \normalsize
+  \par\medskip
+  Due to the disruption of flow, even a fully open globe valve causes significant losses.
+
+ }
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Angle Valve}
+
+ \cmini{
+
+  \cfig[0.3]{../../figs/06MinorLosses/valves/angle}
+  \centering
+  \vspace{-0.5cm}
+  \tiny http://articles.compressionjobs.com/images/stories/norrie/8/nw08\_18\_32.jpg
+  \normalsize
+  \par\bigskip
+  A globe valve with inlet and outlet ports at an angle
+ }
+
+
+
+ % 		\par\medskip
+ % 		Outlet port usually orientated downwards to assist the draining of fluid that may remain in the case of a standard
+ % 		globe valve, helping to prevent clogging or corrosion
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Gate Valve}
+
+ \mini[.5]{
+
+  \cfig[0.8]{../../figs/06MinorLosses/valves/gate}
+
+  \centering \tiny http://en.wikipedia.org/wiki/File:Valve.jpg
+
+ }
+ \hfill
+ \mini[.45]{
+  A gate valve opens by lifting a gate out of the flow of the fluid
+
+  \par\medskip
+  Typically used to allow or prevent flow rather than to regulate, or 'throttle' the flow
+
+  \par\medskip
+  If used to regulate flow, vibration and excessive wear may occur
+
+  \par\medskip
+  When fully open, there is very little in the way of minor losses
+
+
+ }
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Gate Valve}
+
+ \cmini{
+
+  \cfig[0.05]{../../figs/06MinorLosses/valves/gate2}
+  \centering
+  \tiny http://www.ctgclean.com/tech-blog/wp-content/uploads/gate-valve3.jpg
+
+ }
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Gate Valve}
+
+ \cmini{
+
+  \cfig[0.27]{../../figs/06MinorLosses/valves/gate3}
+  \centering \vspace{-0.5cm}
+  \tiny http://www.nomenclaturo.com/wp-content/uploads/Cutaway-View-and-Terminology-of-Gate-Valve.gif
+
+ }
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Check Valve - Swing Type}
+
+ \mini[0.53]{
+  \vspace{-2cm}
+  \cfig[0.15]{../../figs/06MinorLosses/valves/checkBanff}
+
+  Banff Middle Springs Pumping Station
+ }
+ \hfill
+ \mini[0.42]{
+  \vspace{2cm}
+  Allows flow in only one direction
+  \par\medskip
+  Shuts automatically when flow reverses
+  \par
+  \cfig[0.3]{../../figs/06MinorLosses/valves/check}
+  \vspace{-0.35cm}
+  \tiny http://tapseis.anl.gov/guide/photo/images/Check\_Valve\_Diagram.jpg
+
+
+ }
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Check Valve - Ball Type}
+
+ \mini[0.45]{
+
+  \cfig[0.65]{../../figs/06MinorLosses/valves/ballCheck1}
+  \centering
+  Open
+ }
+ \hfill
+ \mini[0.45]{
+  \cfig[0.65]{../../figs/06MinorLosses/valves/ballCheck2}
+  \centering
+  Closed
+ }
+ \cmini{
+  The closing member is a spherical ball, which may or may not be spring-loaded.
+  \par\medskip
+  The seats are conical in shape, to guide the ball into the correct position to obstruct flow.
+  \par\medskip
+  Small, simple and cheap
+  \par\medskip
+  Not to be confused with ball valves
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Ball Valve}
+
+ \mini[0.45]{
+  \cfig[1]{../../figs/06MinorLosses/valves/ball}
+  \centering
+  \tiny http://en.wikipedia.org/wiki/File:Ball.PNG
+
+
+  % \hspace{2cm}
+  \hfill
+  \mini[0.65]{
+   \small\parm
+   \begin{enumerate}
+    \item Body
+    \item Head
+    \item Ball
+    \item Handle
+    \item Stem
+   \end{enumerate}
+  }
+ }
+ \hfill
+ \mini[0.5]{
+
+  A sphere, with a hole (or port) through it is rotated by a handle
+  \par\medskip
+  The handle is lined up with the hole to show the valve's position
+  \par\medskip
+  Can support high pressures (up to 1000 times atmospheric pressure)
+  \par\medskip
+  A good choice for shut-off application, often used in preference to globe or gate valves, providing perfect shut-off
+  after years of use
+
+  \cfig[.2]{../../figs/06MinorLosses/valves/ball3}
+
+ }
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Butterfly Valve}
+
+ \mini[.5]{
+  \cfig[0.06]{../../figs/06MinorLosses/valves/Butterfly-valve}
+ }
+ \hfill
+ \mini[.45]{
+  A disc, or 'butterfly', is mounted on a rod connected to an 'actuator' outside the pipe. Turning the actuator turns the disc.
+
+  \par\medskip
+  When the disc is perpendicular to the flow, flow is blocked and the valve is closed.
+
+  \par\medskip
+  When the disc is parallel to the flow,  the valve is open.
+
+  \par\medskip
+  Even when the valve is open, there are still some losses - the presence of the disc within the pipe causes some
+  disruption to the flow.
+
+ }
+
+ \tiny http://commons.wikimedia.org/wiki/File:Butterfly-valve--The-Alloy-Valve-Stockist.JPG
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Butterfly Valve}
+
+ \mini[.53]{
+  \cfig[0.85]{../../figs/06MinorLosses/valves/butterfly2}
+ }
+ \hfill
+ \mini[.42]{
+  This is a large butterfly valve used on a hydroelectric power station water inlet pipe in Japan.
+  \par\medskip
+  Butterfly valves are lower in cost and lighter in weight compared to other valve designs/
+  \par\medskip
+  They may be used partially open to 'throttle' flow
+
+
+  \cfig[0.25]{../../figs/06MinorLosses/valves/butterfly3}
+  \tiny http://en.wikipedia.org/wiki/File:Nasa-space-18408-l.jpg
+ }
+
+ \tiny http://en.wikipedia.org/wiki/File:Yagisawa\_power\_station\_inlet\_valve.jpg
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Foot Valve}
+
+ \mini[.53]{
+  \cfig[0.35]{../../figs/06MinorLosses/valves/foot2}
+  \centering
+  \tiny http://www.cla-val.com/images/products/583%20Foot%20Valve.jpg
+ }
+ \hfill
+ \mini[.42]{
+  Attached to the end of a suction line to a pump, allowing water through the valve when the pump is on but with a check
+  valve that stops water draining from the line when the flow stops (i.e. when the pump stops).
+  \par\medskip
+  There is often a strainer on the outside of the valve to prevent objects from blocking the valve inlet.
+
+  \cfig[0.4]{../../figs/06MinorLosses/valves/foot1}
+  \centering
+  \vspace{-0.25cm}
+  \tiny http://www.merrillmfg.com/product/11-CheckValves/BrassValves/images/BrassValves-01.jpg
+ }
+
+ % \tiny http://en.wikipedia.org/wiki/File:Yagisawa\_power\_station\_inlet\_valve.jpg
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Equivalent-Length}
+
+ Energy losses incurred by fluid flowing through a valve or fitting is the same as for the minor losses already
+ discussed but $K$ is calculated differently:
+ \begin{enumerate}
+  \item Friction losses in the very short sections of straight pipe at the valve entrance and exit are so small they
+        may be ignored.
+  \item Losses are then due to changes in direction of the flow, obstructions in the flow and changes in the
+        cross-section and shape of the flow, \textbf{where the flow is fully turbulent}
+  \item Let $L_e$ (called the \textbf{equivalent length}) be the length of straight pipe with fully turbulent flow that
+        would have the same (equivalent) resistance as the valve or fitting. (That is, if the valve were replaced with length $L_e$ of
+        straight pipe, losses would be unchanged.)
+  \item Then, if we denote the friction factor for fully turbulent flow by $f_T$,
+        \[ h_L = f_T\cdot\frac{L_e}{D}\cdot\frac{v^2}{2g} \]
+        But the resistance factor $K$ is defined by the relationship $\displaystyle h_L=K\cdot\frac{v^2}{2g}$ so
+        \[ K=f_T\left(\frac{L_e}{D}\right) \]
+ \end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Equivalent Length Ratio}
+
+ \begin{itemize}
+
+  \item $\frac{L_e}{D}$ is known as the \textbf{equivalent length ratio} and is considered constant for a particular
+        type of fitting.\parb
+  \item The friction factor for fully turbulent flow, $f_T$, is independent of the Reynolds number. It is that part of
+        the Moody Diagram where the curve is horizontal depends only on the relative roughness of the pipe in question.\parb
+  \item $f_T$ can be determined in a number of ways:\pars
+        \begin{enumerate}
+         \item   From the Moody Diagram, most conveniently by drawing a horizontal line directly leftwards from the relative
+               roughness scale on the right hand border of the Diagram.\parm
+         \item From the Swamee-Jain formula, using a sufficiently high value for the Reynolds number to guarantee complete
+               turbulence (such as $N_R=10^8$).\parm
+         \item Or, in the case of steel pipe, from the table on the next page\ldots
+        \end{enumerate}
+
+
+
+
+ \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Friction Factor for Fully Turbulent Flow}
+ \begin{center}
+  \textbf{Friction Factor, $\bm {f_T}$}
+  \\in the zone of complete turbulence\\
+  for new clean commercial \textbf{steel} pipe:
+  \parb\footnotesize
+  \begin{tabular}{>{$}r<{$} >{$}r<{$} >{$}l<{$} >{$}c<{$} >{$}r<{$} >{$}r<{$} >{$}l<{$}}
+   \toprule
+   \text{Nominal}   & \quad & f_T   & \qquad\qquad\qquad & \text{Nominal}   & \quad & f_T   \\
+   \text{Size (in)} &       &       &                    & \text{Size (in)} &       &       \\
+   \midrule
+   \midrule
+   \frac{1}{2}      &       & 0.027 &                    & 3\frac{1}{2},4   &       & 0.017 \\
+   \addlinespace	\midrule \addlinespace
+   \frac{3}{4}      &       & 0.025 &                    & 5                &       & 0.016 \\
+   \addlinespace	\midrule \addlinespace
+   1                &       & 0.023 &                    & 6                &       & 0.015 \\
+   \addlinespace	\midrule \addlinespace
+   1\frac{1}{4}     &       & 0.022 &                    & 8-10             &       & 0.014 \\
+   \addlinespace	\midrule \addlinespace
+   1\frac{1}{2}     &       & 0.021 &                    & 12-16            &       & 0.013 \\
+   \addlinespace	\midrule \addlinespace
+   2                &       & 0.019 &                    & 18-24            &       & 0.012 \\
+   \addlinespace	\midrule \addlinespace
+   2\frac{1}{2},3 &&	0.018\\
+   \bottomrule
+  \end{tabular}
+  \par\end{center}
+
+  \end{frame}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{frame}
+\centering
+
+   \begin{myexam}[width=0.75\textwidth]{}{}
+		 \raggedright
+    Find the pressure drop across a fully open globe valve ($L_e/D=340$) in $4\text{-in}$ Shedule $40$ steel pipe\lb $(D=102.3\,\text{mm})$
+    carrying $1600\text{ L/min}$.
+   \end{myexam}
+
+  \end{frame}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{frame}[plain]
+   \cfig[0.55]{../../Figs/05FrictionLosses/moody}
+
+  \end{frame}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{frame}{Table of Equivalent-Length Ratios for Valves}
+   \begin{center}
+		 \small
+    \parb
+    \begin{tabular}{r >{$}r<{$} >{$}l<{$} >{$}c<{$} }
+     \toprule
+     \text{Type}                              & \quad & L_e/D \\
+     \midrule
+     Globe valve --- fully open               &       & 340   \\
+     \addlinespace
+     Angle valve --- fully open               &       & 150   \\
+     \addlinespace
+     Gate valve --- fully open                &       & 8     \\
+     \addlinespace
+     --- $3/4$ open                           &       & 35    \\
+     \addlinespace
+     --- $1/2$ open                           &       & 160   \\
+     \addlinespace
+     --- $1/4$ open                           &       & 900   \\
+     \addlinespace
+     Check valve --- swing type               &       & 100   \\
+     \addlinespace
+     Check valve --- ball type                &       & 150   \\
+     \addlinespace
+     Butterfly valve --- fully open --- 2-8'' &       & 45    \\
+     \addlinespace
+     --- 10-14''                              &       & 35    \\
+     \addlinespace
+     --- 16-24''                              &       & 25    \\
+     \addlinespace
+     Foot valve --- poppet disc type          &       & 420   \\
+     \addlinespace
+     Foot valve --- hinged disc type          &       & 75    \\
+     \addlinespace
+
+     \bottomrule
+    \end{tabular}
+    \par\end{center}
+
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{frame}
+\centering
+     \begin{myexam}[width=0.8\textwidth]{}{}
+			 % \raggedright
+      Calculate the headloss across a ball-type check valve placed in a $1\tfrac{1}{4}\text{-in}$ copper
+      tubing $(D=31.62\,\text{mm})$ if water is flowing through the tubing with a velocity of $2.35\text{ m/s}$.
+		\end{myexam}
+
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{frame}[plain]
+
+     \cfig[0.55]{../../Figs/05FrictionLosses/moody}
+
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{frame}{Table of Equivalent-Length Ratios for Fittings}
+     \begin{center}
+
+      \par\bigskip
+      \begin{tabular}{r >{$}r<{$} >{$}l<{$} >{$}c<{$} }
+       \toprule
+       \text{Type}                          & \quad & L_e/D \\
+       \midrule
+       $90\degree$ standard elbow           &       & 30    \\
+       \addlinespace
+       $90\degree$ long radius elbow        &       & 20    \\
+       \addlinespace
+       $90\degree$ street elbow             &       & 50    \\
+       \addlinespace
+       $45\degree$ standard elbow           &       & 16    \\
+       \addlinespace
+       $45\degree$ street elbow             &       & 26    \\
+       \addlinespace
+       Close return bend                    &       & 50    \\
+       \addlinespace
+       Standard tee --- flow through run    &       & 20    \\
+       \addlinespace
+       Standard tee --- flow through branch &       & 60    \\
+       \addlinespace
+       \bottomrule
+      \end{tabular}
+      \par\end{center}
+
+      \end{frame}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+      \begin{frame}
+				\centering
+       \begin{myexam}[width=0.8\textwidth]{}{}
+				 \raggedright
+        Find the pressure drop across a $90\degree$ standard elbow in a $2\tfrac{1}{2}\text{-in}$ Schedule $40$ steel pipe $(D=62.7\,\text{mm})$ if water is flowing
+        at the rate of $800\text{ L/min}$.
+			\end{myexam}
+
+      \end{frame}
+
+
+
+
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

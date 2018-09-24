@@ -1,0 +1,606 @@
+% override specific chktex warnings
+
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 3 - enclose previous parentheses wit {}
+% chktex-file 9 - sometimes messes up with ( and {
+% chktex-file 36 - put a space in front of parentheses
+% chktex-file 45 - don't use $$ instead of \[, etc
+% chktex-file 46 - don't use $ instead of \(, etc
+
+\documentclass[10pt, onesided]{amsart}
+% \usepackage[showboxes]{textpos}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.75in,rmargin=0.5in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{enumerate}
+
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{1cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-7cm}
+\centering
+
+\textbf{\Large Module 4: The General Energy Equation (CIVL 318)}
+\par\medskip
+\begin{center}
+	\begin{tabular}{r >{$}r<{$} >{$}c<{$} >{$}l<{$}}
+		\toprule
+		\addlinespace
+		\textbf{ GEE}:                        & \frac{p_A}{\gamma}+z_A+\frac{v_A^2}{2g} +h_A-h_R-h_L & = & \frac{p_B}{\gamma}+z_B+\frac{v_B^2}{2g}                                                  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Power added by a pump}:      & P_A                                                  & = & h_A\gamma Q                                                                              \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Power removed by a turbine}: & P_R                                                  & = & h_R\gamma Q                                                                              \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Efficiency of a pump}:       & e_M                                                  & = & \frac{\text{power delivered to fluid}}{\text{power input to pump}}=\frac{P_A}{P_I}       \\
+		\addlinespace
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Efficiency of a turbine}:    & e_M                                                  & = & \frac{\text{power output from turbine}}{\text{power removed from fluid}}=\frac{P_O}{P_R} \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\rule{\textwidth}{0.02in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\raggedright
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{minipage}[t]{0.45\columnwidth}
+\minit[0.425]{
+	\textbf{Example 1}:
+	\cfig[0.325]{../../figs/04GEE/05GEE-Ex01}
+	Liquid with a specific gravity of 0.9 flows from a tank, pressurized to $57\,\text{kPa}$, through the pipe system shown, before entering the atmosphere through a nozzle with diameter $125\,\text{mm}$. \parm
+	If the volume flow rate is $Q=89\,\text{L/s}$, determine $h_L$, the head loss due to friction and fittings.
+	\parb
+	\textbf{Solution}:
+	\parb
+	\cbox[0.9]{
+		\large
+		Find the average flow velocity at the nozzle:
+		\begin{align*}
+			v_N              & = \frac{Q}{A_N}=\frac{0.089}{\pi(0.125)^2/4}=7.2524\text{ m/s} \\
+			\frac{v_N^2}{2g} & = 2.6808\text{ m}                                              
+		\end{align*}
+		There is no head added or head removed in this problem so those terms may be omitted from the GEE. Apply the GEE
+		to the liquid surface in the tank and to the nozzle:
+	}
+	\vfill
+	% \end{minipage}
+}
+\hfill
+% \begin{minipage}[t]{0.5\columnwidth}
+\minit[0.5]{
+	\vspace{0cm} %wtf? why do i need this?
+	\cbox[0.8]{
+		\begin{align*}
+			\frac{P_S}{\gamma}+z_S+\frac{v_S^2}{2g}-h_L & = \frac{P_N}{\gamma}+z_N+\frac{v_N^2}{2g} \\
+			\frac{57}{0.9\times9.81}+3.7+0-h_L          & = 0+0+\frac{v_N^2}{2g}                    \\
+			h_L                                         & = \frac{57}{0.9\times9.81}+3.7-2.6808     \\
+			                                            & = 7.4752                                  \\
+			\bm{h_L}                                    & = \bm{7.48}\,\textbf{m}                   
+		\end{align*}
+	}
+	% \end{minipage}
+}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\minit[0.45]{
+	\textbf{Example 2}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex02}\end{cfig}
+	Liquid with a specific gravity of 0.87 is pumped from Tank $1$; the liquid exits the pipe at C before dropping into Tank~$2$ at $180\;\text{L/s}$.
+	\parb
+	Determine the head added by the pump and the pressure at $A$.
+	\parb
+	(Assume that friction losses are not significant.)
+	\parb
+	\textbf{Solution}:
+	
+	\cbox[0.8]{
+		\large
+		The diameter of the $10''$ S40 Steel Pipe is $254.5\text{ mm}$ and the diameter
+		of the $6''$ S40 Steel Pipe is $154.1\text{ mm}$.\par
+		Then, the average flow velocity at the pipe outlet, $C$, above Tank $2$ is:
+		\[ v_C = \frac{Q}{A_C}=\frac{0.180}{\pi(0.1541)^2/4}=9.6511\text{ m/s} \]
+		The velocity head at $C$ is:
+		\[ \frac{v_C^2}{2g}=4.7474\text{ m}\]
+		Apply the GEE to the surface, $S$, of the liquid in Tank 1 and to the outlet,
+		$N$, above above Tank $2$:
+		\begin{align*}
+			\frac{P_S}{\gamma}+z_S+\frac{v_S^2}{2g} + h_A & = \frac{P_C}{\gamma}+z_C+\frac{v_C^2}{2g} \\
+			0+0+0 + h_A                                   & = 0+(1.30+1.85)+4.7474                    \\
+			h_A                                           & = 7.8974\,\text{m}                        \\
+			\bm{h_A}                                      & = \bm{7.90\,}\textbf{m}                   
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.45]{
+	\cbox{
+		\large
+		The average flow velocity at $A$ is:
+		\[ v_A = \frac{Q}{A_A}=\frac{0.180}{\pi(0.2545)^2/4}=3.5384\text{ m/s} \]
+		The velocity head at $A$ is:
+		\[ \frac{v_A^2}{2g}=0.63814\text{ m}\]
+		Now, apply the GEE to the surface, $S$, of the liquid in Tank 1 and to $A$. Note that $A$ is before the pump
+		so no head has been added by the time fluid reaches $A$.
+		\begin{align*}
+			\frac{P_S}{\gamma}+z_S+\frac{v_S^2}{2g} & = \frac{P_A}{\gamma}+z_A+\frac{v_A^2}{2g}     \\
+			0+0+0                                   & = \frac{P_A}{0.87\times9.81}+(1.30+1.85+0.75) \\
+			                                        & \qquad+0.63814                                \\
+			P_A                                     & = -38.732\text{ kPa}                          \\
+			\bm{P_A}                                & = \bm{-38.7\,}\textbf{kPa}                    
+		\end{align*}
+	}
+	\parb
+	\cbox[1]{
+		\large
+		Note that if the GEE had been applied between $A$ and $C$, then the $7.8974\,$m of head added would have had to be included in the GEE since that head is added to the flow between $A$ and $C$.
+	}
+}
+
+
+
+
+% }
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mini[0.5]{
+	\textbf{Exercise 1}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex02}\end{cfig}
+	Liquid with a specific gravity of 0.87 is pumped from Tank $1$; the liquid exits the pipe at C before dropping into Tank~$2$ at $180\;\text{L/s}$. (Neglect any head losses due to friction and valves.)
+	\parb
+	Determine the pressure at $B$:
+	\begin{enumerate}
+		\item First, by applying the GEE between the surface of Tank 1 and $B$;
+		\item Second, by applying the GEE between $A$ and $B$;
+		\item Finally, by applying the GEE between $B$ and $C$.
+	\end{enumerate}
+	\parb
+	\textbf{Solution}:
+	\parm
+	Note that the velocities at $B$ and at $C$ are the same.
+}
+\parm
+% \vspace{-0cm}
+\minit[0.05]{
+	(1)
+}
+\minit[0.6]{
+	\vspace{-1em}
+	\cbox{
+		\begin{align*}
+			\frac{P_1}{\gamma}+z_1+\frac{v_1^2}{2g}+ h_A & = 	\frac{P_B}{\gamma}+z_B+\frac{v_B^2}{2g} \\
+			0+0+0+ 7.8974                                & = 	\frac{P_B}{0.87\times 9.81}+5.85+4.7474 \\
+			\implies P_B                                 & = -23.044\,\text{kPa}                      \\
+			\implies \bm{P_B}                            & = \bm{-23.0}\,\textbf{kPa}                 
+		\end{align*}
+	}
+}
+\hfill
+\parm
+\minit[0.05]{
+	(2)
+}
+\minit[0.6]{
+	\vspace{-1em}
+	\cbox{
+		\begin{align*}
+			\frac{P_A}{\gamma}+z_A+\frac{v_A^2}{2g} + h_A   & = \frac{P_B}{\gamma}+z_B+\frac{v_B^2}{2g}         \\
+			\frac{-38.732}{0.87\times9.81}+0+0.63814+7.8974 & = \frac{P_B}{0.87\times9.81}+1.95         +4.7474 \\
+			\implies P_B                                    & = -23.044\text{ kPa}                              \\
+			\implies \bm{P_B}                               & = \bm{-23.0}\,\textbf{kPa}                        
+		\end{align*}
+	}
+}
+\hfill
+\parm
+\minit[0.05]{
+	(3)
+}
+\minit[0.6]{
+	\vspace{-1em}
+	\cbox{
+		\begin{align*}
+			\frac{P_B}{\gamma}+z_B+\frac{v_B^2}{2g}                  & = \frac{P_C}{\gamma}+z_C+\frac{v_C^2}{2g} \\
+			\frac{P_B}{0.87\times9.81}+2.7+\cancel{\frac{v_B^2}{2g}} & = 0+0+\cancel{\frac{v_C^2}{2g}}           \\
+			\implies P_B                                             & = -23.044\,\text{kPa}                     \\
+			\implies \bm{P_B}                                        & = \bm{-23.0}\,\textbf{kPa}                
+		\end{align*}
+	}
+}
+
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mini[0.5]{\textbf{Example 3}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex03}\end{cfig}
+	Water flows from $A$ to $B$ at the rate of $120\text{ L/s}$\\
+	Determine the head removed by the turbine.
+	\parb
+	\textbf{Solution}:
+	
+	\cbox[0.9]{
+		\large
+		The velocity heads at $A$ and $B$ are found as follows:
+		\begin{align*}
+			v_A              & = \frac{0.120\,\mathsf{m^3}/s}{\pi(0.300\text{ m})^2/4} \\
+			                 & = 1.6977\text{ m/s}                                     \\
+			\frac{v_A^2}{2g} & = 0.14689\text{ m}                                      \\\\
+			v_B              & = \frac{0.120\,\mathsf{m^3}/s}{\pi(0.600\text{ m})^2/4} \\
+			                 & = 0.42441\,\text{m/s}                                   \\
+			\frac{v_B^2}{2g} & = 0.0091808\,\text{m}                                   
+		\end{align*}
+	}
+	\parb
+	\cbox[0.9]{
+		\large
+		Apply the GEE between $A$ and $B$:
+		\begin{align*}
+			\frac{P_A}{\gamma}+z_A+\frac{v_A^2}{2g}-h_R & = \frac{P_B}{\gamma}+\cancelto{0}{z_B}\ \ +\frac{v_B^2}{2g} \\
+			\frac{150}{9.81}+1.0+0.14689-h_R            & = \frac{-35}{9.81}+0.0091808                                \\\\
+			h_R                                         & = 19.996\text{ m}                                           \\
+			\bm{h_R}                                    & =  \bm{20.0}\,\textbf{m}                                    
+		\end{align*}
+	}
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.45]{
+	\textbf{Example 4}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex04a}\end{cfig}
+	A pump produces a flow of $1024\text{ L/min}$ of kerosene with a specific gravity of $0.823$ from vented underground
+	storage to an elevated tank pressurized to $512\text{ kPa}$. Energy loss between the underground storage and
+	the pump is $0.95\text{ m}$ and energy loss between the pump and the elevated tank is $4.9\text{ m}$.
+	\begin{enumerate}[(a)]
+		\item Determine the power added to the fluid by the pump.
+		\item If the pump has an efficiency of $73\%$, determine the (electrical) power drawn by the pump.
+		\item Determine the gauge and the absolute pressure at the pump inlet.
+	\end{enumerate}
+	\parm
+	\textbf{Solution}:
+	
+	\cbox[0.9]{
+		Find the power added by the pump:
+		\begin{align*}
+			Q & = \frac{1024\,\text{L/min}}{60\,\text{s/min}\times 1000\,\mathsf{L/m^3}} \\
+			  & =0.017067\;\mathsf{m^3/s}                                                
+		\end{align*}
+		\parm
+		\begin{align*}
+			\frac{P_A}{\gamma}+z_A +\frac{v_A^2}{2g}+h_A-h_L & = \frac{P_B}{\gamma}+z_B+\frac{v_B^2}{2g} \\
+			0+0 +0+h_A-5.85                                  & = \frac{512}{0.823\times 9.81}+15.1+0     \\
+			h_A                                              & = 84.366\,\text{m}                        
+			% & = 84.4\,\text{m}
+		\end{align*}
+		\parm
+		\begin{align*}
+			P_A & = h_A \gamma Q                                                                                         \\
+			    & =  (84.366\text{ m})\left(0.823\times9.81\;\mathsf{kN/m^3}\right)\left(0.017067\;\mathsf{m^3/s}\right) \\
+			    & = 11.625\;\mathsf{ kN\cdot m/s}                                                                        
+		\end{align*}
+		The power added by the pump, $\bm{P_A = 11.63\,\textbf{kW}}$
+	}
+}
+\hfill
+\minit[0.45]{
+	
+	\cbox[0.9]{
+		\large
+		
+		Find the power drawn by the pump:
+		\begin{align*}
+			P_I      & = \frac{P_A}{e_M}         \\
+			         & = \frac{11.652}{73\%}     \\
+			         & = 15.924\,\text{kW}       \\
+			\bm{P_I} & = \bm{15.92}\,\textbf{kW} 
+		\end{align*}
+	}
+	
+	\vfill\pagebreak
+	
+	\cbox[0.9]{
+		\large
+		Find the velocity head at $C$, the pump inlet:
+		\begin{align*}
+			v_C              & = Q/A_C                                                     \\
+			                 & = \frac{0.017067\;\mathsf{m^3/s}}{\pi(0.1023\text{ m})^2/4} \\
+			                 & = 2.0764\text{ m/s}                                         \\
+			\frac{v_C^2}{2g} & = 0.21975\text{ m}                                          \\
+		\end{align*}
+		
+		Using the GEE, find the pressure at $C$:
+		\begin{align*}
+			\frac{P_A}{\gamma}+z_A +\frac{v_A^2}{2g}+h_A-h_L & = \frac{P_C}{\gamma}+z_C+\frac{v_C^2}{2g} \\
+			0+0+0-0.95                                       & = \frac{P_C}{0.823\times9.81}             \\
+			                                                 & \qquad+4.3+0.21975                        \\
+			P_C                                              & = -44.161\,\text{kPa}                     \\
+			\bm{P_{C(\textbf{gauge})}}                       & = \bm{-44.2}\,\textbf{kPa}                
+		\end{align*}
+		\parb
+		Note that this is the \textbf{gauge} pressure.
+		\begin{align*}
+			p_{\text{abs}}             & = p_{\text{atm}}+p_{\text{gauge}} \\
+			                           & = 101.8-44.2\text{ kPa}           \\
+			                           & = 57.639\text{ kPa}               \\
+			\bm{P_{C{\textbf{(abs)}}}} & = \bm{57.6}\,\textbf{kPa}         
+		\end{align*}
+		
+	}
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.525]{
+	\textbf{Exercise 2}:
+	\begin{cfig}[0.4]{../../figs/04GEE/05GEE-Ex05}\end{cfig}
+	Oil, with $\text{sg}=0.87$, flows from a tank pressurized at $130\text{ kPa}$ at a rate of $72\text{ L/s}$ and
+	powers a fluid motor as shown. Energy losses due to friction and fittings between the tank and $B$ are estimated to
+	be $1.81\text{ m}$.
+	\par\medskip
+	If the pressure at $B$ is found to be $-56\text{ kPa}$ and the motor has an efficiency of $78\%$,
+	determine the power output from the motor.
+	\parb
+	\textbf{Solution}:
+	
+	\cbox[1]{
+		\large
+		Find the velocity head at $B$:
+		\begin{align*}
+			v_B              & = \frac{Q}{A_B}                                          \\
+			                 & = \frac{0.072\;\mathsf{m^3/s}}{\pi(0.275\,\text{m})^2/4} \\
+			                 & = 1.2122\,\text{m/s}                                     \\
+			\frac{v_B^2}{2g} & = 0.074895\,\text{m}                                     
+		\end{align*}
+		\parb
+		Apply the GEE between the oil surface in the tank and $B$:
+		\begin{align*}
+			\frac{P_A}{\gamma}+z_A+\cancelto{0}{\frac{v_A^2}{2g}}-h_L-h_R & = \frac{P_b}{\gamma}                    
+			+\cancelto{0}{z_B}\ \ +\frac{v_B^2}{2g}\\
+			\frac{130}{0.87\times 9.81}+12.6-1.81-h_R                     & = \frac{-56}{0.87\times 9.81}+ 0.074895 \\
+			\frac{130+56}{0.87\times 9.81}+12.6-1.81-0.0749               & = h_R                                   \\
+			h_R                                                           & = 32.508\text{ m}                       
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.425]{
+	
+	
+	\cbox[0.9]{
+		\large
+		The power removed is:
+		\begin{align*}
+			P_R & = h_R \gamma Q                                                                                           \\
+			    & =  (32.508\,\text{m})\!\left(0.87\times 9.81\,\mathsf{kN/m^3}\right)\!\left(0.072\,\mathsf{m^3/s}\right) \\
+			    & = 19.976\,\mathsf{kN\!\cdot\!m/s}                                                                        \\
+			    & = 19.976\;\text{ kW}                                                                                     
+		\end{align*}
+		The power output by the motor is:
+		\begin{align*}
+			P_O      & = P_R\times e_M           \\
+			         & = 19.976\times 78\%       \\
+			         & = 15.581\text{ kW}        \\
+			\bm{P_O} & = \bm{15.58}\,\textbf{kW} 
+		\end{align*}
+	}
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.45]{
+	\textbf{Example 5}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex06}\end{cfig}
+	A car fuel pump pumps $1\text{ L}$ of gasoline every $45\text{ s}$ when is has a suction pressure of
+	$155\text{ mm}$ of mercury vacuum and a discharge pressure of $32\text{ kPa}$. Both the suction and the discharge
+	lines have the same diameter.
+	\parm
+	If the pump efficiency is $68\%$, determine the power drawn from the engine.
+	\parb
+	\textbf{Solution}:
+	
+	\cbox[0.9]{
+		\large
+		First, calculate the input pressure:\\
+		``$155\text{ mm}$ of mercury vacuum'' means a pressure that is below atmospheric by an amount due to a height of
+		$155\text{ mm}$ of mercury.
+		\begin{align*}
+			\Delta p & = \gamma h                                            \\
+			         & = (13.54\times 9.81\;\mathsf{kN/m^3})(0.155\text{ m}) \\
+			         & = 20.588\text{ kPa}                                   
+		\end{align*}
+		Since this pressure is below atmospheric, it is negative. \lb Thus the inlet pressure is $-20.588\text{ kPa}$.
+	}
+	\parb
+	\cbox[0.9]{
+		\large
+		Find the head added by the pump. The lines are of the same diameter so velocity heads cancel out. Similarly, the
+		lines are at the same elevation so elevation head cancels out too.
+		\begin{align*}
+			h_A & = \frac{P_{\text{dischage}}-P_{\text{suction}}}{\gamma} \\
+			    & = \frac{32-(-20.588)}{0.68\times 9.81}                  \\
+			    & = 7.8833\text{ m}                                       
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.45]{
+	
+	\cbox[0.9]{
+		\large
+		
+		Then, the power added by the pump is:
+		\begin{align*}
+			p_A      & = h_A\gamma Q                                                                                                 \\
+			         & = (7.8833\,\text{m})(0.68\times 9.81\;\mathsf{kN/m^3})\!\left(\frac{0.001\,\mathsf{m^3}}{45\,\text{s}}\right) \\
+			         & = 0.0011686\text{ kW}                                                                                         \\
+			         & = 1.1686\text{ W}                                                                                             \\\\
+			P_I      & = \frac{1.1686\text{ W}}{0.68}                                                                                \\
+			         & = 1.7186\text{ W}                                                                                             \\
+			\bm{P_I} & = \bm{1.72}\,\textbf{W}                                                                                       
+		\end{align*}
+		
+	}
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.5]{
+	\textbf{Example 6}:
+	\cfig[0.4]{../../figs/04GEE/05GEE-Ex07}
+	Water flows at a steady rate in a vertical pipe. Two pressure gauges are set $10\,\text{m}$	apart, as shown. There are
+	no pumps or turbines and the pipe is of constant diameter. \parb Determine which of the following is true:
+	\begin{enumerate}[(a)]
+		\item flow is upward
+		\item flow is downward
+		\item there is no flow
+	\end{enumerate}
+	\parb
+	\textbf{Solution}:
+	
+	\cbox[0.95]{
+		\large
+		
+		The difference in pressure between the two gauges is $$102.0-5.0= 97.0\text{ kPa}$$
+		
+		If there is no flow, then the difference in pressures should be given by
+		\[\Delta p = \gamma h	= 9.81\;\mathsf{kN/m^3}\times10\text{ m}=98.1\text{ kPa}  \]
+		
+	}
+	\parb
+	\cbox[0.95]{
+		\large
+		If the flow is upward, apply the GEE from $B$ to $A$:
+		\begin{align*}
+			\frac{P_B}{\gamma} + \cancelto{0}{z_B}\ \  + \cancel{\frac{v_B^2}{2g}}-h_L & = \frac{P_A}{\gamma} + \cancelto{10}{z_A}\ \  + \cancel{\frac{v_A^2}{2g}} \\
+			h_L                                                                        & = \frac{P_B-P_A}{\gamma}-10                                               \\
+			                                                                           & = \frac{102.0-5.0}{9.81}-10                                               \\
+			                                                                           & = -0.11213\text{ m}                                                       
+		\end{align*}
+		A negative headloss is not possible!
+	}
+	\parb
+	% \cbox[0.9]{
+	% 	\large
+	%
+	% 	If the flow is downward, apply the GEE from $A$ to $B$:
+	% 	\begin{align*}
+	% 		\frac{P_A}{\gamma} + \cancelto{10}{z_A}\ \  + \cancel{\frac{v_A^2}{2g}}-h_L & = \frac{P_B}{\gamma} + \cancelto{0}{z_B}\ \  + \cancel{\frac{v_B^2}{2g}} \\
+	% 		h_L                                                                         & = \frac{P_A-P_B}{\gamma}+10                                              \\
+	% 		                                                                            & = \frac{5.0-102.0}{9.81}+10                                              \\
+	% 		                                                                            & = 0.11213\text{ m}
+	% 	\end{align*}
+	% }
+	%
+	% Thus the flow is downward since there cannot be a negative head loss.
+	
+	Applying the GEE from $A$ to $B$ (i.e., downward flow) yields a headloss of $+0.11213\,\text{m}$.
+}
+\parb
+\textbf{Flow is downward!}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.5]{
+	\textbf{Exercise 3}:
+	\parb
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex08}\end{cfig}
+	A rural house relies upon a shallow well for its water supply. The pump at the well is required to supply
+	$210\,\text{L/min}$ of water. The water tank at the house maintains a pressure of $280\,\text{kPa}$. Friction losses in the
+	pipe amount to $4.35\,$m.
+	\parb
+	If the pump is $72\%$ efficient, determine the power delivered to the pump by the electrical supply and the
+	power added to the water by the pump.
+	\parb
+	\textbf{Solution}:\\
+	
+	\cbox[0.9]{
+		\large
+		Find the head added by the pump:
+		\begin{align*}
+			\frac{P_P}{\gamma} +z_P+ \frac{v_P^2}{2g} + h_A - h_L & = \frac{P_R}{\gamma} + z_R + \frac{v_R^2}{2g} \\
+			0 +0  + 0 + h_A - 4.35                                & = \frac{280}{9.81} + 30.25+ 0                 \\
+			h_A                                                   & = 63.142\text{ m}                             
+		\end{align*}
+		Find the volume flow rate:
+		\begin{align*}
+			Q & = 210\,\text{L/min}                        \\
+			  & = \frac{210}{1000\times60}\;\mathsf{m^3/s} \\
+			  & = 0.0035\,\mathsf{m^3/s}                   
+		\end{align*}
+		Now, the power added to the pump:
+		\begin{align*}
+			P_{\text{added}}       & = h_A\gamma Q                                                                                 \\
+			                       & = (63.142\,\text{m})\!\left(9.81\,\mathsf{kN/m^3}\right)\!\left(0.0035\,\mathsf{m^3/s}\right) \\
+			                       & = 2.1680\,\mathsf{kN\!\cdot\!m/s}                                                             \\
+			\bm{	P_{\text{added}}} & = \bm{2.17}\,\textbf{kW}                                                                      
+		\end{align*}
+		And the power delivered to the pump:
+		\begin{align*}
+			P_{I}      & = \frac{P_{\text{added}}}{e_M}   \\
+			           & = \frac{P_{\text{added}}}{e_M}   \\
+			           & = \frac{2.1680\,\text{kW}}{0.72} \\
+			           & = 3.0111\,\text{kW}              \\
+			\bm{P_{I}} & = \bm{3.01}\,\textbf{kW}         
+		\end{align*}
+	}
+}
+
+
+
+\end{document}
