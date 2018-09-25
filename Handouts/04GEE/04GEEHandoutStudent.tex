@@ -1,0 +1,217 @@
+% override specific chktex warnings
+
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 3 - enclose previous parentheses wit {}
+% chktex-file 9 - sometimes messes up with ( and {
+% chktex-file 36 - put a space in front of parentheses
+% chktex-file 45 - don't use $$ instead of \[, etc
+% chktex-file 46 - don't use $ instead of \(, etc
+
+\documentclass[10pt, onesided]{amsart}
+% \usepackage[showboxes]{textpos}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.75in,rmargin=0.5in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{enumerate}
+
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{1cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-7cm}
+\centering
+
+\textbf{\Large Module 4: The General Energy Equation (CIVL 318)}
+\par\medskip
+\begin{center}
+	\begin{tabular}{r >{$}r<{$} >{$}c<{$} >{$}l<{$}}
+		\toprule
+		\addlinespace
+		\textbf{ GEE}:                        & \frac{p_A}{\gamma}+z_A+\frac{v_A^2}{2g} +h_A-h_R-h_L & = & \frac{p_B}{\gamma}+z_B+\frac{v_B^2}{2g}                                                  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Power added by a pump}:      & P_A                                                  & = & h_A\gamma Q                                                                              \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Power removed by a turbine}: & P_R                                                  & = & h_R\gamma Q                                                                              \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Efficiency of a pump}:       & e_M                                                  & = & \frac{\text{power delivered to fluid}}{\text{power input to pump}}=\frac{P_A}{P_I}       \\
+		\addlinespace
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Efficiency of a turbine}:    & e_M                                                  & = & \frac{\text{power output from turbine}}{\text{power removed from fluid}}=\frac{P_O}{P_R} \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\rule{\textwidth}{0.02in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\raggedright
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mini[0.425]{
+	\textbf{Example 1}:
+	\cfig[0.325]{../../figs/04GEE/05GEE-Ex01}
+	Liquid with a specific gravity of 0.9 flows from a tank, pressurized to $57\,\text{kPa}$, through the pipe system shown, before entering the atmosphere through a nozzle with diameter $125\,\text{mm}$. \parm
+	If the volume flow rate is $Q=89\,\text{L/s}$, determine $h_L$, the head loss due to friction and fittings.
+}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\minit[0.45]{
+	\textbf{Example 2}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex02}\end{cfig}
+	Liquid with a specific gravity of 0.87 is pumped from Tank $1$; the liquid exits the pipe at C before dropping into Tank~$2$ at $180\;\text{L/s}$.
+	\parb
+	Determine the head added by the pump and the pressure at $A$.
+	\parb
+	(Assume that friction losses are not significant.)
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mini[0.5]{
+	\textbf{Exercise 1}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex02}\end{cfig}
+	Liquid with a specific gravity of 0.87 is pumped from Tank $1$; the liquid exits the pipe at C before dropping into Tank~$2$ at $180\;\text{L/s}$. (Neglect any head losses due to friction and valves.)
+	\parb
+	Determine the pressure at $B$:
+	\begin{enumerate}
+		\item First, by applying the GEE between the surface of Tank 1 and $B$;
+		\item Second, by applying the GEE between $A$ and $B$;
+		\item Finally, by applying the GEE between $B$ and $C$.
+	\end{enumerate}
+	
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mini[0.5]{\textbf{Example 3}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex03}\end{cfig}
+	Water flows from $A$ to $B$ at the rate of $120\text{ L/s}$\\
+	Determine the head removed by the turbine.
+	
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.45]{
+	\textbf{Example 4}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex04a}\end{cfig}
+	A pump produces a flow of $1024\text{ L/min}$ of kerosene with a specific gravity of $0.823$ from vented underground
+	storage to an elevated tank pressurized to $512\text{ kPa}$. Energy loss between the underground storage and
+	the pump is $0.95\text{ m}$ and energy loss between the pump and the elevated tank is $4.9\text{ m}$.
+	\begin{enumerate}[(a)]
+		\item Determine the power added to the fluid by the pump.
+		\item If the pump has an efficiency of $73\%$, determine the (electrical) power drawn by the pump.
+		\item Determine the gauge and the absolute pressure at the pump inlet.
+	\end{enumerate}
+	
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.525]{
+	\textbf{Exercise 2}:
+	\begin{cfig}[0.4]{../../figs/04GEE/05GEE-Ex05}\end{cfig}
+	Oil, with $\text{sg}=0.87$, flows from a tank pressurized at $130\text{ kPa}$ at a rate of $72\text{ L/s}$ and
+	powers a fluid motor as shown. Energy losses due to friction and fittings between the tank and $B$ are estimated to
+	be $1.81\text{ m}$.
+	\par\medskip
+	If the pressure at $B$ is found to be $-56\text{ kPa}$ and the motor has an efficiency of $78\%$,
+	determine the power output from the motor.
+	
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mini[0.45]{
+	\textbf{Example 5}:
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex06}\end{cfig}
+	A car fuel pump pumps $1\text{ L}$ of gasoline every $45\text{ s}$ when is has a suction pressure of
+	$155\text{ mm}$ of mercury vacuum and a discharge pressure of $32\text{ kPa}$. Both the suction and the discharge
+	lines have the same diameter.
+	\parm
+	If the pump efficiency is $68\%$, determine the power drawn from the engine.
+	
+}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.5]{
+	\textbf{Example 6}:
+	\cfig[0.4]{../../figs/04GEE/05GEE-Ex07}
+	Water flows at a steady rate in a vertical pipe. Two pressure gauges are set $10\,\text{m}$	apart, as shown. There are
+	no pumps or turbines and the pipe is of constant diameter. \parb Determine which of the following is true:
+	\begin{enumerate}[(a)]
+		\item flow is upward
+		\item flow is downward
+		\item there is no flow
+	\end{enumerate}
+	
+}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\minit[0.5]{
+	\textbf{Exercise 3}:
+	\parb
+	\begin{cfig}[0.35]{../../figs/04GEE/05GEE-Ex08}\end{cfig}
+	A rural house relies upon a shallow well for its water supply. The pump at the well is required to supply
+	$210\,\text{L/min}$ of water. The water tank at the house maintains a pressure of $280\,\text{kPa}$. Friction losses in the
+	pipe amount to $4.35\,$m.
+	\parb
+	If the pump is $72\%$ efficient, determine the power delivered to the pump by the electrical supply and the
+	power added to the water by the pump.
+}
+
+
+
+\end{document}
