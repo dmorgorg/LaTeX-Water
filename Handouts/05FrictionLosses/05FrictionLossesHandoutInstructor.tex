@@ -1,0 +1,524 @@
+% override specific chktex warnings
+
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 3 - enclose previous parentheses wit {}
+% chktex-file 9 - sometimes messes up with ( and {
+% chktex-file 36 - put a space in front of parentheses
+% chktex-file 45 - don't use $$ instead of \[, etc
+% chktex-file 46 - don't use $ instead of \(, etc
+
+\documentclass[10pt, onesided]{amsart}
+% \usepackage[showboxes]{textpos}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.75in,rmargin=0.5in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{enumerate}
+
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{1cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-7cm}
+\centering
+
+
+\textbf{\Large Module 5: Friction Losses (CIVL 318)}
+\par\medskip
+\begin{center}
+	\begin{tabular}{r >{$}r<{$} >{$}c<{$} >{$}l<{$}}
+		\toprule
+		\addlinespace
+		\textbf{ Reynolds Number}:  & N_R               & =           & \frac{vD\rho}{\eta}                     \\
+		\addlinespace
+		                            & N_R < 2000        & \Rightarrow & \text{laminar}                          \\
+		\addlinespace
+		                            & 2000 < N_R < 4000 & \Rightarrow & \text{critical flow}                    \\
+		
+		\addlinespace
+		                            & N_R > 4000        & \Rightarrow & \text{turbulent flow}                   \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Laminar flow:}      & f                 & =           & \frac{64}{N_R}                          \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Turbulent flow:}:   & f                 & =           &                                         
+		\frac{0.25}{\left[\log\left(\frac{1}{3.7\left(D/\epsilon\right)}+\frac{5.74}{N_R^{0.9}}\right)\right]^2}  \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Darcy's Equation}: & h_L               & =           & f\times \frac{L}{D}\times\frac{v^2}{2g} \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+	
+	\vspace{2cm}
+	
+	\begin{center}
+		\textbf{Roughness, $\epsilon$}:
+		\par\bigskip
+		\begin{tabular}{rrl}
+			\toprule
+			Material (new, clean)          & $\qquad$ & $\epsilon$ (m)     \\
+			\midrule
+			\midrule
+			Glass                          &          & Smooth             \\
+			\midrule
+			Plastic                        &          & $3.0\times10^{-7}$ \\
+			\midrule
+			Copper, brass, lead (tubing)   &          & $1.5\times10^{-6}$ \\
+			\midrule
+			Commercial steel, welded steel &          & $4.6\times10^{-5}$ \\
+			\midrule
+			Wrought iron                   &          & $4.6\times10^{-5}$ \\
+			\midrule
+			Ductile Iron - coated          &          & $1.2\times10^{-4}$ \\
+			\midrule
+			Ductile Iron - uncoated        &          & $2.4\times10^{-4}$ \\
+			\midrule
+			Concrete                       &          & $1.2\times10^{-4}$ \\
+			\midrule
+			Riveted steel                  &          & $1.8\times10^{-3}$ \\
+			\midrule
+			\bottomrule
+		\end{tabular}
+		\par\end{center}
+	\end{center}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\large
+	
+	
+	\raggedright
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\minit[0.49]{
+		\textbf{Example 1}:
+		Flow is said to be in the \textbf{critical region}, with neither fully laminar or fully turbulent flow, if the Reynolds number for the
+		flow is between $2000$ and $4000$.
+		\par\medskip
+		Determine the range of velocities and volume flow rates for which flow is in the critical region for:
+		\par\medskip
+		\begin{enumerate}
+			\item water at $5$\textcelsius{} flowing in $1/2$-in copper tubing
+			\item water at $95$\textcelsius{} flowing in $1/2$-in copper tubing
+			\item fuel oil at $10$\textcelsius{} ($\text{sg}=0.94$, $\eta=2.4\;\mathsf{Pa\cdot s}$), \newline flowing in $12$-in Schedule $40$ steel pipe
+		\end{enumerate}
+		\parb
+		
+		\textbf{Solution}:
+		\parb
+		
+		\minit[0.05]{
+			(1)
+		}
+		\hfill
+		\minit[0.9]{
+			\vspace{-0.5cm}
+			\cbox{
+				From tables in the text or provided, $\rho=1000\;\mathsf{kg/m^3}$, $ \eta=1.52\times 10^{-3}\;\mathsf{Pa\cdot s}$ and $D=13.39\text{ mm}$ so:
+				\par
+				\begin{align*}
+					2000     & = \frac{v_{2000}(0.01339)(1000)}{1.52\times10^{-3}}  \\
+					v_{2000} & = 0.22704\text{ m/s}                                 \\
+					4000     & = \frac{v_{4000}(0.01339)(1000)}{1.52\times10^{-3}}  \\
+					v_{4000} & = 0.45407\text{ m/s}                                 \\\\
+					Q_{2000} & = \pi(0.01339\text{ m})^2/4\times 0.22704\text{ m/s} \\
+					         & = 3.1971\times10^{-5}\mathsf{m^3/s}                  \\
+					         & = 0.031971\text{ L/s}                                \\
+					Q_{4000} & = 0.063942\text{ L/s}                                
+				\end{align*}
+				\parb
+				For flow to remain in the critical region:
+				\begin{align*}
+					0.227\text{ m/s} <  & v < 0.454\text{ m/s}  \\
+					0.0320\text{ L/s} < & Q < 0.0639\text{ L/s} 
+				\end{align*}
+			}
+		}
+	}
+	\hfill
+	\minit[0.45]{
+		\minit[0.05]{
+			(2)
+		}
+		\hfill
+		\minit[0.9]{
+			\vspace{-0.5cm}
+			\cbox{
+				$\rho=962\;\mathsf{kg/m^3}$ and $ \eta=2.92\times 10^{-4}\;\mathsf{Pa\cdot s}$ so:
+				\par
+				\begin{align*}
+					N_R      & = \frac{vD\rho}{\eta}                                 \\
+					2000     & = \frac{v_{2000}(0.01339)(962)}{2.92\times10^{-4}}    \\
+					v_{2000} & = 0.045337\text{ m/s}                                 \\
+					v_{4000} & = 0.090675\text{ m/s}                                 \\\\
+					Q_{2000} & = \pi(0.01339\text{ m})^2/4\times 0.045337\text{ m/s} \\
+					         & = 6.3842\times10^{-6}\mathsf{m^3/s}                   \\
+					         & = 0.0063842\text{ L/s}                                \\
+					Q_{4000} & = 0.012765\text{ L/s}                                 \\
+				\end{align*}
+				
+				For flow to remain in the critical region:
+				\begin{align*}
+					0.0453\text{ m/s} <  & v < 0.0907\text{ m/s}  \\
+					0.00638\text{ L/s} < & Q < 0.01277\text{ L/s} 
+				\end{align*}
+			}
+			\parb
+			For most situations, water flow is fully turbulent.
+			\parb
+		}
+		\parb
+		\minit[0.05]{
+			(3)
+		}
+		\hfill
+		\minit[0.9]{
+			\vspace{-0.5cm}
+			\cbox{
+				$\rho=940\;\mathsf{kg/m^3}$, $ \eta=2.4\;\mathsf{Pa\cdot s}$ and $D=303.2\text{ mm}$ so:
+				\par
+				\begin{align*}
+					2000     & = \frac{v_{2000}(0.3032)(962)}{2.4}                \\
+					v_{2000} & = 16.842\text{ m/s}                                \\
+					v_{4000} & = 33.683\text{ m/s}                                \\\\
+					Q_{2000} & = \pi(0.3032\text{ m})^2/4\times 16.842\text{ m/s} \\
+					         & = 7.5715\times10^{-6}\mathsf{m^3/s}                \\
+					         & = 1.2160\;\mathsf{m^3/s}                           \\
+					Q_{4000} & = 2.4320\;\mathsf{m^3/s}                           
+				\end{align*}
+				\parb
+				For flow to remain in the critical region:
+				\begin{align*}
+					16.84\text{ m/s} < & v < 33.7\text{ m/s} \\
+					1.216\text{ L/s} < & Q < 2.43\text{ L/s} 
+				\end{align*}
+			}
+			
+		}
+		
+	}
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	\minit[0.48]{
+		\textbf{Example 2}:
+		Determine the headloss due to friction in fuel oil at $10$\textcelsius{} flowing through $125\,\text{m}$
+		of $12$-in Schedule $40$ steel pipe with an average flow velocity of $4.5\,\text{m/s}$. \parm
+		Then determine the headloss if the average flow velocity is reduced to $2.25\,\text{m/s}$.\parm
+		($\text{sg}=0.94$, $\eta=2.4\;\mathsf{Pa\!\cdot\! s}$)\parb
+		\textbf{Solution}:
+		\par
+		\cbox{
+			First, we must calculate the Reynolds number:
+			\begin{align*}
+				N_R & = \frac{vD\rho}{\eta}                   \\
+				    & =\frac{4.5\times 0.3032\times 940}{2.4} \\
+				    & = 534.39                                
+			\end{align*}
+			\parb
+			Flow is laminar ($N_R<2000$) so $$f=\frac{64}{N_R}=0.11976$$
+			\parb
+			Use Darcy's Equation to calculate the head loss:
+			\begin{align*}
+				h_L & = f\times \frac{L}{D}\times\frac{v^2}{2g}              \\
+				    & =0.11976\times\frac{125}{0.3032}\times\frac{4.5^2}{2g} \\
+				    & = 50.960\text{m}                                       \\
+				h_L & = 51.0\,\text{m}                                       
+			\end{align*}
+		}
+		\parb
+		\cbox{
+			Now, calculate the headloss at $2.25\,\text{m/s}$
+			\begin{align*}
+				N_R & = \frac{2.25\times 0.3032\times 940}{2.4}               \\
+				    & = 267.20                                                \\\\
+				f   & = \frac{64}{167.20}=0.23952                             \\\\
+				h_L & =0.23952\times\frac{125}{0.3032}\times\frac{2.25^2}{2g} \\
+				    & = 25.479\text{ m}                                       \\
+				h_L & = 25.5\,\text{m}                                        
+			\end{align*}
+		}
+		\parb
+		Note that, for laminar flow, $h_L\propto v$
+		\parb
+		Also, that a loss of $25.5\text{ m}$ of head is equivalent to an energy loss of $25.5\;\mathsf{N\!\cdot\! m}$ of
+		energy per N of oil.
+	}
+	
+	\newpage
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\raggedright
+	\textbf{Example 3}
+	Use the Moody diagram to determine the friction factor for flow with $N_R=2\times 10^6$ and a relative roughness of
+	1428.
+	\parb
+	(This example is done on the in-class presentation)
+	\begin{center}
+		\includegraphics[scale=1.05, angle=90]{../../figs/05FrictionLosses/moody.pdf}
+	\end{center}
+	
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\textbf{Example 4}
+	Use the Moody diagram to determine the friction factor for flow with $N_R=1.6\times 10^5$ and in new clean
+	$1/2$-in copper tubing.
+	\parb
+	(This example is done on the in-class presentation)
+	
+	\begin{center}
+		\includegraphics[scale=1.05, angle=90]{../../figs/05FrictionLosses/moody.pdf}
+	\end{center}
+	
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\textbf{Example 5}
+	A 75 m section of wooden flume is replaced with 54-in high
+	density polyethylene (HDPE) pipe with inside diameter of
+	1.37 m. The pipe is smooth and transports $ 190 \times 10^3\mathsf{\, m3/day}$.
+	Determine the headloss due to friction in the pipe, assuming
+	an average temperature of 10 \textcelsius.
+	\parb
+	(This example is done on the in-class presentation)
+	
+	\begin{center}
+		\includegraphics[scale=1.05, angle=90]{../../figs/05FrictionLosses/moody.pdf}
+	\end{center}
+	
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\minit[0.475]{
+		\textbf{Exercise 1}:
+		
+		Ethyl alcohol at $25$\textcelsius{} flows through $1\tfrac{1}{2}\text{-in}$ Schedule $80$ steel pipe at
+		$5\,\text{L/s}$. Determine the pressure drop, due to friction losses, in a $125\,\text{m}$ section of pipe.
+		\parb
+		\textbf{Solution}:
+		\parb
+		\cbox{
+			Find average flow velocity and associated velocity head:
+			\begin{align*}
+				v              & = \frac{0.005\;\mathsf{m^3/s}}{\pi(0.0381\text{ m})^2/4} \\
+				               & = 4.3856\text{ m/s}                                      \\
+				\frac{v^2}{2g} & = 0.98031\text{ m}                                       
+			\end{align*}
+			\parb
+			Find the Reynolds number:
+			\begin{align*}
+				N_R & = \frac{vD\rho}{\eta}                                     \\
+				    & = \frac{4.3856\times 0.0381\times 787}{1.00\times10^{-3}} \\
+				    & = 131500                                                  
+			\end{align*}
+			\parb
+			Find the relative roughness:
+			\begin{align*}
+				\frac{D}{\epsilon} & = \frac{0.0381}{4.6\times10^{-5}} \\
+				                   & = 828.26                          
+			\end{align*}
+			\parb
+			From the Moody diagram, $f=0.0225$.
+			\parb
+			Determine the head loss due to friction:
+			\begin{align*}
+				h_L & = f\times\frac{L}{D}\times{v^2}{2g}           \\
+				    & = 0.0225\times\frac{125}{0.0381}\times0.98031 \\
+				    & = 72.365\text{ m}                             
+			\end{align*}
+			\parb
+			Find the pressure drop:
+			\begin{align*}
+				\frac{P_A}{\gamma}+ \cancel{z_A} + \cancel{\frac{v^2}{2g}}-h_L & = \frac{P_B}{\gamma}+\cancel{z_B}+\cancel{\frac{v_B^2}{2g}} \\
+				\frac{P_A}{\gamma}-h_L                                         & = \frac{P_B}{\gamma}                                        \\
+				P_A-P_B                                                        & = \gamma h_L                                                \\
+				                                                               & = (7.72\;\mathsf{kN/m^3})(72.365\text{ m})                  \\
+				                                                               & = 558.66\text{ kPa}                                         
+			\end{align*}
+			\parb
+			\centering
+			The pressure drop is $559\,\text{kPa}$
+		}
+	}
+	
+	\newpage
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\minit[0.5]{
+		\textbf{Exercise 2}:
+		\parb
+		Ethyl alcohol at $25$\textcelsius{} flows through $3\text{-in}$ Schedule $80$ steel pipe at
+		$5\,\text{L/s}$. Determine the pressure drop, due to friction losses, in a $125\,\text{m}$ section of pipe.
+		\parb
+		\textbf{Solution}:
+		\parb
+		\cbox{
+			Find average flow velocity and associated velocity head:
+			\begin{align*}
+				v              & = \frac{0.005\;\mathsf{m^3/s}}{\pi(0.0737\text{ m})^2/4} \\
+				               & = 1.1720\text{ m/s}                                      \\
+				\frac{v^2}{2g} & = 0.070015\text{ m}                                      
+			\end{align*}
+			\parb
+			Find the Reynolds number:
+			\begin{align*}
+				N_R & = \frac{vD\rho}{\eta}                                     \\
+				    & = \frac{1.1720\times 0.0737\times 787}{1.00\times10^{-3}} \\
+				    & = 67978                                                   
+			\end{align*}
+			\parb
+			Find the relative roughness:
+			\begin{align*}
+				\frac{D}{\epsilon} & = \frac{0.0737}{4.6\times10^{-5}} \\
+				                   & = 1602.2                          
+			\end{align*}
+			\parb
+			From the Swamee-Jain, $f=0.022000$
+			
+			(From the Moody diagram, $f=0.022$)
+			\parb
+			Determine the head loss due to friction:
+			\begin{align*}
+				h_L & = f\times\frac{L}{D}\times\frac{v^2}{2g}      \\
+				    & = 0.022\times\frac{125}{0.0737}\times0.070015 \\
+				    & = 2.6125\text{ m}                             
+			\end{align*}
+			\parb
+			Find the pressure drop:
+			\begin{align*}
+				\frac{P_A}{\gamma}+ \cancel{z_A} + \cancel{\frac{v^2}{2g}}-h_L & = \frac{P_B}{\gamma}+\cancel{z_B}+\cancel{\frac{v_B^2}{2g}} \\
+				\frac{P_A}{\gamma}-h_L                                         & = \frac{P_B}{\gamma}                                        \\
+				P_A-P_B                                                        & = \gamma h_L                                                \\
+				                                                               & = (7.72\;\mathsf{kN/m^3})(2.6125\text{ m})                  \\
+				                                                               & = 20.169\text{ kPa}                                         
+			\end{align*}
+			\parb
+			\centering
+			The pressure drop is $20.2\,\text{kPa}$
+		}
+		
+	}
+	
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\minit[0.5]{
+		\textbf{Example 6}:
+		\parb
+		A horizontal $12\text{-in}$ Schedule $80$ steel pipe transports oil ($\text{sg}=0.85$,
+		$\eta=3.0\times10^{-3}\;\mathsf{Pa\!\cdot\! s}$) at $185\text{ L/s}$. The pipe has pumping stations spaced at $6.0\,\text{km}$ intervals. Determine the power required by each pump to maintain the same pressure at each pump outlet if all losses are due to friction.
+		\parb
+		\textbf{Solution}:
+		\parb
+		\cbox{
+			Velocity and velocity head:
+			\begin{align*}
+				v              & = \frac{0.185\;\mathsf{m^3/s}}{\pi(0.289\text{ m})^2/4} \\
+				               & = 2.8202\text{ m/s}                                     \\
+				\frac{v^2}{2g} & = 0.40539\text{ m}                                      
+			\end{align*}
+			\parb
+			Reynolds number:
+			\begin{align*}
+				N_R & = \frac{(2.8202\text{ m/s})(0.289\text{ m})(850\;\mathsf{kg/m^3})}{3.0\times10^{-3}\;\mathsf{Pa\cdot s}} \\
+				    & = 230930                                                                                                 
+			\end{align*}
+			\parb
+			Relative roughness:
+			\begin{align*}
+				\frac{D}{\epsilon} & = \frac{0.289\text{ m}}{4.6\times10^{-5}\text{ m}} \\
+				                   & = 6282.6                                           
+			\end{align*}
+			\parb
+			Friction factor:
+			$f=0.0166$ (Moody)\\
+			$f=0.016511$ (Swamee-Jain)
+			\parb
+			Head loss:
+			\begin{align*}
+				h_L & = 0.0166\times\frac{6000}{0.289}\times 0.40539 \\
+				    & = 139.71\text{ m}                              
+			\end{align*}
+			\parb
+			This is the head lost between the outlet of one pump and the inlet of the next pump $6.0\,\text{km}$ downstream. The job of the pump is to replace that
+			lost head, i.e. we need $h_A=139.71\text{ m}$
+			\parb
+			The power added by each pump must be:
+			\begin{align*}
+				P_{added} & = h_A\gamma Q                                                                \\
+				          & = (139.71\text{ m})(0.85\times9.81\;\mathsf{kN/m^3})(0.185\;\mathsf{kN/m^3}) \\
+				          & = 215.52\text{ kW}                                                           
+			\end{align*}
+			\parb
+			\centering
+			The power that must be added by each pump is $216\,\text{kW}$
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	The power added by each pump must be:
+	\begin{align*}
+		P_{added} & = h_A\gamma Q                                                                \\
+		          & = (139.71\text{ m})(0.85\times9.81\;\mathsf{kN/m^3})(0.185\;\mathsf{kN/m^3}) \\
+		          & = 215.52\text{ kW}                                                           
+	\end{align*}
+	
+	
+\end{document}
