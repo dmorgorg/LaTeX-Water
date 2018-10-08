@@ -1,0 +1,135 @@
+% override specific chktex warnings
+
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 3 - enclose previous parentheses wit {}
+% chktex-file 9 - sometimes messes up with ( and {
+% chktex-file 36 - put a space in front of parentheses
+% chktex-file 45 - don't use $$ instead of \[, etc
+% chktex-file 46 - don't use $ instead of \(, etc
+
+
+\documentclass[10pt, oneside]{amsart}
+% \usepackage[showboxes]{textpos}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+% \usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=1in,rmargin=0.5in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{enumerate}
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{1cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-7cm}
+\begin{center}
+	\textbf{\Large Module 7: Series A Pipeline (CIVL 318)}
+\end{center}
+\parb
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mini[0.45]{
+	\textbf{Example 1}:
+	\cfig[0.4]{../../Figs/07SeriesPipeline/ElevStorA}
+	A pump delivers $13.5\,\text{L/s}$ of kerosene at $25^\circ$C from an underground vented storage tank to an elevated storage tank pressurized to $745\,\text{kPa}$.
+	\parm
+	The suction pipe is $6$-in Schedule $40$ steel pipe and is $5.0\,\text{m}$ long. It has a round-edged entrance with a radius of $r=15$~mm.
+	\parm
+	The discharge pipe is $3$-in Schedule 40 steel pipe,  is $11.0\,\text{m}$ long and includes a fully open butterfly valve with $L_e/D=45$.
+	\parm
+	All elbows are ``standard'' with $L_e/D=30$.
+	\parm
+	Determine the power drawn (the power in, $P_I$) by the pump.
+}
+\newpage
+~\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 2}:
+\cfig[0.5]{../../figs/07SeriesPipeline/07SeriesFindY}
+\par
+\mini[0.45]{
+	
+	\parm
+	Gasoline at $25\text{\textcelsius}$ flows under gravity from tank $A$ to tank $B$; both tanks are open to the
+	atmosphere.
+	\parb
+	The $2$-in Schedule $40$ steel pipe has a square entrance and is $45.7\,\text{m}$ in length. The $4$-in Schedule $40$ steel
+	pipe contains a fully-open globe valve and is $87.5\,\text{m}$ in length. There is a sudden enlargement between the two
+	pipes, as shown. Both pipes are new commercial steel. All elbows are standard $90\degree$.
+	\parb
+	Determine the elevation difference, $y$, between the surfaces of tanks $A$ and $B$ that is required to maintain a flow of $425\,\text{L/min}$.
+	\parb
+}
+\newpage
+~
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 3}:
+\cfig[0.5]{../../Figs/07SeriesPipeline/07SeriesPump}
+\parb
+\mini[0.45]{
+	Water at $25\text{ \textcelsius}$ is pumped from tank $A$ to tank $B$. Both tanks are open to the atmosphere.
+	\parb
+	The suction pipe is $4\text{-in}$ Schedule $40$ steel pipe, has a well-rounded ($r/D>0.15$) entrance, contains a fully
+	open globe valve, and is $17.0\,\text{m}$ long.
+	\parb
+	The discharge pipe is $3\text{-in}$ Schedule $40$ steel pipe, contains a fully open globe valve and three standard $90\degree$ elbows; it is $163.3\,\text{m}$ long.
+	\parb
+	The elevation difference between $A$ and $B$ is $y=12.75\,\text{m}$ and the volume flow rate is $Q=900\,\text{L/min}$.
+	\parb
+	If the pump is $78\%$ efficient, determine the electrical power it uses.
+}
+\newpage
+$\,$
+\newpage
+
+\mini[0.475]{
+	\textbf{Example 4}:
+	\cfig[0.35]{../../figs/07SeriesPipeline/07SeriesCycleOil}
+	Heavy machine oil (sg=$0.89$, $\eta=3.80\times10^{-2}\mathsf{\,Pa\!\cdot\! s}$) is circulated through a system repeatedly to test its stability.
+	\parm
+	The 8-inch Schedule steel pipe on the suction side of the pump has a square entrance and a length of $6.25\,\text{m}$ and the
+	3.5-inch Schedule steel pipe on the discharge side of the pump has a length of $18.0\,\text{m}$.
+	\parm
+	(Note that the $3.5$-inch discharges into the atmosphere {\bfseries above} the tank so there is no exit loss in this question!)
+	\parm
+	All elbows are long radius. The flow rate through the system is $13.5\,\text{L/s}$. \parm
+	Determine the head added by the pump.
+	
+}
+\newpage
+~
+
+\end{document}

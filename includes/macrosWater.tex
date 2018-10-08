@@ -67,7 +67,7 @@
 	\end{minipage}
 }
 
-%left flushed minipage
+%left flushed minipage, top aligned
 \newcommand{\minit}[2][0.8]{
 	\begin{minipage}[t]{#1\columnwidth}
 		\raggedright
@@ -111,17 +111,16 @@
 	\includegraphics[scale=#1, cframe= structure #3]{#2}
 }
 
-% \imgboxbg[bg color=white]{scale}{path/to/img}{border, e.g. 2pt}{margin, e.g. 4pt}
-\newcommand{\imgboxbg}[5][white]{
-	\setlength{\fboxrule}{#4}
-	\setlength{\fboxsep}{#5}
-	\fcolorbox{structure}{#1}{\includegraphics[scale=#2]{#3}}
+% \imgboxbg[bg color=white]{scale}{path/to/img}{border color}{border, e.g. 2pt}{margin, e.g. 4pt}
+\newcommand{\imgboxbg}[6][white]{
+	\setlength{\fboxrule}{#5}
+	\setlength{\fboxsep}{#6}
+	\centering
+	\fcolorbox{#4}{#1}{\includegraphics[scale=#2]{#3}}
 }
 
 \newcommand{\fig}[2][1]{% scaled graphic
-	
 	\includegraphics[scale=#1]{#2}
-	
 }
 
 % centred framed colored box black border
@@ -140,6 +139,8 @@
 	\end{center}
 	\setlength\fboxsep{0cm}
 }
+
+
 
 \newtcolorbox{mybox}[1][]
 {

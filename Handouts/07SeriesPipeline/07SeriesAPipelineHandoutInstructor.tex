@@ -1,0 +1,665 @@
+% override specific chktex warnings
+
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 3 - enclose previous parentheses wit {}
+% chktex-file 9 - sometimes messes up with ( and {
+% chktex-file 36 - put a space in front of parentheses
+% chktex-file 45 - don't use $$ instead of \[, etc
+% chktex-file 46 - don't use $ instead of \(, etc
+
+
+\documentclass[10pt, oneside]{amsart}
+% \usepackage[showboxes]{textpos}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+% \usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=1in,rmargin=0.5in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{enumerate}
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{1cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-7cm}
+\begin{center}
+	\textbf{\Large Module 7: Series A Pipeline (CIVL 318)}
+\end{center}
+\parb
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\minit[0.45]{
+	\textbf{Example 1}:
+	\cfig[0.4]{../../Figs/07SeriesPipeline/ElevStorA}
+	A pump delivers $13.5\,\text{L/s}$ of kerosene at $25^\circ$C from an underground vented storage tank to an elevated storage tank pressurized to $745\,\text{kPa}$.
+	\parm
+	The suction pipe is $6$-in Schedule $40$ steel pipe and is $5.0\,\text{m}$ long. It has a round-edged entrance with a radius of $r=15$~mm.
+	\parm
+	The discharge pipe is $3$-in Schedule 40 steel pipe,  is $11.0\,\text{m}$ long and includes a fully open butterfly valve with $L_e/D=45$.
+	\parm
+	All elbows are ``standard'' with $L_e/D=30$.
+	\parm
+	Determine the power drawn (the power in, $P_I$) by the pump.
+	\parb
+	\Large{\textbf{Solution}}:
+	\normalsize
+	\parb
+	\underline{\bfseries Suction Pipe}
+	\cbox[0.9]{
+		\begin{align*}
+			v                  & = \frac{0.0135\,\mathsf{m^3/s}}{\pi(0.1540\,\text{m})^2/4} = 0.72383\,\text{m/s} \\
+			\frac{v^2}{2g}     & = 0.026704\,\text{m}                                                             \\
+			N_R                & = \frac{0.72383(0.1541)823}{1.64\times 10^{-3}} = 55975                          \\
+			                   & = 5.5975 \times 10^4                                                             \\
+			\frac{D}{\epsilon} & = \frac{0.1541}{4.6\times 10^{-5}}=3350                                          \\
+		\end{align*}
+		$N_R>4000$ so flow is turbulent.
+	}
+}
+\hfill
+\minit[0.45]{
+	Friction Losses:
+	\cbox[0.9]{
+		\begin{align*}
+			f   & = 0.0215\quad\text{(Moody)}                     \\
+			    & = 0.02144\quad\text{(Swamee-Jain)}              \\
+			\intertext{Using the Moody result:}
+			h_L & = 0.0215\left(\frac{5.0}{0.1541}\right)0.026704 \\
+			    & = \bm{0.018629\,\text{m}}                       
+		\end{align*}
+	}
+	\parb
+	Minor Losses:
+	\cbox[0.9]{
+		\begin{align*}
+			f_T                  & = 0.015\quad\text{(Moody)}                                          \\
+			K_{\text{entrance}}  & = 0.09\quad\text{($r/D=0.1$)}                                       \\
+			K_{\text{elbow}}     & = f_T\left(\frac{L_e}{D}\right) = 0.015(30) = 0.45                  \\
+			h_{L_{\text{minor}}} & = K_{\text{entrance}}\frac{v^2}{2g}+2K_{\text{elbow}}\frac{v^2}{2g} \\
+			                     & = (0.09+2\times0.45)0.026704                                        \\
+			                     & = \bm{0.026437\,\text{m}}                                           
+		\end{align*}
+	}
+	\parb
+	\underline{\bfseries Discharge Pipe}
+	\cbox[0.9]{
+		\begin{align*}
+			v                  & = \frac{0.0135\,\mathsf{m^3/s}}{\pi(0.0779\,\text{m})^2/4} = 2.8325\,\text{m/s} \\
+			\frac{v^2}{2g}     & = 0.40892\,\text{m}                                                             \\
+			N_R                & = \frac{2.8325(0.0779)823}{1.64\times 10^{-3}} = 110730                         \\
+			                   & = 1.1073 \times 10^5                                                            \\
+			\frac{D}{\epsilon} & = \frac{0.0779}{4.6\times 10^{-5}}=1693                                         \\
+		\end{align*}
+		$N_R>4000$ so flow is turbulent.
+	}
+	\parb
+	Friction Losses:
+	\cbox[0.9]{
+		\begin{align*}
+			f   & = 0.0205\quad\text{(Moody)}                     \\\\
+			h_L & = 0.0205\left(\frac{11.0}{0.0779}\right)0.40892 \\
+			    & = \bm{1.1837\,\text{m}}                         
+		\end{align*}
+	}
+}
+
+\newpage
+
+\minit[0.45]{
+	Minor Losses:
+	\cbox[0.9]{
+		\begin{align*}
+			f_T                  & = 0.018\quad\text{(Table)}                         \\
+			K_{\text{elbow}}     & = f_T\left(\frac{L_e}{D}\right) = 0.018(30) = 0.54 \\
+			K_{\text{valve}}     & = f_T\left(\frac{L_e}{D}\right) = 0.018(45) = 0.81 \\
+			K_{\text{exit}}      & = 1                                                \\
+			h_{L_{\text{minor}}} & = \left(0.54+0.81+1\right)0.40892                  \\
+			                     & = \bm{0.96096\,\text{m}}                           
+		\end{align*}
+	}
+	\parb
+	Total head losses:
+	\cbox[0.9]{
+		\begin{align*}
+			h_L & = 0.018629 + 0.026437   \\
+			    & \quad +1.1837+0.96096   \\
+			    & = \bm{2.1897\,\text{m}} 
+		\end{align*}
+	}
+	\parb
+	General Energy Equation:
+	\cbox[0.9]{
+		\begin{align*}
+			\cancel{\frac{P_A}{\gamma}} + \cancel{z_A} + \cancel{\frac{v_A^2}{2g}} +h_A-h_L & = \frac{P_A}{\gamma} + z_A +                
+			\cancel{\frac{v_A^2}{2g}} \\
+			h_A-2.1897                                                                      & = \frac{745}{0.823\times 9.81} + 11.8       \\
+			h_A                                                                             & = 106.27\,\text{m}                          \\\\
+			P_{\text{added}}                                                                & = h_A \gamma Q                              \\
+			                                                                                & = 106.27\left(0.823\times 9.81\right)0.0135 \\
+			                                                                                & = 11.583\,\text{kW}                         \\\\
+			P_I                                                                             & = \frac{11.583}{0.73}                       \\
+			                                                                                & = 15.867 \,\text{kW}                        \\\\
+			\bm{P_I}                                                                        & = \bm{15.87\,\textbf{kW}}                   
+		\end{align*}
+	}
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 2}:
+\cfig[0.5]{../../figs/07SeriesPipeline/07SeriesFindY}
+\par
+\minit[0.45]{
+	
+	\parm
+	Gasoline at $25\text{\textcelsius}$ flows under gravity from tank $A$ to tank $B$; both tanks are open to the
+	atmosphere.
+	\parb
+	The $2$-in Schedule $40$ steel pipe has a square entrance and is $45.7\,\text{m}$ in length. The $4$-in Schedule $40$ steel
+	pipe contains a fully-open globe valve and is $87.5\,\text{m}$ in length. There is a sudden enlargement between the two
+	pipes, as shown. Both pipes are new commercial steel. All elbows are standard $90\degree$.
+	\parb
+	Determine the elevation difference, $y$, between the surfaces of tanks $A$ and $B$ that is required to maintain a flow of $425\,\text{L/min}$.
+	\parb
+	
+	\Large{\textbf{Solution}}:
+	\normalsize
+	\parb
+	\underline{\bfseries 2-in Pipe}
+	
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			v                  & = \frac{0.425/60\,\mathsf{m^3/s}}{\pi(0.0525\,\text{m})^2/4} = 3.2721\,\text{m/s} \\
+			\frac{v^2}{2g}     & = 0.54571\,\text{m}                                                               \\
+			N_R                & = \frac{3.2721(0.0525)680}{2.87\times 10^{-4}}                                    \\
+			                   & = 407020 = 4.0702 \times 10^5                                                     \\
+			\frac{D}{\epsilon} & = \frac{0.0525}{4.6\times 10^{-5}}=1141.3                                         \\
+		\end{align*}
+		$N_R>4000$ so flow is turbulent.
+	}
+}
+\hfill
+\minit[0.45]{
+	\parb
+	Friction Losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f   & = 0.0203\quad\text{(Moody)}                     \\
+			    & = 0.019945\quad\text{(Swamee-Jain)}             \\
+			\intertext{Using the Moody value:}
+			h_L & = 0.0203\left(\frac{45.7}{0.0525}\right)0.54571 \\
+			    & = \bm{9.6431\,\text{m}}                         
+		\end{align*}
+	}
+	\parb
+	Minor Losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f_T                      & = 0.0192\quad\text{(Moody)}                                \\
+			                         & = 0.019026\quad\text{(Swamee-Jain)}                        \\
+			                         & = 0.019\quad\text{(from table for {\bfseries steel} pipe)} \\
+			\intertext{Use $f_T=0.019$ from the steel pipe table:}
+			K_{\text{entrance}}      & = 0.5                                                      \\
+			2\times K_{\text{elbow}} & = 2\times f_T\left(\frac{L_e}{D}\right)                    \\
+			                         & = 2\times 0.019(30) = 1.14                                 \\
+			\intertext{Using $D_2/D_1\approx 1.95$ and $v\approx 3.27\,\text{m/s}$ in sudden enlargement table:}
+			K_{\text{enlargement}}   & = 0.52                                                     \\\\
+			\Sigma K                 & = 2.16                                                     \\\
+			h_{L_{\text{minor}}}     & = \Sigma K\times\frac{v^2}{2g}                             \\
+			                         & = (2.16)0.54571                                            \\
+			                         & = \bm{1.1787\,\text{m}}                                    
+		\end{align*}
+	}
+}
+\newpage
+\minit[0.45]{
+	\underline{\bfseries 4-in Pipe}
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			v                  & = \frac{0.425/60\,\mathsf{m^3/s}}{\pi(0.1023\,\text{m})^2/4} = 0.86178\,\text{m/s} \\
+			\frac{v^2}{2g}     & = 0.037852\,\text{m}                                                               \\
+			N_R                & = \frac{0.86178(0.1023)680}{2.87\times 10^{-4}}                                    \\
+			                   & = 208880 = 2.0888 \times 10^5                                                      \\
+			\frac{D}{\epsilon} & = \frac{0.1023}{4.6\times 10^{-5}}=2223.9                                          \\
+		\end{align*}
+		$N_R>4000$ so flow is turbulent.
+	}
+	\parb
+	Friction Losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f   & = 0.0177\quad\text{(Moody)}                      \\
+			    & = 0.017661\quad\text{(Swamee-Jain)}              \\
+			\intertext{Using $f=0.0177$}
+			h_L & = 0.0177\left(\frac{87.5}{0.1023}\right)0.037852 \\
+			    & = \bm{0.57305\,\text{m}}                         
+		\end{align*}
+	}
+	\parb
+	Minor Losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f_T                      & = 0.0162\quad\text{(Moody)}                    \\
+			                         & = 0.016319\quad\text{(Swamee-Jain)}            \\
+			                         & = 0.017\quad\text{(from table for steel pipe)} \\
+			\intertext{Use $f_T=0.017$}
+			K_{\text{exit}}          & = 1                                            \\
+			2\times K_{\text{elbow}} & = 2\times f_T\left(\frac{L_e}{D}\right)        \\
+			                         & = 2\times 0.017(30) = 1.02                     \\
+			K_{\text{globe}}         & = f_T\left(\frac{L_e}{D}\right)                \\
+			                         & = 0.017(340) = 5.78                            \\
+			\Sigma K                 & = 7.8                                          \\\
+			h_{L_{\text{minor}}}     & = \Sigma K\times\frac{v^2}{2g}                 \\
+			                         & = (7.8)0.037852                                \\
+			                         & = \bm{0.29525\,\text{m}}                       
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.45]{
+	Total losses in system:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			h_L & = 9.6431+1.1787        \\
+			    & \quad +0.57305+0.29525 \\
+			    & =11.690\,\text{m}      
+		\end{align*}
+	}
+	\parb
+	Find $y$:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			\frac{P_1}{\gamma} +z_1+\frac{v_1^2}{2g}-h_L & = \frac{P_2}{\gamma} +z_2+\frac{v_2^2}{2g} \\
+			0+y+0-11.690                                 & = 0+0+0                                    \\
+			y                                            & =11.690\,\text{m}                          \\\\
+			\bm y                                        & = \bm{11.69}\,\textbf{m}                   
+		\end{align*}
+	}
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 3}:
+\cfig[0.5]{../../Figs/07SeriesPipeline/07SeriesPump}
+\parb
+\minit[0.45]{
+	Water at $25\text{ \textcelsius}$ is pumped from tank $A$ to tank $B$. Both tanks are open to the atmosphere.
+	\parb
+	The suction pipe is $4\text{-in}$ Schedule $40$ steel pipe, has a well-rounded ($r/D>0.15$) entrance, contains a fully
+	open globe valve, and is $17.0\,\text{m}$ long.
+	\parb
+	The discharge pipe is $3\text{-in}$ Schedule $40$ steel pipe, contains a fully open globe valve and three standard $90\degree$ elbows; it is $163.3\,\text{m}$ long.
+	\parb
+	The elevation difference between $A$ and $B$ is $y=12.75\,\text{m}$ and the volume flow rate is $Q=900\,\text{L/min}$.
+	\parb
+	If the pump is $78\%$ efficient, determine the electrical power it uses.
+	\parb
+	\Large
+	\textbf{Solution}:\\
+	\normalsize
+	
+	\parb
+	\underline{\bfseries Suction Pipe}
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			v                  & = \frac{0.900/60\,\mathsf{m^3/s}}{\pi(0.1023\,\text{m})^2/4} = 1.8249\,\text{m/s} \\
+			\frac{v^2}{2g}     & = 0.16974\,\text{m}                                                               \\
+			N_R                & = \frac{1.8249(0.1023)997}{8.91\times 10^{-4}} = 208900                           \\
+			                   & = 2.0890 \times 10^5                                                              \\
+			\frac{D}{\epsilon} & = \frac{0.1023}{4.6\times 10^{-5}}	= 2223.9                                       \\
+		\end{align*}
+		$N_R>4000$ so flow is turbulent
+	}
+}
+\hfill
+\minit[0.45]{
+	\parb
+	Friction Losses
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f   & = 0.018587   \quad\text{(Swamee-Jain)}            \\
+			h_L & = f\frac{L}{D} \frac{v^2}{2g}                     \\
+			    & = 0.018587\left( \frac{17}{0.1023}\right) 0.16974 \\
+			    & = \bm{0.52432}\text{ m}                           
+		\end{align*}
+	}
+	\parb
+	
+	Minor Losses
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f_T       & = 0.017                                \\
+			k_{ent}   & = 0.04                                 \\
+			k_{valve} & = 0.017(340)= 5.78                     \\\\
+			h_L       & = \left(\Sigma k \right)\frac{v^2}{2g} \\
+			          & = 5.82(0.16975)                        \\
+			          & = \bm{0.98795}\text{ m}                
+		\end{align*}
+	}
+}
+\newpage
+\minit[0.45]{
+	\underline{\bfseries Discharge Pipe}
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			v                  & = \frac{0.900/60\,\mathsf{m^3/s}}{\pi(0.0779\,\text{m})^2/4} = 3.1472\,\text{m/s} \\
+			\frac{v^2}{2g}     & = 0.50484\,\text{m}                                                               \\
+			N_R                & = \frac{3.1472(0.0779)997}{8.91\times 10^{-4}} = 274330                           \\
+			                   & = 2.7433 \times 10^5                                                              \\
+			\frac{D}{\epsilon} & = \frac{0.0779}{4.6\times 10^{-5}}	= 1693.5                                       
+		\end{align*}
+	}
+	\parb
+	Friction Losses
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f   & = 0.018941  \quad \text{(Swamee-Jain)}               \\
+			h_L & = f\frac{L}{D} \frac{v^2}{2g}                        \\
+			    & = 0.018941\left( \frac{163.3}{0.0779}\right) 0.50484 \\
+			    & = \bm{20.045}\,\text{m}                              
+		\end{align*}
+	}
+	
+	\parb
+	Minor Losses
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f_T        & = 0.018                                \\
+			k_{exit}   & = 1                                    \\
+			k_{elbows} & = 3\times 0.018(30)                    \\
+			           & = 1.62                                 \\
+			k_{valve}  & = 0.018(340)	= 6.12                    \\\\
+			h_L        & = \left(\Sigma k \right)\frac{v^2}{2g} \\
+			           & = 8.74(0.50484)                        \\
+			           & = \bm{4.4123}\,\text{m}                
+		\end{align*}
+	}
+	
+	
+	\parb
+	Total Head-loss
+	
+	
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			h_L   & =  0.52432 + 0.98795 \\
+			      & \quad +20.045+4.4123 \\
+			h_L	= & 25.970 \,\text{m}    
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.45]{
+	General Energy Equation
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			\frac{P_1}{\gamma} +z_1+\frac{v_1^2}{2g}+h_A -h_L & = \frac{P_2}{\gamma} +z_2+\frac{v_2^2}{2g} \\
+			0+0+0+h_A-25.970                                  & = 0+12.75+0                                \\
+			h_A                                               & =38.720\,\text{m}                          
+		\end{align*}
+		\begin{align*}
+			P_{\text{added}}     & = h_A \gamma Q                 \\
+			                     & = 38.720 (9.78) (0.900/60)     \\
+			                     & = 5.6802\text{ kW}             \\\\
+			P_{\text{in}}        & = \frac{P_{\text{added}}}{e_M} \\
+			                     & = \frac{5.6802}{.78}           \\
+			                     & = 7.2823\text{ kW}             \\\\
+			\bm{P_{\textbf{in}}} & = \bm{7.28}\,\textbf{kW}       
+		\end{align*}
+	}
+}
+\newpage
+\minit[0.475]{
+	\textbf{Example 4}:
+	\cfig[0.35]{../../figs/07SeriesPipeline/07SeriesCycleOil}
+	Heavy machine oil (sg=$0.89$, $\eta=3.80\times10^{-2}\mathsf{\,Pa\!\cdot\! s}$) is circulated through a system repeatedly to test its stability.
+	\parm
+	The 8-inch Schedule steel pipe on the suction side of the pump has a square entrance and a length of $6.25\,\text{m}$ and the
+	3.5-inch Schedule steel pipe on the discharge side of the pump has a length of $18.0\,\text{m}$.
+	\parm
+	(Note that the $3.5$-inch discharges into the atmosphere above the tank so there is no exit loss in this question!)
+	\parm
+	All elbows are long radius. The flow rate through the system is $13.5\,\text{L/s}$. \parm
+	Determine the head added by the pump.
+	\parb
+	{\Large \textbf{Solution}:}
+	\parb
+	\underline{\textbf{Suction Pipe}}
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			v              & = \frac{0.0135\ \mathsf{m^3/s}}{\pi(0.2027\,\text{m})^2/4}=0.41835\,\text{m/s} \\
+			\frac{v^2}{2g} & = 0.0089202\,\text{m}                                                          \\
+			N_R            & = \frac{0.41835(0.2027)890}{3.80\times10^{-2}}                                 \\
+			               & = 1986.1                                                                       
+		\end{align*}
+		$N_R<2000$ so flow is \textbf{laminar} (and $D/\epsilon$ is not required)
+	}
+	% \minit[0.45]{
+	\parb
+	Friction losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f   & = \frac{64}{N_R}\ =\ \frac{64}{1986.1}\ =\ 0.032224           \\
+			h_L & = 0.032224\left(\frac{6.25}{0.2027}\right)0.0089202\,\text{m} \\
+			    & =\bm{0.0088630}\,\text{m}                                     
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.45]{
+	\parm
+	Minor Losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			k_{ent} & = 0.5                           \\
+			h_L     & = 0.5\times 0.0089202\,\text{m} \\
+			        & = \bm{0.0044601}\,\text{m}      
+		\end{align*}
+	}
+	\parm
+	\underline{\textbf{Discharge Pipe}}
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			v                  & = \frac{0.0135\ \mathsf{m^3/s}}{\pi(0.0901)^2/4}=2.1174 \text{ m/s} \\
+			\frac{v^2}{2g}     & = 0.22850\,\text{m}                                                 \\
+			N_R                & = \frac{2.1174(0.0901)890)}{3.80\times10^{-2}}=4468.2               \\
+			\frac{D}{\epsilon} & = \frac{0.0901}{4.6\times 10^{-5}}                                  \\
+		\end{align*}
+		$N_R>4000$ so flow is turbulent.
+	}
+	\parm
+	Friction losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f   & = \quad 0.039\,\text{(Moody)}                            \\
+			    & = \text{(}0.039792\,\text{from S-J)}                     \\
+			h_L & = 0.039\left(\frac{18.0}{0.0901}\right)0.22850\,\text{m} \\
+			    & =\bm{1.7803}\,\text{m}                                   
+		\end{align*}
+	}
+	\parm
+	Minor losses:
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f_T             & = 0.0165\quad\text{(Moody)} \\
+			3\times k_{elb} & = 3(0.0165)(20) = 0.99      \\
+			h_L             & = 0.99\times 0.22850        \\
+			                & = \bm{0.22622}\,\text{m}    
+		\end{align*}
+	}
+	\parm
+	Total headloss = $ 2.0198\,\text{m}$
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			\cancel{\frac{P_A}{\gamma}}+\cancel{z_A}+\cancel{\frac{v_A^2}{2g}}+h_A-h_L & = \cancel{\frac{P_B}{\gamma}}+z_B+\frac{v_B^2}{2g} \\
+			h_A-2.0198                                                                 & = 0.425+0.22850                                    \\
+			                                                                           & = 2.6733\,\text{m}                                 \\\\
+			\bm{h_A}                                                                   & = \bm{2.67\,\text{m}}                              
+		\end{align*}
+	}
+}
+\newpage
+\textbf{Example 5}:
+\cfig[0.5]{../../Figs/07SeriesPipeline/pumpedStorage}
+The system illustrated is a pumped storage system. During periods of high demand for electricity, water flows down
+from the upper lake and drives the turbine at $D$. (During periods of low demand when electricity is cheap, such as at
+night-time, $D$ acts as a pump and pumps water back up to the upper lake.)
+\parm
+At times of maximum demand, the system has a maximum volume flow rate of $420\;\mathsf{m^3/s}$. Base your
+calculations on this flow. The water is at $10\text{\textcelsius}$.
+\parm
+The difference in elevation between the surfaces of the two lakes is $542\text{	m}$. \par\medskip
+The low pressure tunnel from $A$ to $B$ is $1700\text{ m}$ in length, has a diameter of $10.5\text{ m}$
+and is lined with concrete. The shaft and high pressure tunnel from $B$ to $D$ is $1140\text{ m}$ in length, has a diameter of $10.5\text{ m}$ and
+is lined with welded steel.
+\parm
+There are three tailrace tunnels from the turbine to the lower reservoir with the flow equally distributed between them. Each tailrace tunnel is $382\text{ m}$ in length, has a diameter of $8.5\text{ m}$ and is lined with concrete.
+\parm
+The entrance to the low pressure tunnel at the upper lake has an equivalent length ratio of $Le/D=420$. The bends at
+$B$ (considered to be part of tunnel $BCD$) and $C$ are in the steel pipe and each have at equivalent length ratio of $16$. A spherical valve at the inlet of the turbine that shuts off flow when the turbines are not operating is hydraulically efficient and has no losses associated with it. Each tailrace tunnel contains a butterfly valve ($Le/D=20$).
+\parm
+At maximum capacity, the turbine outputs $1800 \text{ MW}$. Determine the efficiency of the turbine at this output.
+\parb
+\vspace{1cm}
+\minit[0.45]{
+	\textbf{\Large Solution}:
+	\parb
+	\underline{\textbf{Tunnel AB}}
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			v                                    & = \frac{420\mathsf{\;m^3/s}}{\pi(10.5\mathsf{ m})^2/4}=4.8504\,\text{m/s}         \\
+			\frac{v^2}{2g}                       & = \frac{(4.8504\mathsf{\;m/s})^2}{2\times9.81\mathsf{\;m/s^2}} = 1.1991\,\text{m} \\
+			N_R                                  & = \frac{4.8504(10.5)1000}{0.0013} = 39176000                                      \\
+			                                     & = 3.9176\times 10^{7}                                                             \\
+			\frac{D}{\epsilon_{\text{concrete}}} & =\frac{10.5\;\text{m}}{1.2\times10^{-3}\text{ m}} = 8750                          
+		\end{align*}
+		\parb
+		$N_R>4000$ so flow is turbulent.
+	}
+}
+\hfill
+\minit[0.45]{
+	Friction Losses
+	\cbox[0.9]{
+		\large
+		\begin{align*}
+			f   & = \quad 0.0123\quad\text{(Moody)}            \\
+			h_L & = 0.0123\left(\frac{1700}{10.5}\right)1.1991 \\
+			    & = \bm{2.3879}\,\text{m}                      
+		\end{align*}
+	}
+	\parb
+	Minor Losses
+	\cbox[0.9]{
+		\begin{align*}
+			f_T                 & = 0.0123\quad\text{(Moody)} \\
+			k_{\text{entrance}} & = 0.0123(420) = 5.1660      \\
+			h_L                 & = 5.1660(1.1991)            \\
+			                    & = \bm{6.1946}\,\text{m}     
+		\end{align*}
+	}
+}
+\newpage
+\minit[0.45]{
+	\underline{\textbf{Tunnel BCD}}
+	\cbox[0.9]{
+		\begin{align*}
+			v                          & = 4.8504\mathsf{\,m/s}                                      \\
+			\frac{v^2}{2g}             & = 1.1991\mathsf{\,m}                                        \\
+			N_R                        & = 3.9176\times 10^{7}                                       \\
+			\frac{D}{\epsilon_{steel}} & = \frac{10.5\;\text{m}}{4.6\times10^{-5}\text{ m}} = 228260 \\
+		\end{align*}
+		$N_R>4000$ so flow is turbulent.
+	}
+	\parb
+	Friction Losses
+	\parb
+	Note: Readings for $f$ and $f_T$ lie outside the boundary of the Moody Diagram (because of the high relative roughness and high Reynolds Number) so the Swamee-Jain is probably more accurate than attempting extrapolation from the Moody Diagram.
+	\cbox[0.9]{
+		\begin{align*}
+			f   & = 0.0077125                                   \\
+			h_L & = 0.0077125\cdot\frac{1140}{10.5}\cdot 1.1991 \\
+			    & = \bm{1.0041}\,\text{m}                       
+		\end{align*}
+		
+	}
+	\parb
+	Minor Losses
+	\cbox[0.9]{
+		\begin{align*}
+			f_T                  & = 0.0071174                \\
+			k_{\text{bend at B}} & = (0.0071174)16  = 0.11388 \\
+			k_{\text{bend at C}} & = (0.0071174)16  = 0.11388 \\
+			h_L                  & = 2(0.11388)1.1991         \\
+			                     & = \bm{0.27310}\,\text{m}   
+		\end{align*}
+	}
+	\parb
+	\underline{\textbf{A single tailrace tunnel $\bm{DE}$}}
+	\cbox[0.9]{
+		\begin{align*}
+			v              & = \frac{140\mathsf{\, m^3/s}}{\pi(8.5\mathsf{\, m})^2/4}=2.4672\mathsf{\, m/s} \\
+			\frac{v^2}{2g} & = 0.31025\mathsf{\, m}                                                         \\
+			N_R            & = 	\frac{2.4672(8.5)1000}{0.0013} = 16132000                                   \\
+			               & = 1.6132\times 10^7                                                            \\
+			\frac{D}{\epsilon_{concrete}} = \frac{8.5\;\text{m}}{1.2\times10^{-3}\text{ m}} = 7083
+		\end{align*}
+		$N_R>4000$ so flow is turbulent.
+	}
+}
+
+
+\end{document}
