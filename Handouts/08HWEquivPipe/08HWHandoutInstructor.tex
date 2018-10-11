@@ -655,389 +655,473 @@ There is no flow from pumps $P_2$ and $P_3$. Determine:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\textbf{Example 6}:
+\cfig[0.35]{../../figs/08HWEquivPipe/HW14ink.pdf}
+
+\cmini[0.675]{
+	Determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
+	\parm
+}
+\vspace{1cm}
+\minit[0.4625]{
+	
+	
+	\textbf{Solution}:
+	\parm
+	First, determine the head loss in each of the three pipes, in terms of $Q$:
+	\cbox{
+		\large
+		\begin{align*}
+			h_{L_{AB}} & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                            \\
+			           & = L\left(\frac{279000}{CD^{2.63}}\right)^{1.852}\!\cdot\! Q^{1.852}          \\
+			           & = 600\left(\frac{279000}{150(150)^{2.63}}\right)^{1.852}\!\cdot\! Q^{1.852}  \\
+			           & = 0.017142\,Q^{1.852}                                                        \\\\
+			h_{L_{BC}} & = 950\left(\frac{279000}{120(325)^{2.63}}\right)^{1.852}\!\cdot\! Q^{1.852}  \\
+			           & = 0.00094964\,Q^{1.852}                                                      \\\\
+			h_{L_{CD}} & = 1200\left(\frac{279000}{150(250)^{2.63}}\right)^{1.852}\!\cdot\! Q^{1.852} \\
+			           & = 0.0028479\,Q^{1.852}                                                       
+		\end{align*}
+	}
+	\parm
+	Sum these headlosses to get the headloss between $A$ and $D$:
+	\cbox{
+		\begin{align*}
+			h_{L_{AD}} & = h_{L_{AB}} + h_{L_{BC}} + h_{L_{CD}}                    \\
+			           & = \left(0.017142 + 0.00094964 + 0.0028479\right)Q^{1.852} \\
+			           & = 0.020940Q^{1.852}\,\text{m}                             
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.4625]{
+	Use the GEE to approximate a numerical value for $h_{L_{AD}}$:
+	\cbox{
+		\begin{align*}
+			\frac{P_A}{\gamma} + \cancel{z_A} + \frac{v_A^2}{2g} - h_L & = 	\frac{P_D}{\gamma} + \cancel{z_D} + \frac{v_D^2}{2g} \\
+			\Rightarrow h_L                                            & =\frac{P_A-P_D}{2g} + \frac{v_A^2-v_D^2}{2g}            \\
+		\end{align*}
+		One equation and two unknowns ($h_L$ and $Q$, since $v_A$ and $v_B$ can be expressed in terms of the single variable $Q$). Here, we have the difference between the two velocity heads which is smaller than the velocity head at $A$. As before, we can ignore it (for now!)
+		\begin{align*}
+			h_L & \approx \frac{P_A-P_D}{2g} \\
+			    & = \frac{535-420}{19.62}    \\
+			    & = 5.8614\,\text{m}         
+		\end{align*}
+	}
+	\parm
+	Now, find $Q$:
+	\cbox{
+		\begin{align*}
+			h_{L_{AD}}    & = 5.8614 = 0.020940Q^{1.852}                               \\
+			\Rightarrow Q & =    \left(\frac{5.1852}{0.020940} \right)^\frac{1}{1.852} \\
+			              & = 20.955                                                   \\
+			\bm{Q}        & =\bm{21.0}\,\textbf{L/s}                                   
+		\end{align*}
+	}
+	\parm
+	How large was the term we discarded?
+	\cbox{
+		\begin{align*}
+			\frac{v_A^2-v_D^2}{2g} & = \frac{\left(\frac{20.955/1000}{\pi(0.150)^2/4}\right)^2-\left(\frac{20.955/1000}{\pi(0.250)^2/4}\right)^2}{19.62} \\
+			                       & = 0.062381\,\text{m}                                                                                                
+		\end{align*}
+		This is approximately $0.15\%$ of the pressure head at $D$.
+		
+	}
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textbf{Example 7}:
-\vspace{-1cm}
-\cfig[0.6]{../../figs/08HWEquivPipe/HW9}
-\vspace{-.5cm}
-\cmini{
-	The flow through the system from $A$ to $D$ is $Q=3.3\,\mathsf{m^3/s}$.
-	Pipe lengths are given in m, diameters are in mm, and C is the
-	Hazen-Williams roughness coefficient.
-	
-	Determine the flow through $Q_{BC1},\,Q_{BC2}$ and $ Q_{BC3}$ and the head loss
-	between $B$ and $C$. (You may assume that all losses are due to friction.)
-	
-}
+\cfig[0.4]{../../figs/08HWEquivPipe/HW14ink.pdf}
 
-\textbf{Solution}:
-\Large
-\begin{gather*}
-	h_{L_1} = h_{L_2} = h_{L_3} \\
-	L_1\left(\frac{279000Q_1}{C_1 D_1^{2.63}}\right)^{1.85} = L_2\left(\frac{279000Q_2}{C_2 D_2^{2.63}}\right)^{1.85} =
-	L_3\left(\frac{279000Q_3}{C_3 D_3^{2.63}}\right)^{1.85}\\\\
-	1200\left(\frac{279000Q_1}{150\times 1000^{2.63}}\right)^{1.85} = 1000\left(\frac{279000Q_2}{150\times
-		800^{2.63}}\right)^{1.85} = 1600\left(\frac{279000Q_3}{150 \times 1200^{2.63}}\right)^{1.85}
-	\intertext{Simplify - divide by $100\left(\frac{279000}{150}\right)^{1.85}$}
-	12\left(\frac{Q_1}{1000^{2.63}}\right)^{1.85} = 10\left(\frac{Q_2}{800^{2.63}}\right)^{1.85} =
-	16\left(\frac{Q_3}{1200^{2.63}}\right)^{1.85}
-	\intertext{Simplify - raise everything to the power $1/1.85$}
-	12^{1/1.85}\cdot\frac{Q_1}{1000^{2.63}} = 10^{1/1.85}\cdot\frac{Q_2}{800^{2.63}} =
-	16^{1/1.85}\cdot\frac{Q_3}{1200^{2.63}} \\\\
-	\frac{Q_1}{2.0261\times 10^7} = \frac{Q_2}{1.2433\times 10^7} = \frac{Q_3}{2.8014\times 10^7} \\
-\end{gather*}
-Then
-\begin{align*}
-	Q_2 & = \frac{1.2433}{2.0261}\cdot Q_1 = 0.61364Q_1 \\\\
-	Q_3 & = \frac{2.8014}{2.0261}\cdot Q_1 = 1.3827Q_1  \\
-\end{align*}
-\vfill\newpage
-Total flow through the three pipes is $3.3\,\mathsf{m^3/s}$ so
-\begin{align*}
-	\\
-	Q_1+Q_2+Q_3              & = 3300\,\text{L/s}                     \\\\
-	Q_1+0.61364Q_1+1.3827Q_1 & = 3300\,\text{L/s}                     \\\\
-	Q_1                      & = 1101.3\,\text{L/s}                   \\\\
-	Q_2                      & = 0.61364(1101.3) = 675.83\,\text{L/s} \\\\
-	Q_3                      & = 1.3827(1101.3) = 1522.8\,\text{L/s}  \\
-\end{align*}
-The headloss between $B$ and $C$ can be calculated from any one of the three pipes.
-
-\begin{align*}
-	h_{L_1} & = 1200\left(\frac{279000\times1101.3}{150\times 1000^{2.63}}\right)^{1.85} \\\\
-	        & = 1.4415\,\text{m}                                                         
-\end{align*}
-
-
-\newpage
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\textbf{Example 8}:
-\vspace{-1cm}
-\cfig[0.5]{../../figs/08HWEquivPipe/HW14}
-\vspace{-.5cm}
-\cmini[0.7]{
-	Determine the flow through the system shown above and the average flow velocity in the smallest pipe.
-	(Neglect any minor losses and the velocity head at the exit.)
-}
-
-\textbf{Solution}:
-
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\textbf{Example 9}:
-\vspace{-1cm}
-\cfig[0.65]{../../figs/08HWEquivPipe/HW17a}
-\vspace{-.25cm}
-\cmini{
-	Determine the velocity of the flow through each of the five pipes if there is a pressure difference of 295 kPa between $A$ and $E$.
-	(Neglect any minor losses.)
-}
-\parb
-
-
-\textbf{Solution}:
-The process:
-\begin{enumerate}
-	\item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
-	\item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
-	\item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
-	\item Determine the flow through the system
-	\item Calculate the velocities for the flow through each pipe
-\end{enumerate}
-\cbox[0.9]{
-	(1) \underline{Equivalent Pipe $BCD$}\parm
-	Find the head losses in $BC$ and $CD$ for a flow of 100 L/s:
-	\Large
-	\begin{align*}
-		h_L        & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                     \\
-		h_{L_{BC}} & = 1100\left(\frac{279000\times 100}{150(202.7)^{2.63}}\right)^{1.852} \\
-		           & = 36.677\,\text{m}                                                    \\\\
-		h_{L_{CD}} & = 900\left(\frac{279000\times 100}{140(154.1)^{2.63}}\right)^{1.852}  \\
-		           & = 129.60\,\text{m}                                                    \\
-	\end{align*}
-	Find the diameter of the equivalent pipe:
-	\begin{align*}
-		D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}} \right)^{0.3802}                         \\
-		D_{BCD} & = \left( \frac{279000\times 100}{100\left(\frac{36.677+129.60}{1000}\right)^{0.54}} \right)^{0.3802} \\
-		        & = 169.98\,\text{mm}                                                                                  \\
-	\end{align*}
-}
-
-\cbox[0.9]{
-	(2) \underline{Equivalent Pipe $BD2$}\parm
-	Find the flows in $BCD$ and $BD$ for a headloss of 10 m:
-	\Large
-	\begin{align*}
-		Q       & = \frac{CD^{2.63}\left(\frac{h_L}{L}\right)^{0.54}}{279000}             \\\\
-		Q_{BCD} & = \frac{100 (169.98)^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} \\
-		        & = 21.895\,\text{L/s}                                                    \\\\
-		Q_{BD}  & = \frac{130 (254.5)^{2.63}\left(\frac{10}{1500}\right)^{0.54}}{279000}  \\
-		        & = 66.101\,\text{L/s}                                                    \\
-	\end{align*}
-	Percentage of flow through $BCD$:
-	\begin{align*}
-		\frac{Q_{BCD}}{Q}\% & = \frac{21.895}{21.895+66.101}\times 100\% \\
-		                    & = 24.882\%                                 
-	\end{align*}
-	Headloss at $Q=100$ L/s:
-	\begin{align*}
-		h_L         & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                         \\
-		h_{L_{BCD}} & = 1000\left(\frac{279000\times 24.882}{100(169.98)^{2.63}}\right)^{1.852} \\
-		            & = 12.667\,\text{m}                                                        
-		\intertext{Repeat with BD to check}
-		h_{L_{BD}}  & = 1500\left(\frac{279000\times 75.118}{130(254.5)^{2.63}}\right)^{1.852}  \\
-		            & = 12.667\,\text{m}                                                        
-	\end{align*}
-	Find diameter of equivalent pipe:
-	\begin{align*}
-		D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}} \right)^{0.3802}                  \\
-		D_{BD2} & = \left( \frac{279000\times 100}{100\left(\frac{12.667}{1000}\right)^{0.54}} \right)^{0.3802} \\
-		        & = 288.37\,\text{mm}                                                                           \\
-	\end{align*}
-}
-
-\cbox[0.9]{
-	(3) \underline{Equivalent Pipe $AE$}\parm
-	Find the head losses in $AB,\;BD2$ and $DE$ for a flow of 100 L/s:
-	\Large
-	\begin{align*}
-		h_L         & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                      \\
-		h_{L_{AB}}  & = 1200\left(\frac{279000\times 100}{130(303.2)^{2.63}}\right)^{1.852}  \\
-		            & = 7.3369\,\text{m}                                                     \\\\
-		h_{L_{BD2}} & = 1000\left(\frac{279000\times 100}{100(288.37)^{2.63}}\right)^{1.852} \\
-		            & = 12.689\,\text{m}\quad\text{(we already have this, 12.667, above!)}   \\\\
-		h_{L_{DE}}  & = 1000\left(\frac{279000\times 100}{120(333.4)^{2.63}}\right)^{1.852}  \\
-		            & = 4.4653\,\text{m}\quad\text{(we already have this, 12.667, above!)}   \\\\
-		h_{L_{AE}}  & = 7.3369+12.689+4.4653                                                 \\
-		            & = 24.491\,\text{m}                                                     
-	\end{align*}
-	Find the diameter of the equivalent pipe:
-	\begin{align*}
-		D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}} \right)^{0.3802}                  \\
-		D_{BCD} & = \left( \frac{279000\times 100}{100\left(\frac{24.491}{1000}\right)^{0.54}} \right)^{0.3802} \\
-		        & = 251.86\,\text{mm}                                                                           \\
-	\end{align*}
-}
-\cbox[0.9]{
-	(4) \underline{Flow through the system}\parm
-	Find the head loss associated with a pressure drop of 296 kPa\\
-	(GEE with no elevation or velocity head terms):
-	\Large
-	\begin{align*}
-		\Delta P & = \gamma h_L       \\
-		295      & = 9.81 \times h_L  \\
-		h_L      & = 30.071\,\text{m} \\
-	\end{align*}
-	Find the flow for this headloss:
-	\begin{align*}
-		Q_{AE} & = \frac{100 (251.86)^{2.63}\left(\frac{30.071}{1000}\right)^{0.54}}{279000} \\
-		       & = 111.59\,\text{L/s}                                                        \\
-	\end{align*}
-}
-\cbox[0.9]{
-	(5) \underline{Velocities are:}\parm
-	
-	\begin{align*}
-		V_{AB} & = \frac{0.11159\,\mathsf{m^3/s}}{\pi(0.3032\,\text{m})^2/4}= 1.5545\,\text{m/s}                \\
-		V_{BC} & = \frac{0.11159\times 0.24882\,\mathsf{m^3/s}}{\pi(0.2027\,\text{m})^2/4}= 0.86043\,\text{m/s} \\
-		V_{CD} & = \frac{0.11159\times 0.24882\,\mathsf{m^3/s}}{\pi(0.1541\,\text{m})^2/4}= 1.4887\,\text{m/s}  \\
-		V_{BD} & = \frac{0.11159\times 0.75118\,\mathsf{m^3/s}}{\pi(0.2545\,\text{m})^2/4}= 1.6478\,\text{m/s}  \\
-		V_{BD} & = \frac{0.11159\,\mathsf{m^3/s}}{\pi(0.3334\,\text{m})^2/4}= 1.2782\,\text{m/s}                \\
-	\end{align*}
-}
-
-
-
-
-\vfill
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textblock*}{1\textwidth}(2cm, 1cm)
-	\textbf{Exercise 10}: \\ Nodes $B,\,C,\, D$ and $E$ are all at the same elevation. Given that $y=6.7\,\text{m}$, determine the flow through the system (disregard exit losses).
-	
-	\cfig[0.65]{../../figs/08HWEquivPipe/MT1A}
-	
-\end{textblock*}
-
-\begin{textblock*}{.35\textwidth}(2cm, 7cm)
-	\centering
-	
-	\begin{tabular}{ccc}
-		\toprule
-		                                                                  & Fitting     & $Le/D$ \\
-		\midrule
-		\includegraphics[scale=0.45]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
-		\midrule
-		\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
-		\midrule
-		\includegraphics[scale=0.65]{../../figs/08HWEquivPipe/elbow}      & Elbow       & 50     \\
-		\midrule
-		\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
-		\midrule
-		\includegraphics[scale=0.45]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
-		\bottomrule
-	\end{tabular}
-\end{textblock*}
-
-
-\begin{textblock*}{.35\textwidth}(13cm, 8cm)
-	\centering
-	
-	\begin{tabular}{cccc}
-		\toprule
-		Pipe & Length (m) & diam (mm) & C   \\
-		\midrule
-		AB   & 10         & 500       & 125 \\
-		\midrule
-		BC   & 2000       & 275       & 150 \\
-		\midrule
-		BD   & 1500       & 250       & 100 \\
-		\midrule
-		DC   & 1000       & 300       & 100 \\
-		\midrule
-		CE   & 10         & 500       & 125 \\
-		\bottomrule
-	\end{tabular}
-\end{textblock*}
-%\begin{textblock*}{.6\textwidth}(2cm, 15cm)
-%\cbox{
-%\begin{itemize}
-%\item[] Diam of equiv pipe for BDC (series) = 217.91 mm
-%\item[] Diam of equiv pipe for BC (parallel) = 325.82 mm
-%\item[] Diam of equiv pipe for AE (series) = 324.98 mm
-%\item[] Q = 96.978 L/s
-%\end{itemize}
-%}
-%\end{textblock*}
-~
-\vspace{13cm}
-
-\cmini[0.9]{
-	\textbf{Solution}
+\cmini[0.675]{
+	Use the equivialent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
 	\parb
+}
+\vspace{1cm}
+\minit[0.4625]{
+	
+	\textbf{Solution}:
+	\parb
+	Assume a flow of $Q=100\,\text{L/s}$ and determine the headloss between $A$ and $D$:
 	\cbox{
-		
-		The objective is to replace the system of five pipes $AB,\,BC,\,CD,\,DC$ and $CE$ with a single hydraulically equivalent
-		pipe from $A$ to $E$. Then we can use the Hazen-Williams equation to find flow through the system.\parb
-		Our process will be as follows:
-		\begin{enumerate}
-			\item Find the effective lengths of the pipes that have valves or fittings.
-			\item Consider the series system of two pipes $BD$ and $DC$: find a hydraulically equivalent pipe $BDC$.
-			\item Consider the parallel system of two pipes $BDC$ (just found above) and $BC$: find a hydraulically equivalent pipe $BC2$
-			      for flow from $B$ to $C$.
-			\item Consider the series system of three pipes $AB,\,BC2,\text{ and }CE$: find a hydraulically equivalent pipe $AE$.
-			\item Use the General Energy Equation and the Hazen-Williams equation to find $Q$.
-		\end{enumerate}
-		
+		\large
+		\begin{align*}
+			h_{L_{AB}} & = 600\left(\frac{279000\times 100}{150(150)^{2.63}}\right)^{1.852} \\
+			           & = 86.710\,\text{m}                                                 \\
+			h_{L_{BC}} & = 950\left(\frac{279000\times 100}{120(325)^{2.63}}\right)^{1.852} \\
+			           & = 4.8035\,\text{m}                                                 \\
+			h_{L_{CD}} & = 1200\left(\frac{279000}{150(250)^{2.63}}\right)^{1.852}          \\
+			           & = 14.406\,\text{m}                                                 \\\\
+			h_{L_{AD}} & = 86.710 + 4.8035 + 14.406                                         \\
+			           & = 105.92\,\text{m}                                                 
+		\end{align*}
+	}
+	\parb
+	Determine the diameter of the pipe, with length $1000\,\text{m}$ and resistance coefficient $C=100$, that has a headloss of $105.92\,\text{m}$ for flow of $100\,\text{L/s}$.
+	\cbox{
+		\large
+		\begin{align*}
+			d_{AD\text{equiv}} & = \left(\frac{279000\times 100}{100\left(\frac{105.92}{1000}\right)^{0.54}}\right)^{0.3802} \\
+			                   & = 186.47\,\text{mm}                                                                         
+		\end{align*}
 	}
 }
-\vfill
-\cmini[0.9]{
-	
+\hfill
+\minit[0.4625]{
+	Our problem has now reduced to finding the flow through the single pipe, $AD\text{equiv}$, shown below.
+	\parb
+	\cfig[0.35]{../../figs/08HWEquivPipe/HW15ink.pdf}
+	\parb
+	We apply the GEE to this pipe to find $h_{L_{AD\text{equiv}}}$, noting that $A$ and $D$ are at the same elevation and have the same diameter and, therefore, the same velocity head.
 	\cbox{
-		\textbf{(1)} Find the effective lengths of the pipes that have valves or fittings.
-		
+		\large
 		\begin{align*}
-			L_{\text{eff}}     & = \text{Actual Length + Diameter}\times\left(\Sigma\frac{L_e}{D}\right) \\\\
-			L_{\text{eff}(AB)} & = 10 + 0.5(75+50+100) = 122.5\,\text{m}                                 \\
-			L_{\text{eff}(BC)} & = 2000 + 0.275(50+35+50) = 2037.1\,\text{m}                             \\
-			L_{\text{eff}(BD)} & = 1500 + 0.250(150) = 1537.5\,\text{m}                                  \\
+			\frac{535}{9.81} - h_{L_{AD\text{equiv}}} & = \frac{420}{9.81}   \\
+			\Rightarrow h_{L_{AD\text{equiv}}}        & =   5.8614\,\text{m} 
 		\end{align*}
 		
 	}
 	\parb
+	Note that this is the same loss as we found in Example 6, so ignoring the difference in velocity heads had no numerical effect (to 5 significant digits).
+	\parb
+	Find $Q$:
 	\cbox{
-		\textbf{(2)} Find a single equivalent pipe $BDC$ for the two pipes $BD$ and $DC$ in series.\parb
-		
-		Find the headloss between $B$ and $C$ for a flow of 100 L/s though $BD$ and $DC$, using the effective lengths of the pipes.
-		
 		\begin{align*}
-			h_L        & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                                             \\\\
-			h_{L(BD)}  & = 1537.5\left(\frac{279000\times 100}{100\times 250^{2.63}}\right)^{1.852} = 39.110\,\text{m} \\
-			h_{L(DC)}  & = 1000\left(\frac{279000\times 100}{100\times 300^{2.63}}\right)^{1.852} = 10.467\,\text{m}   \\\\
-			h_{L(BDC)} & = 39.110 + 10.467 = 49.577\,\text{m}                                                          \\
-		\end{align*}
-		
-		\parb
-		
-		Find an equivalent pipe for $BDC$ (i.e., a pipe that has a head loss of 49.577 m for a flow of 100 L/s). We use an equivalent pipe with length 1000 m and resistance coefficient 100, and find the equivalent pipe diameter.
-		
-		\begin{align*}
-			D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}}  \right)^{0.3802}                                      \\\\
-			D_{BDC} & = \left( \frac{279000\times 100}{100\left(\frac{49.577}{1000}\right)^{0.54}}  \right)^{0.3802} = 217.92\,\text{mm} \\
+			Q      & = \frac{100(186.47)^{2.63}\left(\frac{5.8614}{1000}\right)^{0.54}}{279000} \\
+			       & = 20.932                                                                   \\
+			\bm{Q} & = \bm{20.9}\,\text{L/s}                                                    
 		\end{align*}
 		
 	}
 }
-\cmini[0.9]{
-	
-	\cbox{
-		\textbf{(3)} Now, consider pipe $BC$ and the pipe $BDC$ just found as a parallel system. Find an equivalent pipe for these two parallel pipes.\parb
-		
-		Assume a headloss of 10 m between $B$ and $C$ and find the flow through each of $BC$ and $BDC$:
-		
-		\begin{align*}
-			Q                     & = \frac{CD^{2.63}\left(\frac{h_L}{L}\right)^{0.54}}{279000}                                      \\\\
-			Q_{BC}                & = \frac{150\times 275^{2.63}\left(\frac{10}{2037.1}\right)^{0.54}}{279000} = 79.262\,\text{L/s}  \\
-			Q_{BDC}               & = \frac{100\times 217.92^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} = 42.084\,\text{L/s} \\
-			Q_{BC\text{ and }BDC} & = 79.262 + 42.084 = 121.35 \,\text{L/s}                                                          \\
-		\end{align*}
-		
-		\parb
-		
-		A flow of 121.35 L/s between $B$ and $C$ through both pipes $BC$ and $BDC$ produce a headloss of 10 m. Find an equivalent pipe that replaces these two parallel pipes:
-		
-		\begin{align*}
-			D_{BC\text{equiv}} & = \left( \frac{279000\times 121.35}{100\left(\frac{10}{1000}\right)^{0.54}}  \right)^{0.3802} = 325.83\,\text{mm} \\
-		\end{align*}
-		
-	}
-	
-}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cmini[0.9]{
-	
-	\cbox{
-		\textbf{(4)} Now we have a series system: $AB,\, BC\text{equiv}$ and $CE$. Assume a flow of 100 L/s from $A$ to $E$, find the total headloss for this flow and then replace these three pipes with a single equivalent pipe.\parb
-		
-		\begin{align*}
-			h_{L(AB)}             & = 122.5\left(\frac{279000\times 100}{125\times 500^{2.63}}\right)^{1.852} = 0.070450\,\text{m} \\
-			h_{L(BC\text{equiv})} & = 1000\left(\frac{279000\times 100}{100\times 325.83^{2.63}}\right)^{1.852} = 7.0000\,\text{m} \\
-			h_{L(CE)}             & = 10\left(\frac{279000\times 100}{125\times 500^{2.63}}\right)^{1.852} = 0.0057510\,\text{m}   \\\\
-			h_{L(AE)}             & = 0.070450 + 7.0000 + 0.0057510 = 7.0762\,\text{m}                                             \\
-		\end{align*}
-		
-		\parb
-		
-		Find the equivalent pipe that has a headloss of 7.0762 m for a flow of 100 L/s:
-		
-		\begin{align*}
-			D_{AE} & = \left( \frac{279000\times 100}{100\left(\frac{7.0762}{1000}\right)^{0.54}}  \right)^{0.3802} = 324.99\,\text{mm} \\
-		\end{align*}
-	}
-	
-}
-
-\cmini[0.9]{
-	
-	\cbox{
-		\textbf{(5)} From the General Enery Equation (disregarding velocity head at $E$), headloss through the actual system is 6.7 m. We just need the flow that generates this headloss: \parb
-		
-		\begin{align*}
-			Q_{AE} & = \frac{100\times 324.99^{2.63}\left(\frac{6.7}{1000}\right)^{0.54}}{279000} = 96.983\,\text{L/s} \\
-		\end{align*}
-		
-		
-	}
-	
-}
-
+% \textbf{Example 8}:
+% \vspace{-1cm}
+% \cfig[0.5]{../../figs/08HWEquivPipe/HW14}
+% \vspace{-.5cm}
+% \cmini[0.7]{
+% 	Determine the flow through the system shown above and the average flow velocity in the smallest pipe.
+% 	(Neglect any minor losses and the velocity head at the exit.)
+% }
+%
+% \textbf{Solution}:
+%
+% \newpage
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \textbf{Example 9}:
+% \vspace{-1cm}
+% \cfig[0.65]{../../figs/08HWEquivPipe/HW17a}
+% \vspace{-.25cm}
+% \cmini{
+% 	Determine the velocity of the flow through each of the five pipes if there is a pressure difference of 295 kPa between $A$ and $E$.
+% 	(Neglect any minor losses.)
+% }
+% \parb
+%
+%
+% \textbf{Solution}:
+% The process:
+% \begin{enumerate}
+% 	\item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
+% 	\item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
+% 	\item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
+% 	\item Determine the flow through the system
+% 	\item Calculate the velocities for the flow through each pipe
+% \end{enumerate}
+% \cbox[0.9]{
+% 	(1) \underline{Equivalent Pipe $BCD$}\parm
+% 	Find the head losses in $BC$ and $CD$ for a flow of 100 L/s:
+% 	\Large
+% 	\begin{align*}
+% 		h_L        & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                     \\
+% 		h_{L_{BC}} & = 1100\left(\frac{279000\times 100}{150(202.7)^{2.63}}\right)^{1.852} \\
+% 		           & = 36.677\,\text{m}                                                    \\\\
+% 		h_{L_{CD}} & = 900\left(\frac{279000\times 100}{140(154.1)^{2.63}}\right)^{1.852}  \\
+% 		           & = 129.60\,\text{m}                                                    \\
+% 	\end{align*}
+% 	Find the diameter of the equivalent pipe:
+% 	\begin{align*}
+% 		D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}} \right)^{0.3802}                         \\
+% 		D_{BCD} & = \left( \frac{279000\times 100}{100\left(\frac{36.677+129.60}{1000}\right)^{0.54}} \right)^{0.3802} \\
+% 		        & = 169.98\,\text{mm}                                                                                  \\
+% 	\end{align*}
+% }
+%
+% \cbox[0.9]{
+% 	(2) \underline{Equivalent Pipe $BD2$}\parm
+% 	Find the flows in $BCD$ and $BD$ for a headloss of 10 m:
+% 	\Large
+% 	\begin{align*}
+% 		Q       & = \frac{CD^{2.63}\left(\frac{h_L}{L}\right)^{0.54}}{279000}             \\\\
+% 		Q_{BCD} & = \frac{100 (169.98)^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} \\
+% 		        & = 21.895\,\text{L/s}                                                    \\\\
+% 		Q_{BD}  & = \frac{130 (254.5)^{2.63}\left(\frac{10}{1500}\right)^{0.54}}{279000}  \\
+% 		        & = 66.101\,\text{L/s}                                                    \\
+% 	\end{align*}
+% 	Percentage of flow through $BCD$:
+% 	\begin{align*}
+% 		\frac{Q_{BCD}}{Q}\% & = \frac{21.895}{21.895+66.101}\times 100\% \\
+% 		                    & = 24.882\%
+% 	\end{align*}
+% 	Headloss at $Q=100$ L/s:
+% 	\begin{align*}
+% 		h_L         & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                         \\
+% 		h_{L_{BCD}} & = 1000\left(\frac{279000\times 24.882}{100(169.98)^{2.63}}\right)^{1.852} \\
+% 		            & = 12.667\,\text{m}
+% 		\intertext{Repeat with BD to check}
+% 		h_{L_{BD}}  & = 1500\left(\frac{279000\times 75.118}{130(254.5)^{2.63}}\right)^{1.852}  \\
+% 		            & = 12.667\,\text{m}
+% 	\end{align*}
+% 	Find diameter of equivalent pipe:
+% 	\begin{align*}
+% 		D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}} \right)^{0.3802}                  \\
+% 		D_{BD2} & = \left( \frac{279000\times 100}{100\left(\frac{12.667}{1000}\right)^{0.54}} \right)^{0.3802} \\
+% 		        & = 288.37\,\text{mm}                                                                           \\
+% 	\end{align*}
+% }
+%
+% \cbox[0.9]{
+% 	(3) \underline{Equivalent Pipe $AE$}\parm
+% 	Find the head losses in $AB,\;BD2$ and $DE$ for a flow of 100 L/s:
+% 	\Large
+% 	\begin{align*}
+% 		h_L         & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                      \\
+% 		h_{L_{AB}}  & = 1200\left(\frac{279000\times 100}{130(303.2)^{2.63}}\right)^{1.852}  \\
+% 		            & = 7.3369\,\text{m}                                                     \\\\
+% 		h_{L_{BD2}} & = 1000\left(\frac{279000\times 100}{100(288.37)^{2.63}}\right)^{1.852} \\
+% 		            & = 12.689\,\text{m}\quad\text{(we already have this, 12.667, above!)}   \\\\
+% 		h_{L_{DE}}  & = 1000\left(\frac{279000\times 100}{120(333.4)^{2.63}}\right)^{1.852}  \\
+% 		            & = 4.4653\,\text{m}\quad\text{(we already have this, 12.667, above!)}   \\\\
+% 		h_{L_{AE}}  & = 7.3369+12.689+4.4653                                                 \\
+% 		            & = 24.491\,\text{m}
+% 	\end{align*}
+% 	Find the diameter of the equivalent pipe:
+% 	\begin{align*}
+% 		D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}} \right)^{0.3802}                  \\
+% 		D_{BCD} & = \left( \frac{279000\times 100}{100\left(\frac{24.491}{1000}\right)^{0.54}} \right)^{0.3802} \\
+% 		        & = 251.86\,\text{mm}                                                                           \\
+% 	\end{align*}
+% }
+% \cbox[0.9]{
+% 	(4) \underline{Flow through the system}\parm
+% 	Find the head loss associated with a pressure drop of 296 kPa\\
+% 	(GEE with no elevation or velocity head terms):
+% 	\Large
+% 	\begin{align*}
+% 		\Delta P & = \gamma h_L       \\
+% 		295      & = 9.81 \times h_L  \\
+% 		h_L      & = 30.071\,\text{m} \\
+% 	\end{align*}
+% 	Find the flow for this headloss:
+% 	\begin{align*}
+% 		Q_{AE} & = \frac{100 (251.86)^{2.63}\left(\frac{30.071}{1000}\right)^{0.54}}{279000} \\
+% 		       & = 111.59\,\text{L/s}                                                        \\
+% 	\end{align*}
+% }
+% \cbox[0.9]{
+% 	(5) \underline{Velocities are:}\parm
+%
+% 	\begin{align*}
+% 		V_{AB} & = \frac{0.11159\,\mathsf{m^3/s}}{\pi(0.3032\,\text{m})^2/4}= 1.5545\,\text{m/s}                \\
+% 		V_{BC} & = \frac{0.11159\times 0.24882\,\mathsf{m^3/s}}{\pi(0.2027\,\text{m})^2/4}= 0.86043\,\text{m/s} \\
+% 		V_{CD} & = \frac{0.11159\times 0.24882\,\mathsf{m^3/s}}{\pi(0.1541\,\text{m})^2/4}= 1.4887\,\text{m/s}  \\
+% 		V_{BD} & = \frac{0.11159\times 0.75118\,\mathsf{m^3/s}}{\pi(0.2545\,\text{m})^2/4}= 1.6478\,\text{m/s}  \\
+% 		V_{BD} & = \frac{0.11159\,\mathsf{m^3/s}}{\pi(0.3334\,\text{m})^2/4}= 1.2782\,\text{m/s}                \\
+% 	\end{align*}
+% }
+%
+%
+%
+%
+% \vfill
+% \newpage
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{textblock*}{1\textwidth}(2cm, 1cm)
+% 	\textbf{Exercise 10}: \\ Nodes $B,\,C,\, D$ and $E$ are all at the same elevation. Given that $y=6.7\,\text{m}$, determine the flow through the system (disregard exit losses).
+%
+% 	\cfig[0.65]{../../figs/08HWEquivPipe/MT1A}
+%
+% \end{textblock*}
+%
+% \begin{textblock*}{.35\textwidth}(2cm, 7cm)
+% 	\centering
+%
+% 	\begin{tabular}{ccc}
+% 		\toprule
+% 		                                                                  & Fitting     & $Le/D$ \\
+% 		\midrule
+% 		\includegraphics[scale=0.45]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
+% 		\midrule
+% 		\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
+% 		\midrule
+% 		\includegraphics[scale=0.65]{../../figs/08HWEquivPipe/elbow}      & Elbow       & 50     \\
+% 		\midrule
+% 		\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
+% 		\midrule
+% 		\includegraphics[scale=0.45]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{textblock*}
+%
+%
+% \begin{textblock*}{.35\textwidth}(13cm, 8cm)
+% 	\centering
+%
+% 	\begin{tabular}{cccc}
+% 		\toprule
+% 		Pipe & Length (m) & diam (mm) & C   \\
+% 		\midrule
+% 		AB   & 10         & 500       & 125 \\
+% 		\midrule
+% 		BC   & 2000       & 275       & 150 \\
+% 		\midrule
+% 		BD   & 1500       & 250       & 100 \\
+% 		\midrule
+% 		DC   & 1000       & 300       & 100 \\
+% 		\midrule
+% 		CE   & 10         & 500       & 125 \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{textblock*}
+% %\begin{textblock*}{.6\textwidth}(2cm, 15cm)
+% %\cbox{
+% %\begin{itemize}
+% %\item[] Diam of equiv pipe for BDC (series) = 217.91 mm
+% %\item[] Diam of equiv pipe for BC (parallel) = 325.82 mm
+% %\item[] Diam of equiv pipe for AE (series) = 324.98 mm
+% %\item[] Q = 96.978 L/s
+% %\end{itemize}
+% %}
+% %\end{textblock*}
+% ~
+% \vspace{13cm}
+%
+% \cmini[0.9]{
+% 	\textbf{Solution}
+% 	\parb
+% 	\cbox{
+%
+% 		The objective is to replace the system of five pipes $AB,\,BC,\,CD,\,DC$ and $CE$ with a single hydraulically equivalent
+% 		pipe from $A$ to $E$. Then we can use the Hazen-Williams equation to find flow through the system.\parb
+% 		Our process will be as follows:
+% 		\begin{enumerate}
+% 			\item Find the effective lengths of the pipes that have valves or fittings.
+% 			\item Consider the series system of two pipes $BD$ and $DC$: find a hydraulically equivalent pipe $BDC$.
+% 			\item Consider the parallel system of two pipes $BDC$ (just found above) and $BC$: find a hydraulically equivalent pipe $BC2$
+% 			      for flow from $B$ to $C$.
+% 			\item Consider the series system of three pipes $AB,\,BC2,\text{ and }CE$: find a hydraulically equivalent pipe $AE$.
+% 			\item Use the General Energy Equation and the Hazen-Williams equation to find $Q$.
+% 		\end{enumerate}
+%
+% 	}
+% }
+% \vfill
+% \cmini[0.9]{
+%
+% 	\cbox{
+% 		\textbf{(1)} Find the effective lengths of the pipes that have valves or fittings.
+%
+% 		\begin{align*}
+% 			L_{\text{eff}}     & = \text{Actual Length + Diameter}\times\left(\Sigma\frac{L_e}{D}\right) \\\\
+% 			L_{\text{eff}(AB)} & = 10 + 0.5(75+50+100) = 122.5\,\text{m}                                 \\
+% 			L_{\text{eff}(BC)} & = 2000 + 0.275(50+35+50) = 2037.1\,\text{m}                             \\
+% 			L_{\text{eff}(BD)} & = 1500 + 0.250(150) = 1537.5\,\text{m}                                  \\
+% 		\end{align*}
+%
+% 	}
+% 	\parb
+% 	\cbox{
+% 		\textbf{(2)} Find a single equivalent pipe $BDC$ for the two pipes $BD$ and $DC$ in series.\parb
+%
+% 		Find the headloss between $B$ and $C$ for a flow of 100 L/s though $BD$ and $DC$, using the effective lengths of the pipes.
+%
+% 		\begin{align*}
+% 			h_L        & = L\left(\frac{279000Q}{CD^{2.63}}\right)^{1.852}                                             \\\\
+% 			h_{L(BD)}  & = 1537.5\left(\frac{279000\times 100}{100\times 250^{2.63}}\right)^{1.852} = 39.110\,\text{m} \\
+% 			h_{L(DC)}  & = 1000\left(\frac{279000\times 100}{100\times 300^{2.63}}\right)^{1.852} = 10.467\,\text{m}   \\\\
+% 			h_{L(BDC)} & = 39.110 + 10.467 = 49.577\,\text{m}                                                          \\
+% 		\end{align*}
+%
+% 		\parb
+%
+% 		Find an equivalent pipe for $BDC$ (i.e., a pipe that has a head loss of 49.577 m for a flow of 100 L/s). We use an equivalent pipe with length 1000 m and resistance coefficient 100, and find the equivalent pipe diameter.
+%
+% 		\begin{align*}
+% 			D       & = \left( \frac{279000Q}{C\left(\frac{h_L}{L}\right)^{0.54}}  \right)^{0.3802}                                      \\\\
+% 			D_{BDC} & = \left( \frac{279000\times 100}{100\left(\frac{49.577}{1000}\right)^{0.54}}  \right)^{0.3802} = 217.92\,\text{mm} \\
+% 		\end{align*}
+%
+% 	}
+% }
+% \cmini[0.9]{
+%
+% 	\cbox{
+% 		\textbf{(3)} Now, consider pipe $BC$ and the pipe $BDC$ just found as a parallel system. Find an equivalent pipe for these two parallel pipes.\parb
+%
+% 		Assume a headloss of 10 m between $B$ and $C$ and find the flow through each of $BC$ and $BDC$:
+%
+% 		\begin{align*}
+% 			Q                     & = \frac{CD^{2.63}\left(\frac{h_L}{L}\right)^{0.54}}{279000}                                      \\\\
+% 			Q_{BC}                & = \frac{150\times 275^{2.63}\left(\frac{10}{2037.1}\right)^{0.54}}{279000} = 79.262\,\text{L/s}  \\
+% 			Q_{BDC}               & = \frac{100\times 217.92^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} = 42.084\,\text{L/s} \\
+% 			Q_{BC\text{ and }BDC} & = 79.262 + 42.084 = 121.35 \,\text{L/s}                                                          \\
+% 		\end{align*}
+%
+% 		\parb
+%
+% 		A flow of 121.35 L/s between $B$ and $C$ through both pipes $BC$ and $BDC$ produce a headloss of 10 m. Find an equivalent pipe that replaces these two parallel pipes:
+%
+% 		\begin{align*}
+% 			D_{BC\text{equiv}} & = \left( \frac{279000\times 121.35}{100\left(\frac{10}{1000}\right)^{0.54}}  \right)^{0.3802} = 325.83\,\text{mm} \\
+% 		\end{align*}
+%
+% 	}
+%
+% }
+%
+% \cmini[0.9]{
+%
+% 	\cbox{
+% 		\textbf{(4)} Now we have a series system: $AB,\, BC\text{equiv}$ and $CE$. Assume a flow of 100 L/s from $A$ to $E$, find the total headloss for this flow and then replace these three pipes with a single equivalent pipe.\parb
+%
+% 		\begin{align*}
+% 			h_{L(AB)}             & = 122.5\left(\frac{279000\times 100}{125\times 500^{2.63}}\right)^{1.852} = 0.070450\,\text{m} \\
+% 			h_{L(BC\text{equiv})} & = 1000\left(\frac{279000\times 100}{100\times 325.83^{2.63}}\right)^{1.852} = 7.0000\,\text{m} \\
+% 			h_{L(CE)}             & = 10\left(\frac{279000\times 100}{125\times 500^{2.63}}\right)^{1.852} = 0.0057510\,\text{m}   \\\\
+% 			h_{L(AE)}             & = 0.070450 + 7.0000 + 0.0057510 = 7.0762\,\text{m}                                             \\
+% 		\end{align*}
+%
+% 		\parb
+%
+% 		Find the equivalent pipe that has a headloss of 7.0762 m for a flow of 100 L/s:
+%
+% 		\begin{align*}
+% 			D_{AE} & = \left( \frac{279000\times 100}{100\left(\frac{7.0762}{1000}\right)^{0.54}}  \right)^{0.3802} = 324.99\,\text{mm} \\
+% 		\end{align*}
+% 	}
+%
+% }
+%
+% \cmini[0.9]{
+%
+% 	\cbox{
+% 		\textbf{(5)} From the General Enery Equation (disregarding velocity head at $E$), headloss through the actual system is 6.7 m. We just need the flow that generates this headloss: \parb
+%
+% 		\begin{align*}
+% 			Q_{AE} & = \frac{100\times 324.99^{2.63}\left(\frac{6.7}{1000}\right)^{0.54}}{279000} = 96.983\,\text{L/s} \\
+% 		\end{align*}
+%
+%
+% 	}
+%
+% }
+%
 
 
 
