@@ -901,52 +901,44 @@
 		\imgboxbg{0.34}{../../figs/08HWEquivPipe/HW6}{black}{0.5pt}{0.25cm}
 	\end{textblock*}
 	
-	
-	
-	% \only<1>{
 	\begin{textblock*}{1.05\columnwidth}(1cm, 5.125cm)
-		\begin{myexam}[left=0.375cm, right=0.25cm]{}{}
-			\raggedright
-			\vspace{-0.25cm}
-			The pumps and piping system are used to supply a municipal grid.
-			Pump $P_1$ ($P_2$ and $P_3$ are not running at this time) runs continuously and maintains the
-			basic pressure in the distribution grid beyond point $D$.
-			The elevations are the same at the pump and the discharge
-			point $D$.
-			\pars
-			The outlet pipe, from the pump to point $D$, is welded steel $(C = 130)$ with a diameter of
-			$200\,\text{mm}$ and a total length between fittings of $10\,\text{m}$.
-			\pars
-			The minimum pressure required at $D$ is
-			$500\,\text{kPa}$ for a design flow of $150\,\text{L/s}$.
-			\vspace{-0.25cm}
-		\end{myexam}
+		\only<1>{
+			\begin{myexam}[left=0.375cm, right=0.25cm]{}{}
+				\raggedright
+				\vspace{-0.25cm}
+				The pumps and piping system are used to supply a municipal grid.
+				Pump $P_1$ ($P_2$ and $P_3$ are not running at this time) runs continuously and maintains the
+				basic pressure in the distribution grid beyond point $D$.
+				The elevations are the same at the pump and the discharge
+				point $D$.
+				\pars
+				The outlet pipe, from the pump to point $D$, is welded steel $(C = 130)$ with a diameter of
+				$200\,\text{mm}$ and a total length between fittings of $10\,\text{m}$.
+				\pars
+				The minimum pressure required at $D$ is
+				$500\,\text{kPa}$ for a design flow of $150\,\text{L/s}$.
+				\vspace{-0.25cm}
+			\end{myexam}
+			
+		}
+		\only<2>{
+			\begin{mybox}[title=Example 5 cont'd\ldots]{}{}
+				\raggedright
+				\begin{center}
+					\begin{tabular}{rlcrl}
+						Check Valve:              & 120 &   & Gate Valve:    & 15  \\
+						Tee Connection (through): & 60  &   & Venturi Meter: & 100 
+					\end{tabular}
+				\end{center}
+				\par\medskip
+				There is no flow from pumps $P_2$ and $P_3$. Determine:
+				\begin{enumerate}
+					\item the head losses between $A$ and $D$
+					\item the pressure at $A$ required for the required pressure and flow at $D$
+				\end{enumerate}
+			\end{mybox}
+		}
 	\end{textblock*}
-\end{frame}
-\begin{frame}
-	% }
-	% \only<2>{
-	\begin{textblock*}{1.05\columnwidth}(1cm, 5.125cm)
-		\begin{mybox}[title=Cont'd\ldots]{}{}
-			% 				Local loss values are as follows:
-			% 				Equivalent length ratios, $L_e/D$, are:
-			\raggedright
-			\begin{center}
-				\begin{tabular}{rlcrl}
-					Check Valve:              & 120 &   & Gate Valve:    & 15  \\
-					Tee Connection (through): & 60  &   & Venturi Meter: & 100 
-				\end{tabular}
-			\end{center}
-			\par\medskip
-			There is no flow from pumps $P_2$ and $P_3$. Determine:
-			\begin{enumerate}
-				\item the head losses between $A$ and $D$
-				\item the pressure at $A$ required for the required pressure and flow at $D$
-			\end{enumerate}
-		\end{mybox}
-	\end{textblock*}
-	% }
-	
 \end{frame}
 
 
@@ -1111,15 +1103,12 @@
 	
 	\begin{textblock*}{1\columnwidth}(1cm, 5cm)
 		\begin{itemize}
-			\item Suppose that the flow through the system shown is $120\,\text{L/s}$. Then $Q_{AB}=120\,\text{L/s}$ and $Q_{CD}=120\,\text{L/s}$.\par
-			\item There are three pipes from $B$ to $C$; these pipes are in {\bfseries parallel} (i.e., they each start at the same node $B$ and end at the same node $C$). The system flow of $120\,\text{L/s}$ is split between these three pipes. \par
-			\item 	We don't know the flow is in each of these three pipes but, since no water is added or diverted away from the system, the entire flow
-			      through $AD$ is divided in some fashion such that:
+			\item Suppose that the flow through the system shown is $18\,\text{L/s}$. Then $Q_{AB}=18\,\text{L/s}$ and $Q_{CD}=18\,\text{L/s}$.\par
+			\item There are three pipes from $B$ to $C$; these pipes are in {\bfseries parallel} (i.e., they each start at the same node $B$ and end at the same node $C$). The system flow of $18\,\text{L/s}$ is split between these three pipes. \par
+			\item 	We don't know the flow is in each of these three pipes but, since no water is added or diverted away from the system, the entire flow through $AD$ is divided in some fashion such that:
 			      \vspace{-0.25cm}
 			      \[ Q_{AB} = Q_{BC_\text{upper}} +  Q_{BC_\text{mid}}+ Q_{BC_\text{lower}} = Q_{CD} \]
-		\end{itemize}
-		
-		
+		\end{itemize}		
 		
 	\end{textblock*}
 \end{frame}
@@ -1227,7 +1216,7 @@
 	\cmini{
 		\raggedright
 		\begin{myexam}{}{}
-			$A$, $B$, $C$ and $D$ are at the same elevation. Determine the flow through the system from $A$ to $D$. Ignore minor losses.
+			$A$, $B$, $C$ and $D$ are at the same elevation. Determine the flow through the system from $A$ to $D$. (Ignore minor losses.)
 		\end{myexam}
 	}
 	
@@ -1235,89 +1224,83 @@
 %
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\begin{frame}
-	\vspace{-0.75cm}
-	\cfig[0.45]{../../figs/08HWEquivPipe/HW17a}
-	\vspace{-0.75cm}
-	% \begin{myexer}[colback=pale]{}{}
-	% 	% \centering
-	% 	Determine the velocity of the flow through each of the five pipes if there is a pressure difference of 295 kPa between $A$ and $E$.
-	% 	\par\medskip
-	% 	(Neglect any minor losses.)
-	% \end{myexer}
-	\pause
-	
-	The process:
-	\begin{enumerate}
-		\item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
-		\item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
-		\item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
-		\item Determine the flow through the system
-		\item Calculate the velocities for the flow through each pipe
-	\end{enumerate}
-	
-\end{frame}
+% \begin{frame}
+% 	\vspace{-0.75cm}
+% 	\cfig[0.45]{../../figs/08HWEquivPipe/HW17a}
+%
+% 	\pause
+%
+% 	The process:
+% 	\begin{enumerate}
+% 		\item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
+% 		\item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
+% 		\item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
+% 		\item Determine the flow through the system
+% 		\item Calculate the velocities for the flow through each pipe
+% 	\end{enumerate}
+%
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-	\begin{textblock*}{1\textwidth}(1cm, 0cm)
-		
-		\vspace{-0.5cm}
-		\cfig[0.35]{../../figs/08HWEquivPipe/MT1A.pdf}
-		
-	\end{textblock*}
-	
-	\begin{textblock*}{0.8\textwidth}(2cm, 7.25cm)
-		
-		\begin{myexer}{}{}
-			Nodes $B,\,C\, D$ and $E$ are all at the same elevation. Determine the flow through the system (disregard exit losses).
-		\end{myexer}
-		
-	\end{textblock*}
-	
-	\begin{textblock*}{.35\textwidth}(0.75cm, 2.65cm)
-		\centering
-		\footnotesize
-		\begin{tabular}{ccc}
-			\toprule
-			                                                                  & Fitting     & $Le/D$ \\
-			\midrule
-			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
-			\midrule
-			\includegraphics[scale=0.1]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
-			\midrule
-			\includegraphics[scale=0.5]{../../figs/08HWEquivPipe/elbow}       & Elbow       & 50     \\
-			\midrule
-			\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
-			\midrule
-			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
-			\bottomrule
-		\end{tabular}
-	\end{textblock*}
-	
-	\begin{textblock*}{.35\textwidth}(6.5cm, 4cm)
-		\centering
-		\footnotesize
-		\begin{tabular}{cccc}
-			\toprule
-			Pipe & Length (m) & diam (mm) & C   \\
-			\midrule
-			AB   & 10         & 500       & 125 \\
-			\midrule
-			BC   & 2000       & 275       & 150 \\
-			\midrule
-			BD   & 1500       & 250       & 100 \\
-			\midrule
-			DC   & 1000       & 300       & 100 \\
-			\midrule
-			CE   & 10         & 500       & 125 \\
-			\bottomrule
-		\end{tabular}
-	\end{textblock*}
-	
-	
-\end{frame}
+%
+% \begin{frame}
+% 	\begin{textblock*}{1\textwidth}(1cm, 0cm)
+%
+% 		\vspace{-0.5cm}
+% 		\cfig[0.35]{../../figs/08HWEquivPipe/MT1A.pdf}
+%
+% 	\end{textblock*}
+%
+% 	\begin{textblock*}{0.8\textwidth}(2cm, 7.25cm)
+%
+% 		\begin{myexer}{}{}
+% 			Nodes $B,\,C\, D$ and $E$ are all at the same elevation. Determine the flow through the system (disregard exit losses).
+% 		\end{myexer}
+%
+% 	\end{textblock*}
+%
+% 	\begin{textblock*}{.35\textwidth}(0.75cm, 2.65cm)
+% 		\centering
+% 		\footnotesize
+% 		\begin{tabular}{ccc}
+% 			\toprule
+% 			                                                                  & Fitting     & $Le/D$ \\
+% 			\midrule
+% 			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
+% 			\midrule
+% 			\includegraphics[scale=0.1]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
+% 			\midrule
+% 			\includegraphics[scale=0.5]{../../figs/08HWEquivPipe/elbow}       & Elbow       & 50     \\
+% 			\midrule
+% 			\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
+% 			\midrule
+% 			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	\end{textblock*}
+%
+% 	\begin{textblock*}{.35\textwidth}(6.5cm, 4cm)
+% 		\centering
+% 		\footnotesize
+% 		\begin{tabular}{cccc}
+% 			\toprule
+% 			Pipe & Length (m) & diam (mm) & C   \\
+% 			\midrule
+% 			AB   & 10         & 500       & 125 \\
+% 			\midrule
+% 			BC   & 2000       & 275       & 150 \\
+% 			\midrule
+% 			BD   & 1500       & 250       & 100 \\
+% 			\midrule
+% 			DC   & 1000       & 300       & 100 \\
+% 			\midrule
+% 			CE   & 10         & 500       & 125 \\
+% 			\bottomrule
+% 		\end{tabular}
+% 	\end{textblock*}
+%
+%
+% \end{frame}
 
 
 \end{document}

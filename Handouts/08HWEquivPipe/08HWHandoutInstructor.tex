@@ -614,14 +614,45 @@
 	\mini[0.475]{
 		\cfig[0.5]{../../figs/08HWEquivPipe/HW6}
 		Determine:
-		\parb
+		\parm
 		\begin{enumerate}
 			\item the head losses between $A$ and $D$
 			\item the pressure at $A$ required for the required pressure and flow at $D$
 		\end{enumerate}
 	}
 \end{myexam}
-
+\pars
+\textbf{\large Solution}:
+\parb
+\minit[0.55]{
+	\raggedright
+	\begin{enumerate}
+		\item ~
+		      \vspace{-2.5em}
+		      \cbox{
+		      	\begin{align*}
+		      		L_{\text{eff}} & = 10 + 0.2(120+15+60+100)                                              \\
+		      		               & =69.0\,\text{m}                                                        \\\\
+		      		h_L            & = 69.0\left( \frac{279000 \times 150}{130(200)^{2.63}} \right)^{1.852} \\
+		      		               & = 6.7833\,\text{m}                                                     \\
+		      		\bm{h_L}       & = \bm{6.78\,}\textbf{m}                                                
+		      	\end{align*}
+		      	
+		      }
+		      \parb
+		\item ~
+		      \vspace{-2.5em}
+		      \cbox{
+		      	\begin{align*}
+		      		\frac{P_A}{\gamma} + \cancel{z_A} + \cancel{\frac{v_A^2}{2g}} -h_L & = \frac{P_D}{\gamma} + \cancel{z_D} + \cancel{\frac{v_D^2}{2g}} \\
+		      		\frac{P_A}{9.81} -6.7833                                           & = \frac{500}{9.81}                                              \\
+		      		\Rightarrow P_A                                                    & = 566.54                                                        \\\\
+		      		\bm{P_A}                                                           & = \bm{567}\,\textbf{kPa}                                        
+		      	\end{align*}
+		      	
+		      }
+	\end{enumerate}
+}
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -779,7 +810,7 @@
 	\cfig[0.35]{../../figs/08HWEquivPipe/HW14ink.pdf}
 	\parb
 	\cmini[0.85]{
-		Use the equivialent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
+		Use the equivalent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
 		\parb
 	}
 \end{myexam}
@@ -847,7 +878,7 @@
 	\cfig[0.4]{../../figs/08HWEquivPipe/HW16ink.pdf}
 	
 	\cmini[0.675]{
-		Use the equivialent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
+		Use the equivalent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
 		\parb
 	}
 \end{myexer}
