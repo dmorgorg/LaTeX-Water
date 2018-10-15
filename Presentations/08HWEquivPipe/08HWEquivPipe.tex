@@ -949,71 +949,8 @@
 	
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% \begin{frame}{Series Pipe Systems and Parallel Pipe Systems}
-%
-% 	% 	\begin{textblock*}{0.75\columnwidth}(2cm, .5cm)
-% 	\vspace{-0.5cm}
-% 	\cfig[0.5]{../../figs/08HWEquivPipe/HW7}
-% 	\vspace{-0.5cm}
-% 	In series pipe systems, we know from the Continuity Equation that the volume flow through each pipe is the same:
-% 	\[ Q_{AB} = Q_{BC} = Q_{CD} \] \pause
-% 	\par\vspace{-0.5cm}
-% 	What is the situation when a system branches and splits the flow through pipes that run in a parallel system?
-% 	\vspace{-0.5cm}
-% 	\cfig[0.5]{../../figs/08HWEquivPipe/HW8}
-% 	\pause	\vspace{-0.5cm} \centering
-% 	How much flow is there through each pipe?
-%
-%
-% \end{frame}
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% \begin{frame}{Systems with Pipes in Parallel}
-%
-% 	\begin{textblock*}{0.75\columnwidth}(1.5cm, 0.5cm)
-% 		\cfig[0.5]{../../figs/08HWEquivPipe/HW8}
-% 	\end{textblock*}
-%
-% 	\begin{textblock*}{1\columnwidth}(1cm, 4.5cm)
-% 		\only<1>{
-% 			Our assertion regarding pipes in series, $Q_{AB} = Q_{BC} = Q_{CD}$ now needs modification.
-% 			\par\smallskip
-% 			The flow through $Q_{BC}$ is split between the three pipes in parallel.
-% 			\par\smallskip
-% 			We don't know how much flows through each of these three
-% 			pipes but, since no water is added or diverted away from the system, the entire flow
-% 			through $AB$ is divided in some fashion such that:
-% 			\[ Q_{AB} = Q_{BC1} +  Q_{BC2}+ Q_{BC3} = Q_{CD} \]
-% 		}
-% 		\only<2>{
-% 			Each of pipes $BC1,\,BC2$ and $BC3$ flows from $B$ (where the pressure is $P_B$) to $C$ (where the pressure is $P_C$).
-% 			Let's look at the head losses:
-% 			\small
-% 			\begin{align*}
-% 				\frac{P_B}{\gamma}+z_B+\frac{v_B^2}{2g} - h_{L} & = \frac{P_C}{\gamma}+z_C+\frac{v_C^2}{2g}                                    \\
-% 				h_{L_{QC1}}                                     & = \frac{P_B - P_C}{\gamma} + \left(z_B - z_C\right) + \frac{v_B^2-v_C^2}{2g} \\
-% 				% 			\intertext{The same is true for the other pipes:}
-% 				h_{L_{QC2}}                                     & = \frac{P_B - P_C}{\gamma} + \left(z_B - z_C\right) + \frac{v_B^2-v_C^2}{2g} \\
-% 				h_{L_{QC3}}                                     & = \frac{P_B - P_C}{\gamma} + \left(z_B - z_C\right) + \frac{v_B^2-v_C^2}{2g}
-% 			\end{align*}
-% 			\normalsize
-% 		}
-% 		\only<3>{
-% 			As we can see, the same pressure drop for each pressure results in the same headloss for each pipe:
-% 			\[ h_{L_{QB1}} = h_{L_{QB2}} = h_{L_{QB3}} \] \pause
-% 			For the pipes between $B$ and $C$,
-% 			\begin{gather*}
-% 				Q_{AB} = Q_{BC1} +  Q_{BC2}+ Q_{BC3} = Q_{CD} \\
-% 				h_{L_{QB1}} = h_{L_{QB2}} = h_{L_{QB3}}
-% 			\end{gather*}
-% 		}
-% 	\end{textblock*}
-%
-%
-% \end{frame}
+
+
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1110,12 +1047,30 @@
 	\cmini[0.9]{
 		\begin{myexam}{}{}
 			\begin{enumerate}[a]
-				\item Determine the diameter of a pipe with length $L=1000\,\text{m}$ and resistance coefficient $C=100$ that is equivalent to $1685\,\text{m}$ of new Schedule $40$ $18$-in steel pipe ($d=428.7\,\text{mm}, C=130$).
-				\item Verify that the equivalent pipe is hydraulically equivalent at flows of
+				\item Determine the diameter of a pipe with length $L=1000\,\text{m}$ and resistance coefficient $C=100$ that is equivalent to $785\,\text{m}$ of new Schedule $40$ $12$-in steel pipe ($D=303.2\,\text{mm}, C=130$).\parb
+				\item Verify that this equivalent pipe has the same headloss as the $12$-in steel pipe for two arbitrary flows (choose a couple of flows at random, different from the flow used in part a).
 			\end{enumerate}
-			
 		\end{myexam}
 	}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Using Equivalent Pipe Technique to Analyze Pipes in Series}
+	\parm
+	\imgboxbg{0.3}{../../figs/08HWEquivPipe/HW13ink}{black}{0.5pt}{0.25cm}
+	\parm
+	% We want to find a single pipe that is equivalent to $ABCD$.
+	% \parb
+	\cmini{
+		\begin{enumerate}
+			\item  Choose an arbitrary flow rate though the `real' system and use the Hazen-Williams to find the head loss for each of the pipes for this flow. We use \textcolor{structure}{$\bm{Q=100}\,\textbf{L/s}$} \pars
+			\item Sum the headlosses to get the total headloss through all the series pipes. \pars
+			\item Find the diameter of an equivalent pipe, with length  \textcolor{structure}{$\bm{L=1000}\,\textbf{m}$} and resistance coefficient \textcolor{structure}{$\bm{C=100}$}. \pars
+			      {\small (Note that the values for $L$ and $C$ are arbitrary and are chosen for convenience and consistency; the final result of an analysis will be the same using any length or resistance coefficient.)}\pars
+			\item Use this single equivalent pipe instead of the multiple pipes in series to analyze the system (usually using the GEE).
+		\end{enumerate}
+	}
+	
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1132,167 +1087,237 @@
 	
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	
+	\imgboxbg{0.3}{../../figs/08HWEquivPipe/HW16ink.pdf}{black}{0.5pt}{0.25cm}
+	\parb
+	\cmini[0.9]{
+		\begin{myexer}{}{}
+			\raggedright
+			Use the equivalent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
+		\end{myexer}
+	}
+	
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{frame}{Systems with Pipes in Parallel}
+	
+	\begin{textblock*}{0.75\columnwidth}(2cm, 1.25cm)
+		\imgboxbg{0.5}{../../figs/08HWEquivPipe/HW8ink.pdf}{black}{0.5pt}{0.25cm}
+	\end{textblock*}
+	
+	\begin{textblock*}{1\columnwidth}(1cm, 5cm)
+		\begin{itemize}
+			\item Suppose that the flow through the system shown is $120\,\text{L/s}$. Then $Q_{AB}=120\,\text{L/s}$ and $Q_{CD}=120\,\text{L/s}$.\par
+			\item There are three pipes from $B$ to $C$; these pipes are in {\bfseries parallel} (i.e., they each start at the same node $B$ and end at the same node $C$). The system flow of $120\,\text{L/s}$ is split between these three pipes. \par
+			\item 	We don't know the flow is in each of these three pipes but, since no water is added or diverted away from the system, the entire flow
+			      through $AD$ is divided in some fashion such that:
+			      \vspace{-0.25cm}
+			      \[ Q_{AB} = Q_{BC_\text{upper}} +  Q_{BC_\text{mid}}+ Q_{BC_\text{lower}} = Q_{CD} \]
+		\end{itemize}
+		
+		
+		
+	\end{textblock*}
+\end{frame}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{frame}{Systems with Pipes in Parallel}
+	
+	\begin{textblock*}{0.75\columnwidth}(2cm, 1.25cm)
+		\imgboxbg{0.5}{../../figs/08HWEquivPipe/HW8ink.pdf}{black}{0.5pt}{0.25cm}
+	\end{textblock*}
+	
+	\begin{textblock*}{0.935\columnwidth}(1.5cm, 4.875cm)
+		\begin{itemize}
+			\item Now, suppose that the pressure at $B$ is  $P_B=600\,\text{kPa}$ and the pressure at $C$ is  $P_C=450\,\text{kPa}$. \par
+			\item The drop in pressure between $B$ and $C$ is $150\,\text{kPa}$, or approximately $15\,\text{m}$ of headloss.\par
+			\item Each of the three parallel pipes has the same pressure drop and headloss. In particular:
+			      \vspace{-0.25cm}
+			      \[ h_{L_{BC_{\text{upper}}}} = h_{L_{BC_{\text{mid}}}} = h_{L_{BC_{\text{lower}}}} \]
+			\item {\bfseries Important}: Each of the three parallel pipes has a headloss of $15\,\text{m}$, and the {\bfseries total headloss between $\bm B$ and $\bm C$ is $\bm{15}\,\textbf{m}$} - do not add them!
+		\end{itemize}
+	\end{textblock*}
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{frame}{Systems with Pipes in Parallel}
+	
+	\begin{textblock*}{0.75\columnwidth}(2cm, 1.25cm)
+		\imgboxbg{0.5}{../../figs/08HWEquivPipe/HW8ink.pdf}{black}{0.5pt}{0.25cm}
+	\end{textblock*}
+	
+	\begin{textblock*}{0.8\columnwidth}(2.125cm, 5.5cm)
+		\begin{mybox}[title=Parallel Pipes Results]{}{}
+			\begin{gather*}
+				Q_{AB} = Q_{BC_\text{upper}} +  Q_{BC_\text{mid}}+ Q_{BC_\text{lower}} = Q_{CD}\\\\
+				h_{L_{BC_{\text{upper}}}} = h_{L_{BC_{\text{mid}}}} = h_{L_{BC_{\text{lower}}}}
+			\end{gather*}
+		\end{mybox}
+		
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\imgboxbg{0.5}{../../figs/08HWEquivPipe/HW18ink.pdf}{black}{0.5pt}{0.25cm}
+	\cmini{
+		\begin{myexam}{}{}
+			Given a flow of $18\,\text{L/s}$ and ignoring minor losses:
+			\begin{enumerate}[a]
+				\item Determine the volume flow rate through each of the parallel pipes between $B$ and $C$.
+				\item Determine the headloss due to friction between $B$ and $C$.
+			\end{enumerate}
+		\end{myexam}
+	}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\imgboxbg{0.5}{../../figs/08HWEquivPipe/HW18ink.pdf}{black}{0.5pt}{0.25cm}
+	\cmini[0.975]{
+		\begin{myexam}{}{}
+			Given a flow of $18\,\text{L/s}$ and ignoring minor losses:
+			\begin{enumerate}[a]
+				\item Determine the proportion of the flow that goes through each parallel pipe by choosing a convenient headloss between $B$ and $C$.
+				\item Determine the volume flow rate through each of the parallel pipes.
+				      % \item Determine the headloss due to friction between $B$ and $C$ for the given flow.
+			\end{enumerate}
+		\end{myexam}
+	}
+\end{frame}
+
+
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   \begin{frame}{Determining Flow in a Series Pipe System Using an Equivalent Pipe}
-%    \begin{textblock*}{.9\columnwidth}(1cm, 0.75cm)
-%     \cfig[0.5]{../../figs/08HWEquivPipe/HW13}
-%    \end{textblock*}
-%
-%    \begin{textblock*}{1\columnwidth}(1cm, 3.5cm)
-%     We want to find a single pipe that is equivalent to $ABCD$.
-%     \begin{enumerate}
-%      \item<2-> Choose an arbitrary flow rate though the `real' system and use the Hazen-Williams to find the head loss for this flow. (It can be shown with a page or two of algebra that the flow chosen doesn't affect the final result for the equivalent pipe.) We shall use $100\,\text{L/s}$.
-%      \item<3-> Choose arbitrary lengths and C-value for the equivalent pipe. For numerical convenience, we shall use
-%      $1000\,\text{m}$ and $C=100$.
-%      \item<4-> Use the Hazen-Williams to find the diameter of the equivalent pipe having the length $1000\,\text{m}$ and
-%      resistance coefficient $C=100$ chosen in (2) above, and the head loss found in (1) above.
-%      \item<5-> Apply the General Energy Equation as required, using the equivalent pipe.
-%     \end{enumerate}
-%    \end{textblock*}
-%   \end{frame}
-%
-%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   \begin{frame}
-%
-%    \cfig[0.475]{../../figs/08HWEquivPipe/HW14}
-%
-%
-%    \begin{myexam}[colback=pale]{}{}
-%     \raggedright
-%     Determine the flow through the system shown above and the average flow velocity in the smallest pipe.
-%     \par
-%     (Neglect any minor losses and the velocity head at the exit.)
-%    \end{myexam}
-%
-%   \end{frame}
-%
-%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   \begin{frame}{Determining Flow Through Parallel Pipes Using an Equivalent Pipe}
-%
-%    \cfig[0.5]{../../figs/08HWEquivPipe/HW15}
-%
-%    We want to find a single pipe that is equivalent to the flow from $B$ to $C$; we use our previous equivalent pipe method to find a pipe that is hydraulically equivalent to $BC_1,\,BC_2$ and $BC_3$.
-%   \end{frame}
+
+\begin{frame}{Determining Flow Through Parallel Pipes Using an Equivalent Pipe}
+	\begin{textblock*}{1\textwidth}(1cm, 1.25cm)
+		\imgboxbg{0.375}{../../figs/08HWEquivPipe/HW19ink.pdf}{black}{0.5pt}{0.25cm}
+	\end{textblock*}
+	
+	\begin{textblock*}{0.8\textwidth}(2.5cm, 5.25cm)
+		\only<1>{\parm If we are given the properties (length, diameter, resistance coefficient) for each pipe and the pressures at $A$ and $D$, how do we determine the volume flow rate through the system?
+		}
+		\uncover<2->{
+			\begin{enumerate}
+				\item Find an equivalent pipe, $BC_{\text{equiv}}$, that replaces the three parallel pipes between $B$ and $C$:
+				      \begin{enumerate}[a]
+				      	\item<3-> Assume a headloss of $10\,\text{m}$ between $B$ and $C$.\pars
+				      	\item<4-> Calculate the flow through each parallel pipe for this headloss of $10\,\text{m}$. Sum these flows.\pars
+				      	\item<5-> Now we have the total flow between $B$ and $C$ for a headloss of $10\,\text{m}$. Use these to find $BC_{\text{equiv}}$.
+				      \end{enumerate}
+				      \item<6-> Solve the system of pipes in series ($AB$, $BC_{\text{equiv}}$, $CD$) as in Example $8$.
+			\end{enumerate}
+		}
+	\end{textblock*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\small
+	\imgboxbg{0.375}{../../figs/08HWEquivPipe/HW20ink.pdf}{black}{0.5pt}{0.25cm}
+	\cmini{
+		\raggedright
+		\begin{myexam}{}{}
+			$A$, $B$, $C$ and $D$ are at the same elevation. Determine the flow through the system from $A$ to $D$. Ignore minor losses.
+		\end{myexam}
+	}
+	
+\end{frame}
 %
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   \begin{frame}{Determining Flow Through Parallel Pipes Using an Equivalent Pipe}
-%
-%    \cfig[0.375]{../../figs/08HWEquivPipe/HW15}
-%
-%    \begin{enumerate}
-%     \item<1-> Choose an arbitrary head loss across the `real' system between $B$ and $C$. We shall use $10\,\text{m}$ for this head loss. \parm\pause
-%   \item<2-> For each of the parallel pipes ($BC_1,\,BC_2,\,BC_3$) calculate the flow ($Q_1,\, Q_2,\, Q_3$) that has an associated head loss of $10\,\text{m}$.\parm
-%     \item<3-> Calculate the proportion of the total flow from $B$ to $C$ that goes through each pipe:
-%           $\frac{Q_1}{Q_1+Q_2+Q_3}$, $\frac{Q_2}{Q_1+Q_2+Q_3}$, $\frac{Q_3}{Q_1+Q_2+Q_3}$\parb
-%           These proportions will remain the same at any flow!
-% 					\suspend
-%    \end{enumerate}
-%   \end{frame}
-%
-%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   \begin{frame}{Determining Flow Through Parallel Pipes Using an Equivalent Pipe}
-%
-%    \cfig[0.375]{../../figs/08HWEquivPipe/HW15}
-%
-%    \begin{enumerate}
-%     % \setcounter{enumi}{3}
-% \resume
-%     \item[]\item<1-> Assume a flow of 100 L/s between $B$ and $C$. \parm Then the flow through $BC_1\text{ is }100\times \frac{Q_1}{Q_1+Q_2+Q_3} \,\text{L/s}$.
-%           \parm Find the headloss across $BC_1$ ($BC_2$ and $BC_3$ have the same headloss).
-%     \item[]\item<2-> A flow of 100 L/s between $B$ and $C$ has the headloss $h_{L_{BC_1}}$ just found. Find the diameter of an equivalent pipe that has the same headloss for a flow of 100 L/s.
-%    \end{enumerate}
-%   \end{frame}
-%
-%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   \begin{frame}
-%    \vspace{-0.75cm}
-%    \cfig[0.45]{../../figs/08HWEquivPipe/HW17a}
-%    \vspace{-0.75cm}
-%    \begin{myexer}[colback=pale]{}{}
-%     % \centering
-%     Determine the velocity of the flow through each of the five pipes if there is a pressure difference of 295 kPa between $A$ and $E$.
-%     \par\medskip
-%     (Neglect any minor losses.)
-% 	\end{myexer}
-%     \pause
-%
-%     The process:
-%     \begin{enumerate}
-%      \item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
-%      \item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
-%      \item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
-%      \item Determine the flow through the system
-%      \item Calculate the velocities for the flow through each pipe
-%     \end{enumerate}
-%
-%     \end{frame}
-%
-%     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     \begin{frame}
-%      \begin{textblock*}{1\textwidth}(1cm, 0cm)
-%
-%       \vspace{-0.5cm}
-%       \cfig[0.35]{../../figs/08HWEquivPipe/MT1A.pdf}
-%
-%      \end{textblock*}
-%
-%      \begin{textblock*}{0.8\textwidth}(2cm, 7.25cm)
-%
-%       \begin{myexer}[colback=pale]{}{}
-%        Nodes $B,\,C\, D$ and $E$ are all at the same elevation. Determine the flow through the system (disregard exit losses).
-% 		 \end{myexer}
-%
-%      \end{textblock*}
-%
-%      \begin{textblock*}{.35\textwidth}(0.75cm, 2.65cm)
-%       \centering
-%       \footnotesize
-%       \begin{tabular}{ccc}
-%        \toprule
-%                                                                      & Fitting     & $Le/D$ \\
-%        \midrule
-%        \includegraphics[scale=0.35]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
-%        \midrule
-%        \includegraphics[scale=0.1]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
-%        \midrule
-%        \includegraphics[scale=0.5]{../../figs/08HWEquivPipe/elbow}       & Elbow       & 50     \\
-%        \midrule
-%        \includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
-%        \midrule
-%        \includegraphics[scale=0.35]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
-%        \bottomrule
-%       \end{tabular}
-%      \end{textblock*}
-%
-%      \begin{textblock*}{.35\textwidth}(6.5cm, 4cm)
-%       \centering
-%       \footnotesize
-%       \begin{tabular}{cccc}
-%        \toprule
-%        Pipe & Length (m) & diam (mm) & C   \\
-%        \midrule
-%        AB   & 10         & 500       & 125 \\
-%        \midrule
-%        BC   & 2000       & 275       & 150 \\
-%        \midrule
-%        BD   & 1500       & 250       & 100 \\
-%        \midrule
-%        DC   & 1000       & 300       & 100 \\
-%        \midrule
-%        CE   & 10         & 500       & 125 \\
-%        \bottomrule
-%       \end{tabular}
-%      \end{textblock*}
-%
-%
-%     \end{frame}
-%
+\begin{frame}
+	\vspace{-0.75cm}
+	\cfig[0.45]{../../figs/08HWEquivPipe/HW17a}
+	\vspace{-0.75cm}
+	% \begin{myexer}[colback=pale]{}{}
+	% 	% \centering
+	% 	Determine the velocity of the flow through each of the five pipes if there is a pressure difference of 295 kPa between $A$ and $E$.
+	% 	\par\medskip
+	% 	(Neglect any minor losses.)
+	% \end{myexer}
+	\pause
+	
+	The process:
+	\begin{enumerate}
+		\item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
+		\item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
+		\item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
+		\item Determine the flow through the system
+		\item Calculate the velocities for the flow through each pipe
+	\end{enumerate}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+	\begin{textblock*}{1\textwidth}(1cm, 0cm)
+		
+		\vspace{-0.5cm}
+		\cfig[0.35]{../../figs/08HWEquivPipe/MT1A.pdf}
+		
+	\end{textblock*}
+	
+	\begin{textblock*}{0.8\textwidth}(2cm, 7.25cm)
+		
+		\begin{myexer}{}{}
+			Nodes $B,\,C\, D$ and $E$ are all at the same elevation. Determine the flow through the system (disregard exit losses).
+		\end{myexer}
+		
+	\end{textblock*}
+	
+	\begin{textblock*}{.35\textwidth}(0.75cm, 2.65cm)
+		\centering
+		\footnotesize
+		\begin{tabular}{ccc}
+			\toprule
+			                                                                  & Fitting     & $Le/D$ \\
+			\midrule
+			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
+			\midrule
+			\includegraphics[scale=0.1]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
+			\midrule
+			\includegraphics[scale=0.5]{../../figs/08HWEquivPipe/elbow}       & Elbow       & 50     \\
+			\midrule
+			\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
+			\midrule
+			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
+			\bottomrule
+		\end{tabular}
+	\end{textblock*}
+	
+	\begin{textblock*}{.35\textwidth}(6.5cm, 4cm)
+		\centering
+		\footnotesize
+		\begin{tabular}{cccc}
+			\toprule
+			Pipe & Length (m) & diam (mm) & C   \\
+			\midrule
+			AB   & 10         & 500       & 125 \\
+			\midrule
+			BC   & 2000       & 275       & 150 \\
+			\midrule
+			BD   & 1500       & 250       & 100 \\
+			\midrule
+			DC   & 1000       & 300       & 100 \\
+			\midrule
+			CE   & 10         & 500       & 125 \\
+			\bottomrule
+		\end{tabular}
+	\end{textblock*}
+	
+	
+\end{frame}
+
 
 \end{document}
