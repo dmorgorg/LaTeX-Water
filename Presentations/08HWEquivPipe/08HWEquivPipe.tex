@@ -484,9 +484,9 @@
 	
 	It is more useful to have $Q$ in L/s and $D$ in mm:
 	\begin{align*}
-		Q & = 1000\times 0.278\,C\left(\frac{D}{1000}\right)^{2.63}s^{0.54} \\
-		  & = 0.0000035867\,C\,D^{2.63}s^{0.54}                             \\
-		  & = \frac{C\,D^{2.63}s^{0.54}}{279000}                            
+		Q & = 1000\times 0.27842\,C\left(\frac{D}{1000}\right)^{2.63}s^{0.54} \\
+		  & = 0.0000035867\,C\,D^{2.63}s^{0.54}                               \\
+		  & = \frac{C\,D^{2.63}s^{0.54}}{279000}                              
 	\end{align*}
 	
 \end{frame}
@@ -1108,7 +1108,7 @@
 			\item 	We don't know the flow is in each of these three pipes but, since no water is added or diverted away from the system, the entire flow through $AD$ is divided in some fashion such that:
 			      \vspace{-0.25cm}
 			      \[ Q_{AB} = Q_{BC_\text{upper}} +  Q_{BC_\text{mid}}+ Q_{BC_\text{lower}} = Q_{CD} \]
-		\end{itemize}		
+		\end{itemize}
 		
 	\end{textblock*}
 \end{frame}
@@ -1223,84 +1223,98 @@
 \end{frame}
 %
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% \begin{frame}
-% 	\vspace{-0.75cm}
-% 	\cfig[0.45]{../../figs/08HWEquivPipe/HW17a}
-%
-% 	\pause
-%
-% 	The process:
-% 	\begin{enumerate}
-% 		\item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
-% 		\item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
-% 		\item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
-% 		\item Determine the flow through the system
-% 		\item Calculate the velocities for the flow through each pipe
-% 	\end{enumerate}
-%
-% \end{frame}
+
+\begin{frame}
+	% \vspace{-0.75cm}
+	\imgboxbg{0.375}{../../figs/08HWEquivPipe/HW17ink.pdf}{structure}{1pt}{0.25cm}
+	\begin{myexer}{}{}
+		Determine $Q$. All pipes are horizontal. Disregard minor losses.
+	\end{myexer}
+	\pause
+	\raggedright
+	\cmini[0.9]{
+		The process:
+		\small
+		\begin{enumerate}
+			\item Replace series pipes $BC$ and $CD$ with a single equivalent pipe $BCD$
+			\item Replace parallel pipes $BCD$ and $BD$ with a single equivalent pipe $BD2$
+			\item Replace series pipes $AD$, $BD2$ and $DE$ with a single equivalent pipe $AE$
+			\item Calculate the headloss for the system
+			\item Determine the flow through the system
+			      % \item Calculate the velocities for the flow through each pipe
+		\end{enumerate}
+	}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Minor Losses}
+	\cmini{
+		It is simple to incorporate minor losses into the equivalent pipe methods we have used.
+		\parb
+		For pipes with valves or fittings, calculate and use the effective length of the pipes rather than the actual length. All other calculations remain the same.
+	}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% \begin{frame}
-% 	\begin{textblock*}{1\textwidth}(1cm, 0cm)
-%
-% 		\vspace{-0.5cm}
-% 		\cfig[0.35]{../../figs/08HWEquivPipe/MT1A.pdf}
-%
-% 	\end{textblock*}
-%
-% 	\begin{textblock*}{0.8\textwidth}(2cm, 7.25cm)
-%
-% 		\begin{myexer}{}{}
-% 			Nodes $B,\,C\, D$ and $E$ are all at the same elevation. Determine the flow through the system (disregard exit losses).
-% 		\end{myexer}
-%
-% 	\end{textblock*}
-%
-% 	\begin{textblock*}{.35\textwidth}(0.75cm, 2.65cm)
-% 		\centering
-% 		\footnotesize
-% 		\begin{tabular}{ccc}
-% 			\toprule
-% 			                                                                  & Fitting     & $Le/D$ \\
-% 			\midrule
-% 			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
-% 			\midrule
-% 			\includegraphics[scale=0.1]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
-% 			\midrule
-% 			\includegraphics[scale=0.5]{../../figs/08HWEquivPipe/elbow}       & Elbow       & 50     \\
-% 			\midrule
-% 			\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
-% 			\midrule
-% 			\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
-% 			\bottomrule
-% 		\end{tabular}
-% 	\end{textblock*}
-%
-% 	\begin{textblock*}{.35\textwidth}(6.5cm, 4cm)
-% 		\centering
-% 		\footnotesize
-% 		\begin{tabular}{cccc}
-% 			\toprule
-% 			Pipe & Length (m) & diam (mm) & C   \\
-% 			\midrule
-% 			AB   & 10         & 500       & 125 \\
-% 			\midrule
-% 			BC   & 2000       & 275       & 150 \\
-% 			\midrule
-% 			BD   & 1500       & 250       & 100 \\
-% 			\midrule
-% 			DC   & 1000       & 300       & 100 \\
-% 			\midrule
-% 			CE   & 10         & 500       & 125 \\
-% 			\bottomrule
-% 		\end{tabular}
-% 	\end{textblock*}
-%
-%
-% \end{frame}
+\begin{frame}{}
+	\begin{myexer}{}{}
+		\cfig[0.5]{../../figs/08HWEquivPipe/MT1A}
+		\hspace{-0.25cm}
+		\mini[0.45]{
+			\footnotesize
+			\vspace{-1cm}
+			\begin{tabular}{ccc}
+				\toprule                                                           & Fitting     & $Le/D$ \\
+				\midrule
+				\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/anglevalve}  & Angle Valve & 150    \\
+				\midrule
+				\includegraphics[scale=0.125]{../../figs/08HWEquivPipe/checkvalve} & Check Valve & 100    \\
+				\midrule
+				\includegraphics[scale=0.5]{../../figs/08HWEquivPipe/elbow}        & Elbow       & 50     \\
+				\midrule
+				\includegraphics[scale=0.15]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
+				\midrule
+				\includegraphics[scale=0.35]{../../figs/08HWEquivPipe/gatevalve}   & Gate Valve  & 35     \\
+				\bottomrule
+			\end{tabular}
+		}
+		\hfill
+		\mini[0.5]{
+			\footnotesize
+			\begin{tabular}{cccc}
+				\toprule
+				Pipe & Length (m) & diam (mm) & C   \\
+				\midrule
+				AB   & 10         & 500       & 125 \\
+				\midrule
+				BC   & 2000       & 275       & 150 \\
+				\midrule
+				BD   & 1500       & 250       & 100 \\
+				\midrule
+				DC   & 1000       & 300       & 100 \\
+				\midrule
+				CE   & 10         & 500       & 125 \\
+				\bottomrule
+			\end{tabular}
+		}
+		\centering\small\parb
+		Given that $y=6.7\,\text{m}$, determine the flow through the system.\lb
+		(Nodes $B$ and $E$ are at the same elevation. Disregard exit losses.)
+	\end{myexer}
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Summary}
+	\begin{enumerate}
+		\item The most important lessons to be learned about system analysis are that:
+		      \begin{enumerate}[a]
+		      	\item Flow is constant through pipes in series.
+		      	\item Parallel pipes have the same headloss, and that the headloss across a system of parallel pipes is the same as the headloss in each pipe: do not add these headlosses!
+		      \end{enumerate}
+		\item The methods described above do not work for all systems (or even for most systems): not all systems can be split into series and/or parallel pipes as we have done.
+		\item There are a number of iterative techniques (Hardy-Cross, Newton-Raphson, Gradient, Linear \ldots ) for analysing more complex hydraulic networks. These are mathematically intensive. Instead, we shall use software to analyse such networks.
+	\end{enumerate}
+\end{frame}
 
 
 \end{document}

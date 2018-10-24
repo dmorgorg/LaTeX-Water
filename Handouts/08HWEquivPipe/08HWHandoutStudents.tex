@@ -140,9 +140,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mini[0.75]{
+\cmini{
 	\begin{myexam}{}{}
-		\raggedright
+		
 		For the pipeline shown, calculate the pressure at $B$, given that the pressure at $A$ is
 		$700\,\text{kPa}$.\parm
 		The pipes are cement-lined Hyprescon with a diameter of $400\,\text{mm}$ and a roughness coefficient of $C=140$. Flow through the system is $200\,\text{L/s}$.
@@ -152,23 +152,26 @@
 		
 	\end{myexam}
 }
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mini[0.75]{
+\cmini{
 	\begin{myexer}{}{}
-		
-		For the pipeline shown, calculate the pressure at $C$ and $D$, given that the pressure at $A$ is
-		$700\,\text{kPa}$.\parm
-		The pipes are cement-lined Hyprescon with a diameter of $400\,\text{mm}$ and a roughness coefficient of $C=140$. Flow through the system is $200\,\text{L/s}$.
-		\parm
-		Elevations are as indicated.
-		
+		\cmini{
+			\raggedright
+			For the pipeline shown, calculate the pressure at $C$ and $D$, given that the pressure at $A$ is
+			$700\,\text{kPa}$.\parm
+			The pipes are cement-lined Hyprescon with a diameter of $400\,\text{mm}$ and a roughness coefficient of $C=140$. Flow through the system is $200\,\text{L/s}$.
+			\parm
+			Elevations are as indicated.
+		}
 		\cfig[0.5]{../../figs/08HWEquivPipe/HW1}
 		
 	\end{myexer}
 }
+
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,10 +195,7 @@
 \end{myexam}
 
 \newpage
-
-~
-
-\newpage
+~\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -222,9 +222,10 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\minit[0.55]{
-	\begin{myexam}{}{}
-		\parb
+
+\begin{myexam}{}{}
+	\parb
+	\minit[0.4]{
 		In a water treatment plant, water flows from a filter down to a clear well through the pipe system shown. The pipe is
 		welded steel with a diameter of $300\,\text{mm}$ and roughness coefficient $C=130$. The total length of pipe is
 		$50\,\text{m}$. Elevation difference $h_1$ between the tanks is $5$ m.
@@ -238,11 +239,12 @@
 		\parb
 		Determine the flow through the system.
 		\parb
-		
+	}
+	\hfill
+	\minit[0.525]{
 		\cfig[0.525]{../../figs/08HWEquivPipe/HW4}
-		
-	\end{myexam}
-}
+	}
+\end{myexam}
 
 \newpage
 
@@ -286,7 +288,6 @@
 	}
 	\pars
 \end{myexam}
-
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -337,10 +338,10 @@
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mini{
+\cmini{
 	\begin{myexam}{}{}
 		\cfig[0.325]{../../figs/08HWEquivPipe/HW14ink.pdf}
-		\pars
+		\parm
 		\cmini[0.85]{
 			Determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
 			\parm
@@ -351,13 +352,16 @@
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mini[0.5]{
+\cmini[0.7]{
 	\begin{myexam}{}{}
+		\raggedright
 		\begin{enumerate}[a)]
 			\item Determine the diameter of a pipe with length $L=1000\,\text{m}$ and resistance coefficient $C=100$ that is equivalent to $785\,\text{m}$ of new Schedule $40$ $12$-in steel pipe ($D=303.2\,\text{mm}, C=130$).\parb
 			\item Verify that this equivalent pipe has the same headloss as the $12$-in steel pipe for two arbitrary flows (choose a couple of flows at random, different from the flow used in part a).
 		\end{enumerate}
 	\end{myexam}
+	
+	
 }
 
 \newpage
@@ -374,19 +378,21 @@
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{myexer}{}{}
-	\cfig[0.4]{../../figs/08HWEquivPipe/HW16ink.pdf}
-	
-	\cmini[0.675]{
+\cmini[0.85]{
+	\begin{myexer}{}{}
+		\cfig[0.4]{../../figs/08HWEquivPipe/HW16ink.pdf}
+		
+		
 		Use the equivalent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
 		\parb
-	}
-\end{myexer}
+		
+	\end{myexer}
+}
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mini[0.7]{
+\cmini[0.7]{
 	
 	\begin{myexam}{}{}
 		\cfig[0.7]{../../figs/08HWEquivPipe/HW18ink.pdf}
@@ -406,8 +412,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\mini{
-	\begin{myexam}{}{}
+\cmini{
+	\begin{myexam}{(Alternate - easier! - than previous method)}{}
 		\cfig[0.7]{../../figs/08HWEquivPipe/HW18ink.pdf}
 		\parb
 		
@@ -422,11 +428,12 @@
 	\end{myexam}
 }
 
+
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\mini[1]{
+\cmini[1]{
 	\begin{myexam}{}{}
 		\cfig[0.6]{../../figs/08HWEquivPipe/HW20ink.pdf}
 		\parb
@@ -438,5 +445,82 @@
 }
 \newpage
 ~
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\cmini[1]{
+	\begin{myexer}{}{}
+		\cfig[0.6]{../../figs/08HWEquivPipe/HW17ink.pdf}
+		\parb
+		\centering
+		Determine $Q$. All pipes have the same elevation. Disregard minor losses.
+	\end{myexer}
+}
+
+\newpage
+~
+
+
+\newpage
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{textblock*}{1\textwidth}(0cm, 1cm)
+\cmini{
+	\begin{myexer}{}{}
+		\cfig[0.65]{../../figs/08HWEquivPipe/MT1A}
+		\hspace{0.5cm}
+		\mini[0.45]{
+			\vspace{-1cm}
+			\begin{tabular}{ccc}
+				\toprule                                                          & Fitting     & $Le/D$ \\
+				\midrule
+				\includegraphics[scale=0.45]{../../figs/08HWEquivPipe/anglevalve} & Angle Valve & 150    \\
+				\midrule
+				\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/checkvalve}  & Check Valve & 100    \\
+				\midrule
+				\includegraphics[scale=0.65]{../../figs/08HWEquivPipe/elbow}      & Elbow       & 50     \\
+				\midrule
+				\includegraphics[scale=0.2]{../../figs/08HWEquivPipe/footvalve}   & Foot Valve  & 75     \\
+				\midrule
+				\includegraphics[scale=0.45]{../../figs/08HWEquivPipe/gatevalve}  & Gate Valve  & 35     \\
+				\bottomrule
+			\end{tabular}
+		}
+		\hfill
+		\mini[0.45]{
+			\begin{tabular}{cccc}
+				\toprule
+				Pipe & Length (m) & diam (mm) & C   \\
+				\midrule
+				AB   & 10         & 500       & 125 \\
+				\midrule
+				BC   & 2000       & 275       & 150 \\
+				\midrule
+				BD   & 1500       & 250       & 100 \\
+				\midrule
+				DC   & 1000       & 300       & 100 \\
+				\midrule
+				CE   & 10         & 500       & 125 \\
+				\bottomrule
+			\end{tabular}
+		}
+		\parm
+		\vspace{1cm}
+		\centering
+		Given that $y=6.7\,\text{m}$, determine the flow through the system.
+		\parm
+		(Nodes $B$ and $E$ are at the same elevation. Disregard exit losses.)
+	\end{myexer}
+}
+\newpage
+~
+
+
+
+
+
 
 \end{document}
