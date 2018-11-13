@@ -1,0 +1,543 @@
+% override specific chktex warnings
+
+% chktex-file 1 - ignore commands followed by a space, e.g. \\ new line here
+% chktex-file 3 - enclose previous parentheses wit {}
+% chktex-file 9 - sometimes messes up with ( and {
+% chktex-file 36 - put a space in front of parentheses
+% chktex-file 45 - don't use $$ instead of \[, etc
+% chktex-file 46 - don't use $ instead of \(, etc
+
+
+\documentclass[10pt, oneside]{amsart}
+% \usepackage[showboxes]{textpos}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1.0cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.0cm}{0.0cm}  %start all at upper left corner
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=1in,rmargin=0.5in}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{cancel}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{enumerate}
+\usepackage[many]{tcolorbox}
+
+\pagestyle{plain}
+\raggedright
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{\medskipamount}
+\setlength{\columnsep}{1cm}
+
+\everymath{\displaystyle}
+\setlength{\parskip}{\bigskipamount}
+\definecolor{structure}{RGB}{100,100,100}
+\input{../../includes/macrosWater}
+
+\begin{document}
+
+\thispagestyle{empty}
+\vspace{-7cm}
+\centering
+
+\textbf{\Large Module 12: Open Channel Flow (CIVL 318)}
+\par\medskip
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+	\begin{tabular}{r >{$}r<{$} >{$}c<{$} >{$}l<{$}}
+		\toprule
+		\addlinespace
+		\textbf{ Hydraulic Radius}:            & R                              & =           & A/WP                                                    \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		%\textbf{ Rectangular Channel}: & A &=& by \\
+		%\addlinespace
+		%& WP &=& b+2y \\
+		%\addlinespace
+		%& R &=& \frac{by}{b+2y}\ \\
+		%\addlinespace
+		%\midrule
+		%\addlinespace
+		%\textbf{ Triangular Channel}: & A &=&  zy^2 \\
+		%\addlinespace
+		%& WP &=& 2y\sqrt{1+z^2} \\
+		%\addlinespace
+		%& R &=& \frac{zy}{2\sqrt{1+z^2}}\ \\
+		%\addlinespace
+		%\midrule
+		%\addlinespace
+		%\textbf{ Trapezoidal Channel}: & A &=& y(b+yz) \\
+		%\addlinespace
+		%& WP &=& b+2y\sqrt{1+z^2} \\
+		%\addlinespace
+		%& R &=& \frac{y(b+yz)}{b+2y\sqrt{1+z^{2}}}  \\
+		%\addlinespace
+		%\midrule
+		%\addlinespace
+		\textbf{ Circular Channel}:            & A                              & =           & \frac{\left(\theta-\sin\theta\right)D^2}{8}             \\
+		\addlinespace
+		                                       & WP                             & =           & \theta D/2                                              \\
+		\addlinespace
+		                                       & R                              & =           & \left(\frac{\theta - \sin\theta}{\theta}\right)\frac D4 \\
+		\addlinespace
+		\midrule
+		\textbf{ Manning's Equation}:          & v                              & =           & \frac{1}{n}R^{2/3}S^{1/2}                               \\
+		\addlinespace
+		                                       & Q                              & =           & \frac{1}{n}AR^{2/3}S^{1/2}                              \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{Open Channel Energy Equation}: & y_1 + \frac{v_1^2}{2g}+z_1-h_L & =           & y_2 + \frac{v_2^2}{2g}+z_2-h_L                          \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\textbf{ Specific Energy}:             & E_S                            & =           & y+\frac{v^2}{2g}                                        \\
+		\addlinespace
+		\midrule
+		\textbf{ Froude Number}:               & N_F                            & =           & \frac{v}{\sqrt{g(A/T)}}                                 \\
+		\addlinespace
+		%$N_F$ for rectangular channel: & N_F &=& \frac{v}{\sqrt{gy}} \\
+		%\addlinespace
+		                                       & N_F>1                          & \Rightarrow & \text{Super-critical flow}                              \\
+		\addlinespace
+		                                       & N_F=1                          & \Rightarrow & \text{Critical flow}                                    \\
+		\addlinespace
+		                                       & N_F<1                          & \Rightarrow & \text{Sub-critical flow}                                \\
+		\addlinespace
+		\midrule
+		\textbf{ Hydraulic Jump}:              & y_2                            & =           & \frac{y_1}{2}\left[\sqrt{1+8N_{F_1}^2}-1\ \right]       \\
+		\addlinespace
+		                                       & \Delta E                       & =           & \left(y_2 - y_1\right)^3/4y_1y_2                        \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+	
+	\vspace{2cm}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{center}\Large\textbf{Critical Depth, Velocity and Energy}\end{center}
+	\begin{tabular}{ccc}
+		\toprule
+		\addlinespace
+		Channel Shape & Critical Depth                                                                & Critical Velocity                                            \\
+		\addlinespace
+		\toprule
+		\addlinespace
+		Rectangular   & $y_{c}=\frac{2}{3}E_{min}$                                                    & $v_{c}=\sqrt{gy_{c}}$                                        \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		Triangular    & $y_{c}=\frac{4}{5}E_{min}$                                                    & $v_{c}=\sqrt{\frac{gy_{c}}{2}}$                              \\
+		% 		\addlinespace
+		% 		 \midrule
+		% 		 \addlinespace
+		% 		 Circular \\
+		\addlinespace
+		\midrule
+		\addlinespace
+		Trapezoidal   & $y_{c}=\frac{4zE_{min}-3b+\sqrt{16z^{2}E_{min}^{2}+16zE_{min}b+9b^{2}}}{10z}$ & $v_{c}=\sqrt{\frac{gy_{c}\left(b+zy_{c}\right)}{b+2zy_{c}}}$ \\
+		\addlinespace
+		\bottomrule
+	\end{tabular}
+	
+	
+	
+	\newpage
+	\textbf{Manning's Equation - Resistance Factors}
+	
+	\begin{tabular}{rc}
+		\toprule
+		
+		\textbf{Channel Description}                                       & \textbf{\emph{n}-value} \\
+		\toprule
+		
+		Plastic - continuous                                               & 0.009                   \\ 	\midrule
+		
+		Plastic - pipe with joints                                         & 0.011                   \\ \midrule
+		
+		Smooth metal                                                       & 0.010                   \\ \midrule
+		
+		Concrete - steel trowelled or slip-formed                          & 0.012                   \\ \midrule
+		
+		Concrete - pipe with joints                                        & 0.013                   \\ \midrule
+		
+		Concrete - shotcreted                                              & 0.017                   \\ \midrule
+		
+		Riveted Steel                                                      & 0.018                   \\ \midrule
+		
+		Corrugated Steel                                                   & 0.022                   \\ \midrule
+		
+		Earth - firm clay                                                  & 0.020                   \\ \midrule
+		
+		Earth - alluvial silt and clay                                     & 0.021                   \\ \midrule
+		
+		Earth - medium sand                                                & 0.023                   \\ \midrule
+		
+		Earth - fine gravel                                                & 0.024                   \\ \midrule
+		
+		Earth - coarse gravel                                              & 0.028                   \\ \midrule
+		
+		Earth - cobbles                                                    & 0.030                   \\
+		Rock cuts - smooth                                                 & 0.030                   \\ \midrule
+		
+		Rock cuts - jagged                                                 & 0.040                   \\ \midrule
+		
+		Highway Ditches - cut grass                                        & 0.040                   \\ \midrule
+		
+		Highway Ditches - uncut grass                                      & 0.090                   \\ \midrule
+		
+		Highway Ditches - uncut grass and small bushes                     & 0.125                   \\ \midrule
+		
+		Natural Streams - straight, uniform cross-section, no growth       & 0.025                   \\ \midrule
+		
+		Natural Streams - fairly straight, moderate changes           &   \\ in cross-section, some growth & 0.033 \\ \midrule
+		
+		Natural Streams - curving, moderate changes in cross-section, &   \\some growth & 0.040 \\ \midrule
+		
+		Flood Plains - with high grass and bushes, some developed channels & 0.070                   \\ \midrule
+		
+		Flood Plains - with bushes, trees and pools                        & 0.100                   \\ \midrule
+		
+		Mountain Creeks - with pools and waterfalls                        & 0.130                   \\ \bottomrule
+	\end{tabular}
+\end{center}
+\vspace{1.5cm}
+\begin{center}
+	\begin{tabular}{l >{$}c<{$} >{$}c<{$}}
+		\toprule
+		
+		\textbf{Soil Type}        & \textbf{ParticleSize}  & \textbf{ Maximum Velocity} \\
+		\toprule
+		
+		
+		Fine sand, no clay        & 62-250\, \mu\text{m}   & 0.45\,\text{m/s}           \\
+		\midrule
+		
+		Medium sand, no clay      & 250-500\, \mu\text{m}  & 0.50\,\text{m/s}           \\
+		\midrule
+		
+		Coarse sand, no clay      & 500-2000\, \mu\text{m} & 0.60\,\text{m/s}           \\
+		\midrule
+		
+		Fine gravel               & 4-8\, \text{mm}        & 0.74\,\text{m/s}           \\
+		\midrule
+		
+		Coarse gravel             & 8-64\, \text{mm}       & 1.25\,\text{m/s}           \\
+		\midrule
+		
+		Cobbles                   & 64-256\, \text{mm}     & 1.55\,\text{m/s}           \\
+		\midrule
+		
+		Firm clay                 &                        & 1.15\,\text{m/s}           \\
+		\midrule
+		
+		Alluvial silt (high clay) &                        & 1.15\,\text{m/s}           \\
+		\midrule
+		
+		Alluvial silt (low clay)  &                        & 0.60\,\text{m/s}           \\
+		\midrule
+		
+	\end{tabular}
+\end{center}
+
+\newpage
+%\rule{\textwidth}{0.02in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\raggedright
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\cmini[0.575]{
+	\begin{myexam}{}{}
+		\raggedright
+		The Pontcysyllte Aqueduct is $3.4$ m wide, $1.60$ m deep and is constructed of cast iron with a resistance factor of
+		$n=0.018$.
+		\parb
+		If the flow velocity is $0.1$ m/s, determine the slope.
+		
+	\end{myexam}
+}
+\mini[0.5]{
+	\large
+	\parb
+	\textbf{Solution}:\parb
+	
+	\cbox[0.9]{
+		\begin{align*}
+			A  & = 3.40\,\text{m}\times 1.60\,\text{m}           \\
+			   & = 5.44\,\mathsf{m^2}                            \\
+			WP & = 1.6\,\text{m} + 3.4\,\text{m} + 1.6\,\text{m} \\
+			   & = 6.60\,\text{m}                                \\
+			R  & = A/WP                                          \\
+			   & = \frac{5.44\,\mathsf{m^2}}{6.60\,\text{m}}     \\
+			   & = 0.82424\,\text{m}                             
+		\end{align*}
+	}
+	\parb
+	Find the slope:
+	
+	\cbox[0.9]{
+		\begin{align*}
+			v          & = \frac{1}{n}R^{2/3}S^{0.5}                            \\
+			\implies S & = \left[\frac{nv}{R^{2/3}}\right]^2                    \\
+			           & = \left[\frac{0.018\times 0.1}{0.82424^{2/3}}\right]^2 \\\\
+			           & = \bm{0.000419}\textbf{\%}                             
+		\end{align*}
+	}
+}
+
+\vfill
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\cmini[0.575]{
+	\begin{myexam}{}{}
+		\raggedright
+		A circular culvert of diameter $2.0\,\text{m}$ is made from corrugated metal. It has a slope of $1$ in $500$.
+		Determine the normal discharge and the velocity when:\parb
+		\cmini{
+			\begin{enumerate}[(a)]
+				\item  the culvert runs half full
+				\item  the culvert runs full
+				\item  the culvert runs at a depth of $1.8\,\text{m}$
+			\end{enumerate}
+		}
+	\end{myexam}
+}
+
+\mini[0.45]{
+	For parts (a) and (b), we don't need the complicated circle formula.
+	\cbox{
+		\tikz[scale=\scale]{
+			
+		}
+	}
+}
+
+
+
+
+
+\vfill
+
+\pagebreak~\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Example 3}:
+% left-aligned minipage with text raggedright
+%mini[width]{content}
+\mini[1]{
+	\cfig[0.5]{../../figs/12OCF/trapEx3}
+	
+	Determine the normal discharge for the two channels shown. Both are in fine grained soil with an estimated $n$-value
+	of $0.020$. The channel slope is 0.1\%. \par\smallskip
+	Then, calculate the flow rate when the more efficient channel is lined with concrete ($n=0.013$).
+}
+
+
+
+
+
+
+\par\vfill
+~\par
+
+
+
+% \textbf{Solution}:\\
+% \Large
+
+
+\vfill
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 4}:
+
+A rectangular channel is constructed out of concrete
+with $n=0.013$. The channel has a slope of 0.0005 and a base width of $b=4.0\,\text{m}$  \par\bigskip
+Find the depth of flow,
+$y$, if $Q=6.25\,\mathsf{m^3/s}$.
+
+\par\vfill
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 5}:
+
+A trapezoidal channel constructed from coarse sand without clay
+($n = 0.025$) has a base width of $7.0$ m and a flow depth of $1.7$ m.
+\par\medskip
+If the sidewall have a $z$-value of 3, find the average flow
+rate and the average velocity. Check this against allowable values.\par\medskip
+(Slope is 0.015\% and the maximum allowable velocity for this type of soil is $0.60$ m/s.)
+
+\par\vfill
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 6}:
+
+Determine the specific energy in a
+rectangular channel with a base of
+$6.0$ m and a flow depth of $y = 1.8$ m
+if the volume flow is $20 \,\mathsf{m^3/s}$
+
+\par\vfill
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example 7}:
+
+
+\cfig[0.35]{../../figs/12OCF/sluice1}
+Water flows at a depth of 2.0 m in a rectangular channel with width 5.0 m. The flow passes under a sluice gate so that
+the downstream flow has a depth of 0.5 m. Determine the flow in the channel. (There is little energy loss due to the
+sluice gate.)
+
+\par\vfill
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Example 8}:
+
+
+
+A channel with a triangular section is cut through rock and lined with un-trowelled shotcrete. It has a slope of
+0.1201 \%.
+The water depth, $y=3.5$ m and the side slope $z=1.0$. The channel has an estimated $n=0.017$.
+Find:
+\begin{itemize}
+	\item [a)] the flow rate
+	\item [b)] the velocity
+	\item [c)] the critical velocity
+	\item [d)] whether the slope is sub-critical or super-critical.
+	\item [e)] the slope at which flow becomes critical
+\end{itemize}
+
+\cfig[0.5]{../../figs/12OCF/criticalTriangle}
+
+\textbf{Solution}:\\
+
+\cbox[0.8]{
+	\begin{align*}
+		A  & = \frac{1}{2}(7.0 \text{m})(3.5\text{ m})      \\
+		   & = 12.25\;\mathsf{m^2}                          \\
+		WP & = 2\sqrt{2(3.5\text{ m})^2}                    \\
+		   & =9.8995\text{ m}                               \\
+		R  & = \frac{A}{WP}                                 \\
+		   & = \frac{12.250\;\mathsf{m^2}}{9.8995\text{ m}} \\
+		   & = 1.2374\text{ m}                              
+	\end{align*}
+}
+
+% centered minipage with text raggedright
+%cbox[width]{content}
+\cbox[0.8]{
+	\begin{align*}
+		Q & =\frac{1}{n}AR^{2/3}S^{1/2}                          \\
+		  & =\frac{1}{0.017}(12.250)(1.2374)^{2/3}(0.0012)^{1/2} \\
+		  & =28.771\;\mathsf{m^3/s}                              
+	\end{align*}
+	
+}
+
+
+
+
+
+
+
+\vfill
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Example 9}:
+Flow over a rectangular dam spillway is approximately 1150 m$^3$/s. If the width of the spillway is
+$32.0\mbox{ m}$ and the depth of the supercritical flow before the hydraulic jump is $1.4$ m,
+determine the velocities of the flow before and after the jump, the depth after the jump
+and the energy dissipated.
+\vfill\pagebreak
+
+\vfill
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cfig[0.25]{../../Figs/12OCF/sluiceJumpExample10light}
+\textbf{Example 10}:
+Flow from a reservoir (i.e. it has no initial velocity) into a rectangular channel is controlled by a sluice gate as shown. Verify that the flow after the gate is supercritical and determine the depth of flow downstream from the jump.
+\vfill\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Example 11}:
+Water flows from a reservoir with a depth of 3.60 m down a trapezoidal concrete-lined channel ($n=0.017$) with a base width of $4.0$ m and a side slope value of $z=2.5$.\parm
+Determine:
+\begin{enumerate}
+	\item The flow under critical conditions (when specific energy is at a minimum)
+	\item The slope required to give critical flow
+\end{enumerate}
+\vfill\pagebreak
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\textbf{Example 12}:
+%An earth channel is to be constructed in medium sand (no clay) with a trapezoidal section. \pars
+%The bottom width, $b=10$ m and the side slope $z=2.0$. \pars
+%The estimated $n$ value is $0.023$ and the maximum allowable velocity for this type of soil is $0.50$ m/s. \pars
+%The elevation difference between the two ends is $6.3$ m and the distance directly between them is $64.2$ km. \pars
+%The design flow rate is $7.044\,\mathsf{m^3/s}$ and the velocity is limited to 80\% of the maximum allowable. \parb
+%
+%Determine the required area of flow, the required depth, the required slope, the corresponding channel length for
+%allowable velocity, and the height of a drop structure if the direct channel length is used.
+%
+%\vfill\newpage
+
+
+
+\end{document}

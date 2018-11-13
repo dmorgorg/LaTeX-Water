@@ -420,8 +420,7 @@
 	\begin{myexam}{}{}
 		\parb
 		\raggedright
-		In a water treatment plant, water flows from a filter down to a clear well through the pipe system shown. The pipe is
-		welded steel with a diameter of $300\,\text{mm}$ and roughness coefficient $C=130$. The total length of pipe is
+		In a water treatment plant, water flows from a filter down to a clear well through the pipe system shown. The pipe is welded steel with a diameter of $300\,\text{mm}$ and roughness coefficient $C=130$. The total length of pipe is
 		$50\,\text{m}$. Elevation difference $h_1$ between the tanks is $5$ m.
 		\parm
 		Equivalent length ratios, $L_e/D$, are:\parm
@@ -437,6 +436,16 @@
 		\cfig[0.525]{../../figs/08HWEquivPipe/HW4}
 		
 	\end{myexam}
+	
+	\begin{textblock*}{1\textwidth}(5.5cm, 7.5cm)
+		\def\scale{1}
+		\tikz[scale=\scale]{
+			\node at (3,3){FILTER};
+			\node at (7.75,.45){WELL};
+			\node[fill=white] at (7.125,1.75){$h_1=5.0\,\text{m}$};
+		}
+	\end{textblock*}
+	
 	\parb
 	\textbf{Solution}:\parb
 	Effective length of the pipe:
@@ -474,7 +483,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{myexam}{}{}
-	\cfig[0.6]{../../figs/08HWEquivPipe/HW5}
+	\cfig[0.65]{../../figs/08HWEquivPipe/HW5}
+	
+	\begin{textblock*}{1\textwidth}(5.3cm,2.5cm)
+		\def\scale{1}
+		\tikz[scale=\scale]{
+			\node at (5.75,0){WELL};
+			\node at (12,5){FILTER};
+		}
+	\end{textblock*}
+	
 	\cmini[0.95]{
 		\minit[0.45]{
 			In a water treatment plant, backwash water is pumped from the clear well through the pipe system shown to the filter.
@@ -712,28 +730,28 @@
 		One equation and two unknowns ($h_L$ and $Q$, since $v_A$ and $v_B$ can be expressed in terms of the single variable $Q$). Here, we have the difference between the two velocity heads which is smaller than the velocity head at $A$. As before, we can ignore it (for now!)
 		\begin{align*}
 			h_L & \approx \frac{P_A-P_D}{2g} \\
-			    & = \frac{535-420}{19.62}    \\
-			    & = 5.8614\,\text{m}         
+			    & = \frac{535-420}{9.81}     \\
+			    & = 11.723\,\text{m}         
 		\end{align*}
 	}
 	\parb
 	Now, find $Q$:
 	\cbox{
 		\begin{align*}
-			h_{L_{AD}}    & = 5.8614 = 0.020940Q^{1.852}                               \\
-			\Rightarrow Q & =    \left(\frac{5.1852}{0.020940} \right)^\frac{1}{1.852} \\
-			              & = 20.955                                                   \\
-			\bm{Q}        & =\bm{21.0}\,\textbf{L/s}                                   
+			h_{L_{AD}}    & = ll.723 = 0.020940Q^{1.852}                               \\
+			\Rightarrow Q & =    \left(\frac{11.723}{0.020940} \right)^\frac{1}{1.852} \\
+			              & = 30.467                                                   \\
+			\bm{Q}        & =\bm{30.5}\,\textbf{L/s}                                   
 		\end{align*}
 	}
 	\parm
 	How large was the term we discarded?
 	\cbox{
 		\begin{align*}
-			\frac{v_A^2-v_D^2}{2g} & = \frac{\left(\frac{20.955/1000}{\pi(0.150)^2/4}\right)^2-\left(\frac{20.955/1000}{\pi(0.250)^2/4}\right)^2}{19.62} \\
-			                       & = 0.062381\,\text{m}                                                                                                
+			\frac{v_A^2-v_D^2}{2g} & = \frac{\left(\frac{30.467/1000}{\pi(0.150)^2/4}\right)^2-\left(\frac{30.467/1000}{\pi(0.250)^2/4}\right)^2}{19.62} \\
+			                       & = 0.13187\,\text{m}                                                                                                 
 		\end{align*}
-		This is approximately $0.15\%$ ($1/667\,\text{th})$ of the pressure head at $D$.
+		This is approximately $0.3\%$ ($1/333\,\text{th})$ of the pressure head at $D$.
 		
 	}
 }
@@ -859,7 +877,7 @@
 		\large
 		\begin{align*}
 			\frac{535}{9.81} - h_{L_{AD\text{equiv}}} & = \frac{420}{9.81}   \\
-			\Rightarrow h_{L_{AD\text{equiv}}}        & =   5.8614\,\text{m} 
+			\Rightarrow h_{L_{AD\text{equiv}}}        & =   11.723\,\text{m} 
 		\end{align*}
 		
 	}
@@ -869,9 +887,9 @@
 	Find $Q$:
 	\cbox{
 		\begin{align*}
-			Q      & = \frac{100(186.47)^{2.63}\left(\frac{5.8614}{1000}\right)^{0.54}}{279000} \\
-			       & = 20.932                                                                   \\
-			\bm{Q} & = \bm{20.9}\,\text{L/s}                                                    
+			Q      & = \frac{100(186.47)^{2.63}\left(\frac{11.723}{1000}\right)^{0.54}}{279000} \\
+			       & = 30.435                                                                   \\
+			\bm{Q} & = \bm{30.4}\,\text{L/s}                                                    
 		\end{align*}
 		
 	}
@@ -880,13 +898,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \cmini[0.85]{
+	
 	\begin{myexer}{}{}
 		\cfig[0.4]{../../figs/08HWEquivPipe/HW16ink.pdf}
 		
 		
 		Use the equivalent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
 		\parb
-		
+		% don't increment *next* exercise number
+		\addtocounter{\tcbcounter}{-1}
 	\end{myexer}
 }
 \parb
@@ -901,20 +921,20 @@
 			h_{L_{AB}} & = 770\left(\frac{279000\times 100}{140(77.9)^{2.63}}\right)^{1.852}  \\
 			           & = 3075.4\,\text{m}                                                   \\
 			h_{L_{BC}} & = 480\left(\frac{279000\times 100}{120(154.1)^{2.63}}\right)^{1.852} \\
-			           & = 6540.3\,\text{m}                                                   \\
+			           & = 91.959\,\text{m}                                                   \\
 			h_{L_{CD}} & = 640\left(\frac{279000\times 100}{150(254.5)^{2.63}}\right)^{1.852} \\
 			           & = 7.0435\,\text{m}                                                   \\\\
-			h_{L_{AD}} & = 3075.4 + 6540.3 + 7.0435                                           \\
-			           & = 9622.7\,\text{m}                                                   
+			h_{L_{AD}} & = 3075.4 + 91.959 + 7.0435                                           \\
+			           & =3174.4\,\text{m}                                                    
 		\end{align*}
 	}
 	\parb
-	Determine the diameter of the pipe, with length $1000\,\text{m}$ and resistance coefficient $C=100$, that has a headloss of $9622.7\,\text{m}$ for flow of $100\,\text{L/s}$.
+	Determine the diameter of the pipe, with length $1000\,\text{m}$ and resistance coefficient $C=100$, that has a headloss of $3174.4\,\text{m}$ for flow of $100\,\text{L/s}$.
 	\cbox{
 		\large
 		\begin{align*}
-			d_{AD\text{equiv}} & = \left(\frac{279000\times 100}{100\left(\frac{9622.7}{1000}\right)^{0.54}}\right)^{0.3802} \\
-			                   & = 73.882\,\text{mm}                                                                         
+			d_{AD\text{equiv}} & = \left(\frac{279000\times 100}{100\left(\frac{3174.4}{1000}\right)^{0.54}}\right)^{0.3802} \\
+			                   & = 92.773\,\text{mm}                                                                         
 		\end{align*}
 	}
 }
@@ -927,7 +947,7 @@
 		\large
 		\begin{align*}
 			\frac{425}{9.81} - h_{L_{AD\text{equiv}}} & = \frac{270}{9.81}   \\
-			\Rightarrow h_{L_{AD\text{equiv}}}        & =   7.9001\,\text{m} 
+			\Rightarrow h_{L_{AD\text{equiv}}}        & =   15.800\,\text{m} 
 		\end{align*}
 		
 	}
@@ -936,12 +956,86 @@
 	Find $Q$:
 	\cbox{
 		\begin{align*}
-			Q      & = \frac{100(73.882)^{2.63}\left(\frac{7.9001}{1000}\right)^{0.54}}{279000} \\
-			       & = 2.1561                                                                   \\
-			\bm{Q} & = \bm{2.16}\,\text{L/s}                                                    
+			Q      & = \frac{100(92.773)^{2.63}\left(\frac{15.800}{1000}\right)^{0.54}}{279000} \\
+			       & = 5.7015                                                                   \\
+			\bm{Q} & = \bm{5.70}\,\textbf{L/s}                                                  
 		\end{align*}
 		
 	}
+}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cmini[0.85]{
+	
+	\begin{myexer}{Alternative}{}
+		
+		\cfig[0.4]{../../figs/08HWEquivPipe/HW16ink.pdf}
+		
+		
+		Use the equivalent pipe technique to determine $Q$, the volume flow rate from $A$ to $D$, through the system shown. Ignore minor losses and assume that $A$ and $D$ are at the same elevation.
+		\parb
+		
+	\end{myexer}
+}
+\parb
+\minit[0.4625]{
+	
+	\textbf{Alternative Solution}:
+	\parb
+	Assume a flow of $Q=1\,\text{L/s}$ and determine the headloss between $A$ and $D$:
+	\cbox{
+		\large
+		\begin{align*}
+			h_{L_{AB}} & = 770\left(\frac{279000\times 1}{140(77.9)^{2.63}}\right)^{1.852}  \\
+			           & = 0.60799\,\text{m}                                                \\
+			h_{L_{BC}} & = 480\left(\frac{279000\times 1}{120(154.1)^{2.63}}\right)^{1.852} \\
+			           & = 0.18180\,\text{m}                                                \\
+			h_{L_{CD}} & = 640\left(\frac{279000\times 1}{150(254.5)^{2.63}}\right)^{1.852} \\
+			           & = 0.62756\,\text{m}                                                \\\\
+			h_{L_{AD}} & = 0.60799 + 0.18180 + 0.62756                                      \\
+			           & = 0.62756\,\text{m}                                                
+		\end{align*}
+	}
+	\parb
+	Determine the diameter of the pipe, with length $10\,\text{m}$ and resistance coefficient $C=100$, that has a headloss of $0.62756\,\text{m}$ for flow of $1\,\text{L/s}$.
+	\cbox{
+		\large
+		\begin{align*}
+			d_{AD\text{equiv}} & = \left(\frac{279000\times 1}{100\left(\frac{0.62756}{10}\right)^{0.54}}\right)^{0.3802} \\
+			                   & = 36.047\,\text{mm}                                                                      
+		\end{align*}
+	}
+}
+\hfill
+\minit[0.4625]{
+	Our problem has now reduced to finding the flow through the single pipe, $AD\text{equiv}$
+	\parb
+	We apply the GEE to this pipe to find $h_{L_{AD\text{equiv}}}$, noting that $A$ and $D$ are at the same elevation and have the same diameter and, therefore, the same velocity head.
+	\cbox{
+		\large
+		\begin{align*}
+			\frac{425}{9.81} - h_{L_{AD\text{equiv}}} & = \frac{270}{9.81}   \\
+			\Rightarrow h_{L_{AD\text{equiv}}}        & =   15.800\,\text{m} 
+		\end{align*}
+		
+	}
+	\parb
+	
+	Find $Q$:
+	\cbox{
+		\begin{align*}
+			Q      & = \frac{100(36.047)^{2.63}\left(\frac{15.800}{10}\right)^{0.54}}{279000} \\
+			       & = 5.7043                                                                 \\
+			\bm{Q} & = \bm{5.70}\,\textbf{L/s}                                                
+		\end{align*}
+		
+	}
+}
+\cmini[0.6]{
+	\parb
+	\textbf{Note} that there is some discrepancy between the two results for $Q$ ($5.7015$ and $5.7043$) due to rounding but the result, to three sig digs, is identical. This will not always be the case - if the second value had been $5.7053$, the answers to three sig digs would be different. This is not a real-life issue but may well cause problems when using Qwizm since the standard $Q=100\,\text{L/s}$ was used in calculating the Qwizm answers.
 }
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -966,31 +1060,32 @@
 	\Large
 	\begin{gather*}
 		h_{L_{BC_{\text{upper}}}} = h_{L_{BC_{\text{mid}}}} = h_{L_{BC_{\text{lower}}}} \\\\
-		800\left( \frac{\cancel{279000}\ Q_{\text{upper}}}{\cancel{140}(90.1)^{2.63}}  \right)^{1.852} = 600\left( \frac{\cancel{279000}\ Q_{\text{mid}}}{\cancel{140}(77.9)^{2.63}}  \right)^{1.852} = 	1150\left( \frac{\cancel{279000}\ Q_{\text{lower}}}{\cancel{140}(102.3)^{2.63}}  \right)^{1.852}	\\\\
-		80\cancel{0}\left( \frac{Q_{\text{upper}}}{(90.1)^{2.63}}  \right)^{1.852} = 60\cancel{0}\left( \frac{\ Q_{\text{mid}}}{(77.9)^{2.63}}  \right)^{1.852} = 115\cancel{0}\left( \frac{\ Q_{\text{lower}}}{(102.3)^{2.63}}  \right)^{1.852}	\\
-		\intertext{ Raise each term to the power $1/1.852$:}
-		80^{\frac{1}{1.852}}\cdot \frac{Q_{\text{upper}}}{(90.1)^{2.63}} = 60^{\frac{1}{1.852}}\cdot\frac{\ Q_{\text{mid}}}{(77.9)^{2.63}} = 115^{\frac{1}{1.852}}\cdot\frac{\ Q_{\text{lower}}}{(102.3)^{2.63}} 	\\\\
-		\frac{Q_{\text{upper}}}{12982} = \frac{Q_{\text{mid}}}{10342} = \frac{Q_{\text{lower}}}{14903}
+		800\left( \frac{279000\ Q_{\text{upper}}}{140(90.1)^{2.63}}  \right)^{1.852} = 600\left( \frac{279000\ Q_{\text{mid}}}{140(77.9)^{2.63}}  \right)^{1.852} = 	1150\left( \frac{279000\ Q_{\text{lower}}}{140(102.3)^{2.63}}  \right)^{1.852}	\\\\
+		0.31097\,{Q_{\text{upper}}}^{1.852} = 0.47376\,{Q_{\text{mid}}}^{1.852} = 0.24083\,{Q_{\text{lower}}}^{1.852}	\\\\
+		\intertext{ Raise each term to the power $1/1.852$:}\\
+		(0.31097)^{1/1.852}\cdot Q_{\text{upper}} =(0.47376)^{1/1.852}\cdot Q_{\text{mid}} = (0.24083)^{1/1.852}\cdot Q_{\text{lower}} 	\\\\
+		0.53222\cdot Q_{\text{upper}} =0.66806\cdot Q_{\text{mid}} = 0.46361\cdot Q_{\text{lower}}
 	\end{gather*}
 }
+
 This has established a relationship between the flows in each of the three parallel pipes.
-\newpage
 \cbox{
 	\Large
 	\begin{align*}
-		Q_{\text{mid}}   & = \frac{10342}{12982}\,Q_{\text{upper}} = 0.79664\,Q_{\text{upper}} \\\\
-		Q_{\text{lower}} & = \frac{14903}{12982}\,Q_{\text{upper}} = 1.1480\,Q_{\text{upper}}  
+		Q_{\text{mid}}   & = \frac{0.53222}{0.66806}\,Q_{\text{upper}} = 0.79666\,Q_{\text{upper}} \\\\
+		Q_{\text{lower}} & = \frac{0.53222}{0.46361}\,Q_{\text{upper}} = 1.1480\,Q_{\text{upper}}  
 	\end{align*}
 }
 Find the proportion of the flow through the upper pipe and then the flows through each pipe:
 \cbox{
 	\Large
 	\begin{align*}
-		\frac{Q_{\text{upper}}}{Q_{\text{upper}}+Q_{\text{mid}}+Q_{\text{lower}}} & = \frac{\cancel{Q_{\text{upper}}}}{(1+0.79664+1.1480)\cancel{Q_{\text{upper}}}} \\
-		                                                                          & = .33960                                                                        \\\\
-		Q_\text{upper}                                                            & = 0.33960\times 18 =6.1128                                                      \\
-		Q_\text{mid}                                                              & =0.79664\,Q_\text{upper} = 4.8697                                               \\
-		Q_\text{lower}                                                            & = 1.1480\,Q_\text{upper}= 7.0175                                                \\\\
+		Q_{\text{upper}} + Q_{\text{mid}} + Q_{\text{lower}}                                & = Q_{\text{total}}                            \\\\
+		\Rightarrow Q_{\text{upper}} + 0.79666\,Q_{\text{upper}} + 1.1480\,Q_{\text{upper}} & = 18\,\text{L/s}                              \\\\
+		Q_{\text{upper}}                                                                    & = \frac{18}{2.9447}\,\text{L/s}               \\
+		                                                                                    & = 6.1127\,\text{L/s}                          \\\\
+		Q_\text{mid}                                                                        & =0.79666\,Q_\text{upper} = 4.8697\,\text{L/s} \\
+		Q_\text{lower}                                                                      & = 1.1480\,Q_\text{upper}= 7.0174\,\text{L/s}  \\\\
 	\end{align*}
 	\[ \bm{	Q_\textbf{upper} = 6.11\,\textbf{L/s},\quad 	Q_\textbf{mid} = 4.87\,\textbf{L/s},\quad 	Q_\textbf{lower}=7.02\,\textbf{L/s}} \]
 }
@@ -998,7 +1093,7 @@ Determine the headloss between $B$ and $C$: We can use any of the three parallel
 \cbox{
 	\Large
 	\begin{gather*}
-		h_{L_{AB}} = h_{L_{AB\text{upper}}} = 800\left( \frac{279000\times 6.1128}{140(90.1)^{2.63}} \right)^{1.852} = 8.8888\,\text{m} \\\\
+		h_{L_{AB}} = h_{L_{AB\text{upper}}} = 800\left( \frac{279000\times 6.1127}{140(90.1)^{2.63}} \right)^{1.852} = 8.8885\,\text{m} \\\\
 		\bm{h_{L_{AB}} =8.89\,\textbf{m}}
 	\end{gather*}
 	
@@ -1188,7 +1283,7 @@ Determine the headloss between $B$ and $C$: We can use any of the three parallel
 \minit[0.45]{
 	\cbox{
 		\begin{align*}
-			Q_{BCD_\text{equiv}} & = \frac{100 (166.98)^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} \\
+			Q_{BCD_\text{equiv}} & = \frac{100 (169.98)^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} \\
 			                     & = 21.895\,\text{L/s}                                                    \\\\
 			Q_{BD}               & = \frac{130 (254.5)^{2.63}\left(\frac{10}{1500}\right)^{0.54}}{279000}  \\
 			                     & = 66.101\,\text{L/s}                                                    \\\\
@@ -1336,8 +1431,8 @@ Determine the headloss between $B$ and $C$: We can use any of the three parallel
 	Determine the diameter of the equivalent pipe, with length of $1000\,\text{m}$ and resistance coefficient of $100$, that has a headloss of  $49.576\,\text{m}$ for a flow of $100\,\text{L/s}$.
 	\cbox{
 		\begin{align*}
-			D_{BDC\text{equiv}}        & =\left( \frac{279000\times 100}{100\left(\frac{49.576}{1000}\right)^{0.54}} \right)^{0.3802} \\\\
-			\bm{D_{BDC\textbf{equiv}}} & =\bm{217.92}\,\textbf{mm}                                                                    
+			D_{BDC\text{equiv}}        & =\left( \frac{279000\times 121.35}{100\left(\frac{49.576}{1000}\right)^{0.54}} \right)^{0.3802} \\\\
+			\bm{D_{BDC\textbf{equiv}}} & =\bm{217.92}\,\textbf{mm}                                                                       
 		\end{align*}
 	}
 	\parb
@@ -1349,20 +1444,20 @@ Determine the headloss between $B$ and $C$: We can use any of the three parallel
 \minit[0.45]{
 	\cbox{
 		\begin{align*}
-			Q_{BC_\text{upper}}  & = \frac{150 (275)^{2.63}\left(\frac{10}{2037.1}\right)^{0.54}}{279000}  \\
-			                     & = 79.262\,\text{L/s}                                                    \\\\
-			Q_{BDC_\text{equiv}} & = \frac{100 (217.92)^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} \\
-			                     & = 42.084\,\text{L/s}                                                    \\\\
-			Q_{BC_\text{equiv}}  & = 79.262+42.084  \,\text{L/s}                                           \\
-			                     & = 121.35\,\text{L/s}                                                    
+			Q_{BC\text{upper}}  & = \frac{150 (275)^{2.63}\left(\frac{10}{2037.1}\right)^{0.54}}{279000}  \\
+			                    & = 79.262\,\text{L/s}                                                    \\\\
+			Q_{BDC\text{equiv}} & = \frac{100 (217.92)^{2.63}\left(\frac{10}{1000}\right)^{0.54}}{279000} \\
+			                    & = 42.084\,\text{L/s}                                                    \\\\
+			Q_{BC\text{equiv}}  & = 79.262+42.084  \,\text{L/s}                                           \\
+			                    & = 121.35\,\text{L/s}                                                    
 		\end{align*}
 	}
 	\parb
-	Determine the diameter of the equivalent pipe, with length of $1000\,\text{m}$ and resistance coefficient of $100$, that has a headloss of  $121.35\,\text{m}$ for a flow of $100\,\text{L/s}$.
+	Determine the diameter of the equivalent pipe, with length of $1000\,\text{m}$ and resistance coefficient of $100$, that has a flow of  $121.35\,\text{L/s}$ for a headloss of $10\,\text{m}$.
 	\cbox{
 		\begin{align*}
-			D_{BC\text{equiv}}        & =\left( \frac{279000\times 100}{100\left(\frac{121.35}{1000}\right)^{0.54}} \right)^{0.3802} \\\\
-			\bm{D_{BC\textbf{equiv}}} & =\bm{181.33}\,\textbf{mm}                                                                    
+			D_{BC\text{equiv}}        & =\left( \frac{279000\times 121.35}{100\left(\frac{10}{1000}\right)^{0.54}} \right)^{0.3802} \\\\
+			\bm{D_{BC\textbf{equiv}}} & =\bm{325.83}\,\textbf{mm}                                                                   
 		\end{align*}
 	}
 	\parb
@@ -1374,31 +1469,31 @@ Determine the headloss between $B$ and $C$: We can use any of the three parallel
 		\begin{align*}
 			h_{L_{AB}}             & = 122.5\left( \frac{279000\times 100}{125(500)^{2.63}} \right)^{1.852}   \\
 			                       & = 0.070450\,\text{m}                                                     \\\\
-			h_{L_{BC\text{equiv}}} & = 1000\left( \frac{279000\times 100}{100(181.33)^{2.63}} \right)^{1.852} \\
-			                       & = 121.56\,\text{m}                                                       \\\\
-			h_{L_{CE\text{equiv}}} & = 1000\left( \frac{279000\times 100}{100(500)^{2.63}} \right)^{1.852}    \\
+			h_{L_{BC\text{equiv}}} & = 1000\left( \frac{279000\times 100}{100(325.83)^{2.63}} \right)^{1.852} \\
+			                       & = 6.9998\,\text{m}                                                       \\\\
+			h_{L_{CE}}             & = 1000\left( \frac{279000\times 100}{100(500)^{2.63}} \right)^{1.852}    \\
 			                       & = 0.0057510\,\text{m}                                                    \\\\
-			h_{L_{AE}}             & = 0.070450+121.56+0.0057510                                              \\
-			                       & = 121.64 \,\text{m}                                                      
+			h_{L_{AE}}             & = 0.070450+6.9998+0.0057510                                              \\
+			                       & = 7.0760 \,\text{m}                                                      
 		\end{align*}
 	}
 }
 \hfill
 \minit[0.45]{
-	Find the equivalent pipe that has a headloss of $121.64\,\text{m}$ for a flow of $100\,\text{L/s}$:
+	Find the equivalent pipe that has a headloss of $7.0760\,\text{m}$ for a flow of $100\,\text{L/s}$:
 	\cbox{
 		\begin{align*}
-			D_{AE\text{equiv}} & = \left( \frac{279000\times 100}{100\left(\frac{121.64}{1000}\right)^{0.54}}  \right)^{0.3802} \\
-			                   & = 181.24\,\text{mm}                                                                            
+			D_{AE\text{equiv}} & = \left( \frac{279000\times 100}{100\left(\frac{7.0760}{1000}\right)^{0.54}}  \right)^{0.3802} \\
+			                   & = 324.99\,\text{mm}                                                                            
 		\end{align*}
 	}
 	\parb
 	$	D_{AE\text{equiv}}$ is a single pipe equivalent to the whole system. The headloss, applying the GEE at the surface of the `upstream' tank and at $E$, ignoring the exit loss, is $6.7\,\text{m}$. The flow through $	D_{AE\text{equiv}}$, and through the real system, is:
 	\cbox{
 		\begin{align*}
-			Q_{AE\text{equiv}} & =  \frac{100 (181.24)^{2.63}\left(\frac{6.7}{1000}\right)^{0.54}}{279000} \\
-			                   & = 20.878\,\text{L/s}                                                      \\\\
-			\bm{Q_{AE}}        & = \bm{20.9}\,\textbf{L/s}                                                 
+			Q_{AE\text{equiv}} & =  \frac{100 (324.99)^{2.63}\left(\frac{6.7}{1000}\right)^{0.54}}{279000} \\
+			                   & = 96.983\,\text{L/s}                                                      \\\\
+			\bm{Q_{AE}}        & = \bm{97.0}\,\textbf{L/s}                                                 
 		\end{align*}
 		
 	}
